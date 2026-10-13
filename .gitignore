@@ -6,6 +6,9 @@ node_modules
 # Production build
 dist
 
+# Vercel
+.vercel
+
 # Environment & logs
 .env
 .env.local

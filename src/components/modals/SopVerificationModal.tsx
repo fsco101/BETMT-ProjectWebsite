@@ -17,7 +17,7 @@ export const SopVerificationModal: React.FC<SopVerificationModalProps> = ({ isOp
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 overflow-y-auto">
       {/* Backdrop */}
       <div
         className="fixed inset-0 bg-charcoal-ink/75 backdrop-blur-xs transition-opacity"
@@ -26,36 +26,36 @@ export const SopVerificationModal: React.FC<SopVerificationModalProps> = ({ isOp
       />
 
       {/* Certificate Box */}
-      <div className="relative w-full max-w-2xl bg-[#FCFAF6] shadow-2xl hairline-all p-8 sm:p-12 z-10 animate-fadeIn text-center space-y-6">
+      <div className="relative w-full max-w-2xl bg-[#FCFAF6] shadow-2xl hairline-all p-4 sm:p-8 lg:p-12 z-10 animate-fadeIn text-center space-y-5 sm:space-y-6 my-auto">
         
         {/* Border Frame */}
-        <div className="border-2 border-charcoal-ink p-6 sm:p-8 space-y-6 relative">
+        <div className="border sm:border-2 border-charcoal-ink p-4 sm:p-8 space-y-5 sm:space-y-6 relative">
           
           {/* Header Monogram & Title */}
           <div className="flex flex-col items-center">
-            <span className="w-10 h-10 border border-charcoal-ink flex items-center justify-center font-editorial text-sm tracking-widest text-charcoal-ink mb-3">
+            <span className="w-8 h-8 sm:w-10 sm:h-10 border border-charcoal-ink flex items-center justify-center font-editorial text-xs sm:text-sm tracking-widest text-charcoal-ink mb-2 sm:mb-3">
               LM
             </span>
-            <span className="text-[10px] uppercase tracking-[0.25em] text-subtle-ash">
+            <span className="text-[8px] sm:text-[10px] uppercase tracking-[0.2em] sm:tracking-[0.25em] text-subtle-ash">
               Technological University of the Philippines — Taguig Campus
             </span>
-            <span className="text-[9px] uppercase tracking-[0.2em] text-muted-charcoal mt-0.5">
+            <span className="text-[8px] sm:text-[9px] uppercase tracking-[0.16em] sm:tracking-[0.2em] text-muted-charcoal mt-0.5">
               Mechanical &amp; Allied Department · Machining Facility
             </span>
-            <h3 className="font-editorial text-2xl sm:text-3xl uppercase tracking-wider text-charcoal-ink mt-4">
+            <h3 className="font-editorial text-xl sm:text-2xl md:text-3xl uppercase tracking-wider text-charcoal-ink mt-3 sm:mt-4">
               SAFETY COMPLIANCE PASS
             </h3>
-            <span className="text-[10px] uppercase tracking-[0.2em] text-emerald-800 font-medium mt-1">
+            <span className="text-[9px] sm:text-[10px] uppercase tracking-[0.18em] sm:tracking-[0.2em] text-emerald-800 font-medium mt-1">
               Ref: ISO 8573-1 &amp; ANSI Z87.1 Certified Practical
             </span>
           </div>
 
-          <div className="w-16 h-px bg-hairline-divider mx-auto" />
+          <div className="w-12 sm:w-16 h-px bg-hairline-divider mx-auto" />
 
           {/* Recipient Details */}
-          <div className="space-y-4 max-w-md mx-auto text-left">
+          <div className="space-y-3 sm:space-y-4 max-w-md mx-auto text-left">
             <div>
-              <label className="text-[9px] uppercase tracking-[0.2em] text-subtle-ash block mb-1">
+              <label className="text-[8px] sm:text-[9px] uppercase tracking-[0.18em] sm:tracking-[0.2em] text-subtle-ash block mb-1">
                 Technician / Student Name:
               </label>
               <input
@@ -66,7 +66,7 @@ export const SopVerificationModal: React.FC<SopVerificationModalProps> = ({ isOp
               />
             </div>
             <div>
-              <label className="text-[9px] uppercase tracking-[0.2em] text-subtle-ash block mb-1">
+              <label className="text-[8px] sm:text-[9px] uppercase tracking-[0.18em] sm:tracking-[0.2em] text-subtle-ash block mb-1">
                 Laboratory ID Number:
               </label>
               <input
@@ -82,25 +82,25 @@ export const SopVerificationModal: React.FC<SopVerificationModalProps> = ({ isOp
             This verification certifies that the named student has completed all 7 illustrated SOP milestones, confirmed the zero-pressure line exhaust procedure, and demonstrated compliance with workshop safety regulations.
           </p>
 
-          <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4 text-[10px] uppercase tracking-[0.16em] text-subtle-ash border-t hairline-t">
+          <div className="pt-3 sm:pt-4 flex flex-col sm:flex-row items-center justify-between gap-2 sm:gap-4 text-[9px] sm:text-[10px] uppercase tracking-[0.14em] sm:tracking-[0.16em] text-subtle-ash border-t hairline-t">
             <span>Date: {currentDate}</span>
             <span className="text-emerald-800 font-medium">Status: PASSED / AUTHORIZED</span>
           </div>
         </div>
 
         {/* Action Buttons */}
-        <div className="flex items-center justify-center gap-4 pt-2">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 pt-1">
           <button
             type="button"
             onClick={() => window.print()}
-            className="px-6 py-2.5 text-[11px] uppercase tracking-[0.2em] bg-charcoal-ink text-[#FAF9F5] hover:bg-transparent hover:text-charcoal-ink border border-charcoal-ink transition-colors"
+            className="w-full sm:w-auto px-5 sm:px-6 py-2.5 text-[10px] sm:text-[11px] uppercase tracking-[0.18em] sm:tracking-[0.2em] bg-charcoal-ink text-[#FAF9F5] hover:bg-transparent hover:text-charcoal-ink border border-charcoal-ink transition-colors"
           >
             Print Verification Pass
           </button>
           <button
             type="button"
             onClick={onClose}
-            className="px-6 py-2.5 text-[11px] uppercase tracking-[0.2em] border border-hairline-divider hover:border-charcoal-ink transition-colors"
+            className="w-full sm:w-auto px-5 sm:px-6 py-2.5 text-[10px] sm:text-[11px] uppercase tracking-[0.18em] sm:tracking-[0.2em] border border-hairline-divider hover:border-charcoal-ink transition-colors"
           >
             Dismiss
           </button>

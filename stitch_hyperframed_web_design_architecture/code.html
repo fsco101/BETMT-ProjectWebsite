@@ -1,0 +1,1218 @@
+<!DOCTYPE html><html lang="en" class="scroll-smooth"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CENTRALIZED COMPRESSED-AIR DISTRIBUTION SYSTEM · TUP Taguig</title>
+  <!-- Material Symbols Outlined -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap">
+  <!-- Fonts: Bodoni Moda (Editorial Serif) & Work Sans (Clean Modern Sans) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;1,6..96,400&amp;family=Work+Sans:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            "surface-linen": "#F7F5F0",
+            "canvas-stone": "#FAF9F5",
+            "surface-card": "#F4F0E8",
+            "charcoal-ink": "#1C1B1A",
+            "muted-charcoal": "#4A4744",
+            "subtle-ash": "#7E7973",
+            "hairline-divider": "#DCD7CD",
+            "accent-crimson": "#8A2528"
+          },
+          fontFamily: {
+            serif: ['"Bodoni Moda"', 'Georgia', 'serif'],
+            sans: ['"Work Sans"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #F7F5F0;
+      color: #1C1B1A;
+      font-family: 'Work Sans', sans-serif;
+      letter-spacing: 0.01em;
+    }
+    .font-editorial {
+      font-family: 'Bodoni Moda', Georgia, serif;
+      font-weight: 400;
+      letter-spacing: 0.03em;
+    }
+    .hairline-b { border-bottom: 1px solid #DCD7CD; }
+    .hairline-t { border-top: 1px solid #DCD7CD; }
+    .hairline-r { border-right: 1px solid #DCD7CD; }
+    .hairline-l { border-left: 1px solid #DCD7CD; }
+    .hairline-all { border: 1px solid #DCD7CD; }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 20;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body class="bg-[#F7F5F0] text-charcoal-ink antialiased selection:bg-[#E8E2D7] selection:text-charcoal-ink min-h-screen flex flex-col">
+
+<!-- ================= TOP EDITORIAL NAVIGATION BAR ================= -->
+<header class="w-full hairline-b sticky top-0 z-50 bg-[#F7F5F0]/95 backdrop-blur-sm transition-all">
+  <div class="max-w-7xl mx-auto px-6 sm:px-12 py-5 flex items-center justify-between">
+    <!-- Monogram & Lab Title -->
+    <a href="#hero" class="flex items-center gap-4 group">
+      <span class="w-9 h-9 border border-charcoal-ink flex items-center justify-center font-editorial text-sm tracking-widest text-charcoal-ink group-hover:bg-charcoal-ink group-hover:text-[#F7F5F0] transition-colors">
+        LM
+      </span>
+      <div class="flex flex-col">
+        <span class="font-editorial text-base uppercase tracking-[0.2em] text-charcoal-ink leading-tight">TUP TAGUIG</span>
+        <span class="text-[10px] uppercase tracking-[0.16em] text-subtle-ash font-medium">Mechanical Machining Laboratory</span>
+      </div>
+    </a>
+    <!-- Navigation Links -->
+    <nav class="hidden lg:flex items-center space-x-9 text-[11px] uppercase tracking-[0.18em] text-muted-charcoal font-medium">
+      <a href="#savoir-faire" class="hover:text-charcoal-ink transition-colors pb-0.5">Our Expertise</a>
+      <a href="#pipeline" class="hover:text-charcoal-ink transition-colors pb-0.5">8-Stage Circuit</a>
+      <a href="#protocoles" class="hover:text-charcoal-ink transition-colors pb-0.5">Safety Protocols</a>
+      <a href="#sop" class="hover:text-charcoal-ink transition-colors pb-0.5">7-Step SOP</a>
+      <a href="#sorties" class="hover:text-charcoal-ink transition-colors pb-0.5">Air Drops (6)</a>
+      <a href="#video-demo" class="hover:text-charcoal-ink transition-colors pb-0.5">Demonstration Video</a>
+    </nav>
+    <!-- Emergency Action -->
+    <div class="flex items-center gap-6">
+      <a href="#protocoles" class="text-[10px] uppercase tracking-[0.2em] text-accent-crimson border-b border-accent-crimson pb-0.5 hover:text-charcoal-ink hover:border-charcoal-ink transition-all">
+        Emergency Depressurize
+      </a>
+      <span class="text-[10px] uppercase tracking-[0.2em] text-subtle-ash hidden sm:inline">ISO 8573</span>
+    </div>
+  </div>
+</header>
+
+<main class="flex-1">
+
+  <!-- ================= 1. HERO SECTION ================= -->
+  <section id="hero" class="relative pt-24 pb-20 sm:pt-36 sm:pb-32 px-6 sm:px-12 max-w-7xl mx-auto flex flex-col items-center text-center">
+    <div class="mb-8">
+      <span class="text-[11px] uppercase tracking-[0.25em] text-subtle-ash">
+        Technological University of the Philippines — Taguig Campus
+      </span>
+    </div>
+    <h1 class="font-editorial text-4xl sm:text-6xl md:text-7xl lg:text-[84px] leading-[1.08] tracking-[0.02em] uppercase max-w-5xl text-charcoal-ink">
+      CENTRALIZED COMPRESSED-AIR DISTRIBUTION SYSTEM
+    </h1>
+    <p class="mt-8 text-sm sm:text-base text-muted-charcoal max-w-2xl font-light leading-relaxed tracking-wide">
+      Safety guide, workshop protocol, and pneumatic architecture for the Mechanical &amp; Allied Department. A certified network serving 6 machining stations.
+    </p>
+    <div class="mt-12 flex items-center justify-center">
+      <a href="#video-demo" class="inline-flex items-center gap-3 px-5 py-2.5 rounded-full border border-charcoal-ink text-charcoal-ink hover:bg-charcoal-ink hover:text-[#F7F5F0] transition-all duration-300 text-[11px] uppercase tracking-[0.18em]">
+        <span class="w-2.5 h-2.5 rounded-full bg-charcoal-ink inline-block animate-pulse"></span>
+        <span>CONSULT COMPLETE SAFETY VIDEO (04:48 MIN)</span>
+      </a>
+    </div>
+    <div class="w-full max-w-4xl mt-24">
+      <div class="w-full h-px bg-hairline-divider"></div>
+      <div class="py-12 flex justify-center">
+        <div class="w-px h-16 bg-hairline-divider"></div>
+      </div>
+      <div class="w-full h-px bg-hairline-divider"></div>
+    </div>
+  </section>
+
+  <!-- ================= 2. OUR EXPERTISE: FLUID DISTRIBUTION ================= -->
+  <section id="savoir-faire" class="py-20 sm:py-28 px-6 sm:px-12 max-w-7xl mx-auto">
+    <div class="mb-14">
+      <h2 class="font-editorial text-3xl sm:text-5xl lg:text-6xl uppercase tracking-[0.03em] leading-tight text-charcoal-ink">
+        OUR EXPERTISE:<br>
+        FLUID DISTRIBUTION
+      </h2>
+      <p class="mt-6 text-xs sm:text-sm text-muted-charcoal max-w-xl font-light leading-relaxed">
+        We operate a pneumatic infrastructure certified to ISO 8573-1 industrial purity standards. Our central manifold supplies conventional lathes, CNC machining centers, precision grinders, and metrology labs with stabilized continuous flow and regulated clean air.
+      </p>
+    </div>
+    <div class="hairline-all bg-[#FAF9F5] p-3 sm:p-5">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+        <div class="lg:col-span-9 relative overflow-hidden bg-[#ECE8DF] aspect-[16/10]">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNkp_tWB02De15s5jEWLTAQ7Gfwy8r2ViWEFkrOp1qfwytOhW1cPzJHMvVMEu16xmF9aMGEQAD0Fb_z0de0sK1Kjfxex6gNdwIC2-UY8SwafPcbb2i3CDq-rtnZ-w-ymNTCStMmSxGMdHs4CFXa34h7ObZOJVmHfcaFkeU_TfM84TkS99OZX5dMeh-H50iNQ8iFZyQyRjUUWFv0kw2y6Mb1wafvU4yqLTqZLsGg2paR4vrYwiooug6_g" alt="TUP Taguig central pneumatic installation, air receiver tank and ISO blue piping" class="w-full h-full object-cover transition-all duration-700 hover:scale-[1.01]">
+          <div class="absolute bottom-4 left-4 flex gap-1.5">
+            <span class="w-1.5 h-1.5 bg-charcoal-ink"></span>
+            <span class="w-1.5 h-1.5 bg-charcoal-ink/30"></span>
+            <span class="w-1.5 h-1.5 bg-charcoal-ink/30"></span>
+            <span class="w-1.5 h-1.5 bg-charcoal-ink/30"></span>
+            <span class="w-1.5 h-1.5 bg-charcoal-ink/30"></span>
+          </div>
+        </div>
+        <div class="lg:col-span-3 flex flex-col justify-between py-4 pr-3 pl-2">
+          <div>
+            <span class="text-[10px] uppercase tracking-[0.2em] text-subtle-ash block mb-2">Station 00 · Primary Service Bay</span>
+            <p class="text-xs text-muted-charcoal leading-relaxed font-light">
+              TUP Taguig Mechanical Machining Facility. Lubricated dual-stage compressor assembly, cyclonic separator, refrigerated air dryer, and nominal-pressure balancing receiver.
+            </p>
+          </div>
+          <div class="mt-8 pt-8 hairline-t flex items-center justify-between text-[11px] uppercase tracking-[0.18em]">
+            <span class="text-subtle-ash">Central Supply</span>
+            <span class="material-symbols-outlined text-base">check_circle</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 3. THE 8 STAGE AIR DISTRIBUTION CIRCUIT (PICTURE + SPECS + DESCRIPTION FOR EACH) ================= -->
+  <section id="pipeline" class="py-24 sm:py-32 px-6 sm:px-12 max-w-7xl mx-auto">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-16 hairline-b pb-8">
+      <div>
+        <span class="text-[10px] uppercase tracking-[0.25em] text-subtle-ash block mb-2">Fluid Engineering &amp; Filtration Hierarchy</span>
+        <h2 class="font-editorial text-3xl sm:text-5xl uppercase tracking-[0.03em] text-charcoal-ink">
+          THE 8-STAGE AIR DISTRIBUTION CIRCUIT
+        </h2>
+      </div>
+      <div class="mt-4 sm:mt-0 text-[11px] uppercase tracking-[0.18em] text-muted-charcoal">
+        Main Ring Loop · ISO 8573 Purity Standards
+      </div>
+    </div>
+
+    <!-- 8 Components Grid with Visuals and Full Descriptions -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 hairline-t hairline-l border-[#DCD7CD]">
+      
+      <!-- Stage 01 -->
+      <div class="hairline-r hairline-b p-6 sm:p-7 flex flex-col justify-between hover:bg-[#FAF9F5] transition-colors group">
+        <div>
+          <div class="relative aspect-[4/3] w-full overflow-hidden hairline-all bg-[#ECE8DF] mb-5">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjKSZw4hvaidBnUxhWnkqFE3NP9RqovULVG4XW6U6NvKx4UZia88b_XSQQRsiDeqdoSsI5-0Nsmi7dLUVXAUCNPAuIpJyN9LOP_1PrDgY4bqrzndTLGkfnmPAHqygyzwtC3E12tlW3KRG15VgDXzlJwyQolf3A3C181dZcaKynkf6JI3CjoKNaueHDnmxsBkdCsuu7stFtVa-r8lVjb8KuiJ_ayWxudntYmqPKlNR4pHehQB8EnLhBOg" alt="Central Compressor Component" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+            <div class="absolute top-2 left-2 bg-charcoal-ink/80 text-[#FAF9F5] text-[9px] uppercase tracking-[0.2em] px-2 py-0.5">Stage 01</div>
+          </div>
+          <span class="font-editorial text-xl sm:text-2xl text-charcoal-ink block mb-1">01. Central Compressor</span>
+          <span class="text-[10px] uppercase tracking-[0.2em] text-subtle-ash block mb-3">Primary Atmospheric Induction</span>
+          <p class="text-xs text-muted-charcoal font-light leading-relaxed">
+            Industrial dual-stage reciprocating compressor drawing ambient air, pressurizing it to baseline workshop pressure inside a vibration-isolated and acoustically dampened enclosure.
+          </p>
+        </div>
+        <div class="mt-6 pt-4 hairline-t text-[10px] uppercase tracking-[0.16em] text-subtle-ash flex justify-between">
+          <span>Capacity / Motor</span>
+          <span class="text-charcoal-ink font-medium">15 kW / 20 HP</span>
+        </div>
+      </div>
+
+      <!-- Stage 02 -->
+      <div class="hairline-r hairline-b p-6 sm:p-7 flex flex-col justify-between hover:bg-[#FAF9F5] transition-colors group">
+        <div>
+          <div class="relative aspect-[4/3] w-full overflow-hidden hairline-all bg-[#ECE8DF] mb-5">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlc1N9T0-J7Or28cvXzolZsQAaFK-sg1l5ti_IVzQ5Z0ZpyVVH3ZAO1groCs9VLpA9hoXljfBuvG3BrcGHPpz8d41K5uGkkndFQmKweLkLhW54vlyCxq-myBDm8VluBQWEo_0Nwac9olr8YhHX-lMUxVpJOkpeXPt4sNZTurCg-YmS4yf86DD9l1bJBYfDzixPAP-ri8P8xTRk7l5uhj2zXh7MNl16E7iMh7pxqf4OMdu_Puraz4Ct0g" alt="Particulate Pre-Filter Unit" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+            <div class="absolute top-2 left-2 bg-charcoal-ink/80 text-[#FAF9F5] text-[9px] uppercase tracking-[0.2em] px-2 py-0.5">Stage 02</div>
+          </div>
+          <span class="font-editorial text-xl sm:text-2xl text-charcoal-ink block mb-1">02. Particulate Filter 1</span>
+          <span class="text-[10px] uppercase tracking-[0.2em] text-subtle-ash block mb-3">Mechanical Coarse Separation</span>
+          <p class="text-xs text-muted-charcoal font-light leading-relaxed">
+            Cyclonic and sintered bronze filter element capturing gross solid debris, rust scale, and heavy liquid water droplets before raw air enters the refrigeration cycle.
+          </p>
+        </div>
+        <div class="mt-6 pt-4 hairline-t text-[10px] uppercase tracking-[0.16em] text-subtle-ash flex justify-between">
+          <span>Threshold</span>
+          <span class="text-charcoal-ink font-medium">5.0 Microns</span>
+        </div>
+      </div>
+
+      <!-- Stage 03 -->
+      <div class="hairline-r hairline-b p-6 sm:p-7 flex flex-col justify-between hover:bg-[#FAF9F5] transition-colors group">
+        <div>
+          <div class="relative aspect-[4/3] w-full overflow-hidden hairline-all bg-[#ECE8DF] mb-5">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNkp_tWB02De15s5jEWLTAQ7Gfwy8r2ViWEFkrOp1qfwytOhW1cPzJHMvVMEu16xmF9aMGEQAD0Fb_z0de0sK1Kjfxex6gNdwIC2-UY8SwafPcbb2i3CDq-rtnZ-w-ymNTCStMmSxGMdHs4CFXa34h7ObZOJVmHfcaFkeU_TfM84TkS99OZX5dMeh-H50iNQ8iFZyQyRjUUWFv0kw2y6Mb1wafvU4yqLTqZLsGg2paR4vrYwiooug6_g" alt="Refrigerant Air Dryer Module" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+            <div class="absolute top-2 left-2 bg-charcoal-ink/80 text-[#FAF9F5] text-[9px] uppercase tracking-[0.2em] px-2 py-0.5">Stage 03</div>
+          </div>
+          <span class="font-editorial text-xl sm:text-2xl text-charcoal-ink block mb-1">03. Refrigerant Air Dryer</span>
+          <span class="text-[10px] uppercase tracking-[0.2em] text-subtle-ash block mb-3">Vapor Condensation Loop</span>
+          <p class="text-xs text-muted-charcoal font-light leading-relaxed">
+            Thermodynamically cools the compressed airstream to force moisture vapor to condense and exhaust through timed automatic solenoids, preventing corrosion in distribution pipes.
+          </p>
+        </div>
+        <div class="mt-6 pt-4 hairline-t text-[10px] uppercase tracking-[0.16em] text-subtle-ash flex justify-between">
+          <span>Pressure Dew Point</span>
+          <span class="text-charcoal-ink font-medium">+3°C (37°F)</span>
+        </div>
+      </div>
+
+      <!-- Stage 04 -->
+      <div class="hairline-r hairline-b p-6 sm:p-7 flex flex-col justify-between hover:bg-[#FAF9F5] transition-colors group">
+        <div>
+          <div class="relative aspect-[4/3] w-full overflow-hidden hairline-all bg-[#ECE8DF] mb-5">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMKZLBP4TbjuYO6VNR5MY4wbtPk9YuCWt36LpXkF3gDAYJC-YKQLbmZhYn1q63Dp966X3pxgOSAOEUtoLEkcsQICS0rmmjKvMsTvlKMfzIEQ4mqy9zd4aqDZ09i-GAk6RGvb9vQBRYBp5SDrWG9rqYPz6AfH1giAJ_0CH6YUg8f7UOGjNJx1CGJI7wcjfl9ghC9Fe_6zfaduwH6kUmFH46k7g6KikflWdq4kQSBBsMXHZ1WFjCvOiidA" alt="Coalescing Oil Mist Microfilter" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+            <div class="absolute top-2 left-2 bg-charcoal-ink/80 text-[#FAF9F5] text-[9px] uppercase tracking-[0.2em] px-2 py-0.5">Stage 04</div>
+          </div>
+          <span class="font-editorial text-xl sm:text-2xl text-charcoal-ink block mb-1">04. Coalescing Filter 2</span>
+          <span class="text-[10px] uppercase tracking-[0.2em] text-subtle-ash block mb-3">Sub-Micron Aerosol Scrub</span>
+          <p class="text-xs text-muted-charcoal font-light leading-relaxed">
+            High-efficiency borosilicate microfiber matrix capturing residual sub-micron lubricating oil mists and fine particulates, purifying the stream to Class 1/2 standards.
+          </p>
+        </div>
+        <div class="mt-6 pt-4 hairline-t text-[10px] uppercase tracking-[0.16em] text-subtle-ash flex justify-between">
+          <span>Purity Class</span>
+          <span class="text-charcoal-ink font-medium">0.01 Micron</span>
+        </div>
+      </div>
+
+      <!-- Stage 05 -->
+      <div class="hairline-r hairline-b p-6 sm:p-7 flex flex-col justify-between hover:bg-[#FAF9F5] transition-colors group">
+        <div>
+          <div class="relative aspect-[4/3] w-full overflow-hidden hairline-all bg-[#ECE8DF] mb-5">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvmsEnCue6Pw3MdH5lwPbyLz-JrA856qbAo5F1lAokqxsWctBJ_cZNOzAnluJPLhg9s1rPs7X9OjkxWZK75AX4O7N4r2ckBzR5odf6T5Ns8YDs9Bd-NkUAhLWXzGCPIvT-ECKwlBewNt5EokFBiZ4rIbTEvoclusgF7YyYK3bOETBJtH51p35My2M4J6WCh-gCW-3wbaKVpLmQKQFe0Fm_fuZkxlhwymOaqriia4ygriZcH7Cyr4C0xQ" alt="ASME Certified Air Receiver Buffer Tank" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+            <div class="absolute top-2 left-2 bg-charcoal-ink/80 text-[#FAF9F5] text-[9px] uppercase tracking-[0.2em] px-2 py-0.5">Stage 05</div>
+          </div>
+          <span class="font-editorial text-xl sm:text-2xl text-charcoal-ink block mb-1">05. Air Receiver Tank</span>
+          <span class="text-[10px] uppercase tracking-[0.2em] text-subtle-ash block mb-3">Pressure Dampening &amp; Storage</span>
+          <p class="text-xs text-muted-charcoal font-light leading-relaxed">
+            Vertical ASME pressure vessel equipped with calibrated relief valve, absorbing pneumatic pulse surges, dampening compressor cycles, and storing buffer capacity.
+          </p>
+        </div>
+        <div class="mt-6 pt-4 hairline-t text-[10px] uppercase tracking-[0.16em] text-subtle-ash flex justify-between">
+          <span>ASME Volume</span>
+          <span class="text-charcoal-ink font-medium">500 L / 132 Gal</span>
+        </div>
+      </div>
+
+      <!-- Stage 06 -->
+      <div class="hairline-r hairline-b p-6 sm:p-7 flex flex-col justify-between hover:bg-[#FAF9F5] transition-colors group">
+        <div>
+          <div class="relative aspect-[4/3] w-full overflow-hidden hairline-all bg-[#ECE8DF] mb-5">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVtSg7VIRo9xczlgjZ9e6VOmfexqntrLiYRDDclgMXdADYGKa45XVtkYRHogtoqHZNUGNqmmal_ZECZl_4STILLQuvFizaeiIdl1A2yDzdjJBketPmVc89qllGQ_9Vo1AEzuouy8bw5ksOzC0tn2Lmn5sdw901T1VpIdgBm-Jmc-NFUiGZ_AR4Xs2lDIPqaChxro4TaiZ_jTTfrnb3FC2pIPmYv_Q5c1rQWUXnXUCclMq7v2yTqZVgJw" alt="Overhead Main Header Blue ISO Pipeline Ring" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+            <div class="absolute top-2 left-2 bg-charcoal-ink/80 text-[#FAF9F5] text-[9px] uppercase tracking-[0.2em] px-2 py-0.5">Stage 06</div>
+          </div>
+          <span class="font-editorial text-xl sm:text-2xl text-charcoal-ink block mb-1">06. Main Header Loop</span>
+          <span class="text-[10px] uppercase tracking-[0.2em] text-subtle-ash block mb-3">Closed-Circuit Conduits</span>
+          <p class="text-xs text-muted-charcoal font-light leading-relaxed">
+            Overhead powder-coated ISO blue ring manifold pitched at 1:100 slope to ensure balanced flow velocity without dead-ends or stagnant moisture pockets.
+          </p>
+        </div>
+        <div class="mt-6 pt-4 hairline-t text-[10px] uppercase tracking-[0.16em] text-subtle-ash flex justify-between">
+          <span>Bore / Diameter</span>
+          <span class="text-charcoal-ink font-medium">1.0 Inch ISO Blue</span>
+        </div>
+      </div>
+
+      <!-- Stage 07 -->
+      <div class="hairline-r hairline-b p-6 sm:p-7 flex flex-col justify-between hover:bg-[#FAF9F5] transition-colors group">
+        <div>
+          <div class="relative aspect-[4/3] w-full overflow-hidden hairline-all bg-[#ECE8DF] mb-5">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlv1QDaFofI2oJ7Y6xZ-oIL9_jUJNGqgPzEHkd4ETQ_KOheu-Z9imACNNh5gyGdSm-qyaQ0VyCWLONZy0z1j5sLqUaPxz4EWxUfaHhCMgO49RHVSb4tS0Oer9DkNvWjdRNNLw2ojExVDrwbWcbOSjMhgwxfuXZGP6utSmkui_yF3p3H_KnC6XH3uePyoOSZFB-dEnS2L5SzWDgz4YmbpPYYcZ7x43af7155oYSns5hNgQg-1uy-X7TVg" alt="Vertical Drop Leg Manifold with Isolation Valve" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+            <div class="absolute top-2 left-2 bg-charcoal-ink/80 text-[#FAF9F5] text-[9px] uppercase tracking-[0.2em] px-2 py-0.5">Stage 07</div>
+          </div>
+          <span class="font-editorial text-xl sm:text-2xl text-charcoal-ink block mb-1">07. Drop Leg Assemblies</span>
+          <span class="text-[10px] uppercase tracking-[0.2em] text-subtle-ash block mb-3">Gooseneck Takeoffs &amp; Regulators</span>
+          <p class="text-xs text-muted-charcoal font-light leading-relaxed">
+            Overhead top takeoffs curving downward with sediment drip legs, individual quarter-turn brass ball shutoff valves, and calibrated station dial regulators.
+          </p>
+        </div>
+        <div class="mt-6 pt-4 hairline-t text-[10px] uppercase tracking-[0.16em] text-subtle-ash flex justify-between">
+          <span>Network Drops</span>
+          <span class="text-charcoal-ink font-medium">6 Station Drops</span>
+        </div>
+      </div>
+
+      <!-- Stage 08 -->
+      <div class="hairline-r hairline-b p-6 sm:p-7 flex flex-col justify-between hover:bg-[#FAF9F5] transition-colors group">
+        <div>
+          <div class="relative aspect-[4/3] w-full overflow-hidden hairline-all bg-[#ECE8DF] mb-5">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoBa8cpAMTI6uStkbL3XpbeV8i5Hb3GsE1NEHAGNhmvhV3d-MyN4dpfjeABp6nnAPCpL-_ktFnXs2dUskWwmyS-1nwDyB1GqzvrSehIp4E47MKUEmjyHoDH_WNb48kHpUSrfNSk7UM0_BF8JkOrMQ-E9SWN2VRX1CexLju7vfLIMeM88SZNDSISMhWHyXTa3V6zIQC17h0pjtRGrSso3FgIgNR-CR54gavUwcsEO_IFuIWhAAy5uG7EQ" alt="Bench Quick-Connect Coupler and Safety Tool" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+            <div class="absolute top-2 left-2 bg-charcoal-ink/80 text-[#FAF9F5] text-[9px] uppercase tracking-[0.2em] px-2 py-0.5">Stage 08</div>
+          </div>
+          <span class="font-editorial text-xl sm:text-2xl text-charcoal-ink block mb-1">08. Bench Couplers &amp; Tools</span>
+          <span class="text-[10px] uppercase tracking-[0.2em] text-subtle-ash block mb-3">Safety Disconnects &amp; Blowguns</span>
+          <p class="text-xs text-muted-charcoal font-light leading-relaxed">
+            Quick-release safety push-lock couplers delivering dry regulated air directly into tamper-proof OSHA safety chip-clearing blowguns and certified shop air tools.
+          </p>
+        </div>
+        <div class="mt-6 pt-4 hairline-t text-[10px] uppercase tracking-[0.16em] text-subtle-ash flex justify-between">
+          <span>Operating Range</span>
+          <span class="text-charcoal-ink font-medium">6.0 - 7.0 Bar</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= 4. SAFETY STANDARDS & OPERATING PROTOCOLS (INTERACTIVE ACCORDION) ================= -->
+  <section id="protocoles" class="py-24 sm:py-32 px-6 sm:px-12 bg-[#FAF9F5] hairline-t hairline-b">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-16 hairline-b pb-8">
+        <div>
+          <span class="text-[10px] uppercase tracking-[0.25em] text-subtle-ash block mb-2">DOLE Compliance &amp; ANSI Z87.1 Safety Charter</span>
+          <h2 class="font-editorial text-3xl sm:text-5xl uppercase tracking-[0.03em] text-charcoal-ink">
+            SAFETY STANDARDS &amp; OPERATING PROTOCOLS
+          </h2>
+        </div>
+        <div class="mt-4 sm:mt-0 text-[11px] uppercase tracking-[0.18em] text-muted-charcoal">
+          Interactive Operational Cards · Select any item to view media
+        </div>
+      </div>
+
+      <!-- Accordion Groups -->
+      <div class="space-y-16">
+        
+        <!-- Mandatory Practices (DO) -->
+        <div>
+          <div class="flex items-center justify-between hairline-b pb-4 mb-6">
+            <div class="flex items-center gap-3">
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-700 inline-block"></span>
+              <h3 class="font-editorial text-xl sm:text-2xl uppercase tracking-wider text-charcoal-ink">MANDATORY PRACTICES (DO)</h3>
+            </div>
+            <span class="text-[10px] uppercase tracking-[0.2em] text-emerald-800 font-medium">Active Directives · Click Row to Expand</span>
+          </div>
+
+          <div class="space-y-4">
+            <!-- DO 01 -->
+            <div class="accordion-item hairline-all bg-[#FAF9F5] border-l-4 border-l-emerald-700 transition-all duration-300">
+              <button type="button" onclick="toggleAccordion('do-1')" class="w-full text-left p-6 sm:p-7 flex flex-col md:flex-row md:items-center justify-between gap-6 cursor-pointer select-none group">
+                <div class="flex items-start sm:items-center gap-6">
+                  <span class="font-editorial text-2xl sm:text-3xl text-emerald-800 w-8">01</span>
+                  <div>
+                    <h4 class="font-editorial text-lg sm:text-xl uppercase tracking-wider text-charcoal-ink group-hover:text-emerald-900 transition-colors">Mandatory Personal Protective Equipment</h4>
+                    <p class="text-xs text-muted-charcoal font-light mt-1 max-w-2xl leading-relaxed">
+                      Always wear certified ANSI Z87.1 impact-resistant safety glasses with side shields, hearing protection earmuffs, and shop coat prior to touching pneumatic valves or line connections.
+                    </p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-4 self-end md:self-center">
+                  <span class="text-[10px] uppercase tracking-[0.18em] px-3 py-1 bg-emerald-50 text-emerald-800 border border-emerald-200 font-medium whitespace-nowrap">Mandatory PPE</span>
+                  <span id="chevron-do-1" class="w-7 h-7 rounded-full border border-charcoal-ink/20 flex items-center justify-center text-charcoal-ink rotate-180 transition-transform">
+                    <span class="material-symbols-outlined text-base">expand_more</span>
+                  </span>
+                </div>
+              </button>
+              <div id="content-do-1" class="accordion-content block hairline-t border-hairline-divider bg-[#F4F0E8]/70 px-6 sm:px-8 py-7">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                  <div class="lg:col-span-5 relative overflow-hidden hairline-all bg-[#ECE8DF] aspect-[4/3]">
+                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjKSZw4hvaidBnUxhWnkqFE3NP9RqovULVG4XW6U6NvKx4UZia88b_XSQQRsiDeqdoSsI5-0Nsmi7dLUVXAUCNPAuIpJyN9LOP_1PrDgY4bqrzndTLGkfnmPAHqygyzwtC3E12tlW3KRG15VgDXzlJwyQolf3A3C181dZcaKynkf6JI3CjoKNaueHDnmxsBkdCsuu7stFtVa-r8lVjb8KuiJ_ayWxudntYmqPKlNR4pHehQB8EnLhBOg" alt="Technician wearing ANSI Z87.1 glasses and protective gear" class="w-full h-full object-cover">
+                    <div class="absolute bottom-3 left-3 bg-charcoal-ink/85 text-[#FAF9F5] text-[9px] uppercase tracking-[0.2em] px-2.5 py-1">ANSI Z87.1 Approved Gear</div>
+                  </div>
+                  <div class="lg:col-span-7">
+                    <span class="text-[10px] uppercase tracking-[0.22em] text-emerald-800 font-medium block mb-1">Standard Operating Protocol 1.1</span>
+                    <h5 class="font-editorial text-xl uppercase tracking-wider text-charcoal-ink mb-3">High-Velocity Particle &amp; Acoustic Containment</h5>
+                    <p class="text-xs text-muted-charcoal font-light leading-relaxed mb-4">
+                      Operating at 6.0–7.0 Bar generates high-velocity airborne swarf, carbide debris, and localized noise levels exceeding 92 dBA. Polycarbonate eyewear prevents corneal laceration, while dual-earcup acoustic dampers mitigate hearing injury.
+                    </p>
+                    <div class="flex flex-wrap gap-2 pt-2">
+                      <span class="text-[9px] uppercase tracking-[0.16em] px-2.5 py-1 bg-[#EAE5D9] text-charcoal-ink font-medium">Standard: ANSI Z87.1</span>
+                      <span class="text-[9px] uppercase tracking-[0.16em] px-2.5 py-1 bg-[#EAE5D9] text-charcoal-ink font-medium">Acoustic Guard: NRR 28dB</span>
+                      <span class="text-[9px] uppercase tracking-[0.16em] px-2.5 py-1 bg-emerald-100/70 text-emerald-800 font-medium">Status: Active</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- DO 02 -->
+            <div class="accordion-item hairline-all bg-[#FAF9F5] border-l-4 border-l-emerald-700 transition-all duration-300">
+              <button type="button" onclick="toggleAccordion('do-2')" class="w-full text-left p-6 sm:p-7 flex flex-col md:flex-row md:items-center justify-between gap-6 cursor-pointer select-none group">
+                <div class="flex items-start sm:items-center gap-6">
+                  <span class="font-editorial text-2xl sm:text-3xl text-emerald-800 w-8">02</span>
+                  <div>
+                    <h4 class="font-editorial text-lg sm:text-xl uppercase tracking-wider text-charcoal-ink group-hover:text-emerald-900 transition-colors">Pre-Flight Line &amp; Hose Integrity Check</h4>
+                    <p class="text-xs text-muted-charcoal font-light mt-1 max-w-2xl leading-relaxed">
+                      Inspect full polyurethane hose length for cuts, abrasions, bubbles, or soft bulges. Confirm the steel safety whip-check cable is properly tethered across connector couplers.
+                    </p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-4 self-end md:self-center">
+                  <span class="text-[10px] uppercase tracking-[0.18em] px-3 py-1 bg-emerald-50 text-emerald-800 border border-emerald-200 font-medium whitespace-nowrap">Pre-Flight Check</span>
+                  <span id="chevron-do-2" class="w-7 h-7 rounded-full border border-charcoal-ink/20 flex items-center justify-center text-charcoal-ink transition-transform">
+                    <span class="material-symbols-outlined text-base">expand_more</span>
+                  </span>
+                </div>
+              </button>
+              <div id="content-do-2" class="accordion-content hidden hairline-t border-hairline-divider bg-[#F4F0E8]/70 px-6 sm:px-8 py-7">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                  <div class="lg:col-span-5 relative overflow-hidden hairline-all bg-[#ECE8DF] aspect-[4/3]">
+                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoBa8cpAMTI6uStkbL3XpbeV8i5Hb3GsE1NEHAGNhmvhV3d-MyN4dpfjeABp6nnAPCpL-_ktFnXs2dUskWwmyS-1nwDyB1GqzvrSehIp4E47MKUEmjyHoDH_WNb48kHpUSrfNSk7UM0_BF8JkOrMQ-E9SWN2VRX1CexLju7vfLIMeM88SZNDSISMhWHyXTa3V6zIQC17h0pjtRGrSso3FgIgNR-CR54gavUwcsEO_IFuIWhAAy5uG7EQ" alt="Tethered whip-check inspection on pneumatic hose" class="w-full h-full object-cover">
+                    <div class="absolute bottom-3 left-3 bg-charcoal-ink/85 text-[#FAF9F5] text-[9px] uppercase tracking-[0.2em] px-2.5 py-1">Tethered Whip-Check Inspection</div>
+                  </div>
+                  <div class="lg:col-span-7">
+                    <span class="text-[10px] uppercase tracking-[0.22em] text-emerald-800 font-medium block mb-1">Standard Operating Protocol 1.2</span>
+                    <h5 class="font-editorial text-xl uppercase tracking-wider text-charcoal-ink mb-3">Mechanical Hose Fatigue &amp; Coupler Locking</h5>
+                    <p class="text-xs text-muted-charcoal font-light leading-relaxed mb-4">
+                      Tears or microscopic fatigue pinholes under 100 PSI pressure can propagate into catastrophic burst fractures within milliseconds. The galvanized steel whip-check prevents whip lash injury if a coupling separates.
+                    </p>
+                    <div class="flex flex-wrap gap-2 pt-2">
+                      <span class="text-[9px] uppercase tracking-[0.16em] px-2.5 py-1 bg-[#EAE5D9] text-charcoal-ink font-medium">Burst Rating: 20 Bar</span>
+                      <span class="text-[9px] uppercase tracking-[0.16em] px-2.5 py-1 bg-[#EAE5D9] text-charcoal-ink font-medium">Cable: Galv Steel</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- DO 03 -->
+            <div class="accordion-item hairline-all bg-[#FAF9F5] border-l-4 border-l-emerald-700 transition-all duration-300">
+              <button type="button" onclick="toggleAccordion('do-3')" class="w-full text-left p-6 sm:p-7 flex flex-col md:flex-row md:items-center justify-between gap-6 cursor-pointer select-none group">
+                <div class="flex items-start sm:items-center gap-6">
+                  <span class="font-editorial text-2xl sm:text-3xl text-emerald-800 w-8">03</span>
+                  <div>
+                    <h4 class="font-editorial text-lg sm:text-xl uppercase tracking-wider text-charcoal-ink group-hover:text-emerald-900 transition-colors">Safe Operating Distance &amp; Chip Deflection</h4>
+                    <p class="text-xs text-muted-charcoal font-light mt-1 max-w-2xl leading-relaxed">
+                      Maintain a minimum nozzle standoff distance of 100 mm (4 inches) from parts. Position chip shield deflectors downward toward catch trays; never blast shavings across walkways.
+                    </p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-4 self-end md:self-center">
+                  <span class="text-[10px] uppercase tracking-[0.18em] px-3 py-1 bg-emerald-50 text-emerald-800 border border-emerald-200 font-medium whitespace-nowrap">Operating Distance</span>
+                  <span id="chevron-do-3" class="w-7 h-7 rounded-full border border-charcoal-ink/20 flex items-center justify-center text-charcoal-ink transition-transform">
+                    <span class="material-symbols-outlined text-base">expand_more</span>
+                  </span>
+                </div>
+              </button>
+              <div id="content-do-3" class="accordion-content hidden hairline-t border-hairline-divider bg-[#F4F0E8]/70 px-6 sm:px-8 py-7">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                  <div class="lg:col-span-5 relative overflow-hidden hairline-all bg-[#ECE8DF] aspect-[4/3]">
+                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlv1QDaFofI2oJ7Y6xZ-oIL9_jUJNGqgPzEHkd4ETQ_KOheu-Z9imACNNh5gyGdSm-qyaQ0VyCWLONZy0z1j5sLqUaPxz4EWxUfaHhCMgO49RHVSb4tS0Oer9DkNvWjdRNNLw2ojExVDrwbWcbOSjMhgwxfuXZGP6utSmkui_yF3p3H_KnC6XH3uePyoOSZFB-dEnS2L5SzWDgz4YmbpPYYcZ7x43af7155oYSns5hNgQg-1uy-X7TVg" alt="Standoff distance and chip deflection guide" class="w-full h-full object-cover">
+                    <div class="absolute bottom-3 left-3 bg-charcoal-ink/85 text-[#FAF9F5] text-[9px] uppercase tracking-[0.2em] px-2.5 py-1">≥ 100mm Standoff Clearance</div>
+                  </div>
+                  <div class="lg:col-span-7">
+                    <span class="text-[10px] uppercase tracking-[0.22em] text-emerald-800 font-medium block mb-1">Standard Operating Protocol 1.3</span>
+                    <h5 class="font-editorial text-xl uppercase tracking-wider text-charcoal-ink mb-3">Deflection Physics &amp; Chip Recoil Prevention</h5>
+                    <p class="text-xs text-muted-charcoal font-light leading-relaxed mb-4">
+                      Holding nozzles closer than 100 mm creates backpressure that ricochets razor-sharp metal turnings straight back toward the operator's face and arms. Shield discs direct airflow downward.
+                    </p>
+                    <div class="flex flex-wrap gap-2 pt-2">
+                      <span class="text-[9px] uppercase tracking-[0.16em] px-2.5 py-1 bg-[#EAE5D9] text-charcoal-ink font-medium">Standoff: ≥ 100 mm</span>
+                      <span class="text-[9px] uppercase tracking-[0.16em] px-2.5 py-1 bg-[#EAE5D9] text-charcoal-ink font-medium">Deflector: Polycarbonate</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- DO 04 -->
+            <div class="accordion-item hairline-all bg-[#FAF9F5] border-l-4 border-l-emerald-700 transition-all duration-300">
+              <button type="button" onclick="toggleAccordion('do-4')" class="w-full text-left p-6 sm:p-7 flex flex-col md:flex-row md:items-center justify-between gap-6 cursor-pointer select-none group">
+                <div class="flex items-start sm:items-center gap-6">
+                  <span class="font-editorial text-2xl sm:text-3xl text-emerald-800 w-8">04</span>
+                  <div>
+                    <h4 class="font-editorial text-lg sm:text-xl uppercase tracking-wider text-charcoal-ink group-hover:text-emerald-900 transition-colors">Complete Line Depressurization &amp; OSHA Blowguns</h4>
+                    <p class="text-xs text-muted-charcoal font-light mt-1 max-w-2xl leading-relaxed">
+                      Use only OSHA-compliant safety blowguns (&lt;30 PSI). Always close the drop shutoff valve and squeeze blowgun trigger until line pressure reaches 0 PSI before disconnecting quick fittings.
+                    </p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-4 self-end md:self-center">
+                  <span class="text-[10px] uppercase tracking-[0.18em] px-3 py-1 bg-emerald-50 text-emerald-800 border border-emerald-200 font-medium whitespace-nowrap">Depressurization</span>
+                  <span id="chevron-do-4" class="w-7 h-7 rounded-full border border-charcoal-ink/20 flex items-center justify-center text-charcoal-ink transition-transform">
+                    <span class="material-symbols-outlined text-base">expand_more</span>
+                  </span>
+                </div>
+              </button>
+              <div id="content-do-4" class="accordion-content hidden hairline-t border-hairline-divider bg-[#F4F0E8]/70 px-6 sm:px-8 py-7">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                  <div class="lg:col-span-5 relative overflow-hidden hairline-all bg-[#ECE8DF] aspect-[4/3]">
+                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlc1N9T0-J7Or28cvXzolZsQAaFK-sg1l5ti_IVzQ5Z0ZpyVVH3ZAO1groCs9VLpA9hoXljfBuvG3BrcGHPpz8d41K5uGkkndFQmKweLkLhW54vlyCxq-myBDm8VluBQWEo_0Nwac9olr8YhHX-lMUxVpJOkpeXPt4sNZTurCg-YmS4yf86DD9l1bJBYfDzixPAP-ri8P8xTRk7l5uhj2zXh7MNl16E7iMh7pxqf4OMdu_Puraz4Ct0g" alt="Depressurization of pneumatic line into catch trap" class="w-full h-full object-cover">
+                    <div class="absolute bottom-3 left-3 bg-charcoal-ink/85 text-[#FAF9F5] text-[9px] uppercase tracking-[0.2em] px-2.5 py-1">Zero Residual PSI Exhaust</div>
+                  </div>
+                  <div class="lg:col-span-7">
+                    <span class="text-[10px] uppercase tracking-[0.22em] text-emerald-800 font-medium block mb-1">Standard Operating Protocol 1.4</span>
+                    <h5 class="font-editorial text-xl uppercase tracking-wider text-charcoal-ink mb-3">Stored Kinetic Discharge &amp; 5S Coiling</h5>
+                    <p class="text-xs text-muted-charcoal font-light leading-relaxed mb-4">
+                      Disconnecting pressurized couplings releases explosive backflow capable of propelling brass plugs like ballistic projectiles. Depressurizing to absolute 0 PSI prior to collar retraction completely neutralizes mechanical hazard.
+                    </p>
+                    <div class="flex flex-wrap gap-2 pt-2">
+                      <span class="text-[9px] uppercase tracking-[0.16em] px-2.5 py-1 bg-[#EAE5D9] text-charcoal-ink font-medium">OSHA 1910.242(b) Nozzle</span>
+                      <span class="text-[9px] uppercase tracking-[0.16em] px-2.5 py-1 bg-[#EAE5D9] text-charcoal-ink font-medium">Residual: 0 PSI</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Strict Prohibitions (DON'T) -->
+        <div>
+          <div class="flex items-center justify-between hairline-b pb-4 mb-6">
+            <div class="flex items-center gap-3">
+              <span class="w-2.5 h-2.5 rounded-full bg-accent-crimson inline-block"></span>
+              <h3 class="font-editorial text-xl sm:text-2xl uppercase tracking-wider text-accent-crimson">STRICT PROHIBITIONS (DON'T)</h3>
+            </div>
+            <span class="text-[10px] uppercase tracking-[0.2em] text-accent-crimson font-medium">Zero Tolerance · Critical Safety Violations</span>
+          </div>
+
+          <div class="space-y-4">
+            <!-- DON'T 01 -->
+            <div class="accordion-item hairline-all bg-[#FFFDF9] border-l-4 border-l-accent-crimson transition-all duration-300">
+              <button type="button" onclick="toggleAccordion('dont-1')" class="w-full text-left p-6 sm:p-7 flex flex-col md:flex-row md:items-center justify-between gap-6 cursor-pointer select-none group">
+                <div class="flex items-start sm:items-center gap-6">
+                  <span class="font-editorial text-2xl sm:text-3xl text-accent-crimson w-8">01</span>
+                  <div>
+                    <h4 class="font-editorial text-lg sm:text-xl uppercase tracking-wider text-accent-crimson group-hover:text-red-950 transition-colors">DO NOT Direct Compressed Air at Skin, Face, or Clothes</h4>
+                    <p class="text-xs text-muted-charcoal font-light mt-1 max-w-2xl leading-relaxed">
+                      Zero tolerance violation. Never aim pressurized nozzles at human bodies or clothing. Air forced through pores can cause fatal arterial gas embolism, eardrum rupture, and permanent blindness.
+                    </p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-4 self-end md:self-center">
+                  <span class="text-[10px] uppercase tracking-[0.18em] px-3 py-1 bg-red-100/80 text-accent-crimson border border-red-300 font-medium whitespace-nowrap">Critical Prohibition</span>
+                  <span id="chevron-dont-1" class="w-7 h-7 rounded-full border border-accent-crimson/30 flex items-center justify-center text-accent-crimson rotate-180 transition-transform">
+                    <span class="material-symbols-outlined text-base">expand_more</span>
+                  </span>
+                </div>
+              </button>
+              <div id="content-dont-1" class="accordion-content block hairline-t border-red-200 bg-[#FDF7F5] px-6 sm:px-8 py-7">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                  <div class="lg:col-span-5 relative overflow-hidden hairline-all bg-[#F0E5E0] aspect-[4/3]">
+                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBV6zTsb_J32mjILs4u4vvDUenEwEXr_qYp_lJVN4xAORnvtLmP_zxzpSktZKlgZpWzKedEqlaSMMI8jYMU81MRVIojxWh1iUfJf6UOzuBPujzxRH6wkYbydtzZW5I9otI9iaTEuIJKfZLuNL6wL4uh2BuFgaibpdg2dKnS6fA_d0CHAwSALe2Cjv7YBhgRCGlmqBeIxVQZ_Hw7AMS5dz3AIO-fDW_sPfcFTPRdl0yvBQbTczBdJ-Irlg" alt="Danger warning of air embolism on human skin" class="w-full h-full object-cover">
+                    <div class="absolute bottom-3 left-3 bg-accent-crimson text-white text-[9px] uppercase tracking-[0.2em] px-2.5 py-1">Lethal Embolism Hazard</div>
+                  </div>
+                  <div class="lg:col-span-7">
+                    <span class="text-[10px] uppercase tracking-[0.22em] text-accent-crimson font-medium block mb-1">Critical Failure Mode 01</span>
+                    <h5 class="font-editorial text-xl uppercase tracking-wider text-charcoal-ink mb-3">Arterial Gas Penetration &amp; Acoustic Blast</h5>
+                    <p class="text-xs text-muted-charcoal font-light leading-relaxed mb-4">
+                      Even at pressures as low as 15 PSI, air can penetrate the epidermis through microscopic skin pores, entering the vascular bloodstream. The resulting air bubbles travel directly to heart chambers and cerebral arteries, inducing fatal cardiac arrest.
+                    </p>
+                    <div class="flex flex-wrap gap-2 pt-2">
+                      <span class="text-[9px] uppercase tracking-[0.16em] px-2.5 py-1 bg-red-100 text-accent-crimson font-medium">Violation: Fatal Hazard</span>
+                      <span class="text-[9px] uppercase tracking-[0.16em] px-2.5 py-1 bg-[#EAE5D9] text-charcoal-ink font-medium">Lethal Entry: &gt; 10 PSI</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- DON'T 02 -->
+            <div class="accordion-item hairline-all bg-[#FFFDF9] border-l-4 border-l-accent-crimson transition-all duration-300">
+              <button type="button" onclick="toggleAccordion('dont-2')" class="w-full text-left p-6 sm:p-7 flex flex-col md:flex-row md:items-center justify-between gap-6 cursor-pointer select-none group">
+                <div class="flex items-start sm:items-center gap-6">
+                  <span class="font-editorial text-2xl sm:text-3xl text-accent-crimson w-8">02</span>
+                  <div>
+                    <h4 class="font-editorial text-lg sm:text-xl uppercase tracking-wider text-accent-crimson group-hover:text-red-950 transition-colors">DO NOT Bypass or Tamper with Pressure Relief Valves</h4>
+                    <p class="text-xs text-muted-charcoal font-light mt-1 max-w-2xl leading-relaxed">
+                      Never override factory calibrated regulator limiters or wire safety relief valves shut. Any unauthorized modification to manifold controls results in immediate laboratory suspension.
+                    </p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-4 self-end md:self-center">
+                  <span class="text-[10px] uppercase tracking-[0.18em] px-3 py-1 bg-red-100/80 text-accent-crimson border border-red-300 font-medium whitespace-nowrap">Critical Prohibition</span>
+                  <span id="chevron-dont-2" class="w-7 h-7 rounded-full border border-accent-crimson/30 flex items-center justify-center text-accent-crimson transition-transform">
+                    <span class="material-symbols-outlined text-base">expand_more</span>
+                  </span>
+                </div>
+              </button>
+              <div id="content-dont-2" class="accordion-content hidden hairline-t border-red-200 bg-[#FDF7F5] px-6 sm:px-8 py-7">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                  <div class="lg:col-span-5 relative overflow-hidden hairline-all bg-[#F0E5E0] aspect-[4/3]">
+                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvmsEnCue6Pw3MdH5lwPbyLz-JrA856qbAo5F1lAokqxsWctBJ_cZNOzAnluJPLhg9s1rPs7X9OjkxWZK75AX4O7N4r2ckBzR5odf6T5Ns8YDs9Bd-NkUAhLWXzGCPIvT-ECKwlBewNt5EokFBiZ4rIbTEvoclusgF7YyYK3bOETBJtH51p35My2M4J6WCh-gCW-3wbaKVpLmQKQFe0Fm_fuZkxlhwymOaqriia4ygriZcH7Cyr4C0xQ" alt="Receiver tank brass pressure relief valve and tamper seal" class="w-full h-full object-cover">
+                    <div class="absolute bottom-3 left-3 bg-accent-crimson text-white text-[9px] uppercase tracking-[0.2em] px-2.5 py-1">Tamper-Sealed ASME Valve</div>
+                  </div>
+                  <div class="lg:col-span-7">
+                    <span class="text-[10px] uppercase tracking-[0.22em] text-accent-crimson font-medium block mb-1">Critical Failure Mode 02</span>
+                    <h5 class="font-editorial text-xl uppercase tracking-wider text-charcoal-ink mb-3">Pressure Vessel Rupture &amp; Shrapnel Overpressure</h5>
+                    <p class="text-xs text-muted-charcoal font-light leading-relaxed mb-4">
+                      The ASME safety relief valve on the 500-liter buffer tank is calibrated to trigger at 9.5 Bar. Defeating this valve risks explosive vessel fragmentation capable of collapsing workshop perimeter walls.
+                    </p>
+                    <div class="flex flex-wrap gap-2 pt-2">
+                      <span class="text-[9px] uppercase tracking-[0.16em] px-2.5 py-1 bg-red-100 text-accent-crimson font-medium">Set Point: 9.5 Bar Max</span>
+                      <span class="text-[9px] uppercase tracking-[0.16em] px-2.5 py-1 bg-[#EAE5D9] text-charcoal-ink font-medium">Standard: ASME Sec VIII</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- DON'T 03 -->
+            <div class="accordion-item hairline-all bg-[#FFFDF9] border-l-4 border-l-accent-crimson transition-all duration-300">
+              <button type="button" onclick="toggleAccordion('dont-3')" class="w-full text-left p-6 sm:p-7 flex flex-col md:flex-row md:items-center justify-between gap-6 cursor-pointer select-none group">
+                <div class="flex items-start sm:items-center gap-6">
+                  <span class="font-editorial text-2xl sm:text-3xl text-accent-crimson w-8">03</span>
+                  <div>
+                    <h4 class="font-editorial text-lg sm:text-xl uppercase tracking-wider text-accent-crimson group-hover:text-red-950 transition-colors">DO NOT Crimp or Pinch Hose to Stop Air Flow</h4>
+                    <p class="text-xs text-muted-charcoal font-light mt-1 max-w-2xl leading-relaxed">
+                      Never bend or fold a flexible line to halt airflow; the hose will rupture or tear free violently. Always isolate flow using the quarter-turn ball valve situated on the wall drop leg.
+                    </p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-4 self-end md:self-center">
+                  <span class="text-[10px] uppercase tracking-[0.18em] px-3 py-1 bg-red-100/80 text-accent-crimson border border-red-300 font-medium whitespace-nowrap">Critical Prohibition</span>
+                  <span id="chevron-dont-3" class="w-7 h-7 rounded-full border border-accent-crimson/30 flex items-center justify-center text-accent-crimson transition-transform">
+                    <span class="material-symbols-outlined text-base">expand_more</span>
+                  </span>
+                </div>
+              </button>
+              <div id="content-dont-3" class="accordion-content hidden hairline-t border-red-200 bg-[#FDF7F5] px-6 sm:px-8 py-7">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                  <div class="lg:col-span-5 relative overflow-hidden hairline-all bg-[#F0E5E0] aspect-[4/3]">
+                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVtSg7VIRo9xczlgjZ9e6VOmfexqntrLiYRDDclgMXdADYGKa45XVtkYRHogtoqHZNUGNqmmal_ZECZl_4STILLQuvFizaeiIdl1A2yDzdjJBketPmVc89qllGQ_9Vo1AEzuouy8bw5ksOzC0tn2Lmn5sdw901T1VpIdgBm-Jmc-NFUiGZ_AR4Xs2lDIPqaChxro4TaiZ_jTTfrnb3FC2pIPmYv_Q5c1rQWUXnXUCclMq7v2yTqZVgJw" alt="Hose kink failure hazard and valve shutoff" class="w-full h-full object-cover">
+                    <div class="absolute bottom-3 left-3 bg-accent-crimson text-white text-[9px] uppercase tracking-[0.2em] px-2.5 py-1">Hose Fatigue Hazard</div>
+                  </div>
+                  <div class="lg:col-span-7">
+                    <span class="text-[10px] uppercase tracking-[0.22em] text-accent-crimson font-medium block mb-1">Critical Failure Mode 03</span>
+                    <h5 class="font-editorial text-xl uppercase tracking-wider text-charcoal-ink mb-3">Polymer Shearing &amp; Violent Hose Whipping</h5>
+                    <p class="text-xs text-muted-charcoal font-light leading-relaxed mb-4">
+                      Crimping concentrates pneumatic hydraulic shock at an acute fold point. When the inner braid shears, the hose separates violently, whipping wildly across machine tables at supersonic speeds.
+                    </p>
+                    <div class="flex flex-wrap gap-2 pt-2">
+                      <span class="text-[9px] uppercase tracking-[0.16em] px-2.5 py-1 bg-red-100 text-accent-crimson font-medium">Banned: Hose Kinking</span>
+                      <span class="text-[9px] uppercase tracking-[0.16em] px-2.5 py-1 bg-[#EAE5D9] text-charcoal-ink font-medium">Correct: 1/4 Turn Lever</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- DON'T 04 -->
+            <div class="accordion-item hairline-all bg-[#FFFDF9] border-l-4 border-l-accent-crimson transition-all duration-300">
+              <button type="button" onclick="toggleAccordion('dont-4')" class="w-full text-left p-6 sm:p-7 flex flex-col md:flex-row md:items-center justify-between gap-6 cursor-pointer select-none group">
+                <div class="flex items-start sm:items-center gap-6">
+                  <span class="font-editorial text-2xl sm:text-3xl text-accent-crimson w-8">04</span>
+                  <div>
+                    <h4 class="font-editorial text-lg sm:text-xl uppercase tracking-wider text-accent-crimson group-hover:text-red-950 transition-colors">DO NOT Exceed Rated Tool Pressure or Use Unverified Lines</h4>
+                    <p class="text-xs text-muted-charcoal font-light mt-1 max-w-2xl leading-relaxed">
+                      Never connect pneumatic tools to unregulated lines above their rated operating pressure (typically 90 PSI). Do not use makeshift fittings or uncertified unrated PVC airlines in the workshop.
+                    </p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-4 self-end md:self-center">
+                  <span class="text-[10px] uppercase tracking-[0.18em] px-3 py-1 bg-red-100/80 text-accent-crimson border border-red-300 font-medium whitespace-nowrap">Critical Prohibition</span>
+                  <span id="chevron-dont-4" class="w-7 h-7 rounded-full border border-accent-crimson/30 flex items-center justify-center text-accent-crimson transition-transform">
+                    <span class="material-symbols-outlined text-base">expand_more</span>
+                  </span>
+                </div>
+              </button>
+              <div id="content-dont-4" class="accordion-content hidden hairline-t border-red-200 bg-[#FDF7F5] px-6 sm:px-8 py-7">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                  <div class="lg:col-span-5 relative overflow-hidden hairline-all bg-[#F0E5E0] aspect-[4/3]">
+                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMKZLBP4TbjuYO6VNR5MY4wbtPk9YuCWt36LpXkF3gDAYJC-YKQLbmZhYn1q63Dp966X3pxgOSAOEUtoLEkcsQICS0rmmjKvMsTvlKMfzIEQ4mqy9zd4aqDZ09i-GAk6RGvb9vQBRYBp5SDrWG9rqYPz6AfH1giAJ_0CH6YUg8f7UOGjNJx1CGJI7wcjfl9ghC9Fe_6zfaduwH6kUmFH46k7g6KikflWdq4kQSBBsMXHZ1WFjCvOiidA" alt="Pneumatic grinder rated pressure inspection" class="w-full h-full object-cover">
+                    <div class="absolute bottom-3 left-3 bg-accent-crimson text-white text-[9px] uppercase tracking-[0.2em] px-2.5 py-1">Max 90 PSI Tool Rating</div>
+                  </div>
+                  <div class="lg:col-span-7">
+                    <span class="text-[10px] uppercase tracking-[0.22em] text-accent-crimson font-medium block mb-1">Critical Failure Mode 04</span>
+                    <h5 class="font-editorial text-xl uppercase tracking-wider text-charcoal-ink mb-3">Internal Turbine Over-speed &amp; Shrapnel Ejection</h5>
+                    <p class="text-xs text-muted-charcoal font-light leading-relaxed mb-4">
+                      Pneumatic die grinders and turbines are engineered for a maximum 90 PSI. Connecting them to unregulated 120+ PSI lines causes bearing runaway speeds, shattering abrasive discs into high-speed shrapnel.
+                    </p>
+                    <div class="flex flex-wrap gap-2 pt-2">
+                      <span class="text-[9px] uppercase tracking-[0.16em] px-2.5 py-1 bg-red-100 text-accent-crimson font-medium">Max Limit: 90 PSI (6.2 Bar)</span>
+                      <span class="text-[9px] uppercase tracking-[0.16em] px-2.5 py-1 bg-[#EAE5D9] text-charcoal-ink font-medium">PVC Air Piping: BANNED</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 5. THE 7-STEP OPERATING PROCEDURE (SOP - COMPLETE WITH MEDIA/PHOTO FOR EACH STEP) ================= -->
+  <section id="sop" class="py-24 sm:py-32 px-6 sm:px-12 max-w-7xl mx-auto">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-16 hairline-b pb-8">
+      <div>
+        <span class="text-[10px] uppercase tracking-[0.25em] text-subtle-ash block mb-2">Standard Operating Procedure</span>
+        <h2 class="font-editorial text-3xl sm:text-5xl uppercase tracking-[0.03em] text-charcoal-ink">
+          THE 7-STEP OPERATING PROCEDURE
+        </h2>
+      </div>
+      <div class="mt-4 sm:mt-0 text-[11px] uppercase tracking-[0.18em] text-subtle-ash">
+        Ref: SOP-PNEU-REV-04 · Step-by-Step Illustrated Protocol
+      </div>
+    </div>
+
+    <!-- 7 Chronological Illustrated Steps -->
+    <div class="space-y-6">
+      
+      <!-- Step 01 -->
+      <div class="hairline-all bg-[#FAF9F5] p-6 sm:p-8 hover:bg-[#F4F0E8] transition-colors group">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+          <div class="lg:col-span-3">
+            <div class="relative aspect-[16/10] overflow-hidden hairline-all bg-[#ECE8DF]">
+              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjKSZw4hvaidBnUxhWnkqFE3NP9RqovULVG4XW6U6NvKx4UZia88b_XSQQRsiDeqdoSsI5-0Nsmi7dLUVXAUCNPAuIpJyN9LOP_1PrDgY4bqrzndTLGkfnmPAHqygyzwtC3E12tlW3KRG15VgDXzlJwyQolf3A3C181dZcaKynkf6JI3CjoKNaueHDnmxsBkdCsuu7stFtVa-r8lVjb8KuiJ_ayWxudntYmqPKlNR4pHehQB8EnLhBOg" alt="Step 01 - Visual inspection of drop manifold and gauge" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute bottom-2 left-2 bg-charcoal-ink/80 text-white text-[9px] uppercase tracking-wider px-2 py-0.5">Step 01 Verification</div>
+            </div>
+          </div>
+          <div class="lg:col-span-6">
+            <div class="flex items-center gap-4 mb-2">
+              <span class="font-editorial text-2xl sm:text-3xl text-charcoal-ink">01</span>
+              <h3 class="font-editorial text-lg sm:text-xl uppercase tracking-wider text-charcoal-ink">Pre-Operational Visual Inspection</h3>
+            </div>
+            <p class="text-xs text-muted-charcoal font-light leading-relaxed">
+              Examine the wall-mounted drop receiver manifold, column pressure gauge, fittings, and air drain bowl. Confirm absolute absence of audible hissing, physical cracks, or loose mounting hardware before connecting any hose.
+            </p>
+          </div>
+          <div class="lg:col-span-3 flex flex-col justify-center items-start lg:items-end text-[10px] uppercase tracking-[0.18em] text-subtle-ash border-t lg:border-t-0 lg:border-l hairline-l pt-3 lg:pt-0 lg:pl-6">
+            <span class="font-medium text-charcoal-ink">Zero Leakage</span>
+            <span class="mt-1 text-emerald-800">Visual &amp; Acoustic Baseline Pass</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 02 -->
+      <div class="hairline-all bg-[#FAF9F5] p-6 sm:p-8 hover:bg-[#F4F0E8] transition-colors group">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+          <div class="lg:col-span-3">
+            <div class="relative aspect-[16/10] overflow-hidden hairline-all bg-[#ECE8DF]">
+              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoBa8cpAMTI6uStkbL3XpbeV8i5Hb3GsE1NEHAGNhmvhV3d-MyN4dpfjeABp6nnAPCpL-_ktFnXs2dUskWwmyS-1nwDyB1GqzvrSehIp4E47MKUEmjyHoDH_WNb48kHpUSrfNSk7UM0_BF8JkOrMQ-E9SWN2VRX1CexLju7vfLIMeM88SZNDSISMhWHyXTa3V6zIQC17h0pjtRGrSso3FgIgNR-CR54gavUwcsEO_IFuIWhAAy5uG7EQ" alt="Step 02 - Hose connection and whip check engagement" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute bottom-2 left-2 bg-charcoal-ink/80 text-white text-[9px] uppercase tracking-wider px-2 py-0.5">Step 02 Verification</div>
+            </div>
+          </div>
+          <div class="lg:col-span-6">
+            <div class="flex items-center gap-4 mb-2">
+              <span class="font-editorial text-2xl sm:text-3xl text-charcoal-ink">02</span>
+              <h3 class="font-editorial text-lg sm:text-xl uppercase tracking-wider text-charcoal-ink">Hose Connection &amp; Whip-Check Engagement</h3>
+            </div>
+            <p class="text-xs text-muted-charcoal font-light leading-relaxed">
+              Slide back the quick-connect female sleeve and insert the hardened brass tool plug until hearing an audible snap click. Fasten the steel braided whip-check cable firmly across both joint ends to arrest accidental decouple whip.
+            </p>
+          </div>
+          <div class="lg:col-span-3 flex flex-col justify-center items-start lg:items-end text-[10px] uppercase tracking-[0.18em] text-subtle-ash border-t lg:border-t-0 lg:border-l hairline-l pt-3 lg:pt-0 lg:pl-6">
+            <span class="font-medium text-charcoal-ink">Coupling: Positive Snap</span>
+            <span class="mt-1 text-emerald-800">Tethered Whip Guard Engaged</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 03 -->
+      <div class="hairline-all bg-[#FAF9F5] p-6 sm:p-8 hover:bg-[#F4F0E8] transition-colors group">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+          <div class="lg:col-span-3">
+            <div class="relative aspect-[16/10] overflow-hidden hairline-all bg-[#ECE8DF]">
+              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvmsEnCue6Pw3MdH5lwPbyLz-JrA856qbAo5F1lAokqxsWctBJ_cZNOzAnluJPLhg9s1rPs7X9OjkxWZK75AX4O7N4r2ckBzR5odf6T5Ns8YDs9Bd-NkUAhLWXzGCPIvT-ECKwlBewNt5EokFBiZ4rIbTEvoclusgF7YyYK3bOETBJtH51p35My2M4J6WCh-gCW-3wbaKVpLmQKQFe0Fm_fuZkxlhwymOaqriia4ygriZcH7Cyr4C0xQ" alt="Step 03 - Dial pressure gauge verification" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute bottom-2 left-2 bg-charcoal-ink/80 text-white text-[9px] uppercase tracking-wider px-2 py-0.5">Step 03 Verification</div>
+            </div>
+          </div>
+          <div class="lg:col-span-6">
+            <div class="flex items-center gap-4 mb-2">
+              <span class="font-editorial text-2xl sm:text-3xl text-charcoal-ink">03</span>
+              <h3 class="font-editorial text-lg sm:text-xl uppercase tracking-wider text-charcoal-ink">Operating Pressure Verification</h3>
+            </div>
+            <p class="text-xs text-muted-charcoal font-light leading-relaxed">
+              Read the localized analog drop dial gauge. Confirm indicator needle stabilizes strictly inside the calibrated safe zone between 6.0 and 7.0 Bar (87 to 100 PSI). Adjust regulator knob clockwise or counter-clockwise if out of range.
+            </p>
+          </div>
+          <div class="lg:col-span-3 flex flex-col justify-center items-start lg:items-end text-[10px] uppercase tracking-[0.18em] text-subtle-ash border-t lg:border-t-0 lg:border-l hairline-l pt-3 lg:pt-0 lg:pl-6">
+            <span class="font-medium text-charcoal-ink">Tolerance: ±0.2 Bar</span>
+            <span class="mt-1 text-emerald-800">Calibrated 6.0 - 7.0 Bar</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 04 -->
+      <div class="hairline-all bg-[#FAF9F5] p-6 sm:p-8 hover:bg-[#F4F0E8] transition-colors group">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+          <div class="lg:col-span-3">
+            <div class="relative aspect-[16/10] overflow-hidden hairline-all bg-[#ECE8DF]">
+              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVtSg7VIRo9xczlgjZ9e6VOmfexqntrLiYRDDclgMXdADYGKa45XVtkYRHogtoqHZNUGNqmmal_ZECZl_4STILLQuvFizaeiIdl1A2yDzdjJBketPmVc89qllGQ_9Vo1AEzuouy8bw5ksOzC0tn2Lmn5sdw901T1VpIdgBm-Jmc-NFUiGZ_AR4Xs2lDIPqaChxro4TaiZ_jTTfrnb3FC2pIPmYv_Q5c1rQWUXnXUCclMq7v2yTqZVgJw" alt="Step 04 - Smooth quarter-turn ball valve opening" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute bottom-2 left-2 bg-charcoal-ink/80 text-white text-[9px] uppercase tracking-wider px-2 py-0.5">Step 04 Verification</div>
+            </div>
+          </div>
+          <div class="lg:col-span-6">
+            <div class="flex items-center gap-4 mb-2">
+              <span class="font-editorial text-2xl sm:text-3xl text-charcoal-ink">04</span>
+              <h3 class="font-editorial text-lg sm:text-xl uppercase tracking-wider text-charcoal-ink">Smooth Ball Valve Opening</h3>
+            </div>
+            <p class="text-xs text-muted-charcoal font-light leading-relaxed">
+              Grasp the yellow quarter-turn isolation handle and sweep smoothly 90° into parallel alignment with the downward pipe. Smooth opening prevents hydraulic pressure shock waves from violently stressing the hose core.
+            </p>
+          </div>
+          <div class="lg:col-span-3 flex flex-col justify-center items-start lg:items-end text-[10px] uppercase tracking-[0.18em] text-subtle-ash border-t lg:border-t-0 lg:border-l hairline-l pt-3 lg:pt-0 lg:pl-6">
+            <span class="font-medium text-charcoal-ink">Rotation: 90° Sweep</span>
+            <span class="mt-1 text-emerald-800">No Hydraulic Pressure Hammer</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 05 -->
+      <div class="hairline-all bg-[#FAF9F5] p-6 sm:p-8 hover:bg-[#F4F0E8] transition-colors group">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+          <div class="lg:col-span-3">
+            <div class="relative aspect-[16/10] overflow-hidden hairline-all bg-[#ECE8DF]">
+              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlv1QDaFofI2oJ7Y6xZ-oIL9_jUJNGqgPzEHkd4ETQ_KOheu-Z9imACNNh5gyGdSm-qyaQ0VyCWLONZy0z1j5sLqUaPxz4EWxUfaHhCMgO49RHVSb4tS0Oer9DkNvWjdRNNLw2ojExVDrwbWcbOSjMhgwxfuXZGP6utSmkui_yF3p3H_KnC6XH3uePyoOSZFB-dEnS2L5SzWDgz4YmbpPYYcZ7x43af7155oYSns5hNgQg-1uy-X7TVg" alt="Step 05 - Chip clearing and standoff distance" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute bottom-2 left-2 bg-charcoal-ink/80 text-white text-[9px] uppercase tracking-wider px-2 py-0.5">Step 05 Verification</div>
+            </div>
+          </div>
+          <div class="lg:col-span-6">
+            <div class="flex items-center gap-4 mb-2">
+              <span class="font-editorial text-2xl sm:text-3xl text-charcoal-ink">05</span>
+              <h3 class="font-editorial text-lg sm:text-xl uppercase tracking-wider text-charcoal-ink">Chip Clearing &amp; Tool Operation</h3>
+            </div>
+            <p class="text-xs text-muted-charcoal font-light leading-relaxed">
+              Maintain minimum 100 mm (4 in) standoff distance from the workpiece surface. Direct high-speed metal swarf at 45° strictly into machine chip trays and catch guards; never toward personnel aisles.
+            </p>
+          </div>
+          <div class="lg:col-span-3 flex flex-col justify-center items-start lg:items-end text-[10px] uppercase tracking-[0.18em] text-subtle-ash border-t lg:border-t-0 lg:border-l hairline-l pt-3 lg:pt-0 lg:pl-6">
+            <span class="font-medium text-charcoal-ink">Distance: ≥ 100 mm</span>
+            <span class="mt-1 text-emerald-800">Chip Deflector Guard Active</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 06 -->
+      <div class="hairline-all bg-[#FAF9F5] p-6 sm:p-8 hover:bg-[#F4F0E8] transition-colors group">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+          <div class="lg:col-span-3">
+            <div class="relative aspect-[16/10] overflow-hidden hairline-all bg-[#ECE8DF]">
+              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlc1N9T0-J7Or28cvXzolZsQAaFK-sg1l5ti_IVzQ5Z0ZpyVVH3ZAO1groCs9VLpA9hoXljfBuvG3BrcGHPpz8d41K5uGkkndFQmKweLkLhW54vlyCxq-myBDm8VluBQWEo_0Nwac9olr8YhHX-lMUxVpJOkpeXPt4sNZTurCg-YmS4yf86DD9l1bJBYfDzixPAP-ri8P8xTRk7l5uhj2zXh7MNl16E7iMh7pxqf4OMdu_Puraz4Ct0g" alt="Step 06 - Valve isolation and residual pressure depletion" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute bottom-2 left-2 bg-charcoal-ink/80 text-white text-[9px] uppercase tracking-wider px-2 py-0.5">Step 06 Verification</div>
+            </div>
+          </div>
+          <div class="lg:col-span-6">
+            <div class="flex items-center gap-4 mb-2">
+              <span class="font-editorial text-2xl sm:text-3xl text-charcoal-ink">06</span>
+              <h3 class="font-editorial text-lg sm:text-xl uppercase tracking-wider text-charcoal-ink">Valve Isolation &amp; Pressure Depletion</h3>
+            </div>
+            <p class="text-xs text-muted-charcoal font-light leading-relaxed">
+              Rotate the wall isolation lever 90° perpendicular (shut position). Point blowgun into machine chip enclosure and press trigger until air hissing entirely ceases, venting internal line pressure to exact 0 PSI.
+            </p>
+          </div>
+          <div class="lg:col-span-3 flex flex-col justify-center items-start lg:items-end text-[10px] uppercase tracking-[0.18em] text-subtle-ash border-t lg:border-t-0 lg:border-l hairline-l pt-3 lg:pt-0 lg:pl-6">
+            <span class="font-medium text-charcoal-ink">Exhaust: 0 PSI</span>
+            <span class="mt-1 text-emerald-800">Stored Kinetic Energy Neutralized</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 07 -->
+      <div class="hairline-all bg-[#FAF9F5] p-6 sm:p-8 hover:bg-[#F4F0E8] transition-colors group">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+          <div class="lg:col-span-3">
+            <div class="relative aspect-[16/10] overflow-hidden hairline-all bg-[#ECE8DF]">
+              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNkp_tWB02De15s5jEWLTAQ7Gfwy8r2ViWEFkrOp1qfwytOhW1cPzJHMvVMEu16xmF9aMGEQAD0Fb_z0de0sK1Kjfxex6gNdwIC2-UY8SwafPcbb2i3CDq-rtnZ-w-ymNTCStMmSxGMdHs4CFXa34h7ObZOJVmHfcaFkeU_TfM84TkS99OZX5dMeh-H50iNQ8iFZyQyRjUUWFv0kw2y6Mb1wafvU4yqLTqZLsGg2paR4vrYwiooug6_g" alt="Step 07 - 5S hose storage on wall bracket" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute bottom-2 left-2 bg-charcoal-ink/80 text-white text-[9px] uppercase tracking-wider px-2 py-0.5">Step 07 Verification</div>
+            </div>
+          </div>
+          <div class="lg:col-span-6">
+            <div class="flex items-center gap-4 mb-2">
+              <span class="font-editorial text-2xl sm:text-3xl text-charcoal-ink">07</span>
+              <h3 class="font-editorial text-lg sm:text-xl uppercase tracking-wider text-charcoal-ink">Disconnection &amp; 5S Coil Storage</h3>
+            </div>
+            <p class="text-xs text-muted-charcoal font-light leading-relaxed">
+              With 0 PSI confirmed, retract the coupler sleeve smoothly to release the plug. Neatly wind the pneumatic hose in uniform 300 mm loops and hang upon the dedicated wall saddle bracket, keeping shop walkways clean.
+            </p>
+          </div>
+          <div class="lg:col-span-3 flex flex-col justify-center items-start lg:items-end text-[10px] uppercase tracking-[0.18em] text-subtle-ash border-t lg:border-t-0 lg:border-l hairline-l pt-3 lg:pt-0 lg:pl-6">
+            <span class="font-medium text-charcoal-ink">Standard: 5S Workshop</span>
+            <span class="mt-1 text-emerald-800">300mm Neat Saddle Hanging</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= 6. DISTRIBUTION NETWORK: 6 DROPS (PICTURE FOR EVERY OUTLET) ================= -->
+  <section id="sorties" class="py-24 sm:py-32 px-6 sm:px-12 bg-[#F1EDE5] hairline-t hairline-b">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-16">
+        <div>
+          <span class="text-[10px] uppercase tracking-[0.25em] text-subtle-ash block mb-2">Manifold &amp; Drop Routing Map</span>
+          <h2 class="font-editorial text-3xl sm:text-5xl uppercase tracking-[0.03em] text-charcoal-ink">
+            DISTRIBUTION NETWORK (6 DROPS)
+          </h2>
+        </div>
+        <div class="mt-4 sm:mt-0 text-[11px] uppercase tracking-[0.18em] text-subtle-ash">
+          CAD Schematic: TUPT-MECH-AIR-DWG-002
+        </div>
+      </div>
+
+      <!-- 6 Drops with Individual Component Visuals -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <!-- Outlet 01 -->
+        <div class="hairline-all bg-[#FAF9F5] p-6 sm:p-7 flex flex-col justify-between group hover:shadow-md transition-all">
+          <div>
+            <div class="relative aspect-[16/10] overflow-hidden hairline-all bg-[#ECE8DF] mb-5">
+              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjKSZw4hvaidBnUxhWnkqFE3NP9RqovULVG4XW6U6NvKx4UZia88b_XSQQRsiDeqdoSsI5-0Nsmi7dLUVXAUCNPAuIpJyN9LOP_1PrDgY4bqrzndTLGkfnmPAHqygyzwtC3E12tlW3KRG15VgDXzlJwyQolf3A3C181dZcaKynkf6JI3CjoKNaueHDnmxsBkdCsuu7stFtVa-r8lVjb8KuiJ_ayWxudntYmqPKlNR4pHehQB8EnLhBOg" alt="Outlet 01 Lathe Section Drop Wall Manifold" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute top-2 left-2 bg-charcoal-ink/80 text-white text-[9px] uppercase tracking-wider px-2 py-0.5">Outlet #01</div>
+            </div>
+            <span class="text-[10px] uppercase tracking-[0.2em] text-subtle-ash block mb-1">Zone A · Station Drop 1</span>
+            <h3 class="font-editorial text-xl uppercase text-charcoal-ink mb-2">Lathe Section Drop</h3>
+            <p class="text-xs text-muted-charcoal font-light leading-relaxed mb-4">
+              Dedicated high-flow downcomer serving 6 conventional engine lathes. Provides dry air for chuck cleaning, carriage cleaning, and spindle taper bore purging.
+            </p>
+            <div class="space-y-1.5 text-[11px] text-muted-charcoal font-light bg-[#F4F0E8] p-3.5 hairline-all">
+              <div><strong class="font-medium text-charcoal-ink">Valve:</strong> 1/2" Full-Port Brass Ball Valve</div>
+              <div><strong class="font-medium text-charcoal-ink">Coupling:</strong> Industrial ISO-B Quick Disconnect</div>
+              <div><strong class="font-medium text-charcoal-ink">Regulator:</strong> Local 6.2 Bar Preset with Gauge</div>
+            </div>
+          </div>
+          <div class="mt-6 pt-4 hairline-t text-[10px] uppercase tracking-[0.16em] text-subtle-ash flex justify-between">
+            <span>Isolation</span>
+            <span class="text-charcoal-ink font-medium">Sub-Manifold A-1</span>
+          </div>
+        </div>
+
+        <!-- Outlet 02 -->
+        <div class="hairline-all bg-[#FAF9F5] p-6 sm:p-7 flex flex-col justify-between group hover:shadow-md transition-all">
+          <div>
+            <div class="relative aspect-[16/10] overflow-hidden hairline-all bg-[#ECE8DF] mb-5">
+              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlv1QDaFofI2oJ7Y6xZ-oIL9_jUJNGqgPzEHkd4ETQ_KOheu-Z9imACNNh5gyGdSm-qyaQ0VyCWLONZy0z1j5sLqUaPxz4EWxUfaHhCMgO49RHVSb4tS0Oer9DkNvWjdRNNLw2ojExVDrwbWcbOSjMhgwxfuXZGP6utSmkui_yF3p3H_KnC6XH3uePyoOSZFB-dEnS2L5SzWDgz4YmbpPYYcZ7x43af7155oYSns5hNgQg-1uy-X7TVg" alt="Outlet 02 Milling Machine Bench Wall Manifold" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute top-2 left-2 bg-charcoal-ink/80 text-white text-[9px] uppercase tracking-wider px-2 py-0.5">Outlet #02</div>
+            </div>
+            <span class="text-[10px] uppercase tracking-[0.2em] text-subtle-ash block mb-1">Zone A · Station Drop 2</span>
+            <h3 class="font-editorial text-xl uppercase text-charcoal-ink mb-2">Milling Machine Bench</h3>
+            <p class="text-xs text-muted-charcoal font-light leading-relaxed mb-4">
+              Pneumatic terminal mounted at knee height for universal milling tables, vise chip evacuation, and fixture bore purging with low-rebound safety nozzles.
+            </p>
+            <div class="space-y-1.5 text-[11px] text-muted-charcoal font-light bg-[#F4F0E8] p-3.5 hairline-all">
+              <div><strong class="font-medium text-charcoal-ink">Valve:</strong> 1/2" Lockout-Tagout Ball Valve</div>
+              <div><strong class="font-medium text-charcoal-ink">Coupling:</strong> High-Flow Euro Profile Safety Coupler</div>
+              <div><strong class="font-medium text-charcoal-ink">Regulator:</strong> 6.0 Bar with Secondary Mist Filter</div>
+            </div>
+          </div>
+          <div class="mt-6 pt-4 hairline-t text-[10px] uppercase tracking-[0.16em] text-subtle-ash flex justify-between">
+            <span>Isolation</span>
+            <span class="text-charcoal-ink font-medium">Sub-Manifold A-2</span>
+          </div>
+        </div>
+
+        <!-- Outlet 03 -->
+        <div class="hairline-all bg-[#FAF9F5] p-6 sm:p-7 flex flex-col justify-between group hover:shadow-md transition-all">
+          <div>
+            <div class="relative aspect-[16/10] overflow-hidden hairline-all bg-[#ECE8DF] mb-5">
+              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMKZLBP4TbjuYO6VNR5MY4wbtPk9YuCWt36LpXkF3gDAYJC-YKQLbmZhYn1q63Dp966X3pxgOSAOEUtoLEkcsQICS0rmmjKvMsTvlKMfzIEQ4mqy9zd4aqDZ09i-GAk6RGvb9vQBRYBp5SDrWG9rqYPz6AfH1giAJ_0CH6YUg8f7UOGjNJx1CGJI7wcjfl9ghC9Fe_6zfaduwH6kUmFH46k7g6KikflWdq4kQSBBsMXHZ1WFjCvOiidA" alt="Outlet 03 Benchwork and Grinding Station Air Drop" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute top-2 left-2 bg-charcoal-ink/80 text-white text-[9px] uppercase tracking-wider px-2 py-0.5">Outlet #03</div>
+            </div>
+            <span class="text-[10px] uppercase tracking-[0.2em] text-subtle-ash block mb-1">Zone A · Station Drop 3</span>
+            <h3 class="font-editorial text-xl uppercase text-charcoal-ink mb-2">Benchwork &amp; Grinding Area</h3>
+            <p class="text-xs text-muted-charcoal font-light leading-relaxed mb-4">
+              Supplies precision pneumatic die grinders, deburring turbines, and workbenches with sub-micron filtration ensuring abrasive wheel and turbine spindle security.
+            </p>
+            <div class="space-y-1.5 text-[11px] text-muted-charcoal font-light bg-[#F4F0E8] p-3.5 hairline-all">
+              <div><strong class="font-medium text-charcoal-ink">Valve:</strong> 3/8" Quarter-Turn Safety Bleed Valve</div>
+              <div><strong class="font-medium text-charcoal-ink">Coupling:</strong> Milton Safety V-Style Coupler</div>
+              <div><strong class="font-medium text-charcoal-ink">Regulator:</strong> Strictly Locked at 6.0 Bar Max (90 PSI)</div>
+            </div>
+          </div>
+          <div class="mt-6 pt-4 hairline-t text-[10px] uppercase tracking-[0.16em] text-subtle-ash flex justify-between">
+            <span>Isolation</span>
+            <span class="text-charcoal-ink font-medium">Sub-Manifold A-3</span>
+          </div>
+        </div>
+
+        <!-- Outlet 04 -->
+        <div class="hairline-all bg-[#FAF9F5] p-6 sm:p-7 flex flex-col justify-between group hover:shadow-md transition-all">
+          <div>
+            <div class="relative aspect-[16/10] overflow-hidden hairline-all bg-[#ECE8DF] mb-5">
+              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVtSg7VIRo9xczlgjZ9e6VOmfexqntrLiYRDDclgMXdADYGKa45XVtkYRHogtoqHZNUGNqmmal_ZECZl_4STILLQuvFizaeiIdl1A2yDzdjJBketPmVc89qllGQ_9Vo1AEzuouy8bw5ksOzC0tn2Lmn5sdw901T1VpIdgBm-Jmc-NFUiGZ_AR4Xs2lDIPqaChxro4TaiZ_jTTfrnb3FC2pIPmYv_Q5c1rQWUXnXUCclMq7v2yTqZVgJw" alt="Outlet 04 CNC Machining Center Air Drop" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute top-2 left-2 bg-charcoal-ink/80 text-white text-[9px] uppercase tracking-wider px-2 py-0.5">Outlet #04</div>
+            </div>
+            <span class="text-[10px] uppercase tracking-[0.2em] text-subtle-ash block mb-1">Zone B · Station Drop 4</span>
+            <h3 class="font-editorial text-xl uppercase text-charcoal-ink mb-2">CNC Machining Center</h3>
+            <p class="text-xs text-muted-charcoal font-light leading-relaxed mb-4">
+              Ultra-dry line feeding 3-axis CNC vertical milling enclosure, automatic tool changer taper cleaning blowers, and air-purge spindle labyrinth seal.
+            </p>
+            <div class="space-y-1.5 text-[11px] text-muted-charcoal font-light bg-[#F4F0E8] p-3.5 hairline-all">
+              <div><strong class="font-medium text-charcoal-ink">Valve:</strong> Stainless Steel High-Pressure Ball Cock</div>
+              <div><strong class="font-medium text-charcoal-ink">Coupling:</strong> High-Flow Zero-Leakage Push Lock</div>
+              <div><strong class="font-medium text-charcoal-ink">Regulator:</strong> Precision Pilot-Operated 6.5 Bar</div>
+            </div>
+          </div>
+          <div class="mt-6 pt-4 hairline-t text-[10px] uppercase tracking-[0.16em] text-subtle-ash flex justify-between">
+            <span>Isolation</span>
+            <span class="text-charcoal-ink font-medium">CNC Bay Emergency Cock</span>
+          </div>
+        </div>
+
+        <!-- Outlet 05 -->
+        <div class="hairline-all bg-[#FAF9F5] p-6 sm:p-7 flex flex-col justify-between group hover:shadow-md transition-all">
+          <div>
+            <div class="relative aspect-[16/10] overflow-hidden hairline-all bg-[#ECE8DF] mb-5">
+              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlc1N9T0-J7Or28cvXzolZsQAaFK-sg1l5ti_IVzQ5Z0ZpyVVH3ZAO1groCs9VLpA9hoXljfBuvG3BrcGHPpz8d41K5uGkkndFQmKweLkLhW54vlyCxq-myBDm8VluBQWEo_0Nwac9olr8YhHX-lMUxVpJOkpeXPt4sNZTurCg-YmS4yf86DD9l1bJBYfDzixPAP-ri8P8xTRk7l5uhj2zXh7MNl16E7iMh7pxqf4OMdu_Puraz4Ct0g" alt="Outlet 05 Precision Metrology Lab Air Drop" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute top-2 left-2 bg-charcoal-ink/80 text-white text-[9px] uppercase tracking-wider px-2 py-0.5">Outlet #05</div>
+            </div>
+            <span class="text-[10px] uppercase tracking-[0.2em] text-subtle-ash block mb-1">Zone C · Station Drop 5</span>
+            <h3 class="font-editorial text-xl uppercase text-charcoal-ink mb-2">Precision Metrology Lab</h3>
+            <p class="text-xs text-muted-charcoal font-light leading-relaxed mb-4">
+              Equipped with triple desiccant drying cartridge for precision CMM air bearings, granite surface plate dusting, and optical comparator air purges.
+            </p>
+            <div class="space-y-1.5 text-[11px] text-muted-charcoal font-light bg-[#F4F0E8] p-3.5 hairline-all">
+              <div><strong class="font-medium text-charcoal-ink">Valve:</strong> Micrometric Needle Regulating Valve</div>
+              <div><strong class="font-medium text-charcoal-ink">Coupling:</strong> Dry-Break Cleanroom Stainless Plug</div>
+              <div><strong class="font-medium text-charcoal-ink">Regulator:</strong> Dual-Stage 4.5 Bar Clean Spec</div>
+            </div>
+          </div>
+          <div class="mt-6 pt-4 hairline-t text-[10px] uppercase tracking-[0.16em] text-subtle-ash flex justify-between">
+            <span>Isolation</span>
+            <span class="text-charcoal-ink font-medium">Metrology Wall Isolation AV-1</span>
+          </div>
+        </div>
+
+        <!-- Outlet 06 -->
+        <div class="hairline-all bg-[#FAF9F5] p-6 sm:p-7 flex flex-col justify-between group hover:shadow-md transition-all">
+          <div>
+            <div class="relative aspect-[16/10] overflow-hidden hairline-all bg-[#ECE8DF] mb-5">
+              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoBa8cpAMTI6uStkbL3XpbeV8i5Hb3GsE1NEHAGNhmvhV3d-MyN4dpfjeABp6nnAPCpL-_ktFnXs2dUskWwmyS-1nwDyB1GqzvrSehIp4E47MKUEmjyHoDH_WNb48kHpUSrfNSk7UM0_BF8JkOrMQ-E9SWN2VRX1CexLju7vfLIMeM88SZNDSISMhWHyXTa3V6zIQC17h0pjtRGrSso3FgIgNR-CR54gavUwcsEO_IFuIWhAAy5uG7EQ" alt="Outlet 06 Prototyping and Assembly Air Drop" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute top-2 left-2 bg-charcoal-ink/80 text-white text-[9px] uppercase tracking-wider px-2 py-0.5">Outlet #06</div>
+            </div>
+            <span class="text-[10px] uppercase tracking-[0.2em] text-subtle-ash block mb-1">Zone C · Station Drop 6</span>
+            <h3 class="font-editorial text-xl uppercase text-charcoal-ink mb-2">Prototyping &amp; Assembly</h3>
+            <p class="text-xs text-muted-charcoal font-light leading-relaxed mb-4">
+              Fast-cycling pneumatic drop for torque-limiting air screwdrivers, pneumatic riveting presses, pick-and-place suction cups, and automation breadboards.
+            </p>
+            <div class="space-y-1.5 text-[11px] text-muted-charcoal font-light bg-[#F4F0E8] p-3.5 hairline-all">
+              <div><strong class="font-medium text-charcoal-ink">Valve:</strong> 1/2" Ergonomic Brass Quarter-Turn Lever</div>
+              <div><strong class="font-medium text-charcoal-ink">Coupling:</strong> Universal Multi-Profile Snap Coupler</div>
+              <div><strong class="font-medium text-charcoal-ink">Regulator:</strong> Adjustable 5.5 - 6.5 Bar with Lubricator</div>
+            </div>
+          </div>
+          <div class="mt-6 pt-4 hairline-t text-[10px] uppercase tracking-[0.16em] text-subtle-ash flex justify-between">
+            <span>Isolation</span>
+            <span class="text-charcoal-ink font-medium">Assembly Manifold AV-2</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 7. WORKSHOP VIDEO DEMONSTRATION ================= -->
+  <section id="video-demo" class="py-24 sm:py-32 px-6 sm:px-12 max-w-7xl mx-auto">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-16 hairline-b pb-8">
+      <div>
+        <span class="text-[10px] uppercase tracking-[0.25em] text-subtle-ash block mb-2">Instructional Video Archive</span>
+        <h2 class="font-editorial text-3xl sm:text-5xl uppercase tracking-[0.03em] text-charcoal-ink">
+          WORKSHOP VIDEO DEMONSTRATION
+        </h2>
+      </div>
+      <div class="mt-4 sm:mt-0 text-[11px] uppercase tracking-[0.18em] text-muted-charcoal">
+        Duration: 04:48 Min · Full Color HD
+      </div>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      <!-- Main Video Player Card -->
+      <div class="lg:col-span-8 hairline-all bg-[#FAF9F5] p-3 sm:p-4">
+        <div class="relative aspect-video overflow-hidden bg-charcoal-ink group">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoBa8cpAMTI6uStkbL3XpbeV8i5Hb3GsE1NEHAGNhmvhV3d-MyN4dpfjeABp6nnAPCpL-_ktFnXs2dUskWwmyS-1nwDyB1GqzvrSehIp4E47MKUEmjyHoDH_WNb48kHpUSrfNSk7UM0_BF8JkOrMQ-E9SWN2VRX1CexLju7vfLIMeM88SZNDSISMhWHyXTa3V6zIQC17h0pjtRGrSso3FgIgNR-CR54gavUwcsEO_IFuIWhAAy5uG7EQ" alt="Workshop demonstration of pneumatic connection procedure" class="w-full h-full object-cover transition-opacity duration-300 opacity-90 group-hover:opacity-100">
+          <div class="absolute inset-0 flex items-center justify-center">
+            <button onclick="alert('Playing complete shop safety &amp; pneumatic operational video.')" class="w-16 h-16 rounded-full border border-white/80 bg-black/40 text-white flex items-center justify-center hover:scale-105 transition-transform backdrop-blur-xs">
+              <span class="font-editorial text-xl ml-1">▶</span>
+            </button>
+          </div>
+          <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between text-[10px] uppercase tracking-[0.2em] text-white/90 bg-black/60 px-4 py-2 backdrop-blur-sm">
+            <span>01:36 / 04:48 · Step 03: Gauge Check</span>
+            <span>TUP-T Demo #04</span>
+          </div>
+        </div>
+        <div class="p-6">
+          <span class="text-[10px] uppercase tracking-[0.2em] text-subtle-ash block mb-1">Sequence Overview</span>
+          <p class="text-xs text-muted-charcoal font-light leading-relaxed">
+            Official practical walkthrough demonstrating visual pre-check at Station 0, gradual quarter-turn valve lever engagement, maintenance of the 100 mm stand-off chip distance, and complete zero-pressure line venting prior to disengagement.
+          </p>
+        </div>
+      </div>
+      <!-- Video Chapter Index -->
+      <div class="lg:col-span-4 hairline-all bg-[#FAF9F5] p-6 sm:p-8">
+        <div class="hairline-b pb-4 mb-6 flex justify-between items-baseline">
+          <h3 class="font-editorial text-lg uppercase tracking-wider text-charcoal-ink">Chapters</h3>
+          <span class="text-[10px] uppercase tracking-[0.2em] text-subtle-ash">Index</span>
+        </div>
+        <div class="space-y-4 text-xs">
+          <div class="flex justify-between items-baseline hover:text-charcoal-ink transition-colors cursor-pointer py-1">
+            <span class="font-light text-muted-charcoal">01. Visual Pre-Check &amp; Manifold</span>
+            <span class="text-[11px] font-editorial text-charcoal-ink">00:00</span>
+          </div>
+          <div class="flex justify-between items-baseline hover:text-charcoal-ink transition-colors cursor-pointer hairline-t pt-3">
+            <span class="font-light text-muted-charcoal">02. Coupler Lock &amp; Whip-Check</span>
+            <span class="text-[11px] font-editorial text-charcoal-ink">00:46</span>
+          </div>
+          <div class="flex justify-between items-baseline hover:text-charcoal-ink transition-colors cursor-pointer hairline-t pt-3">
+            <span class="font-light text-muted-charcoal">03. Nominal Pressure Verification</span>
+            <span class="text-[11px] font-editorial text-charcoal-ink">01:26</span>
+          </div>
+          <div class="flex justify-between items-baseline hover:text-charcoal-ink transition-colors cursor-pointer hairline-t pt-3">
+            <span class="font-light text-muted-charcoal">04. Smooth Ball Valve Opening</span>
+            <span class="text-[11px] font-editorial text-charcoal-ink">02:06</span>
+          </div>
+          <div class="flex justify-between items-baseline hover:text-charcoal-ink transition-colors cursor-pointer hairline-t pt-3">
+            <span class="font-light text-muted-charcoal">05. Safe Blowing Distance ≥100mm</span>
+            <span class="text-[11px] font-editorial text-charcoal-ink">02:51</span>
+          </div>
+          <div class="flex justify-between items-baseline hover:text-charcoal-ink transition-colors cursor-pointer hairline-t pt-3">
+            <span class="font-light text-muted-charcoal">06. Valve Shutoff &amp; Complete Purge</span>
+            <span class="text-[11px] font-editorial text-charcoal-ink">03:45</span>
+          </div>
+          <div class="flex justify-between items-baseline hover:text-charcoal-ink transition-colors cursor-pointer hairline-t pt-3">
+            <span class="font-light text-muted-charcoal">07. 5S Loop Hose Storage</span>
+            <span class="text-[11px] font-editorial text-charcoal-ink">04:16</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 8. LABORATORY TECHNICIANS & FACULTY ================= -->
+  <section class="py-24 sm:py-32 px-6 sm:px-12 bg-[#FAF9F5] hairline-t">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-[10px] uppercase tracking-[0.25em] text-subtle-ash block mb-2">Qualified Personnel &amp; Supervision</span>
+        <h2 class="font-editorial text-3xl sm:text-5xl uppercase tracking-[0.03em] text-charcoal-ink">
+          LABORATORY TECHNICIANS &amp; FACULTY
+        </h2>
+        <p class="mt-4 text-xs sm:text-sm text-muted-charcoal font-light leading-relaxed">
+          Faculty heads, laboratory specialists, and safety certified services managing continuous calibration, filter maintenance, and safe operation.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Faculty 1 -->
+        <div class="hairline-all bg-[#FAF9F5] p-5">
+          <div class="aspect-[4/3] bg-[#ECE8DF] overflow-hidden hairline-all mb-4">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBV6zTsb_J32mjILs4u4vvDUenEwEXr_qYp_lJVN4xAORnvtLmP_zxzpSktZKlgZpWzKedEqlaSMMI8jYMU81MRVIojxWh1iUfJf6UOzuBPujzxRH6wkYbydtzZW5I9otI9iaTEuIJKfZLuNL6wL4uh2BuFgaibpdg2dKnS6fA_d0CHAwSALe2Cjv7YBhgRCGlmqBeIxVQZ_Hw7AMS5dz3AIO-fDW_sPfcFTPRdl0yvBQbTczBdJ-Irlg" alt="Prof. Roberto Santos" class="w-full h-full object-cover">
+          </div>
+          <h4 class="font-editorial text-base uppercase tracking-wider text-charcoal-ink">Prof. Roberto Santos</h4>
+          <span class="text-[10px] uppercase tracking-[0.16em] text-subtle-ash block">Chair, Mechanical Engineering Dept.</span>
+        </div>
+        <!-- Faculty 2 -->
+        <div class="hairline-all bg-[#FAF9F5] p-5">
+          <div class="aspect-[4/3] bg-[#ECE8DF] overflow-hidden hairline-all mb-4">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlv1QDaFofI2oJ7Y6xZ-oIL9_jUJNGqgPzEHkd4ETQ_KOheu-Z9imACNNh5gyGdSm-qyaQ0VyCWLONZy0z1j5sLqUaPxz4EWxUfaHhCMgO49RHVSb4tS0Oer9DkNvWjdRNNLw2ojExVDrwbWcbOSjMhgwxfuXZGP6utSmkui_yF3p3H_KnC6XH3uePyoOSZFB-dEnS2L5SzWDgz4YmbpPYYcZ7x43af7155oYSns5hNgQg-1uy-X7TVg" alt="Engr. Manuel De Leon" class="w-full h-full object-cover">
+          </div>
+          <h4 class="font-editorial text-base uppercase tracking-wider text-charcoal-ink">Engr. Manuel De Leon</h4>
+          <span class="text-[10px] uppercase tracking-[0.16em] text-subtle-ash block">Supervisor &amp; Plant Systems Head</span>
+        </div>
+        <!-- Faculty 3 -->
+        <div class="hairline-all bg-[#FAF9F5] p-5">
+          <div class="aspect-[4/3] bg-[#ECE8DF] overflow-hidden hairline-all mb-4">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBV6zTsb_J32mjILs4u4vvDUenEwEXr_qYp_lJVN4xAORnvtLmP_zxzpSktZKlgZpWzKedEqlaSMMI8jYMU81MRVIojxWh1iUfJf6UOzuBPujzxRH6wkYbydtzZW5I9otI9iaTEuIJKfZLuNL6wL4uh2BuFgaibpdg2dKnS6fA_d0CHAwSALe2Cjv7YBhgRCGlmqBeIxVQZ_Hw7AMS5dz3AIO-fDW_sPfcFTPRdl0yvBQbTczBdJ-Irlg" alt="Gabriel Mendoza" class="w-full h-full object-cover">
+          </div>
+          <h4 class="font-editorial text-base uppercase tracking-wider text-charcoal-ink">Gabriel Mendoza</h4>
+          <span class="text-[10px] uppercase tracking-[0.16em] text-subtle-ash block">Safety Officer · DOLE Certification</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ================= MINIMAL EDITORIAL LAB FOOTER (REPLACING OLD CONTACT SECTION) ================= -->
+<footer class="hairline-t bg-[#F7F5F0] py-10 px-6 sm:px-12">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-[11px] uppercase tracking-[0.18em] text-muted-charcoal">
+    <div class="flex items-center gap-3">
+      <span class="w-6 h-6 border border-charcoal-ink flex items-center justify-center font-editorial text-[10px]">LM</span>
+      <span>© 2025 Technological University of the Philippines — Taguig Campus</span>
+    </div>
+    <div class="flex items-center gap-6">
+      <span>Mechanical &amp; Allied Dept.</span>
+      <span>ISO 8573 Compressed-Air Manual</span>
+      <a href="#hero" class="hover:text-charcoal-ink transition-colors">Back to Top ↑</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Interactive Accordion Script -->
+<script>
+  function toggleAccordion(id) {
+    const content = document.getElementById('content-' + id);
+    const chevron = document.getElementById('chevron-' + id);
+    if (!content) return;
+    
+    const isHidden = content.classList.contains('hidden');
+    if (isHidden) {
+      content.classList.remove('hidden');
+      content.classList.add('block');
+      if (chevron) chevron.classList.add('rotate-180');
+    } else {
+      content.classList.remove('block');
+      content.classList.add('hidden');
+      if (chevron) chevron.classList.remove('rotate-180');
+    }
+  }
+</script>
+
+
+</body></html>

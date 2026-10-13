@@ -58,14 +58,14 @@ export const SafetyProtocolsSection: React.FC = () => {
         <button
           type="button"
           onClick={() => toggleItem(item.id)}
-          className="w-full text-left p-6 sm:p-7 flex flex-col md:flex-row md:items-center justify-between gap-6 cursor-pointer select-none group"
+          className="w-full text-left p-4 sm:p-6 lg:p-7 flex flex-col md:flex-row md:items-center justify-between gap-4 sm:gap-6 cursor-pointer select-none group"
         >
-          <div className="flex items-start sm:items-center gap-6">
-            <span className={`font-editorial text-2xl sm:text-3xl ${numColor} w-8`}>
+          <div className="flex items-start sm:items-center gap-3.5 sm:gap-6">
+            <span className={`font-editorial text-xl sm:text-3xl ${numColor} shrink-0 w-6 sm:w-8`}>
               {item.number}
             </span>
             <div>
-              <h4 className={`font-editorial text-lg sm:text-xl uppercase tracking-wider ${isProhibition ? 'text-accent-crimson group-hover:text-red-950' : 'text-charcoal-ink group-hover:text-emerald-900'} transition-colors`}>
+              <h4 className={`font-editorial text-base sm:text-lg lg:text-xl uppercase tracking-wider ${isProhibition ? 'text-accent-crimson group-hover:text-red-950' : 'text-charcoal-ink group-hover:text-emerald-900'} transition-colors leading-snug`}>
                 {item.title}
               </h4>
               <p className="text-xs text-muted-charcoal font-light mt-1 max-w-2xl leading-relaxed">
@@ -73,44 +73,44 @@ export const SafetyProtocolsSection: React.FC = () => {
               </p>
             </div>
           </div>
-          <div className="flex items-center gap-4 self-end md:self-center">
-            <span className={`text-[10px] uppercase tracking-[0.18em] px-3 py-1 border font-medium whitespace-nowrap ${badgeClass}`}>
+          <div className="flex items-center justify-between sm:justify-end gap-3 self-stretch sm:self-end md:self-center pt-2 sm:pt-0 border-t sm:border-t-0 hairline-t sm:border-none">
+            <span className={`text-[9px] sm:text-[10px] uppercase tracking-[0.14em] sm:tracking-[0.18em] px-2.5 sm:px-3 py-1 border font-medium whitespace-nowrap ${badgeClass}`}>
               {item.badge}
             </span>
-            <span className={`w-7 h-7 rounded-full border border-charcoal-ink/20 flex items-center justify-center text-charcoal-ink transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}>
+            <span className={`w-7 h-7 rounded-full border border-charcoal-ink/20 flex items-center justify-center text-charcoal-ink transition-transform duration-300 shrink-0 ${isOpen ? 'rotate-180' : ''}`}>
               <span className="material-symbols-outlined text-base">expand_more</span>
             </span>
           </div>
         </button>
 
         {isOpen && (
-          <div className={`hairline-t border-hairline-divider ${contentBg} px-6 sm:px-8 py-7 animate-fadeIn`}>
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div className={`hairline-t border-hairline-divider ${contentBg} px-4 sm:px-8 py-5 sm:py-7 animate-fadeIn`}>
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center">
               <div className="lg:col-span-5 relative overflow-hidden hairline-all bg-[#ECE8DF] aspect-[4/3]">
                 <img
                   src={item.image}
                   alt={item.title}
                   className="w-full h-full object-cover"
                 />
-                <div className={`absolute bottom-3 left-3 text-white text-[9px] uppercase tracking-[0.2em] px-2.5 py-1 ${isProhibition ? 'bg-accent-crimson' : 'bg-charcoal-ink/85'}`}>
+                <div className={`absolute bottom-3 left-3 text-white text-[9px] uppercase tracking-[0.18em] px-2.5 py-1 ${isProhibition ? 'bg-accent-crimson' : 'bg-charcoal-ink/85'}`}>
                   {item.badge}
                 </div>
               </div>
               <div className="lg:col-span-7">
-                <span className={`text-[10px] uppercase tracking-[0.22em] font-medium block mb-1 ${numColor}`}>
+                <span className={`text-[10px] uppercase tracking-[0.2em] font-medium block mb-1 ${numColor}`}>
                   {item.protocolRef}
                 </span>
-                <h5 className="font-editorial text-xl uppercase tracking-wider text-charcoal-ink mb-3">
+                <h5 className="font-editorial text-lg sm:text-xl uppercase tracking-wider text-charcoal-ink mb-2.5 sm:mb-3">
                   {item.detailTitle}
                 </h5>
                 <p className="text-xs text-muted-charcoal font-light leading-relaxed mb-4">
                   {item.detailBody}
                 </p>
-                <div className="flex flex-wrap gap-2 pt-2">
+                <div className="flex flex-wrap gap-2 pt-1">
                   {item.tags.map((tag, tIdx) => (
                     <span
                       key={tIdx}
-                      className={`text-[9px] uppercase tracking-[0.16em] px-2.5 py-1 font-medium ${
+                      className={`text-[9px] uppercase tracking-[0.14em] sm:tracking-[0.16em] px-2.5 py-1 font-medium ${
                         tag.highlight
                           ? isProhibition
                             ? 'bg-red-100 text-accent-crimson'
@@ -131,56 +131,56 @@ export const SafetyProtocolsSection: React.FC = () => {
   };
 
   return (
-    <section id="protocoles" className="py-24 sm:py-32 px-6 sm:px-12 bg-[#FAF9F5] hairline-t hairline-b">
+    <section id="protocoles" className="py-20 sm:py-28 lg:py-32 px-4 sm:px-8 lg:px-12 bg-[#FAF9F5] hairline-t hairline-b">
       <div className="max-w-7xl mx-auto">
         
         {/* Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 hairline-b pb-8">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 sm:mb-12 hairline-b pb-6 sm:pb-8">
           <div>
             <span className="text-[10px] uppercase tracking-[0.25em] text-subtle-ash block mb-2">
               DOLE Compliance &amp; ANSI Z87.1 Safety Charter
             </span>
-            <h2 className="font-editorial text-3xl sm:text-5xl uppercase tracking-[0.03em] text-charcoal-ink">
+            <h2 className="font-editorial text-2xl sm:text-4xl md:text-5xl uppercase tracking-[0.03em] text-charcoal-ink">
               SAFETY STANDARDS &amp; OPERATING PROTOCOLS
             </h2>
           </div>
-          <div className="mt-4 sm:mt-0 text-[11px] uppercase tracking-[0.18em] text-muted-charcoal">
+          <div className="mt-3 sm:mt-0 text-[10px] sm:text-[11px] uppercase tracking-[0.16em] sm:tracking-[0.18em] text-muted-charcoal">
             Interactive Operational Cards · Select any item to view media
           </div>
         </div>
 
         {/* Search Bar & Expand/Collapse Controls */}
-        <div className="mb-12 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
+        <div className="mb-10 sm:mb-12 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 sm:gap-4">
           <div className="relative flex-1 max-w-md">
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Filter by keyword (e.g. PPE, hose, eye, embolism, PSI)..."
-              className="w-full bg-[#FAF9F5] border border-hairline-divider px-4 py-2 text-xs text-charcoal-ink placeholder-subtle-ash focus:outline-none focus:border-charcoal-ink transition-colors"
+              placeholder="Filter by keyword (e.g. PPE, hose, eye, embolism)..."
+              className="w-full bg-[#FAF9F5] border border-hairline-divider px-3.5 sm:px-4 py-2 text-xs text-charcoal-ink placeholder-subtle-ash focus:outline-none focus:border-charcoal-ink transition-colors"
             />
             {searchQuery && (
               <button
                 type="button"
                 onClick={() => setSearchQuery('')}
-                className="absolute right-3 top-2.5 text-xs text-subtle-ash hover:text-charcoal-ink"
+                className="absolute right-3 top-2 text-xs text-subtle-ash hover:text-charcoal-ink"
               >
                 ✕
               </button>
             )}
           </div>
-          <div className="flex items-center gap-3 text-[10px] uppercase tracking-[0.18em]">
+          <div className="flex items-center gap-2.5 sm:gap-3 text-[10px] uppercase tracking-[0.16em] sm:tracking-[0.18em]">
             <button
               type="button"
               onClick={expandAll}
-              className="px-3 py-1.5 border border-hairline-divider hover:border-charcoal-ink transition-colors"
+              className="px-3 py-1.5 border border-hairline-divider hover:border-charcoal-ink transition-colors bg-[#FAF9F5]"
             >
               Expand All
             </button>
             <button
               type="button"
               onClick={collapseAll}
-              className="px-3 py-1.5 border border-hairline-divider hover:border-charcoal-ink transition-colors"
+              className="px-3 py-1.5 border border-hairline-divider hover:border-charcoal-ink transition-colors bg-[#FAF9F5]"
             >
               Collapse All
             </button>
@@ -188,27 +188,27 @@ export const SafetyProtocolsSection: React.FC = () => {
         </div>
 
         {/* Groups */}
-        <div className="space-y-16">
+        <div className="space-y-12 sm:space-y-16">
           
           {/* Mandatory Practices (DO) */}
           <div>
-            <div className="flex items-center justify-between hairline-b pb-4 mb-6">
-              <div className="flex items-center gap-3">
+            <div className="flex items-center justify-between hairline-b pb-3 sm:pb-4 mb-5 sm:mb-6">
+              <div className="flex items-center gap-2.5 sm:gap-3">
                 <span className="w-2.5 h-2.5 rounded-full bg-emerald-700 inline-block" />
-                <h3 className="font-editorial text-xl sm:text-2xl uppercase tracking-wider text-charcoal-ink">
+                <h3 className="font-editorial text-lg sm:text-2xl uppercase tracking-wider text-charcoal-ink">
                   MANDATORY PRACTICES (DO)
                 </h3>
               </div>
-              <span className="text-[10px] uppercase tracking-[0.2em] text-emerald-800 font-medium">
+              <span className="text-[9px] sm:text-[10px] uppercase tracking-[0.16em] sm:tracking-[0.2em] text-emerald-800 font-medium">
                 {filteredDo.length} Active Directives
               </span>
             </div>
 
-            <div className="space-y-4">
+            <div className="space-y-3.5 sm:space-y-4">
               {filteredDo.length > 0 ? (
                 filteredDo.map((item) => renderCard(item, false))
               ) : (
-                <div className="p-8 text-center text-xs text-subtle-ash border border-hairline-divider">
+                <div className="p-6 text-center text-xs text-subtle-ash border border-hairline-divider">
                   No matching mandatory practices found for "{searchQuery}".
                 </div>
               )}
@@ -217,23 +217,23 @@ export const SafetyProtocolsSection: React.FC = () => {
 
           {/* Strict Prohibitions (DON'T) */}
           <div>
-            <div className="flex items-center justify-between hairline-b pb-4 mb-6">
-              <div className="flex items-center gap-3">
+            <div className="flex items-center justify-between hairline-b pb-3 sm:pb-4 mb-5 sm:mb-6">
+              <div className="flex items-center gap-2.5 sm:gap-3">
                 <span className="w-2.5 h-2.5 rounded-full bg-accent-crimson inline-block" />
-                <h3 className="font-editorial text-xl sm:text-2xl uppercase tracking-wider text-accent-crimson">
+                <h3 className="font-editorial text-lg sm:text-2xl uppercase tracking-wider text-accent-crimson">
                   STRICT PROHIBITIONS (DON'T)
                 </h3>
               </div>
-              <span className="text-[10px] uppercase tracking-[0.2em] text-accent-crimson font-medium">
+              <span className="text-[9px] sm:text-[10px] uppercase tracking-[0.16em] sm:tracking-[0.2em] text-accent-crimson font-medium">
                 {filteredDont.length} Zero Tolerance Violations
               </span>
             </div>
 
-            <div className="space-y-4">
+            <div className="space-y-3.5 sm:space-y-4">
               {filteredDont.length > 0 ? (
                 filteredDont.map((item) => renderCard(item, true))
               ) : (
-                <div className="p-8 text-center text-xs text-subtle-ash border border-hairline-divider">
+                <div className="p-6 text-center text-xs text-subtle-ash border border-hairline-divider">
                   No matching prohibitions found for "{searchQuery}".
                 </div>
               )}

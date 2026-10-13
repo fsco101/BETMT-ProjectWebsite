@@ -25,19 +25,19 @@ export const ExpertiseSection: React.FC = () => {
   ];
 
   return (
-    <section id="savoir-faire" className="py-20 sm:py-28 px-6 sm:px-12 max-w-7xl mx-auto">
-      <div className="mb-14">
-        <h2 className="font-editorial text-3xl sm:text-5xl lg:text-6xl uppercase tracking-[0.03em] leading-tight text-charcoal-ink">
+    <section id="savoir-faire" className="py-16 sm:py-24 lg:py-28 px-4 sm:px-8 lg:px-12 max-w-7xl mx-auto">
+      <div className="mb-10 sm:mb-14">
+        <h2 className="font-editorial text-2xl sm:text-4xl md:text-5xl lg:text-6xl uppercase tracking-[0.03em] leading-tight text-charcoal-ink">
           OUR EXPERTISE:<br />
           FLUID DISTRIBUTION
         </h2>
-        <p className="mt-6 text-xs sm:text-sm text-muted-charcoal max-w-xl font-light leading-relaxed">
+        <p className="mt-4 sm:mt-6 text-xs sm:text-sm text-muted-charcoal max-w-xl font-light leading-relaxed">
           We operate a pneumatic infrastructure certified to ISO 8573-1 industrial purity standards. Our central manifold supplies conventional lathes, CNC machining centers, precision grinders, and metrology labs with stabilized continuous flow and regulated clean air.
         </p>
       </div>
 
-      <div className="hairline-all bg-[#FAF9F5] p-3 sm:p-5">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+      <div className="hairline-all bg-[#FAF9F5] p-2.5 sm:p-5">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6 items-center">
           
           {/* Main Visual */}
           <div className="lg:col-span-9 relative overflow-hidden bg-[#ECE8DF] aspect-[16/10]">
@@ -47,13 +47,13 @@ export const ExpertiseSection: React.FC = () => {
               className="w-full h-full object-cover transition-all duration-700 hover:scale-[1.01]"
             />
             {/* Slide Indicator Dots */}
-            <div className="absolute bottom-4 left-4 flex gap-2 bg-charcoal-ink/40 p-1.5 backdrop-blur-xs">
+            <div className="absolute bottom-3 left-3 sm:bottom-4 sm:left-4 flex gap-2 bg-charcoal-ink/50 p-1.5 backdrop-blur-xs">
               {slides.map((_, idx) => (
                 <button
                   key={idx}
                   type="button"
                   onClick={() => setActiveSlide(idx)}
-                  className={`w-2 h-2 transition-all ${activeSlide === idx ? 'bg-[#F7F5F0] scale-125' : 'bg-[#F7F5F0]/40'}`}
+                  className={`w-2.5 h-2.5 sm:w-2 sm:h-2 transition-all ${activeSlide === idx ? 'bg-[#F7F5F0] scale-125' : 'bg-[#F7F5F0]/40'}`}
                   aria-label={`Show slide ${idx + 1}`}
                 />
               ))}
@@ -61,16 +61,16 @@ export const ExpertiseSection: React.FC = () => {
           </div>
 
           {/* Sidebar Metadata */}
-          <div className="lg:col-span-3 flex flex-col justify-between py-4 pr-3 pl-2 min-h-[260px]">
+          <div className="lg:col-span-3 flex flex-col justify-between py-2 sm:py-4 px-2 sm:px-3 sm:pl-2">
             <div>
-              <span className="text-[10px] uppercase tracking-[0.2em] text-subtle-ash block mb-2">
+              <span className="text-[10px] uppercase tracking-[0.2em] text-subtle-ash block mb-1.5 sm:mb-2">
                 {slides[activeSlide].title}
               </span>
               <p className="text-xs text-muted-charcoal leading-relaxed font-light">
                 {slides[activeSlide].desc}
               </p>
             </div>
-            <div className="mt-8 pt-8 hairline-t flex items-center justify-between text-[11px] uppercase tracking-[0.18em]">
+            <div className="mt-6 sm:mt-8 pt-4 sm:pt-8 hairline-t flex items-center justify-between text-[10px] sm:text-[11px] uppercase tracking-[0.16em] sm:tracking-[0.18em]">
               <span className="text-subtle-ash">{slides[activeSlide].tag}</span>
               <span className="material-symbols-outlined text-base text-emerald-800">check_circle</span>
             </div>

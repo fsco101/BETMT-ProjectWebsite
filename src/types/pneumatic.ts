@@ -5,6 +5,8 @@ export interface CircuitStage {
   subtitle: string;
   description: string;
   image: string;
+  images?: string[];
+  imageCaptions?: string[];
   metricLabel: string;
   metricValue: string;
   isoStandard?: string;

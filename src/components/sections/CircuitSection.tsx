@@ -75,10 +75,11 @@ export const CircuitSection: React.FC = () => {
         ))}
       </div>
 
-      {/* Slide-out Technical Drawer */}
+      {/* Centered Technical Specification Modal */}
       <CircuitDetailDrawer
         stage={selectedStage}
         onClose={() => setSelectedStage(null)}
+        onSelectStage={(stage) => setSelectedStage(stage)}
       />
     </section>
   );

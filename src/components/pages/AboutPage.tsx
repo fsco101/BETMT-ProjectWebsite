@@ -283,7 +283,11 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onBackToManual }) => {
           {/* Quick Notice Banner for Team Name Personalization */}
           <div className="p-4 border border-dashed border-hairline-divider bg-white/60 dark:bg-[#18181B] dark:border-gray-700 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-muted-charcoal dark:text-gray-300">
             <div className="flex items-center gap-2.5">
-              <span className="text-accent-crimson dark:text-rose-400 font-mono font-bold">ℹ</span>
+              <svg className="w-4 h-4 text-accent-crimson dark:text-rose-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10" />
+                <line x1="12" y1="16" x2="12" y2="12" />
+                <line x1="12" y1="8" x2="12.01" y2="8" />
+              </svg>
               <span>
                 Want to update these profile names or photos? Edit <code className="font-mono text-[11px] bg-[#EFECE6] dark:bg-[#27272A] text-charcoal-ink dark:text-gray-200 px-1 py-0.5">src/data/aboutData.ts</code> at any time.
               </span>

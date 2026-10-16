@@ -71,12 +71,22 @@ describe('Centralized Air Distribution System Integration', () => {
     });
   });
 
-  it('renders standardized industrial sans title typography and dark mode theme toggle', () => {
+  it('renders standardized industrial sans title typography and professional SVG dark mode theme toggle', () => {
     const html = renderToString(<App />);
     // Check that dark mode toggle is present in header
     expect(html).toContain('Switch to dark mode');
+    // Ensure no emojis are used in the theme button
+    expect(html).not.toContain('☀️');
+    expect(html).not.toContain('🌙');
     // Check for standardized sans headings
     expect(html).toContain('font-sans font-extrabold');
+  });
+
+  it('renders clickable images with zoom cursor across system overview, circuits, and drop outlets', () => {
+    const html = renderToString(<App />);
+    expect(html).toContain('cursor-zoom-in');
+    expect(html).toContain('Click to view full image');
+    expect(html).toContain('Click to view full uncropped lab photo');
   });
 });
 

@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { dropStations } from '../../data/dropStations';
 import { usePneumatics } from '../../context/PneumaticContext';
+import { useLightbox } from '../../context/LightboxContext';
 import { GaugeDial } from '../ui/GaugeDial';
 import { ValveLever } from '../ui/ValveLever';
 
 export const DropsSection: React.FC = () => {
   const [selectedZone, setSelectedZone] = useState<string>('All');
   const { state, toggleValve, setStationPressure } = usePneumatics();
+  const { openLightbox } = useLightbox();
 
   const zones = ['All', 'Workshop Area', 'CNC Area', 'Advance Machining Area'];
 
@@ -73,11 +75,22 @@ export const DropsSection: React.FC = () => {
               >
                 <div>
                   {/* Photo Frame with Actual Lab Photos */}
-                  <div className="relative aspect-[4/3] overflow-hidden hairline-all bg-[#ECE8DF] dark:bg-[#27272A] mb-4 sm:mb-5">
+                  <div
+                    onClick={() =>
+                      openLightbox(
+                        station.image,
+                        0,
+                        `${station.name} (${station.area})`,
+                        `Required Pressure: ${station.requiredPsi} (${station.nominalPressureBar} Bar nominal). Designated use: ${station.use}. Fitted with ${station.valveType}.`
+                      )
+                    }
+                    className="relative aspect-[4/3] overflow-hidden hairline-all bg-[#ECE8DF] dark:bg-[#27272A] mb-4 sm:mb-5 group/img cursor-zoom-in"
+                    title="Click to view full uncropped lab photo"
+                  >
                     <img
                       src={station.image}
                       alt={station.name}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute top-2 left-2 bg-charcoal-ink/85 dark:bg-black/80 text-white text-[9px] uppercase tracking-wider px-2.5 py-0.5 font-medium">
                       {station.name}
@@ -87,6 +100,12 @@ export const DropsSection: React.FC = () => {
                         Active ({liveState.scfmDemand} SCFM)
                       </div>
                     )}
+                    <div className="absolute inset-0 bg-black/0 group-hover/img:bg-black/25 transition-colors flex items-center justify-center">
+                      <span className="opacity-0 group-hover/img:opacity-100 bg-black/80 text-white text-[9px] uppercase tracking-wider px-2.5 py-1 transition-opacity border border-white/20 shadow-xs flex items-center gap-1.5">
+                        <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" /><line x1="11" y1="8" x2="11" y2="14" /><line x1="8" y1="11" x2="14" y2="11" /></svg>
+                        <span>View Photo</span>
+                      </span>
+                    </div>
                   </div>
 
                   {/* Title */}
@@ -114,7 +133,11 @@ export const DropsSection: React.FC = () => {
                   {isOverPressure && (
                     <div className="mb-4 px-3 py-2 bg-amber-500/15 dark:bg-amber-950/40 border border-amber-600/40 dark:border-amber-500/50 rounded-xs flex items-center justify-between gap-2 animate-pulse">
                       <div className="flex items-center gap-1.5 min-w-0">
-                        <span className="text-amber-600 dark:text-amber-400 font-bold text-xs">⚠️</span>
+                        <svg className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                          <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
+                          <line x1="12" y1="9" x2="12" y2="13" />
+                          <line x1="12" y1="17" x2="12.01" y2="17" />
+                        </svg>
                         <span className="text-[10px] sm:text-[11px] font-mono font-bold text-amber-800 dark:text-amber-300 truncate">
                           EXCEEDS RECOMMENDED ({station.nominalPressureBar.toFixed(1)} Bar)
                         </span>

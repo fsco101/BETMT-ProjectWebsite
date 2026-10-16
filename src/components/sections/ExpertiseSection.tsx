@@ -1,6 +1,9 @@
 import React from 'react';
+import { useLightbox } from '../../context/LightboxContext';
 
 export const ExpertiseSection: React.FC = () => {
+  const { openLightbox } = useLightbox();
+
   return (
     <section id="system-overview" className="py-16 sm:py-24 lg:py-28 px-4 sm:px-8 lg:px-12 max-w-7xl mx-auto">
       <div className="mb-10 sm:mb-14">
@@ -19,14 +22,29 @@ export const ExpertiseSection: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center">
           
           {/* Main Visual: image49.jpg */}
-          <div className="lg:col-span-8 relative overflow-hidden bg-[#ECE8DF] dark:bg-[#2A2930] aspect-[4/3] sm:aspect-[16/10] hairline-all">
+          <div
+            onClick={() =>
+              openLightbox(
+                '/images/image49.jpg',
+                0,
+                'Primary Central Pneumatic Facility',
+                'TUP Taguig Mechanical and Allied Department: Compressor, air receiver tank, refrigerated dryer, and distribution line components.'
+              )
+            }
+            className="lg:col-span-8 relative overflow-hidden bg-[#ECE8DF] dark:bg-[#2A2930] aspect-[4/3] sm:aspect-[16/10] hairline-all cursor-zoom-in group"
+            title="Click to view full image"
+          >
             <img
               src="/images/image49.jpg"
               alt="Centralized Compressed Air Distribution System Components at TUP Taguig"
-              className="w-full h-full object-cover transition-all duration-700 hover:scale-[1.02]"
+              className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
             />
             <div className="absolute top-3 left-3 bg-charcoal-ink/85 dark:bg-black/85 text-[#F7F5F0] text-[9px] sm:text-[10px] uppercase tracking-[0.2em] px-3 py-1 font-medium">
               Primary Central Facility
+            </div>
+            <div className="absolute bottom-3 right-3 bg-black/75 hover:bg-black text-white text-[9px] sm:text-[10px] uppercase tracking-wider px-2.5 py-1 flex items-center gap-1.5 opacity-80 group-hover:opacity-100 transition-opacity">
+              <span>🔍</span>
+              <span>Click to View Full Image</span>
             </div>
           </div>
 

@@ -3,10 +3,12 @@ import { sopSteps } from '../../data/sopSteps';
 import { SopStepperModal } from '../modals/SopStepperModal';
 import { SopVerificationModal } from '../modals/SopVerificationModal';
 import { SopStep } from '../../types/pneumatic';
+import { useLightbox } from '../../context/LightboxContext';
 
 export const SopSection: React.FC = () => {
   const [stepperOpen, setStepperOpen] = useState(false);
   const [certModalOpen, setCertModalOpen] = useState(false);
+  const { openLightbox } = useLightbox();
   const [openSteps, setOpenSteps] = useState<Record<string, boolean>>({
     'step-01': true,
     'step-04': true,
@@ -78,7 +80,21 @@ export const SopSection: React.FC = () => {
               <div className="lg:col-span-6 space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {figures.map((imgSrc, idx) => (
-                    <div key={idx} className="relative overflow-hidden hairline-all bg-[#ECE8DF] dark:bg-[#2A2930] aspect-[4/3] group/fig">
+                    <div
+                      key={idx}
+                      onClick={() =>
+                        openLightbox(
+                          figures.map((src, i) => ({
+                            src,
+                            title: `${step.title} — Figure 0${i + 1}`,
+                            caption: captions[i] || step.description,
+                          })),
+                          idx
+                        )
+                      }
+                      className="relative overflow-hidden hairline-all bg-[#ECE8DF] dark:bg-[#2A2930] aspect-[4/3] group/fig cursor-zoom-in"
+                      title="Click to view full uncropped figure"
+                    >
                       <img
                         src={imgSrc}
                         alt={captions[idx] || `Figure ${idx + 1}`}
@@ -86,6 +102,12 @@ export const SopSection: React.FC = () => {
                       />
                       <div className="absolute bottom-1.5 left-1.5 bg-charcoal-ink/85 dark:bg-black/85 text-white text-[8px] sm:text-[9px] uppercase tracking-wider px-2 py-0.5">
                         Figure {idx + 1}
+                      </div>
+                      <div className="absolute inset-0 bg-black/0 group-hover/fig:bg-black/25 transition-colors flex items-center justify-center">
+                        <span className="opacity-0 group-hover/fig:opacity-100 bg-black/80 text-white text-[8px] sm:text-[9px] uppercase tracking-wider px-2 py-0.5 transition-opacity border border-white/20 shadow-xs flex items-center gap-1">
+                          <span>🔍</span>
+                          <span>View</span>
+                        </span>
                       </div>
                     </div>
                   ))}

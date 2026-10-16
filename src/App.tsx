@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { PneumaticProvider } from './context/PneumaticContext';
+import { LightboxProvider } from './context/LightboxContext';
 import { Header } from './components/layout/Header';
 import { HeroSection } from './components/sections/HeroSection';
 import { ExpertiseSection } from './components/sections/ExpertiseSection';
@@ -11,6 +12,7 @@ import { VideoSection } from './components/sections/VideoSection';
 import { AboutPage } from './components/pages/AboutPage';
 import { Footer } from './components/layout/Footer';
 import { EmergencyModal } from './components/modals/EmergencyModal';
+import { ImageLightboxModal } from './components/modals/ImageLightboxModal';
 
 const AppContent: React.FC = () => {
   const [emergencyModalOpen, setEmergencyModalOpen] = useState(false);
@@ -126,6 +128,9 @@ const AppContent: React.FC = () => {
         isOpen={emergencyModalOpen}
         onClose={() => setEmergencyModalOpen(false)}
       />
+
+      {/* Global Image Lightbox Modal */}
+      <ImageLightboxModal />
     </div>
   );
 };
@@ -133,7 +138,9 @@ const AppContent: React.FC = () => {
 export default function App() {
   return (
     <PneumaticProvider>
-      <AppContent />
+      <LightboxProvider>
+        <AppContent />
+      </LightboxProvider>
     </PneumaticProvider>
   );
 }

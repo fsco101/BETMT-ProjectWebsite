@@ -1,6 +1,44 @@
 import React, { useState } from 'react';
 import { usePneumatics } from '../../context/PneumaticContext';
 
+const SunIcon: React.FC<{ className?: string }> = ({ className = 'w-3.5 h-3.5' }) => (
+  <svg
+    className={className}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
+    <circle cx="12" cy="12" r="4" />
+    <path d="M12 2v2" />
+    <path d="M12 20v2" />
+    <path d="m4.93 4.93 1.41 1.41" />
+    <path d="m17.66 17.66 1.41 1.41" />
+    <path d="M2 12h2" />
+    <path d="M20 12h2" />
+    <path d="m6.34 17.66-1.41 1.41" />
+    <path d="m19.07 4.93-1.41 1.41" />
+  </svg>
+);
+
+const MoonIcon: React.FC<{ className?: string }> = ({ className = 'w-3.5 h-3.5' }) => (
+  <svg
+    className={className}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
+    <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+  </svg>
+);
+
 interface HeaderProps {
   onOpenEmergencyModal: () => void;
   activePage?: 'manual' | 'about';
@@ -122,10 +160,12 @@ export const Header: React.FC<HeaderProps> = ({
             type="button"
             onClick={onToggleTheme}
             aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-            className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 border border-charcoal-ink/30 dark:border-white/20 text-charcoal-ink dark:text-[#E4E4E7] bg-[#FAF9F5] dark:bg-[#1E1E22] hover:bg-charcoal-ink hover:text-white dark:hover:bg-white dark:hover:text-[#121214] text-[9px] sm:text-[10px] uppercase tracking-[0.16em] transition-all font-medium shrink-0"
+            className="flex items-center gap-2 px-2.5 sm:px-3 py-1.5 border border-charcoal-ink/30 dark:border-white/20 text-charcoal-ink dark:text-[#E4E4E7] bg-[#FAF9F5] dark:bg-[#1E1E22] hover:bg-charcoal-ink hover:text-white dark:hover:bg-white dark:hover:text-[#121214] text-[9px] sm:text-[10px] uppercase tracking-[0.16em] transition-all font-medium shrink-0 cursor-pointer group"
             title={theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
           >
-            <span>{theme === 'dark' ? '☀️' : '🌙'}</span>
+            <span className="text-amber-600 dark:text-amber-400 group-hover:rotate-45 transition-transform duration-300">
+              {theme === 'dark' ? <SunIcon className="w-3.5 h-3.5" /> : <MoonIcon className="w-3.5 h-3.5 text-charcoal-ink dark:text-gray-300" />}
+            </span>
             <span className="hidden sm:inline font-mono">{theme === 'dark' ? 'LIGHT' : 'DARK'}</span>
           </button>
 
@@ -185,10 +225,12 @@ export const Header: React.FC<HeaderProps> = ({
               <button
                 type="button"
                 onClick={onToggleTheme}
-                className="flex items-center gap-1.5 px-3 py-1 border border-charcoal-ink/30 dark:border-white/30 text-charcoal-ink dark:text-white bg-[#FAF9F5] dark:bg-[#222226] text-[10px] uppercase font-medium"
+                className="flex items-center gap-2 px-3 py-1.5 border border-charcoal-ink/30 dark:border-white/30 text-charcoal-ink dark:text-white bg-[#FAF9F5] dark:bg-[#222226] text-[10px] uppercase font-medium cursor-pointer"
               >
-                <span>{theme === 'dark' ? '☀️' : '🌙'}</span>
-                <span>{theme === 'dark' ? 'LIGHT MODE' : 'DARK MODE'}</span>
+                <span className="text-amber-600 dark:text-amber-400">
+                  {theme === 'dark' ? <SunIcon className="w-3.5 h-3.5" /> : <MoonIcon className="w-3.5 h-3.5" />}
+                </span>
+                <span className="font-mono">{theme === 'dark' ? 'LIGHT MODE' : 'DARK MODE'}</span>
               </button>
             </div>
 

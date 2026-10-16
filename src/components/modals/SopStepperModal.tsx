@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { sopSteps } from '../../data/sopSteps';
 import { usePneumatics } from '../../context/PneumaticContext';
+import { useLightbox } from '../../context/LightboxContext';
 import { playValveClickSound } from '../../utils/audio';
 
 interface SopStepperModalProps {
@@ -13,6 +14,7 @@ export const SopStepperModal: React.FC<SopStepperModalProps> = ({ isOpen, onClos
   const [currentStepIndex, setCurrentStepIndex] = useState(0);
   const [verifiedSteps, setVerifiedSteps] = useState<Record<number, boolean>>({});
   const { state } = usePneumatics();
+  const { openLightbox } = useLightbox();
 
   if (!isOpen) return null;
 
@@ -88,14 +90,31 @@ export const SopStepperModal: React.FC<SopStepperModalProps> = ({ isOpen, onClos
         <div className="p-4 sm:p-6 lg:p-8 overflow-y-auto space-y-4 sm:space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-5 sm:gap-6 items-center">
             
-            <div className="md:col-span-5 relative aspect-[16/10] overflow-hidden hairline-all bg-[#ECE8DF] dark:bg-[#27272A]">
+            <div
+              onClick={() =>
+                openLightbox(
+                  step.image,
+                  0,
+                  `Step 0${step.stepNumber}: ${step.title}`,
+                  step.description
+                )
+              }
+              className="md:col-span-5 relative aspect-[16/10] overflow-hidden hairline-all bg-[#ECE8DF] dark:bg-[#27272A] cursor-zoom-in group/stepimg"
+              title="Click to view full uncropped visual"
+            >
               <img
                 src={step.image}
                 alt={step.title}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover transition-transform duration-500 group-hover/stepimg:scale-105"
               />
               <div className="absolute top-2 left-2 bg-charcoal-ink/85 dark:bg-black/80 text-white text-[8px] sm:text-[9px] uppercase tracking-wider px-2 py-0.5">
                 Step 0{step.stepNumber} Visual
+              </div>
+              <div className="absolute inset-0 bg-black/0 group-hover/stepimg:bg-black/25 transition-colors flex items-center justify-center">
+                <span className="opacity-0 group-hover/stepimg:opacity-100 bg-black/80 text-white text-[8px] sm:text-[9px] uppercase tracking-wider px-2 py-0.5 transition-opacity border border-white/20 shadow-xs flex items-center gap-1">
+                  <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" /><line x1="11" y1="8" x2="11" y2="14" /><line x1="8" y1="11" x2="14" y2="11" /></svg>
+                  <span>View</span>
+                </span>
               </div>
             </div>
 

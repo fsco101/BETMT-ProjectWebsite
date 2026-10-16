@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import { circuitStages } from '../../data/circuitStages';
 import { CircuitStage } from '../../types/pneumatic';
 import { CircuitDetailDrawer } from '../modals/CircuitDetailDrawer';
+import { useLightbox } from '../../context/LightboxContext';
 
 export const CircuitSection: React.FC = () => {
   const [selectedStage, setSelectedStage] = useState<CircuitStage | null>(null);
+  const { openLightbox } = useLightbox();
 
   return (
     <section id="system-components" className="py-20 sm:py-28 lg:py-32 px-4 sm:px-8 lg:px-12 max-w-7xl mx-auto">
@@ -38,11 +40,27 @@ export const CircuitSection: React.FC = () => {
           >
             <div>
               {/* Image Frame */}
-              <div className="relative aspect-[4/3] w-full overflow-hidden hairline-all bg-[#ECE8DF] dark:bg-[#2A2930] mb-4 sm:mb-5">
+              <div
+                onClick={(e) => {
+                  e.stopPropagation();
+                  const slideImgs = stage.images && stage.images.length > 0 ? stage.images : [stage.image];
+                  const slideCaps = stage.imageCaptions || [];
+                  openLightbox(
+                    slideImgs.map((src, i) => ({
+                      src,
+                      title: `${stage.name} — Photo 0${i + 1}`,
+                      caption: slideCaps[i] || stage.description,
+                    })),
+                    0
+                  );
+                }}
+                className="relative aspect-[4/3] w-full overflow-hidden hairline-all bg-[#ECE8DF] dark:bg-[#2A2930] mb-4 sm:mb-5 group/img cursor-zoom-in"
+                title="Click to view full uncropped photos"
+              >
                 <img
                   src={stage.image}
                   alt={stage.name}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover/img:scale-105"
                 />
                 <div className="absolute top-2 left-2 bg-charcoal-ink/80 dark:bg-black/80 text-[#FAF9F5] text-[9px] uppercase tracking-[0.2em] px-2 py-0.5">
                   Stage 0{stage.stageNumber}
@@ -52,9 +70,10 @@ export const CircuitSection: React.FC = () => {
                     {stage.images.length} Photos
                   </div>
                 )}
-                <div className="absolute inset-0 bg-charcoal-ink/0 group-hover:bg-charcoal-ink/10 dark:group-hover:bg-white/5 transition-colors flex items-center justify-center">
-                  <span className="opacity-0 group-hover:opacity-100 bg-[#FAF9F5] dark:bg-[#2A2930] text-charcoal-ink dark:text-white text-[9px] sm:text-[10px] uppercase tracking-wider px-2.5 sm:px-3 py-1 transition-opacity border border-charcoal-ink dark:border-white/30 shadow-xs">
-                    View Specs
+                <div className="absolute inset-0 bg-charcoal-ink/0 group-hover/img:bg-black/30 transition-colors flex items-center justify-center">
+                  <span className="opacity-0 group-hover/img:opacity-100 bg-black/80 text-white text-[9px] uppercase tracking-wider px-2.5 py-1 transition-opacity border border-white/20 shadow-xs flex items-center gap-1">
+                    <span>🔍</span>
+                    <span>View Full Photo</span>
                   </span>
                 </div>
               </div>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { CircuitStage } from '../../types/pneumatic';
 import { circuitStages } from '../../data/circuitStages';
+import { useLightbox } from '../../context/LightboxContext';
 
 interface CircuitDetailDrawerProps {
   stage: CircuitStage | null;
@@ -14,6 +15,7 @@ export const CircuitDetailDrawer: React.FC<CircuitDetailDrawerProps> = ({
   onSelectStage,
 }) => {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
+  const { openLightbox } = useLightbox();
 
   // Reset slide index when stage changes
   useEffect(() => {
@@ -147,7 +149,20 @@ export const CircuitDetailDrawer: React.FC<CircuitDetailDrawerProps> = ({
             </div>
 
             {/* Slideshow Display Frame */}
-            <div className="relative flex-1 min-h-[260px] sm:min-h-[360px] lg:min-h-[400px] bg-charcoal-ink overflow-hidden flex items-center justify-center group">
+            <div
+              onClick={() =>
+                openLightbox(
+                  slideImages.map((src, i) => ({
+                    src,
+                    title: `${stage.name} — Figure 0${i + 1}`,
+                    caption: slideCaptions[i] || `${stage.name} technical component visual.`,
+                  })),
+                  currentSlideIndex
+                )
+              }
+              className="relative flex-1 min-h-[260px] sm:min-h-[360px] lg:min-h-[400px] bg-charcoal-ink overflow-hidden flex items-center justify-center group cursor-zoom-in"
+              title="Click to view full uncropped image"
+            >
               <img
                 key={currentSlideIndex}
                 src={slideImages[currentSlideIndex]}
@@ -155,11 +170,20 @@ export const CircuitDetailDrawer: React.FC<CircuitDetailDrawerProps> = ({
                 className="w-full h-full object-cover transition-opacity duration-300 animate-fadeIn"
               />
 
+              {/* Expand to Fullscreen Badge */}
+              <div className="absolute top-3 right-3 z-10 bg-black/75 hover:bg-black text-white text-[9px] uppercase tracking-wider px-2.5 py-1 flex items-center gap-1.5 opacity-90 group-hover:opacity-100 transition-opacity">
+                <span>🔍</span>
+                <span>Click to Expand</span>
+              </div>
+
               {/* Manual Slide Controls: Previous Button */}
               {slideImages.length > 1 && (
                 <button
                   type="button"
-                  onClick={handlePrevSlide}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handlePrevSlide();
+                  }}
                   className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-11 sm:h-11 border border-charcoal-ink/40 bg-[#FAF9F5]/90 hover:bg-charcoal-ink hover:text-[#FAF9F5] flex items-center justify-center text-lg sm:text-xl font-editorial transition-all shadow-md cursor-pointer z-10"
                   aria-label="Previous image"
                   title="Previous image (Left Arrow)"
@@ -172,7 +196,10 @@ export const CircuitDetailDrawer: React.FC<CircuitDetailDrawerProps> = ({
               {slideImages.length > 1 && (
                 <button
                   type="button"
-                  onClick={handleNextSlide}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleNextSlide();
+                  }}
                   className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-11 sm:h-11 border border-charcoal-ink/40 bg-[#FAF9F5]/90 hover:bg-charcoal-ink hover:text-[#FAF9F5] flex items-center justify-center text-lg sm:text-xl font-editorial transition-all shadow-md cursor-pointer z-10"
                   aria-label="Next image"
                   title="Next image (Right Arrow)"
@@ -183,13 +210,19 @@ export const CircuitDetailDrawer: React.FC<CircuitDetailDrawerProps> = ({
 
               {/* Bottom Image Position Dots / Floating Badges */}
               {slideImages.length > 1 && (
-                <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-1.5 bg-charcoal-ink/70 px-2.5 py-1 backdrop-blur-xs z-10">
+                <div
+                  className="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-1.5 bg-charcoal-ink/70 px-2.5 py-1 backdrop-blur-xs z-10"
+                  onClick={(e) => e.stopPropagation()}
+                >
                   {slideImages.map((_, idx) => (
                     <button
                       key={idx}
                       type="button"
-                      onClick={() => setCurrentSlideIndex(idx)}
-                      className={`h-1.5 transition-all ${
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setCurrentSlideIndex(idx);
+                      }}
+                      className={`h-1.5 transition-all cursor-pointer ${
                         idx === currentSlideIndex
                           ? 'w-6 bg-[#FAF9F5]'
                           : 'w-2 bg-white/40 hover:bg-white/80'

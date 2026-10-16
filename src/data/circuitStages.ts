@@ -4,225 +4,158 @@ export const circuitStages: CircuitStage[] = [
   {
     id: 'stage-01',
     stageNumber: 1,
-    name: '01. Central Compressor',
-    subtitle: 'Primary Atmospheric Induction',
-    description: 'Industrial dual-stage reciprocating compressor drawing ambient air, pressurizing it to baseline workshop pressure inside a vibration-isolated and acoustically dampened enclosure.',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDjKSZw4hvaidBnUxhWnkqFE3NP9RqovULVG4XW6U6NvKx4UZia88b_XSQQRsiDeqdoSsI5-0Nsmi7dLUVXAUCNPAuIpJyN9LOP_1PrDgY4bqrzndTLGkfnmPAHqygyzwtC3E12tlW3KRG15VgDXzlJwyQolf3A3C181dZcaKynkf6JI3CjoKNaueHDnmxsBkdCsuu7stFtVa-r8lVjb8KuiJ_ayWxudntYmqPKlNR4pHehQB8EnLhBOg',
-    images: [
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuDjKSZw4hvaidBnUxhWnkqFE3NP9RqovULVG4XW6U6NvKx4UZia88b_XSQQRsiDeqdoSsI5-0Nsmi7dLUVXAUCNPAuIpJyN9LOP_1PrDgY4bqrzndTLGkfnmPAHqygyzwtC3E12tlW3KRG15VgDXzlJwyQolf3A3C181dZcaKynkf6JI3CjoKNaueHDnmxsBkdCsuu7stFtVa-r8lVjb8KuiJ_ayWxudntYmqPKlNR4pHehQB8EnLhBOg',
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuAvmsEnCue6Pw3MdH5lwPbyLz-JrA856qbAo5F1lAokqxsWctBJ_cZNOzAnluJPLhg9s1rPs7X9OjkxWZK75AX4O7N4r2ckBzR5odf6T5Ns8YDs9Bd-NkUAhLWXzGCPIvT-ECKwlBewNt5EokFBiZ4rIbTEvoclusgF7YyYK3bOETBJtH51p35My2M4J6WCh-gCW-3wbaKVpLmQKQFe0Fm_fuZkxlhwymOaqriia4ygriZcH7Cyr4C0xQ',
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuBV6zTsb_J32mjILs4u4vvDUenEwEXr_qYp_lJVN4xAORnvtLmP_zxzpSktZKlgZpWzKedEqlaSMMI8jYMU81MRVIojxWh1iUfJf6UOzuBPujzxRH6wkYbydtzZW5I9otI9iaTEuIJKfZLuNL6wL4uh2BuFgaibpdg2dKnS6fA_d0CHAwSALe2Cjv7YBhgRCGlmqBeIxVQZ_Hw7AMS5dz3AIO-fDW_sPfcFTPRdl0yvBQbTczBdJ-Irlg'
-    ],
+    name: '01. SULLAIR SCREW AIR COMPRESSOR',
+    subtitle: 'Primary Air Generation',
+    description: 'The air compressor draws in air from the surroundings and compresses it to provide the air supply needed by the system. It serves as the main source of compressed air.',
+    image: '/images/image9.png',
+    images: ['/images/image9.png', '/images/image16.png'],
     imageCaptions: [
-      'Fig. 1.1 — Dual-stage industrial reciprocating compressor enclosure',
-      'Fig. 1.2 — High-pressure compression chamber & heat dissipation fin array',
-      'Fig. 1.3 — Motor drive assembly & belt guard inspection view'
+      'Figure 1 — Sullair WS1100 Industrial Screw Air Compressor',
+      'Figure 2 — Sullair Compressor Specification Nameplate (WS1109 AC)'
     ],
     metricLabel: 'Capacity / Motor',
-    metricValue: '15 kW / 20 HP',
-    isoStandard: 'ISO 1217 Annex C',
-    maintenanceInterval: '500 Operating Hours',
+    metricValue: '125 PSIG / 8.6 BAR',
+    isoStandard: 'ISO 1217 Standard',
+    maintenanceInterval: 'Routine Operating Inspection',
     detailedSpecs: [
-      { label: 'Displacement', value: '2,400 L/min (85 CFM)' },
-      { label: 'Operating Pressure', value: '8.5 - 10.0 Bar Max' },
-      { label: 'Cooling Method', value: 'Forced Air with Intercooler' },
-      { label: 'Lubrication', value: 'Synthetic PAG Fluid' }
+      { label: 'Model No.', value: 'WS1109 AC' },
+      { label: 'Serial No.', value: '37218060003' },
+      { label: 'EBOM No.', value: '88291005-011' },
+      { label: 'Rated Air Pressure', value: '125 PSIG / 8.6 BAR' }
     ]
   },
   {
     id: 'stage-02',
     stageNumber: 2,
-    name: '02. Particulate Filter 1',
-    subtitle: 'Mechanical Coarse Separation',
-    description: 'Cyclonic and sintered bronze filter element capturing gross solid debris, rust scale, and heavy liquid water droplets before raw air enters the refrigeration cycle.',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAlc1N9T0-J7Or28cvXzolZsQAaFK-sg1l5ti_IVzQ5Z0ZpyVVH3ZAO1groCs9VLpA9hoXljfBuvG3BrcGHPpz8d41K5uGkkndFQmKweLkLhW54vlyCxq-myBDm8VluBQWEo_0Nwac9olr8YhHX-lMUxVpJOkpeXPt4sNZTurCg-YmS4yf86DD9l1bJBYfDzixPAP-ri8P8xTRk7l5uhj2zXh7MNl16E7iMh7pxqf4OMdu_Puraz4Ct0g',
-    images: [
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuAlc1N9T0-J7Or28cvXzolZsQAaFK-sg1l5ti_IVzQ5Z0ZpyVVH3ZAO1groCs9VLpA9hoXljfBuvG3BrcGHPpz8d41K5uGkkndFQmKweLkLhW54vlyCxq-myBDm8VluBQWEo_0Nwac9olr8YhHX-lMUxVpJOkpeXPt4sNZTurCg-YmS4yf86DD9l1bJBYfDzixPAP-ri8P8xTRk7l5uhj2zXh7MNl16E7iMh7pxqf4OMdu_Puraz4Ct0g',
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuDMKZLBP4TbjuYO6VNR5MY4wbtPk9YuCWt36LpXkF3gDAYJC-YKQLbmZhYn1q63Dp966X3pxgOSAOEUtoLEkcsQICS0rmmjKvMsTvlKMfzIEQ4mqy9zd4aqDZ09i-GAk6RGvb9vQBRYBp5SDrWG9rqYPz6AfH1giAJ_0CH6YUg8f7UOGjNJx1CGJI7wcjfl9ghC9Fe_6zfaduwH6kUmFH46k7g6KikflWdq4kQSBBsMXHZ1WFjCvOiidA',
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuCNkp_tWB02De15s5jEWLTAQ7Gfwy8r2ViWEFkrOp1qfwytOhW1cPzJHMvVMEu16xmF9aMGEQAD0Fb_z0de0sK1Kjfxex6gNdwIC2-UY8SwafPcbb2i3CDq-rtnZ-w-ymNTCStMmSxGMdHs4CFXa34h7ObZOJVmHfcaFkeU_TfM84TkS99OZX5dMeh-H50iNQ8iFZyQyRjUUWFv0kw2y6Mb1wafvU4yqLTqZLsGg2paR4vrYwiooug6_g'
-    ],
+    name: '02. Air Filter',
+    subtitle: 'Solid Particle Filtration',
+    description: 'The air filter removes dirt, dust, and other solid particles from the compressed air to help protect the downstream components.',
+    image: '/images/image12.png',
+    images: ['/images/image12.png'],
     imageCaptions: [
-      'Fig. 2.1 — Primary cyclonic coarse separator canister',
-      'Fig. 2.2 — Sintered bronze 5-micron filter matrix core',
-      'Fig. 2.3 — Automatic bottom condensate discharge float drain'
+      'Figure 1 — In-Line Sullair Air Filtration & Moisture Trap System'
     ],
-    metricLabel: 'Threshold',
-    metricValue: '5.0 Microns',
-    isoStandard: 'ISO 8573-1:2010 Class 3',
-    maintenanceInterval: 'Monthly Differential Pressure Check',
+    metricLabel: 'Filtration Type',
+    metricValue: 'Particulate Separation',
+    isoStandard: 'ISO 8573 Filtration',
+    maintenanceInterval: 'Periodic Filter Inspection',
     detailedSpecs: [
-      { label: 'Element Type', value: 'Sintered Bronze Matrix' },
-      { label: 'Drain System', value: 'Float-Operated Auto Drain' },
-      { label: 'Differential DP', value: '< 0.15 Bar Clean' },
-      { label: 'Bowl Material', value: 'Die-cast Aluminum Guard' }
+      { label: 'Primary Function', value: 'Removes dirt, dust, and solid particles' },
+      { label: 'System Role', value: 'Protects downstream pneumatic components' },
+      { label: 'Configuration', value: 'Dual-Stage Series Filtration' }
     ]
   },
   {
     id: 'stage-03',
     stageNumber: 3,
-    name: '03. Refrigerant Air Dryer',
-    subtitle: 'Vapor Condensation Loop',
-    description: 'Thermodynamically cools the compressed airstream to force moisture vapor to condense and exhaust through timed automatic solenoids, preventing corrosion in distribution pipes.',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCNkp_tWB02De15s5jEWLTAQ7Gfwy8r2ViWEFkrOp1qfwytOhW1cPzJHMvVMEu16xmF9aMGEQAD0Fb_z0de0sK1Kjfxex6gNdwIC2-UY8SwafPcbb2i3CDq-rtnZ-w-ymNTCStMmSxGMdHs4CFXa34h7ObZOJVmHfcaFkeU_TfM84TkS99OZX5dMeh-H50iNQ8iFZyQyRjUUWFv0kw2y6Mb1wafvU4yqLTqZLsGg2paR4vrYwiooug6_g',
-    images: [
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuCNkp_tWB02De15s5jEWLTAQ7Gfwy8r2ViWEFkrOp1qfwytOhW1cPzJHMvVMEu16xmF9aMGEQAD0Fb_z0de0sK1Kjfxex6gNdwIC2-UY8SwafPcbb2i3CDq-rtnZ-w-ymNTCStMmSxGMdHs4CFXa34h7ObZOJVmHfcaFkeU_TfM84TkS99OZX5dMeh-H50iNQ8iFZyQyRjUUWFv0kw2y6Mb1wafvU4yqLTqZLsGg2paR4vrYwiooug6_g',
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuAvmsEnCue6Pw3MdH5lwPbyLz-JrA856qbAo5F1lAokqxsWctBJ_cZNOzAnluJPLhg9s1rPs7X9OjkxWZK75AX4O7N4r2ckBzR5odf6T5Ns8YDs9Bd-NkUAhLWXzGCPIvT-ECKwlBewNt5EokFBiZ4rIbTEvoclusgF7YyYK3bOETBJtH51p35My2M4J6WCh-gCW-3wbaKVpLmQKQFe0Fm_fuZkxlhwymOaqriia4ygriZcH7Cyr4C0xQ',
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuAVtSg7VIRo9xczlgjZ9e6VOmfexqntrLiYRDDclgMXdADYGKa45XVtkYRHogtoqHZNUGNqmmal_ZECZl_4STILLQuvFizaeiIdl1A2yDzdjJBketPmVc89qllGQ_9Vo1AEzuouy8bw5ksOzC0tn2Lmn5sdw901T1VpIdgBm-Jmc-NFUiGZ_AR4Xs2lDIPqaChxro4TaiZ_jTTfrnb3FC2pIPmYv_Q5c1rQWUXnXUCclMq7v2yTqZVgJw'
-    ],
+    name: '03. Refrigerant Dryer',
+    subtitle: 'Moisture Condensation & Separation',
+    description: 'The refrigerant air dryer removes moisture from the compressed air by cooling it and collecting the water that forms. This helps prevent moisture buildup inside the pipes and protects the system components.',
+    image: '/images/image39.png',
+    images: ['/images/image39.png', '/images/image37.png'],
     imageCaptions: [
-      'Fig. 3.1 — Front control console of the refrigeration air drying unit',
-      'Fig. 3.2 — Counter-flow refrigerant heat exchanger piping module',
-      'Fig. 3.3 — Condensate separation trap and zero-loss solenoid dump valve'
+      'Figure 1 — Sullair SRC Industrial Refrigerant Air Dryer',
+      'Figure 2 — Refrigerant Dryer Nameplate & Operating Parameters'
     ],
-    metricLabel: 'Pressure Dew Point',
-    metricValue: '+3°C (37°F)',
-    isoStandard: 'ISO 8573-1 Class 4 Water Vapor',
-    maintenanceInterval: 'Quarterly Condenser Fin Cleaning',
+    metricLabel: 'Power Input',
+    metricValue: '0.92 kW / 6.2 A',
+    isoStandard: 'Class 4 Water Vapor',
+    maintenanceInterval: 'Condenser Cleaning & Auto Drain Verification',
     detailedSpecs: [
-      { label: 'Refrigerant', value: 'R134a Eco Ozone Safe' },
-      { label: 'Heat Exchanger', value: 'Stainless Plate Counter-flow' },
-      { label: 'Exhaust Solenoid', value: 'Timed Zero-Loss Electronic' },
-      { label: 'Nominal Flow', value: '3,000 L/min Rating' }
+      { label: 'Refrig. Circuit Design Press.', value: '1.3 MPag / 2.2 MPag (13 / 22 barg, 189 / 319 psig)' },
+      { label: 'Max Compressed Air Pressure', value: '1.6 MPag (16 barg, 232 psig)' },
+      { label: 'Max Compressed Air In Temp', value: '65 °C' },
+      { label: 'Ambient Temperature Range', value: '5 °C – 50 °C' },
+      { label: 'Power Input & Current', value: '0.92 kW / 6.2 A' },
+      { label: 'Refrig. Compressor Oil', value: 'ISO VG22 Ester' },
+      { label: 'Refrigerant Charge', value: 'R134a, 0.35 KG' },
+      { label: 'Protection Class', value: 'IP20' }
     ]
   },
   {
     id: 'stage-04',
     stageNumber: 4,
-    name: '04. Coalescing Filter 2',
-    subtitle: 'Sub-Micron Aerosol Scrub',
-    description: 'High-efficiency borosilicate microfiber matrix capturing residual sub-micron lubricating oil mists and fine particulates, purifying the stream to Class 1/2 standards.',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDMKZLBP4TbjuYO6VNR5MY4wbtPk9YuCWt36LpXkF3gDAYJC-YKQLbmZhYn1q63Dp966X3pxgOSAOEUtoLEkcsQICS0rmmjKvMsTvlKMfzIEQ4mqy9zd4aqDZ09i-GAk6RGvb9vQBRYBp5SDrWG9rqYPz6AfH1giAJ_0CH6YUg8f7UOGjNJx1CGJI7wcjfl9ghC9Fe_6zfaduwH6kUmFH46k7g6KikflWdq4kQSBBsMXHZ1WFjCvOiidA',
-    images: [
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuDMKZLBP4TbjuYO6VNR5MY4wbtPk9YuCWt36LpXkF3gDAYJC-YKQLbmZhYn1q63Dp966X3pxgOSAOEUtoLEkcsQICS0rmmjKvMsTvlKMfzIEQ4mqy9zd4aqDZ09i-GAk6RGvb9vQBRYBp5SDrWG9rqYPz6AfH1giAJ_0CH6YUg8f7UOGjNJx1CGJI7wcjfl9ghC9Fe_6zfaduwH6kUmFH46k7g6KikflWdq4kQSBBsMXHZ1WFjCvOiidA',
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuAlc1N9T0-J7Or28cvXzolZsQAaFK-sg1l5ti_IVzQ5Z0ZpyVVH3ZAO1groCs9VLpA9hoXljfBuvG3BrcGHPpz8d41K5uGkkndFQmKweLkLhW54vlyCxq-myBDm8VluBQWEo_0Nwac9olr8YhHX-lMUxVpJOkpeXPt4sNZTurCg-YmS4yf86DD9l1bJBYfDzixPAP-ri8P8xTRk7l5uhj2zXh7MNl16E7iMh7pxqf4OMdu_Puraz4Ct0g',
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuAvmsEnCue6Pw3MdH5lwPbyLz-JrA856qbAo5F1lAokqxsWctBJ_cZNOzAnluJPLhg9s1rPs7X9OjkxWZK75AX4O7N4r2ckBzR5odf6T5Ns8YDs9Bd-NkUAhLWXzGCPIvT-ECKwlBewNt5EokFBiZ4rIbTEvoclusgF7YyYK3bOETBJtH51p35My2M4J6WCh-gCW-3wbaKVpLmQKQFe0Fm_fuZkxlhwymOaqriia4ygriZcH7Cyr4C0xQ'
-    ],
+    name: '04. Air Receiver Tank',
+    subtitle: 'Pressure Buffer & Air Storage',
+    description: 'The air receiver tank stores compressed air and helps maintain a stable air supply when the system is in use. It also helps manage changes in air demand.',
+    image: '/images/image46.png',
+    images: ['/images/image46.png', '/images/image17.png'],
     imageCaptions: [
-      'Fig. 4.1 — Sub-micron borosilicate microfiber coalescing housing',
-      'Fig. 4.2 — Calibrated visual differential pressure status gauge',
-      'Fig. 4.3 — Oil aerosol interception filtration chamber'
+      'Figure 1 — 300L Vertical Pressure Air Receiver Tank',
+      'Figure 2 — Vessel Identification & Certification Plate'
     ],
-    metricLabel: 'Purity Class',
-    metricValue: '0.01 Micron',
-    isoStandard: 'ISO 8573-1:2010 Class 1:2:1',
-    maintenanceInterval: 'Bi-annual Element Core Replacement',
+    metricLabel: 'Capacity',
+    metricValue: '300 Liters',
+    isoStandard: 'Pressure Vessel Certification',
+    maintenanceInterval: 'Daily Bottom Condensate Drain',
     detailedSpecs: [
-      { label: 'Oil Carryover', value: '< 0.01 mg/m³ (0.01 ppm)' },
-      { label: 'Matrix', value: 'Pleated Borosilicate Glass' },
-      { label: 'DP Indicator', value: 'Color-Coded Dial Calibrated' },
-      { label: 'Efficiency', value: '99.999% Aerosol Arrestance' }
+      { label: 'Serial No.', value: '19043 AR' },
+      { label: 'Vessel Capacity', value: '300 Liters' },
+      { label: 'Working Pressure', value: '10 BARS' },
+      { label: 'Test Pressure', value: '15 BARS' }
     ]
   },
   {
     id: 'stage-05',
     stageNumber: 5,
-    name: '05. Air Receiver Tank',
-    subtitle: 'Pressure Dampening & Storage',
-    description: 'Vertical ASME pressure vessel equipped with calibrated relief valve, absorbing pneumatic pulse surges, dampening compressor cycles, and storing buffer capacity.',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAvmsEnCue6Pw3MdH5lwPbyLz-JrA856qbAo5F1lAokqxsWctBJ_cZNOzAnluJPLhg9s1rPs7X9OjkxWZK75AX4O7N4r2ckBzR5odf6T5Ns8YDs9Bd-NkUAhLWXzGCPIvT-ECKwlBewNt5EokFBiZ4rIbTEvoclusgF7YyYK3bOETBJtH51p35My2M4J6WCh-gCW-3wbaKVpLmQKQFe0Fm_fuZkxlhwymOaqriia4ygriZcH7Cyr4C0xQ',
-    images: [
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuAvmsEnCue6Pw3MdH5lwPbyLz-JrA856qbAo5F1lAokqxsWctBJ_cZNOzAnluJPLhg9s1rPs7X9OjkxWZK75AX4O7N4r2ckBzR5odf6T5Ns8YDs9Bd-NkUAhLWXzGCPIvT-ECKwlBewNt5EokFBiZ4rIbTEvoclusgF7YyYK3bOETBJtH51p35My2M4J6WCh-gCW-3wbaKVpLmQKQFe0Fm_fuZkxlhwymOaqriia4ygriZcH7Cyr4C0xQ',
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuAVtSg7VIRo9xczlgjZ9e6VOmfexqntrLiYRDDclgMXdADYGKa45XVtkYRHogtoqHZNUGNqmmal_ZECZl_4STILLQuvFizaeiIdl1A2yDzdjJBketPmVc89qllGQ_9Vo1AEzuouy8bw5ksOzC0tn2Lmn5sdw901T1VpIdgBm-Jmc-NFUiGZ_AR4Xs2lDIPqaChxro4TaiZ_jTTfrnb3FC2pIPmYv_Q5c1rQWUXnXUCclMq7v2yTqZVgJw',
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuDjKSZw4hvaidBnUxhWnkqFE3NP9RqovULVG4XW6U6NvKx4UZia88b_XSQQRsiDeqdoSsI5-0Nsmi7dLUVXAUCNPAuIpJyN9LOP_1PrDgY4bqrzndTLGkfnmPAHqygyzwtC3E12tlW3KRG15VgDXzlJwyQolf3A3C181dZcaKynkf6JI3CjoKNaueHDnmxsBkdCsuu7stFtVa-r8lVjb8KuiJ_ayWxudntYmqPKlNR4pHehQB8EnLhBOg'
-    ],
+    name: '05. Pressure Reducing Valve (PRV)',
+    subtitle: 'Overhead Pressure Regulation',
+    description: 'The pressure reducing valve (PRV) lowers and controls the air pressure before it enters the retractable hose reel and air blow gun. In our system, the PRV is set to 30 PSI to provide the needed air pressure for removing metal chips from machine surfaces.',
+    image: '/images/image28.png',
+    images: ['/images/image28.png'],
     imageCaptions: [
-      'Fig. 5.1 — 500-liter ASME certified vertical pressure buffer vessel',
-      'Fig. 5.2 — Spring-loaded 9.5 Bar pressure safety relief valve assembly',
-      'Fig. 5.3 — Bottom automated electronic drain port & base anchoring'
+      'Figure 1 — Overhead Pressure Reducing Valve (PRV) & Dual Bypass Line'
     ],
-    metricLabel: 'ASME Volume',
-    metricValue: '500 L / 132 Gal',
-    isoStandard: 'ASME BPVC Section VIII Div 1',
-    maintenanceInterval: 'Annual Ultrasonic Thickness & Hydro Test',
+    metricLabel: 'Set Pressure',
+    metricValue: '30 PSI',
+    isoStandard: 'OSHA 30 PSI Cleaning Guideline',
+    maintenanceInterval: 'Gauge Calibration & Pressure Verification',
     detailedSpecs: [
-      { label: 'Design Pressure', value: '11.0 Bar (160 PSI)' },
-      { label: 'Safety Relief Valve', value: 'Set at 9.5 Bar Certified' },
-      { label: 'Bottom Drain', value: 'Automatic Motorized Ball Valve' },
-      { label: 'Manhole Inspection', value: 'Standard Handhole Aperture' }
+      { label: 'Operating Set Point', value: '30 PSI (Calibrated Safe Working Pressure)' },
+      { label: 'Application', value: 'Metal chip removal from machine surfaces' },
+      { label: 'Installation', value: 'Overhead drop line before retractable hose reel' }
     ]
   },
   {
     id: 'stage-06',
     stageNumber: 6,
-    name: '06. Main Header Loop',
-    subtitle: 'Closed-Circuit Conduits',
-    description: 'Overhead powder-coated ISO blue ring manifold pitched at 1:100 slope to ensure balanced flow velocity without dead-ends or stagnant moisture pockets.',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAVtSg7VIRo9xczlgjZ9e6VOmfexqntrLiYRDDclgMXdADYGKa45XVtkYRHogtoqHZNUGNqmmal_ZECZl_4STILLQuvFizaeiIdl1A2yDzdjJBketPmVc89qllGQ_9Vo1AEzuouy8bw5ksOzC0tn2Lmn5sdw901T1VpIdgBm-Jmc-NFUiGZ_AR4Xs2lDIPqaChxro4TaiZ_jTTfrnb3FC2pIPmYv_Q5c1rQWUXnXUCclMq7v2yTqZVgJw',
-    images: [
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuAVtSg7VIRo9xczlgjZ9e6VOmfexqntrLiYRDDclgMXdADYGKa45XVtkYRHogtoqHZNUGNqmmal_ZECZl_4STILLQuvFizaeiIdl1A2yDzdjJBketPmVc89qllGQ_9Vo1AEzuouy8bw5ksOzC0tn2Lmn5sdw901T1VpIdgBm-Jmc-NFUiGZ_AR4Xs2lDIPqaChxro4TaiZ_jTTfrnb3FC2pIPmYv_Q5c1rQWUXnXUCclMq7v2yTqZVgJw',
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuDlv1QDaFofI2oJ7Y6xZ-oIL9_jUJNGqgPzEHkd4ETQ_KOheu-Z9imACNNh5gyGdSm-qyaQ0VyCWLONZy0z1j5sLqUaPxz4EWxUfaHhCMgO49RHVSb4tS0Oer9DkNvWjdRNNLw2ojExVDrwbWcbOSjMhgwxfuXZGP6utSmkui_yF3p3H_KnC6XH3uePyoOSZFB-dEnS2L5SzWDgz4YmbpPYYcZ7x43af7155oYSns5hNgQg-1uy-X7TVg',
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuDMKZLBP4TbjuYO6VNR5MY4wbtPk9YuCWt36LpXkF3gDAYJC-YKQLbmZhYn1q63Dp966X3pxgOSAOEUtoLEkcsQICS0rmmjKvMsTvlKMfzIEQ4mqy9zd4aqDZ09i-GAk6RGvb9vQBRYBp5SDrWG9rqYPz6AfH1giAJ_0CH6YUg8f7UOGjNJx1CGJI7wcjfl9ghC9Fe_6zfaduwH6kUmFH46k7g6KikflWdq4kQSBBsMXHZ1WFjCvOiidA'
-    ],
+    name: '06. Retractable Hose Reel',
+    subtitle: 'Pneumatic Hose Management',
+    description: 'The retractable hose reel holds the air hose and allows users to pull it out when needed. After use, the hose can be pulled back into the reel, keeping the work area neat and organized.',
+    image: '/images/image24.png',
+    images: ['/images/image24.png'],
     imageCaptions: [
-      'Fig. 6.1 — Overhead ISO Blue powder-coated main ring loop conduit',
-      'Fig. 6.2 — Rigid pipe joint clamping & ceiling suspension brackets',
-      'Fig. 6.3 — Ring loop pressure balancing & slope gradient junction'
+      'Figure 1 — Blue Spring-Loaded Auto Retractable Hose Reel'
     ],
-    metricLabel: 'Bore / Diameter',
-    metricValue: '1.0 Inch ISO Blue',
-    isoStandard: 'ISO 5024 Aluminum Alloy Pipe',
-    maintenanceInterval: 'Quarterly Ultrasonic Acoustic Leak Audit',
+    metricLabel: 'Mechanism',
+    metricValue: 'Spring Auto-Rewind',
+    isoStandard: 'Workshop 5S Organization',
+    maintenanceInterval: 'Hose Tension & Stopper Ball Check',
     detailedSpecs: [
-      { label: 'Topology', value: 'Closed-Loop Ring Geometry' },
-      { label: 'Slope Ratio', value: '1:100 toward Drainage Legs' },
-      { label: 'Material', value: 'Anodized Marine Alloy 6063' },
-      { label: 'Velocity', value: '< 6.0 m/s Flow Velocity' }
+      { label: 'Retraction Type', value: 'Automatic Spring Rewind with Ratchet Lock' },
+      { label: 'Hose Color / Material', value: 'High-Visibility Polyurethane Air Hose' },
+      { label: 'Safety Benefit', value: 'Prevents tripping hazards and floor damage' }
     ]
   },
   {
     id: 'stage-07',
     stageNumber: 7,
-    name: '07. Drop Leg Assemblies',
-    subtitle: 'Gooseneck Takeoffs & Regulators',
-    description: 'Overhead top takeoffs curving downward with sediment drip legs, individual quarter-turn brass ball shutoff valves, and calibrated station dial regulators.',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDlv1QDaFofI2oJ7Y6xZ-oIL9_jUJNGqgPzEHkd4ETQ_KOheu-Z9imACNNh5gyGdSm-qyaQ0VyCWLONZy0z1j5sLqUaPxz4EWxUfaHhCMgO49RHVSb4tS0Oer9DkNvWjdRNNLw2ojExVDrwbWcbOSjMhgwxfuXZGP6utSmkui_yF3p3H_KnC6XH3uePyoOSZFB-dEnS2L5SzWDgz4YmbpPYYcZ7x43af7155oYSns5hNgQg-1uy-X7TVg',
-    images: [
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuDlv1QDaFofI2oJ7Y6xZ-oIL9_jUJNGqgPzEHkd4ETQ_KOheu-Z9imACNNh5gyGdSm-qyaQ0VyCWLONZy0z1j5sLqUaPxz4EWxUfaHhCMgO49RHVSb4tS0Oer9DkNvWjdRNNLw2ojExVDrwbWcbOSjMhgwxfuXZGP6utSmkui_yF3p3H_KnC6XH3uePyoOSZFB-dEnS2L5SzWDgz4YmbpPYYcZ7x43af7155oYSns5hNgQg-1uy-X7TVg',
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuCoBa8cpAMTI6uStkbL3XpbeV8i5Hb3GsE1NEHAGNhmvhV3d-MyN4dpfjeABp6nnAPCpL-_ktFnXs2dUskWwmyS-1nwDyB1GqzvrSehIp4E47MKUEmjyHoDH_WNb48kHpUSrfNSk7UM0_BF8JkOrMQ-E9SWN2VRX1CexLju7vfLIMeM88SZNDSISMhWHyXTa3V6zIQC17h0pjtRGrSso3FgIgNR-CR54gavUwcsEO_IFuIWhAAy5uG7EQ',
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuAVtSg7VIRo9xczlgjZ9e6VOmfexqntrLiYRDDclgMXdADYGKa45XVtkYRHogtoqHZNUGNqmmal_ZECZl_4STILLQuvFizaeiIdl1A2yDzdjJBketPmVc89qllGQ_9Vo1AEzuouy8bw5ksOzC0tn2Lmn5sdw901T1VpIdgBm-Jmc-NFUiGZ_AR4Xs2lDIPqaChxro4TaiZ_jTTfrnb3FC2pIPmYv_Q5c1rQWUXnXUCclMq7v2yTqZVgJw'
-    ],
+    name: '07. Air Blow Gun',
+    subtitle: 'Targeted Surface Cleaning Tool',
+    description: 'The air blow gun directs compressed air toward machine surfaces to remove metal chips and debris after machining. It allows users to clean the machines more easily, while proper handling helps prevent chips from flying toward people.',
+    image: '/images/image8.png',
+    images: ['/images/image8.png'],
     imageCaptions: [
-      'Fig. 7.1 — Gooseneck overhead branch takeoff descending to machine station',
-      'Fig. 7.2 — Quarter-turn yellow isolation valve and dial pressure regulator',
-      'Fig. 7.3 — Moisture drip leg trap and bottom manual purge valve'
+      'Figure 1 — Precision Aluminum Pneumatic Air Blow Gun'
     ],
-    metricLabel: 'Network Drops',
-    metricValue: '6 Station Drops',
-    isoStandard: 'ASME B31.3 Process Piping',
-    maintenanceInterval: 'Monthly Valve Seal & Seat Inspection',
+    metricLabel: 'Operating Pressure',
+    metricValue: '30 PSI',
+    isoStandard: 'Shop Safety Standard',
+    maintenanceInterval: 'Nozzle Clearance & Trigger Seal Inspection',
     detailedSpecs: [
-      { label: 'Takeoff Style', value: '180° Gooseneck Overhead Saddle' },
-      { label: 'Isolation', value: '1/2" Full-Port Lockout Valve' },
-      { label: 'Moisture Trap', value: 'Bottom Reservoir Drip Leg' },
-      { label: 'Regulator', value: 'Lockable Tamper-Resistant Knob' }
-    ]
-  },
-  {
-    id: 'stage-08',
-    stageNumber: 8,
-    name: '08. Bench Couplers & Tools',
-    subtitle: 'Safety Disconnects & Blowguns',
-    description: 'Quick-release safety push-lock couplers delivering dry regulated air directly into tamper-proof OSHA safety chip-clearing blowguns and certified shop air tools.',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCoBa8cpAMTI6uStkbL3XpbeV8i5Hb3GsE1NEHAGNhmvhV3d-MyN4dpfjeABp6nnAPCpL-_ktFnXs2dUskWwmyS-1nwDyB1GqzvrSehIp4E47MKUEmjyHoDH_WNb48kHpUSrfNSk7UM0_BF8JkOrMQ-E9SWN2VRX1CexLju7vfLIMeM88SZNDSISMhWHyXTa3V6zIQC17h0pjtRGrSso3FgIgNR-CR54gavUwcsEO_IFuIWhAAy5uG7EQ',
-    images: [
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuCoBa8cpAMTI6uStkbL3XpbeV8i5Hb3GsE1NEHAGNhmvhV3d-MyN4dpfjeABp6nnAPCpL-_ktFnXs2dUskWwmyS-1nwDyB1GqzvrSehIp4E47MKUEmjyHoDH_WNb48kHpUSrfNSk7UM0_BF8JkOrMQ-E9SWN2VRX1CexLju7vfLIMeM88SZNDSISMhWHyXTa3V6zIQC17h0pjtRGrSso3FgIgNR-CR54gavUwcsEO_IFuIWhAAy5uG7EQ',
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuDlv1QDaFofI2oJ7Y6xZ-oIL9_jUJNGqgPzEHkd4ETQ_KOheu-Z9imACNNh5gyGdSm-qyaQ0VyCWLONZy0z1j5sLqUaPxz4EWxUfaHhCMgO49RHVSb4tS0Oer9DkNvWjdRNNLw2ojExVDrwbWcbOSjMhgwxfuXZGP6utSmkui_yF3p3H_KnC6XH3uePyoOSZFB-dEnS2L5SzWDgz4YmbpPYYcZ7x43af7155oYSns5hNgQg-1uy-X7TVg',
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuBV6zTsb_J32mjILs4u4vvDUenEwEXr_qYp_lJVN4xAORnvtLmP_zxzpSktZKlgZpWzKedEqlaSMMI8jYMU81MRVIojxWh1iUfJf6UOzuBPujzxRH6wkYbydtzZW5I9otI9iaTEuIJKfZLuNL6wL4uh2BuFgaibpdg2dKnS6fA_d0CHAwSALe2Cjv7YBhgRCGlmqBeIxVQZ_Hw7AMS5dz3AIO-fDW_sPfcFTPRdl0yvBQbTczBdJ-Irlg'
-    ],
-    imageCaptions: [
-      'Fig. 8.1 — Venting safety quick-disconnect coupler and whip-check restraint',
-      'Fig. 8.2 — OSHA-compliant venturi chip-clearing safety nozzle with side relief',
-      'Fig. 8.3 — High-pressure flexible safety air hose assembly at lathe station'
-    ],
-    metricLabel: 'Operating Range',
-    metricValue: '6.0 - 7.0 Bar',
-    isoStandard: 'OSHA 1910.242(b) & ISO 4414',
-    maintenanceInterval: 'Weekly Whip-Check & Sleeve Spring Check',
-    detailedSpecs: [
-      { label: 'Coupler Profile', value: 'ISO 6150-B Safety Venting' },
-      { label: 'Nozzle Standoff', value: '≥ 100 mm Minimum Clearance' },
-      { label: 'Venturi Venting', value: '< 30 PSI Deadhead Relief' },
-      { label: 'Whip-Check', value: 'Galvanized Steel Tether Cable' }
+      { label: 'Working Pressure', value: '30 PSI regulated by upstream PRV' },
+      { label: 'Recommended Standoff', value: 'Approximately 2 inches from surface' },
+      { label: 'Directional Protocol', value: 'Point nozzle away from self and others' }
     ]
   }
 ];

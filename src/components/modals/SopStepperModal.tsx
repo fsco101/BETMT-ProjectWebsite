@@ -58,9 +58,6 @@ export const SopStepperModal: React.FC<SopStepperModalProps> = ({ isOpen, onClos
         {/* Header */}
         <div className="p-4 sm:p-6 hairline-b flex items-center justify-between bg-[#F1EDE5] gap-3">
           <div className="flex items-center gap-2.5 sm:gap-3">
-            <span className="w-6 h-6 sm:w-7 sm:h-7 border border-charcoal-ink flex items-center justify-center font-editorial text-[10px] sm:text-xs shrink-0">
-              LM
-            </span>
             <div>
               <span className="text-[9px] sm:text-[10px] uppercase tracking-[0.18em] sm:tracking-[0.2em] text-subtle-ash block">
                 Interactive Safety Training Module

@@ -10,13 +10,12 @@ export const Header: React.FC<HeaderProps> = ({ onOpenEmergencyModal }) => {
   const { state } = usePneumatics();
 
   const navLinks = [
-    { label: 'Our Expertise', href: '#savoir-faire' },
-    { label: '8-Stage Circuit', href: '#pipeline' },
-    { label: 'Safety Protocols', href: '#protocoles' },
-    { label: '7-Step SOP', href: '#sop' },
-    { label: 'Air Drops (6)', href: '#sorties' },
+    { label: 'System Overview', href: '#system-overview' },
+    { label: 'System Components & Operation', href: '#system-components' },
+    { label: 'Safety Protocols', href: '#safety-protocols' },
+    { label: 'Standard Operating Procedure', href: '#sop' },
+    { label: 'Outlet Area', href: '#air-outlets' },
     { label: 'Video Demo', href: '#video-demo' },
-    { label: 'Lab Calculator', href: '#calculator' },
   ];
 
   const handleNavClick = () => {
@@ -27,25 +26,22 @@ export const Header: React.FC<HeaderProps> = ({ onOpenEmergencyModal }) => {
     <header className="w-full hairline-b sticky top-0 z-40 bg-[#F7F5F0]/95 backdrop-blur-md transition-all">
       <div className="w-full max-w-[1700px] mx-auto px-4 sm:px-8 lg:px-12 py-3.5 sm:py-4 flex xl:grid xl:grid-cols-[1fr_auto_1fr] items-center justify-between gap-4">
         
-        {/* Left: Monogram & Lab Title */}
+        {/* Left: TUP TAGUIG & Mechanical And Allied Department (LM removed) */}
         <div className="flex items-center justify-start shrink-0">
           <a href="#hero" className="flex items-center gap-2.5 sm:gap-3.5 group">
-            <span className="w-8 h-8 sm:w-9 sm:h-9 border border-charcoal-ink flex items-center justify-center font-editorial text-xs sm:text-sm tracking-widest text-charcoal-ink group-hover:bg-charcoal-ink group-hover:text-[#F7F5F0] transition-colors shrink-0">
-              LM
-            </span>
             <div className="flex flex-col">
-              <span className="font-editorial text-xs sm:text-sm md:text-base uppercase tracking-[0.16em] sm:tracking-[0.2em] text-charcoal-ink leading-tight">
+              <span className="font-editorial text-xs sm:text-sm md:text-base uppercase tracking-[0.16em] sm:tracking-[0.2em] text-charcoal-ink leading-tight font-medium">
                 TUP TAGUIG
               </span>
-              <span className="text-[8px] sm:text-[10px] uppercase tracking-[0.12em] sm:tracking-[0.14em] text-subtle-ash font-medium truncate max-w-[140px] sm:max-w-none">
-                Mechanical Machining Laboratory
+              <span className="text-[8px] sm:text-[10px] uppercase tracking-[0.12em] sm:tracking-[0.14em] text-subtle-ash font-medium truncate max-w-[180px] sm:max-w-none">
+                Mechanical And Allied Department
               </span>
             </div>
           </a>
         </div>
 
-        {/* Center: Desktop Navigation Links (Centered via 1fr/auto/1fr Grid) */}
-        <nav className="hidden xl:flex items-center justify-center space-x-5 2xl:space-x-8 text-[10px] 2xl:text-[11px] uppercase tracking-[0.14em] 2xl:tracking-[0.18em] text-muted-charcoal font-medium">
+        {/* Center: Desktop Navigation Links */}
+        <nav className="hidden xl:flex items-center justify-center space-x-5 2xl:space-x-7 text-[10px] 2xl:text-[11px] uppercase tracking-[0.14em] 2xl:tracking-[0.16em] text-muted-charcoal font-medium">
           {navLinks.map((link) => (
             <a
               key={link.href}
@@ -121,7 +117,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenEmergencyModal }) => {
             ))}
             <div className="pt-3 flex items-center justify-between text-[10px] text-subtle-ash">
               <span>Main Line: <strong className="font-semibold text-charcoal-ink">{state.mainHeaderPressure.toFixed(1)} Bar</strong></span>
-              <span>ISO 8573 Standard</span>
+              <span>30 PSI Operating Pressure</span>
             </div>
           </nav>
         </div>

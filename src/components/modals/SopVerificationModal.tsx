@@ -31,16 +31,13 @@ export const SopVerificationModal: React.FC<SopVerificationModalProps> = ({ isOp
         {/* Border Frame */}
         <div className="border sm:border-2 border-charcoal-ink p-4 sm:p-8 space-y-5 sm:space-y-6 relative">
           
-          {/* Header Monogram & Title */}
+          {/* Header Title */}
           <div className="flex flex-col items-center">
-            <span className="w-8 h-8 sm:w-10 sm:h-10 border border-charcoal-ink flex items-center justify-center font-editorial text-xs sm:text-sm tracking-widest text-charcoal-ink mb-2 sm:mb-3">
-              LM
-            </span>
-            <span className="text-[8px] sm:text-[10px] uppercase tracking-[0.2em] sm:tracking-[0.25em] text-subtle-ash">
+            <span className="text-[9px] sm:text-[11px] uppercase tracking-[0.2em] sm:tracking-[0.25em] text-subtle-ash font-medium">
               Technological University of the Philippines — Taguig Campus
             </span>
             <span className="text-[8px] sm:text-[9px] uppercase tracking-[0.16em] sm:tracking-[0.2em] text-muted-charcoal mt-0.5">
-              Mechanical &amp; Allied Department · Machining Facility
+              Mechanical And Allied Department
             </span>
             <h3 className="font-editorial text-xl sm:text-2xl md:text-3xl uppercase tracking-wider text-charcoal-ink mt-3 sm:mt-4">
               SAFETY COMPLIANCE PASS

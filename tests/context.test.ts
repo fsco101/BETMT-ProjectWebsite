@@ -13,7 +13,7 @@ describe('Pneumatic Digital Twin Reducer', () => {
   it('toggles valve open and calculates actual station pressure & flow demand', () => {
     const s1 = pneumaticReducer(initialPneumaticState, { type: 'TOGGLE_VALVE', stationId: 'outlet-01' });
     expect(s1.stations['outlet-01'].isOpen).toBe(true);
-    expect(s1.stations['outlet-01'].actualPressureBar).toBe(6.2);
+    expect(s1.stations['outlet-01'].actualPressureBar).toBe(initialPneumaticState.stations['outlet-01'].regulatorBar);
     expect(s1.totalScfm).toBeGreaterThan(0);
 
     // Toggle closed returns pressure to 0

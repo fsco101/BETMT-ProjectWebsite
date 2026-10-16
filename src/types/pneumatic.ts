@@ -18,9 +18,12 @@ export interface DropStation {
   id: string;
   stationNumber: number;
   name: string;
-  zone: 'Zone A' | 'Zone B' | 'Zone C';
-  zoneLabel: string;
-  description: string;
+  zone: string;
+  zoneLabel?: string;
+  area: string;
+  requiredPsi: string;
+  use: string;
+  description?: string;
   image: string;
   valveType: string;
   couplingType: string;
@@ -37,7 +40,7 @@ export interface SafetyProtocolItem {
   number: string;
   title: string;
   summary: string;
-  image: string;
+  image?: string;
   badge: string;
   protocolRef: string;
   detailTitle: string;
@@ -49,9 +52,12 @@ export interface SafetyProtocolItem {
 export interface SopStep {
   id: string;
   stepNumber: number;
+  category: string;
   title: string;
   description: string;
   image: string;
+  images?: string[];
+  imageCaptions?: string[];
   badgePrimary: string;
   badgeSecondary: string;
   verificationCriteria: string;

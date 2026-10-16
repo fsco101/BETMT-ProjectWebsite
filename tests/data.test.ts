@@ -1,47 +1,53 @@
 import { describe, it, expect } from 'vitest';
 import { circuitStages } from '../src/data/circuitStages';
 import { dropStations } from '../src/data/dropStations';
-import { mandatoryPractices, strictProhibitions } from '../src/data/safetyProtocols';
+import { mandatoryPractices, strictProhibitions, requiredPpeList } from '../src/data/safetyProtocols';
 import { sopSteps } from '../src/data/sopSteps';
-import { facultyMembers } from '../src/data/facultyData';
 
 describe('Centralized Data Layer Fixtures', () => {
-  it('contains exactly 8 circuit stages with valid stage numbers', () => {
-    expect(circuitStages).toHaveLength(8);
-    expect(circuitStages.map(s => s.stageNumber)).toEqual([1, 2, 3, 4, 5, 6, 7, 8]);
+  it('contains exactly 7 circuit stages with valid stage numbers', () => {
+    expect(circuitStages).toHaveLength(7);
+    expect(circuitStages.map(s => s.stageNumber)).toEqual([1, 2, 3, 4, 5, 6, 7]);
     circuitStages.forEach(stage => {
       expect(stage.name).toBeTruthy();
       expect(stage.metricValue).toBeTruthy();
       expect(stage.detailedSpecs.length).toBeGreaterThan(0);
+      expect(stage.image).toBeTruthy();
     });
   });
 
-  it('contains 6 drop stations properly distributed across zones', () => {
+  it('contains 6 drop stations properly distributed across workshop zones', () => {
     expect(dropStations).toHaveLength(6);
     expect(dropStations.map(d => d.stationNumber)).toEqual([1, 2, 3, 4, 5, 6]);
     const zones = new Set(dropStations.map(d => d.zone));
-    expect(zones.has('Zone A')).toBe(true);
-    expect(zones.has('Zone B')).toBe(true);
-    expect(zones.has('Zone C')).toBe(true);
+    expect(zones.has('Workshop Area')).toBe(true);
+    expect(zones.has('CNC Area')).toBe(true);
+    expect(zones.has('Advance Machining Area')).toBe(true);
+
+    dropStations.forEach(station => {
+      expect(station.area).toBeTruthy();
+      expect(station.requiredPsi).toBeTruthy();
+      expect(station.use).toBeTruthy();
+      expect(station.image).toBeTruthy();
+    });
   });
 
-  it('contains 4 mandatory DO practices and 4 strict DON\'T prohibitions', () => {
-    expect(mandatoryPractices).toHaveLength(4);
-    expect(strictProhibitions).toHaveLength(4);
+  it('contains 9 mandatory DO practices and 9 strict DON\'T prohibitions plus PPE items', () => {
+    expect(mandatoryPractices).toHaveLength(9);
+    expect(strictProhibitions).toHaveLength(9);
+    expect(requiredPpeList).toHaveLength(5);
     expect(mandatoryPractices.every(p => !p.isProhibition)).toBe(true);
     expect(strictProhibitions.every(p => p.isProhibition)).toBe(true);
   });
 
-  it('contains 7 sequential SOP steps', () => {
-    expect(sopSteps).toHaveLength(7);
-    expect(sopSteps.map(s => s.stepNumber)).toEqual([1, 2, 3, 4, 5, 6, 7]);
-  });
-
-  it('contains 3 faculty members with roles and credentials', () => {
-    expect(facultyMembers).toHaveLength(3);
-    facultyMembers.forEach(f => {
-      expect(f.name).toBeTruthy();
-      expect(f.credentials).toBeTruthy();
-    });
+  it('contains 15 sequential SOP steps across 3 categories', () => {
+    expect(sopSteps).toHaveLength(15);
+    expect(sopSteps.map(s => s.stepNumber)).toEqual([
+      1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
+    ]);
+    const categories = new Set(sopSteps.map(s => s.category));
+    expect(categories.has('A. COMPRESSOR START UP')).toBe(true);
+    expect(categories.has('B. OPERATING PROCEDURE')).toBe(true);
+    expect(categories.has('D. SHUTTING DOWN AND STORING')).toBe(true);
   });
 });

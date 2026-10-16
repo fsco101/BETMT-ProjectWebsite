@@ -6,34 +6,34 @@ import { ValveLever } from '../ui/ValveLever';
 
 export const DropsSection: React.FC = () => {
   const [selectedZone, setSelectedZone] = useState<string>('All');
-  const { state, toggleValve, setStationPressure, toggleWhipCheck, toggleToolConnection } = usePneumatics();
+  const { state, toggleValve, setStationPressure } = usePneumatics();
 
-  const zones = ['All', 'Zone A', 'Zone B', 'Zone C'];
+  const zones = ['All', 'Workshop Area', 'CNC Area', 'Advance Machining Area'];
 
   const filteredStations = selectedZone === 'All'
     ? dropStations
     : dropStations.filter(s => s.zone === selectedZone);
 
   return (
-    <section id="sorties" className="py-20 sm:py-28 lg:py-32 px-4 sm:px-8 lg:px-12 bg-[#F1EDE5] hairline-t hairline-b">
+    <section id="air-outlets" className="py-20 sm:py-28 lg:py-32 px-4 sm:px-8 lg:px-12 bg-[#F1EDE5] hairline-t hairline-b">
       <div className="max-w-7xl mx-auto">
         
-        {/* Header */}
+        {/* Header - DISTRIBUTION NETWORK (6 DROPS) Changed to AIR OUTLETS */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 sm:mb-12 pb-6 hairline-b">
           <div>
-            <span className="text-[10px] uppercase tracking-[0.25em] text-subtle-ash block mb-2">
-              Manifold &amp; Drop Routing Map
+            <span className="text-[10px] sm:text-[11px] uppercase tracking-[0.25em] text-subtle-ash block mb-2 font-medium">
+              DISTRIBUTION OUTLETS
             </span>
             <h2 className="font-editorial text-2xl sm:text-4xl md:text-5xl uppercase tracking-[0.03em] text-charcoal-ink">
-              DISTRIBUTION NETWORK (6 DROPS)
+              AIR OUTLETS
             </h2>
           </div>
-          <div className="mt-3 sm:mt-0 text-[10px] sm:text-[11px] uppercase tracking-[0.16em] sm:tracking-[0.18em] text-subtle-ash">
-            CAD Schematic: TUPT-MECH-AIR-DWG-002
+          <div className="mt-3 sm:mt-0 text-[10px] sm:text-[11px] uppercase tracking-[0.16em] sm:tracking-[0.18em] text-muted-charcoal">
+            Mechanical &amp; Allied Workshop Drops (6 Stations)
           </div>
         </div>
 
-        {/* Zone Filter Tabs */}
+        {/* Filter Network Tabs: ALL OUTLET (6) | WORKSHOP AREA | CNC AREA | ADVANCE MACHINING AREA */}
         <div className="flex flex-wrap items-center gap-2 mb-8 sm:mb-10 pb-4">
           <span className="text-[9px] sm:text-[10px] uppercase tracking-[0.18em] text-subtle-ash mr-1 sm:mr-2">Filter Network:</span>
           {zones.map((zone) => (
@@ -41,18 +41,18 @@ export const DropsSection: React.FC = () => {
               key={zone}
               type="button"
               onClick={() => setSelectedZone(zone)}
-              className={`px-2.5 sm:px-3 py-1 sm:py-1.5 text-[9px] sm:text-[10px] uppercase tracking-[0.16em] sm:tracking-[0.18em] transition-all border ${
+              className={`px-3 sm:px-4 py-1.5 sm:py-2 text-[9px] sm:text-[10px] uppercase tracking-[0.16em] sm:tracking-[0.18em] transition-all border font-medium ${
                 selectedZone === zone
                   ? 'bg-charcoal-ink text-[#FAF9F5] border-charcoal-ink'
                   : 'bg-[#FAF9F5] text-muted-charcoal border-hairline-divider hover:border-charcoal-ink'
               }`}
             >
-              {zone === 'All' ? 'All Outlets (6)' : zone}
+              {zone === 'All' ? 'ALL OUTLET (6)' : zone}
             </button>
           ))}
         </div>
 
-        {/* 6 Drops Interactive Grid: 1 col on mobile, 2 cols on tablet/iPad, 3 cols on desktop */}
+        {/* 6 Outlets Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {filteredStations.map((station) => {
             const liveState = state.stations[station.id] || {
@@ -70,16 +70,15 @@ export const DropsSection: React.FC = () => {
                 className="hairline-all bg-[#FAF9F5] p-5 sm:p-7 flex flex-col justify-between group hover:shadow-md transition-all relative"
               >
                 <div>
-                  
-                  {/* Photo Frame */}
-                  <div className="relative aspect-[16/10] overflow-hidden hairline-all bg-[#ECE8DF] mb-4 sm:mb-5">
+                  {/* Photo Frame with Actual Lab Photos */}
+                  <div className="relative aspect-[4/3] overflow-hidden hairline-all bg-[#ECE8DF] mb-4 sm:mb-5">
                     <img
                       src={station.image}
                       alt={station.name}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                    <div className="absolute top-2 left-2 bg-charcoal-ink/80 text-white text-[8px] sm:text-[9px] uppercase tracking-wider px-2 py-0.5">
-                      Outlet #0{station.stationNumber}
+                    <div className="absolute top-2 left-2 bg-charcoal-ink/85 text-white text-[9px] uppercase tracking-wider px-2.5 py-0.5 font-medium">
+                      {station.name}
                     </div>
                     {liveState.isOpen && (
                       <div className="absolute top-2 right-2 bg-emerald-800 text-white text-[8px] sm:text-[9px] uppercase tracking-wider px-2 py-0.5 animate-pulse">
@@ -88,103 +87,77 @@ export const DropsSection: React.FC = () => {
                     )}
                   </div>
 
-                  <span className="text-[10px] uppercase tracking-[0.2em] text-subtle-ash block mb-1">
-                    {station.zoneLabel}
-                  </span>
-                  <h3 className="font-editorial text-lg sm:text-xl uppercase text-charcoal-ink mb-1.5 sm:mb-2">
+                  {/* Title */}
+                  <h3 className="font-editorial text-xl sm:text-2xl uppercase tracking-wider text-charcoal-ink mb-3">
                     {station.name}
                   </h3>
-                  <p className="text-xs text-muted-charcoal font-light leading-relaxed mb-4">
-                    {station.description}
-                  </p>
 
-                  {/* Machine Tool Specs */}
-                  <div className="space-y-1.5 text-[11px] text-muted-charcoal font-light bg-[#F4F0E8] p-3 sm:p-3.5 hairline-all mb-4">
-                    <div><strong className="font-medium text-charcoal-ink">Valve:</strong> {station.valveType}</div>
-                    <div><strong className="font-medium text-charcoal-ink">Coupling:</strong> {station.couplingType}</div>
-                    <div><strong className="font-medium text-charcoal-ink">Service:</strong> {station.connectedEquipment}</div>
+                  {/* Box Content matching docx requirements */}
+                  <div className="bg-[#F4F0E8] p-4 border border-hairline-divider space-y-2 mb-5">
+                    <div className="flex justify-between items-baseline text-xs pb-1.5 border-b border-hairline-divider/60">
+                      <span className="text-[10px] uppercase tracking-[0.16em] text-subtle-ash font-medium">AREA:</span>
+                      <strong className="text-charcoal-ink font-semibold">{station.area}</strong>
+                    </div>
+                    <div className="flex justify-between items-baseline text-xs pb-1.5 border-b border-hairline-divider/60">
+                      <span className="text-[10px] uppercase tracking-[0.16em] text-subtle-ash font-medium">REQUIRED PSI:</span>
+                      <strong className="text-charcoal-ink font-semibold">{station.requiredPsi}</strong>
+                    </div>
+                    <div className="flex justify-between items-baseline text-xs">
+                      <span className="text-[10px] uppercase tracking-[0.16em] text-subtle-ash font-medium">USE:</span>
+                      <strong className="text-charcoal-ink font-semibold">{station.use}</strong>
+                    </div>
                   </div>
 
-                  {/* Interactive Digital Twin Controls */}
-                  <div className="p-3.5 sm:p-4 bg-[#FAF9F5] border border-hairline-divider space-y-3.5 sm:space-y-4">
-                    <div className="text-[9px] sm:text-[10px] uppercase tracking-[0.16em] sm:tracking-[0.18em] text-subtle-ash font-medium pb-2 border-b hairline-b flex items-center justify-between">
-                      <span>Station Controls</span>
-                      <span className={liveState.isOpen ? 'text-emerald-800 font-semibold' : 'text-subtle-ash'}>
-                        {liveState.isOpen ? 'FLOWING' : 'ISOLATED'}
+                  {/* Interactive Controls & Gauges */}
+                  <div className="hairline-t pt-4 grid grid-cols-2 gap-4 items-center mb-4">
+                    <div className="flex flex-col items-center">
+                      <span className="text-[9px] uppercase tracking-[0.18em] text-subtle-ash mb-1">
+                        Supply Valve
                       </span>
-                    </div>
-
-                    {/* Gauges & Valve Lever row */}
-                    <div className="flex items-center justify-around gap-2 pt-1">
-                      <GaugeDial
-                        currentPressureBar={liveState.actualPressureBar}
-                        nominalPressureBar={station.nominalPressureBar}
-                        size={95}
-                      />
                       <ValveLever
                         isOpen={liveState.isOpen}
-                        onToggle={() => toggleValve(station.id)}
                         disabled={state.isEmergencyDepressurized}
+                        onToggle={() => toggleValve(station.id)}
                       />
                     </div>
 
-                    {/* Local Regulator Pressure Slider */}
-                    <div className="space-y-1 pt-1.5">
-                      <div className="flex justify-between text-[10px] text-muted-charcoal">
-                        <span>Station Regulator:</span>
-                        <strong className="font-medium text-charcoal-ink">
-                          {liveState.regulatorBar.toFixed(1)} Bar
-                        </strong>
+                    <div className="flex flex-col items-center">
+                      <span className="text-[9px] uppercase tracking-[0.18em] text-subtle-ash mb-1">
+                        Downstream Pressure
+                      </span>
+                      <GaugeDial
+                        pressureBar={liveState.actualPressureBar}
+                        maxBar={8.0}
+                        nominalBar={station.nominalPressureBar}
+                        label="BAR"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Pressure Slider (when valve is open) */}
+                  {liveState.isOpen && !state.isEmergencyDepressurized && (
+                    <div className="mt-3 p-2.5 bg-white border border-hairline-divider">
+                      <div className="flex justify-between text-[9px] uppercase tracking-wider text-subtle-ash mb-1">
+                        <span>Regulator Setting</span>
+                        <span className="font-semibold text-charcoal-ink">{liveState.regulatorBar.toFixed(1)} Bar</span>
                       </div>
                       <input
                         type="range"
-                        min="0"
-                        max="8"
+                        min="1.0"
+                        max={station.maxPressureBar}
                         step="0.1"
                         value={liveState.regulatorBar}
                         onChange={(e) => setStationPressure(station.id, parseFloat(e.target.value))}
-                        disabled={state.isEmergencyDepressurized}
-                        className="w-full accent-charcoal-ink cursor-pointer"
+                        className="w-full accent-charcoal-ink h-1 cursor-pointer"
                       />
                     </div>
-
-                    {/* Safety Whip-Check & Quick Coupler Toggles */}
-                    <div className="flex items-center justify-between gap-2 pt-1 text-[9px] sm:text-[10px]">
-                      <button
-                        type="button"
-                        onClick={() => toggleWhipCheck(station.id)}
-                        className={`px-2 py-1 border transition-colors truncate max-w-[50%] ${
-                          liveState.whipCheckEngaged
-                            ? 'bg-emerald-50 text-emerald-800 border-emerald-300'
-                            : 'bg-red-50 text-accent-crimson border-red-300'
-                        }`}
-                        title="Toggle safety whip-check cable engagement"
-                      >
-                        {liveState.whipCheckEngaged ? 'Whip Check ✓' : 'Whip Check OFF ⚠'}
-                      </button>
-
-                      <button
-                        type="button"
-                        onClick={() => toggleToolConnection(station.id)}
-                        className={`px-2 py-1 border transition-colors truncate max-w-[50%] ${
-                          liveState.toolConnected
-                            ? 'bg-slate-100 text-charcoal-ink border-hairline-divider'
-                            : 'bg-amber-50 text-amber-800 border-amber-300'
-                        }`}
-                        title="Toggle tool quick disconnect fitting"
-                      >
-                        {liveState.toolConnected ? 'Tool Locked' : 'Disconnected'}
-                      </button>
-                    </div>
-
-                  </div>
-
+                  )}
                 </div>
 
-                {/* Footer Sub-Manifold isolation */}
-                <div className="mt-5 sm:mt-6 pt-3 sm:pt-4 hairline-t text-[10px] uppercase tracking-[0.14em] sm:tracking-[0.16em] text-subtle-ash flex justify-between">
-                  <span>Isolation</span>
-                  <span className="text-charcoal-ink font-medium">{station.isolationManifold}</span>
+                {/* Connection Specs Footer */}
+                <div className="mt-4 pt-3 hairline-t text-[9px] sm:text-[10px] uppercase tracking-[0.14em] text-subtle-ash flex justify-between items-center">
+                  <span>{station.valveType}</span>
+                  <span className="text-emerald-800 font-medium">Ready</span>
                 </div>
               </div>
             );

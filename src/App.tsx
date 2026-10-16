@@ -8,8 +8,6 @@ import { SafetyProtocolsSection } from './components/sections/SafetyProtocolsSec
 import { SopSection } from './components/sections/SopSection';
 import { DropsSection } from './components/sections/DropsSection';
 import { VideoSection } from './components/sections/VideoSection';
-import { CalculatorSection } from './components/sections/CalculatorSection';
-import { FacultySection } from './components/sections/FacultySection';
 import { Footer } from './components/layout/Footer';
 import { EmergencyModal } from './components/modals/EmergencyModal';
 
@@ -18,7 +16,7 @@ const AppContent: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-[#F7F5F0] text-[#1C1B1A] flex flex-col selection:bg-[#E8E2D7] selection:text-[#1C1B1A]">
-      {/* Top Sticky Editorial Navigation Bar */}
+      {/* Top Sticky Navigation Bar */}
       <Header onOpenEmergencyModal={() => setEmergencyModalOpen(true)} />
 
       {/* Main Narrative Flow */}
@@ -26,29 +24,23 @@ const AppContent: React.FC = () => {
         {/* 1. Hero Section */}
         <HeroSection />
 
-        {/* 2. Expertise: Fluid Distribution */}
+        {/* 2. System Overview */}
         <ExpertiseSection />
 
-        {/* 3. The 8-Stage Air Distribution Circuit (with technical drawer) */}
+        {/* 3. System Components & How the System Works */}
         <CircuitSection />
 
-        {/* 4. Safety Standards & Operating Protocols (DO & DON'T with search) */}
+        {/* 4. Safety Standards & Operating Protocols (DO & DON'T with PPE) */}
         <SafetyProtocolsSection />
 
-        {/* 5. 7-Step Operating Procedure (SOP with interactive stepper & cert pass) */}
+        {/* 5. Standard Operating Procedure (15-Step Illustrated Protocol) */}
         <SopSection />
 
-        {/* 6. Distribution Network (6 Drops Live Simulator with Analog Gauges) */}
+        {/* 6. Air Outlets (6 Workshop Drops with Live Controls) */}
         <DropsSection />
 
-        {/* 7. Workshop Video Demonstration (with clickable chapter scrubbing) */}
+        {/* 7. Workshop Video Demonstration */}
         <VideoSection />
-
-        {/* 8. Fluid Engineering Lab Calculator */}
-        <CalculatorSection />
-
-        {/* 9. Laboratory Technicians & Faculty */}
-        <FacultySection />
       </main>
 
       {/* Editorial Lab Footer */}

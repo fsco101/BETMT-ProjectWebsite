@@ -1,68 +1,178 @@
 import { SafetyProtocolItem } from '../types/pneumatic';
 
+export interface RequiredPpeItem {
+  id: string;
+  name: string;
+  description: string;
+  icon: string;
+}
+
+export const requiredPpeList: RequiredPpeItem[] = [
+  {
+    id: 'ppe-1',
+    name: 'Safety Glasses',
+    description: 'ANSI Z87.1 certified eye protection with side shields to guard against flying metal chips and high-velocity debris.',
+    icon: 'visibility'
+  },
+  {
+    id: 'ppe-2',
+    name: 'Safety Footwear',
+    description: 'Closed-toe steel-toe or reinforced safety shoes to protect against heavy tools, workpieces, and tripping hazards.',
+    icon: 'footwear'
+  },
+  {
+    id: 'ppe-3',
+    name: 'Close-Fitting Work Clothing',
+    description: 'Properly fitting workshop attire without loose fabric, ties, or unbuttoned sleeves that could snag on machinery.',
+    icon: 'checkroom'
+  },
+  {
+    id: 'ppe-4',
+    name: 'No Accessories',
+    description: 'Remove all rings, bracelets, watches, necklaces, and jewelry prior to operating pneumatic tools or machine tools.',
+    icon: 'block'
+  },
+  {
+    id: 'ppe-5',
+    name: 'Clean Bun (for girls)',
+    description: 'Tie long hair securely in a neat, clean bun or cap to keep hair completely away from rotating spindles and hoses.',
+    icon: 'face'
+  }
+];
+
 export const mandatoryPractices: SafetyProtocolItem[] = [
   {
     id: 'do-1',
     number: '01',
-    title: 'Mandatory Personal Protective Equipment',
-    summary: 'Always wear certified ANSI Z87.1 impact-resistant safety glasses with side shields, hearing protection earmuffs, and shop coat prior to touching pneumatic valves or line connections.',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDjKSZw4hvaidBnUxhWnkqFE3NP9RqovULVG4XW6U6NvKx4UZia88b_XSQQRsiDeqdoSsI5-0Nsmi7dLUVXAUCNPAuIpJyN9LOP_1PrDgY4bqrzndTLGkfnmPAHqygyzwtC3E12tlW3KRG15VgDXzlJwyQolf3A3C181dZcaKynkf6JI3CjoKNaueHDnmxsBkdCsuu7stFtVa-r8lVjb8KuiJ_ayWxudntYmqPKlNR4pHehQB8EnLhBOg',
+    title: 'Wear the required PPE',
+    summary: 'Always wear safety goggles and other required protective equipment to protect yourself from flying metal chips and debris during cleaning.',
     badge: 'Mandatory PPE',
-    protocolRef: 'Standard Operating Protocol 1.1',
-    detailTitle: 'High-Velocity Particle & Acoustic Containment',
-    detailBody: 'Operating at 6.0–7.0 Bar generates high-velocity airborne swarf, carbide debris, and localized noise levels exceeding 92 dBA. Polycarbonate eyewear prevents corneal laceration, while dual-earcup acoustic dampers mitigate hearing injury.',
+    protocolRef: 'Directive 01',
+    detailTitle: 'Eye & Body Protection Against Swarf',
+    detailBody: 'High-speed air causes metal particles, swarf, and coolant mist to ricochet unpredictably. Proper PPE ensures complete physical defense for eyes, face, and skin.',
     tags: [
-      { label: 'Standard: ANSI Z87.1' },
-      { label: 'Acoustic Guard: NRR 28dB' },
-      { label: 'Status: Active', highlight: true }
+      { label: 'PPE Compliance' },
+      { label: 'Status: Mandatory', highlight: true }
     ],
     isProhibition: false
   },
   {
     id: 'do-2',
     number: '02',
-    title: 'Pre-Flight Line & Hose Integrity Check',
-    summary: 'Inspect full polyurethane hose length for cuts, abrasions, bubbles, or soft bulges. Confirm the steel safety whip-check cable is properly tethered across connector couplers.',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCoBa8cpAMTI6uStkbL3XpbeV8i5Hb3GsE1NEHAGNhmvhV3d-MyN4dpfjeABp6nnAPCpL-_ktFnXs2dUskWwmyS-1nwDyB1GqzvrSehIp4E47MKUEmjyHoDH_WNb48kHpUSrfNSk7UM0_BF8JkOrMQ-E9SWN2VRX1CexLju7vfLIMeM88SZNDSISMhWHyXTa3V6zIQC17h0pjtRGrSso3FgIgNR-CR54gavUwcsEO_IFuIWhAAy5uG7EQ',
-    badge: 'Pre-Flight Check',
-    protocolRef: 'Standard Operating Protocol 1.2',
-    detailTitle: 'Mechanical Hose Fatigue & Coupler Locking',
-    detailBody: 'Tears or microscopic fatigue pinholes under 100 PSI pressure can propagate into catastrophic burst fractures within milliseconds. The galvanized steel whip-check prevents whip lash injury if a coupling separates.',
+    title: 'Inspect the hose & fittings before use',
+    summary: 'Inspect the pipes, hoses, and connections to make sure they are properly secured and free from visible damage or air leaks.',
+    badge: 'Inspection',
+    protocolRef: 'Directive 02',
+    detailTitle: 'Integrity Check Before Pressurization',
+    detailBody: 'Check all hose lengths and couplings for cracks, fraying, loose clamp bolts, or acoustic hissing. Never operate a damaged pneumatic line.',
     tags: [
-      { label: 'Burst Rating: 20 Bar' },
-      { label: 'Cable: Galv Steel' }
+      { label: 'Pre-Check' },
+      { label: 'Zero Leakage' }
     ],
     isProhibition: false
   },
   {
     id: 'do-3',
     number: '03',
-    title: 'Safe Operating Distance & Chip Deflection',
-    summary: 'Maintain a minimum nozzle standoff distance of 100 mm (4 inches) from parts. Position chip shield deflectors downward toward catch trays; never blast shavings across walkways.',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDlv1QDaFofI2oJ7Y6xZ-oIL9_jUJNGqgPzEHkd4ETQ_KOheu-Z9imACNNh5gyGdSm-qyaQ0VyCWLONZy0z1j5sLqUaPxz4EWxUfaHhCMgO49RHVSb4tS0Oer9DkNvWjdRNNLw2ojExVDrwbWcbOSjMhgwxfuXZGP6utSmkui_yF3p3H_KnC6XH3uePyoOSZFB-dEnS2L5SzWDgz4YmbpPYYcZ7x43af7155oYSns5hNgQg-1uy-X7TVg',
-    badge: 'Operating Distance',
-    protocolRef: 'Standard Operating Protocol 1.3',
-    detailTitle: 'Deflection Physics & Chip Recoil Prevention',
-    detailBody: 'Holding nozzles closer than 100 mm creates backpressure that ricochets razor-sharp metal turnings straight back toward the operator\'s face and arms. Shield discs direct airflow downward.',
+    title: 'Connect the tool securely',
+    summary: 'Make sure the air blow gun is properly connected to the hose before use to prevent accidental disconnection and air leaks.',
+    badge: 'Secure Lock',
+    protocolRef: 'Directive 03',
+    detailTitle: 'Quick-Disconnect Sleeve Verification',
+    detailBody: 'Pull back the coupler sleeve, firmly insert the male tool plug until it seats with an audible click, and return the sleeve to locked position.',
     tags: [
-      { label: 'Standoff: ≥ 100 mm' },
-      { label: 'Deflector: Polycarbonate' }
+      { label: 'Coupling: Positive Snap' },
+      { label: 'Sleeve Engaged' }
     ],
     isProhibition: false
   },
   {
     id: 'do-4',
     number: '04',
-    title: 'Complete Line Depressurization & OSHA Blowguns',
-    summary: 'Use only OSHA-compliant safety blowguns (<30 PSI). Always close the drop shutoff valve and squeeze blowgun trigger until line pressure reaches 0 PSI before disconnecting quick fittings.',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAlc1N9T0-J7Or28cvXzolZsQAaFK-sg1l5ti_IVzQ5Z0ZpyVVH3ZAO1groCs9VLpA9hoXljfBuvG3BrcGHPpz8d41K5uGkkndFQmKweLkLhW54vlyCxq-myBDm8VluBQWEo_0Nwac9olr8YhHX-lMUxVpJOkpeXPt4sNZTurCg-YmS4yf86DD9l1bJBYfDzixPAP-ri8P8xTRk7l5uhj2zXh7MNl16E7iMh7pxqf4OMdu_Puraz4Ct0g',
-    badge: 'Depressurization',
-    protocolRef: 'Standard Operating Protocol 1.4',
-    detailTitle: 'Stored Kinetic Discharge & 5S Coiling',
-    detailBody: 'Disconnecting pressurized couplings releases explosive backflow capable of propelling brass plugs like ballistic projectiles. Depressurizing to absolute 0 PSI prior to collar retraction completely neutralizes mechanical hazard.',
+    title: 'Use the compressed air only for approved tasks',
+    summary: 'Use the compressed air system only for its intended purpose, such as removing metal chips from machine surfaces, and follow the laboratory\'s safety procedures.',
+    badge: 'Approved Use',
+    protocolRef: 'Directive 04',
+    detailTitle: 'Operational Scope Adherence',
+    detailBody: 'Pneumatic line pressure is calibrated solely for machining surface clearance and authorized pneumatic tooling in the mechanical laboratory.',
     tags: [
-      { label: 'OSHA 1910.242(b) Nozzle' },
-      { label: 'Residual: 0 PSI' }
+      { label: 'Machine Cleaning' },
+      { label: 'Pneumatic Tooling' }
+    ],
+    isProhibition: false
+  },
+  {
+    id: 'do-5',
+    number: '05',
+    title: 'Direct airflow away from people',
+    summary: 'Always point the air blow gun toward the intended cleaning area and away from yourself and other people to prevent injuries from compressed air and flying debris.',
+    badge: 'Directional Safety',
+    protocolRef: 'Directive 05',
+    detailTitle: 'Trajectory Control',
+    detailBody: 'Always angle the nozzle downward toward machine chip catchers. Ensure no students, technicians, or observers stand within the airflow projection cone.',
+    tags: [
+      { label: 'Downward Angle' },
+      { label: 'Personnel Clearance', highlight: true }
+    ],
+    isProhibition: false
+  },
+  {
+    id: 'do-6',
+    number: '06',
+    title: 'Follow the approved pressure setting',
+    summary: 'Check that the pressure reducing valve (PRV) is set to 30 PSI before using the air blow gun to maintain the required operating pressure.',
+    badge: '30 PSI Regulated',
+    protocolRef: 'Directive 06',
+    detailTitle: 'PRV Calibrated Working Pressure',
+    detailBody: 'Check the drop dial gauge to ensure 30 PSI downstream pressure. 30 PSI balances effective metal chip expulsion with operator safety.',
+    tags: [
+      { label: 'PRV: 30 PSI' },
+      { label: 'Regulated Limit' }
+    ],
+    isProhibition: false
+  },
+  {
+    id: 'do-7',
+    number: '07',
+    title: 'Keep hoses organized',
+    summary: 'Return the hose to the retractable hose reel after use to prevent tangling, tripping hazards, and unnecessary damage.',
+    badge: '5S Organization',
+    protocolRef: 'Directive 07',
+    detailTitle: 'Retraction & Pathway Clearance',
+    detailBody: 'Slowly guide the polyurethane hose back onto the automatic reel so that workshop aisles and machine work zones remain clear of tripping obstacles.',
+    tags: [
+      { label: 'Auto-Reel' },
+      { label: 'Walkway Safety' }
+    ],
+    isProhibition: false
+  },
+  {
+    id: 'do-8',
+    number: '08',
+    title: 'Close the ball valve and release residual air after use',
+    summary: 'Close the ball valve to stop the air supply, then release any remaining air before disconnecting the tool or performing maintenance.',
+    badge: 'Depressurization',
+    protocolRef: 'Directive 08',
+    detailTitle: 'Zero-Pressure Protocol',
+    detailBody: 'Turn upper ball valve 90° to isolation, squeeze blow gun trigger until air hissing ceases completely (0 PSI), then decouple tool.',
+    tags: [
+      { label: 'Valve Shut' },
+      { label: 'Zero PSI' }
+    ],
+    isProhibition: false
+  },
+  {
+    id: 'do-9',
+    number: '09',
+    title: 'Report leaks, damage, or abnormal operations immediately',
+    summary: 'Inform the laboratory instructor or responsible personnel if you notice air leaks, damaged components, unusual noises, or other problems. Stop using the system if it is unsafe until the issue has been checked.',
+    badge: 'Incident Reporting',
+    protocolRef: 'Directive 09',
+    detailTitle: 'Fault Escalation Protocol',
+    detailBody: 'Never attempt unapproved repairs or run compromised lines. Immediately inform faculty and tag out any damaged component.',
+    tags: [
+      { label: 'Report Leaks' },
+      { label: 'Tag-Out Unsafe Lines', highlight: true }
     ],
     isProhibition: false
   }
@@ -72,64 +182,135 @@ export const strictProhibitions: SafetyProtocolItem[] = [
   {
     id: 'dont-1',
     number: '01',
-    title: 'DO NOT Direct Compressed Air at Skin, Face, or Clothes',
-    summary: 'Zero tolerance violation. Never aim pressurized nozzles at human bodies or clothing. Air forced through pores can cause fatal arterial gas embolism, eardrum rupture, and permanent blindness.',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBV6zTsb_J32mjILs4u4vvDUenEwEXr_qYp_lJVN4xAORnvtLmP_zxzpSktZKlgZpWzKedEqlaSMMI8jYMU81MRVIojxWh1iUfJf6UOzuBPujzxRH6wkYbydtzZW5I9otI9iaTEuIJKfZLuNL6wL4uh2BuFgaibpdg2dKnS6fA_d0CHAwSALe2Cjv7YBhgRCGlmqBeIxVQZ_Hw7AMS5dz3AIO-fDW_sPfcFTPRdl0yvBQbTczBdJ-Irlg',
+    title: 'Don’t Use the System Without PPE',
+    summary: 'Operating without proper protective equipment may expose you to injuries from flying metal chips and debris.',
     badge: 'Critical Prohibition',
-    protocolRef: 'Critical Failure Mode 01',
-    detailTitle: 'Arterial Gas Penetration & Acoustic Blast',
-    detailBody: 'Even at pressures as low as 15 PSI, air can penetrate the epidermis through microscopic skin pores, entering the vascular bloodstream. The resulting air bubbles travel directly to heart chambers and cerebral arteries, inducing fatal cardiac arrest.',
+    protocolRef: 'Prohibition 01',
+    detailTitle: 'Unprotected Operator Hazard',
+    detailBody: 'Eye and body injuries occur instantaneously when compressed air strikes sharp machining chips without protective eyewear and gear.',
     tags: [
-      { label: 'Violation: Fatal Hazard', highlight: true },
-      { label: 'Lethal Entry: > 10 PSI' }
+      { label: 'No PPE = No Entry', highlight: true },
+      { label: 'Eye Hazard' }
     ],
     isProhibition: true
   },
   {
     id: 'dont-2',
     number: '02',
-    title: 'DO NOT Bypass or Tamper with Pressure Relief Valves',
-    summary: 'Never override factory calibrated regulator limiters or wire safety relief valves shut. Any unauthorized modification to manifold controls results in immediate laboratory suspension.',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAvmsEnCue6Pw3MdH5lwPbyLz-JrA856qbAo5F1lAokqxsWctBJ_cZNOzAnluJPLhg9s1rPs7X9OjkxWZK75AX4O7N4r2ckBzR5odf6T5Ns8YDs9Bd-NkUAhLWXzGCPIvT-ECKwlBewNt5EokFBiZ4rIbTEvoclusgF7YyYK3bOETBJtH51p35My2M4J6WCh-gCW-3wbaKVpLmQKQFe0Fm_fuZkxlhwymOaqriia4ygriZcH7Cyr4C0xQ',
-    badge: 'Critical Prohibition',
-    protocolRef: 'Critical Failure Mode 02',
-    detailTitle: 'Pressure Vessel Rupture & Shrapnel Overpressure',
-    detailBody: 'The ASME safety relief valve on the 500-liter buffer tank is calibrated to trigger at 9.5 Bar. Defeating this valve risks explosive vessel fragmentation capable of collapsing workshop perimeter walls.',
+    title: 'Do not point compressed air toward yourself or another person',
+    summary: 'Never direct the air blow gun toward yourself or other people. The high-speed airflow can cause injuries, while flying metal chips and debris may hit the eyes or skin.',
+    badge: 'Lethal Hazard',
+    protocolRef: 'Prohibition 02',
+    detailTitle: 'Embolism & Acoustic Trauma Risk',
+    detailBody: 'Air pressure directed at the body can force air bubbles through pores into bloodstream vessels (fatal arterial gas embolism) and rupture eardrums.',
     tags: [
-      { label: 'Set Point: 9.5 Bar Max', highlight: true },
-      { label: 'Standard: ASME Sec VIII' }
+      { label: 'Embolism Hazard', highlight: true },
+      { label: 'Zero Tolerance' }
     ],
     isProhibition: true
   },
   {
     id: 'dont-3',
     number: '03',
-    title: 'DO NOT Crimp or Pinch Hose to Stop Air Flow',
-    summary: 'Never bend or fold a flexible line to halt airflow; the hose will rupture or tear free violently. Always isolate flow using the quarter-turn ball valve situated on the wall drop leg.',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAVtSg7VIRo9xczlgjZ9e6VOmfexqntrLiYRDDclgMXdADYGKa45XVtkYRHogtoqHZNUGNqmmal_ZECZl_4STILLQuvFizaeiIdl1A2yDzdjJBketPmVc89qllGQ_9Vo1AEzuouy8bw5ksOzC0tn2Lmn5sdw901T1VpIdgBm-Jmc-NFUiGZ_AR4Xs2lDIPqaChxro4TaiZ_jTTfrnb3FC2pIPmYv_Q5c1rQWUXnXUCclMq7v2yTqZVgJw',
-    badge: 'Critical Prohibition',
-    protocolRef: 'Critical Failure Mode 03',
-    detailTitle: 'Polymer Shearing & Violent Hose Whipping',
-    detailBody: 'Crimping concentrates pneumatic hydraulic shock at an acute fold point. When the inner braid shears, the hose separates violently, whipping wildly across machine tables at supersonic speeds.',
+    title: 'Do not extend the limit of the retractable hose',
+    summary: 'Avoid pulling the hose beyond its maximum extension. Doing so may damage the hose, affect the retractable mechanism, or cause the hose reel to malfunction.',
+    badge: 'Equipment Protection',
+    protocolRef: 'Prohibition 03',
+    detailTitle: 'Internal Spring & Fitting Strain',
+    detailBody: 'Over-extending past the yellow/red indicator stripe strips internal tension springs and risks cracking the swivel manifold connection.',
     tags: [
-      { label: 'Banned: Hose Kinking', highlight: true },
-      { label: 'Correct: 1/4 Turn Lever' }
+      { label: 'Max Extension Limit' },
+      { label: 'Spring Integrity' }
     ],
     isProhibition: true
   },
   {
     id: 'dont-4',
     number: '04',
-    title: 'DO NOT Exceed Rated Tool Pressure or Use Unverified Lines',
-    summary: 'Never connect pneumatic tools to unregulated lines above their rated operating pressure (typically 90 PSI). Do not use makeshift fittings or uncertified unrated PVC airlines in the workshop.',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDMKZLBP4TbjuYO6VNR5MY4wbtPk9YuCWt36LpXkF3gDAYJC-YKQLbmZhYn1q63Dp966X3pxgOSAOEUtoLEkcsQICS0rmmjKvMsTvlKMfzIEQ4mqy9zd4aqDZ09i-GAk6RGvb9vQBRYBp5SDrWG9rqYPz6AfH1giAJ_0CH6YUg8f7UOGjNJx1CGJI7wcjfl9ghC9Fe_6zfaduwH6kUmFH46k7g6KikflWdq4kQSBBsMXHZ1WFjCvOiidA',
-    badge: 'Critical Prohibition',
-    protocolRef: 'Critical Failure Mode 04',
-    detailTitle: 'Internal Turbine Over-speed & Shrapnel Ejection',
-    detailBody: 'Pneumatic die grinders and turbines are engineered for a maximum 90 PSI. Connecting them to unregulated 120+ PSI lines causes bearing runaway speeds, shattering abrasive discs into high-speed shrapnel.',
+    title: 'Do not step & leave the hose across walkways',
+    summary: 'Avoid leaving the hose across pathways or areas where people walk. It can create a tripping hazard and may also cause damage to the hose if someone steps on it.',
+    badge: 'Trip Hazard',
+    protocolRef: 'Prohibition 04',
+    detailTitle: 'Walkway Obstruction & Hose Crushing',
+    detailBody: 'Hoses on the floor lead to dangerous falls in machine workshops and suffer internal wall pinching when stepped on or rolled over by material carts.',
     tags: [
-      { label: 'Max Limit: 90 PSI (6.2 Bar)', highlight: true },
-      { label: 'PVC Air Piping: BANNED' }
+      { label: 'Clear Walkways' },
+      { label: 'Tripping Risk', highlight: true }
+    ],
+    isProhibition: true
+  },
+  {
+    id: 'dont-5',
+    number: '05',
+    title: 'Do not exceed the designated operating pressure',
+    summary: 'Never increase the pressure beyond the approved setting. Keep the pressure reducing valve (PRV) set to 30 PSI to maintain the required operating pressure and reduce potential safety risks.',
+    badge: 'Pressure Violation',
+    protocolRef: 'Prohibition 05',
+    detailTitle: 'Overpressure Hazard',
+    detailBody: 'Pressures exceeding 30 PSI for chip removal dramatically multiply chip ricochet velocity and breach workshop safety mandates.',
+    tags: [
+      { label: 'Max 30 PSI' },
+      { label: 'Do Not Tamper PRV', highlight: true }
+    ],
+    isProhibition: true
+  },
+  {
+    id: 'dont-6',
+    number: '06',
+    title: 'Do not use the system for other purposes than intended',
+    summary: 'Use the centralized compressed air system only for its intended applications, such as removing metal chips from machine surfaces and operating compatible pneumatic tools.',
+    badge: 'Improper Application',
+    protocolRef: 'Prohibition 06',
+    detailTitle: 'Unauthorized Usage',
+    detailBody: 'Never use shop air for dusting clothes, personal cooling, blowing practical jokes, or unapproved pressurization experiments.',
+    tags: [
+      { label: 'No Clothing Dusting' },
+      { label: 'Machining Only' }
+    ],
+    isProhibition: true
+  },
+  {
+    id: 'dont-7',
+    number: '07',
+    title: 'Do not operate or adjust compressor without authorization',
+    summary: 'Only operate the air compressor if you are authorized or have permission from the laboratory instructor or responsible personnel. Do not make adjustments without approval, as improper operation may damage the equipment or create unsafe conditions.',
+    badge: 'Authorization Required',
+    protocolRef: 'Prohibition 07',
+    detailTitle: 'Central Plant Lockout',
+    detailBody: 'The Sullair screw compressor and refrigerated air dryer are managed exclusively by qualified instructors and assigned lab personnel.',
+    tags: [
+      { label: 'Staff Clearance Only', highlight: true },
+      { label: 'No Tampering' }
+    ],
+    isProhibition: true
+  },
+  {
+    id: 'dont-8',
+    number: '08',
+    title: 'Do not leave the hose & air tool unorganized',
+    summary: 'Never leave the hose stretched out or the air blow gun in an improper location after use. Return the hose to the retractable reel and store the tool properly to prevent tangling, tripping hazards, and equipment damage.',
+    badge: 'Storage Violation',
+    protocolRef: 'Prohibition 08',
+    detailTitle: 'Workshop Disorder Hazard',
+    detailBody: 'Unsecured tools fall, get kicked, or sustain nozzle deformations. Re-spool hose and place blow gun in its cradle immediately after finishing.',
+    tags: [
+      { label: 'Tool Cradle Storage' },
+      { label: 'Clean Workstation' }
+    ],
+    isProhibition: true
+  },
+  {
+    id: 'dont-9',
+    number: '09',
+    title: 'Don\'t disconnect components while system is pressurized',
+    summary: 'Never remove the tool while they contain compressed air. Shut off the air supply and release the trapped pressure according to the proper procedure before disconnecting them.',
+    badge: 'Projectile Hazard',
+    protocolRef: 'Prohibition 09',
+    detailTitle: 'Uncontrolled Kinetic Release',
+    detailBody: 'Pulling quick-connect sleeves under pressure fires fittings like bullets and causes aggressive hose whipping that can fracture bones.',
+    tags: [
+      { label: 'Shut Valve First' },
+      { label: 'Vent to 0 PSI First', highlight: true }
     ],
     isProhibition: true
   }

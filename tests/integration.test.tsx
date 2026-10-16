@@ -6,24 +6,28 @@ import { circuitStages } from '../src/data/circuitStages';
 import { dropStations } from '../src/data/dropStations';
 
 describe('Centralized Air Distribution System Integration', () => {
-  it('renders the complete application layout without throwing', () => {
+  it('renders the complete updated application layout without throwing', () => {
     const html = renderToString(<App />);
-    expect(html).toContain('CENTRALIZED COMPRESSED-AIR DISTRIBUTION SYSTEM');
+    expect(html).toContain('CENTRALIZED COMPRESSED AIR DISTRIBUTION SYSTEM');
     expect(html).toContain('TUP TAGUIG');
-    expect(html).toContain('FLUID DISTRIBUTION');
-    expect(html).toContain('THE 8-STAGE AIR DISTRIBUTION CIRCUIT');
-    expect(html).toContain('SAFETY STANDARDS');
-    expect(html).toContain('THE 7-STEP OPERATING PROCEDURE');
-    expect(html).toContain('DISTRIBUTION NETWORK (6 DROPS)');
+    expect(html).toContain('Mechanical And Allied Department');
+    expect(html).toContain('OPERATIONAL MANUAL');
+    expect(html).toContain('SYSTEM OVERVIEW');
+    expect(html).toContain('HOW THE SYSTEM WORKS');
+    expect(html).toContain('SYSTEM COMPONENTS');
+    expect(html).toContain('Safety Standards');
+    expect(html).toContain('STANDARD OPERATING PROCEDURE');
+    expect(html).toContain('STEP BY STEP');
+    expect(html).toContain('AIR OUTLETS');
     expect(html).toContain('WORKSHOP VIDEO DEMONSTRATION');
-    expect(html).toContain('PNEUMATIC LAB SIZING CALCULATOR');
-    expect(html).toContain('LABORATORY TECHNICIANS');
+    // Calculator and Faculty should be removed
+    expect(html).not.toContain('PNEUMATIC LAB SIZING CALCULATOR');
+    expect(html).not.toContain('LABORATORY TECHNICIANS & FACULTY');
   });
 
-  it('renders all 8 circuit stages in HTML', () => {
+  it('renders all 7 circuit stages in HTML', () => {
     const html = renderToString(<App />);
     circuitStages.forEach((stage) => {
-      // Decode or check normalized name
       const searchName = stage.name.replace(/&/g, '&amp;');
       expect(html).toContain(searchName);
     });
@@ -33,9 +37,7 @@ describe('Centralized Air Distribution System Integration', () => {
     const html = renderToString(<App />);
     dropStations.forEach((station) => {
       const searchName = station.name.replace(/&/g, '&amp;');
-      const searchManifold = station.isolationManifold.replace(/&/g, '&amp;');
       expect(html).toContain(searchName);
-      expect(html).toContain(searchManifold);
     });
   });
 });

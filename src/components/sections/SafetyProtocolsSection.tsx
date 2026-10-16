@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { mandatoryPractices, strictProhibitions } from '../../data/safetyProtocols';
+import { mandatoryPractices, strictProhibitions, requiredPpeList } from '../../data/safetyProtocols';
 import { SafetyProtocolItem } from '../../types/pneumatic';
 
 export const SafetyProtocolsSection: React.FC = () => {
@@ -85,43 +85,31 @@ export const SafetyProtocolsSection: React.FC = () => {
 
         {isOpen && (
           <div className={`hairline-t border-hairline-divider ${contentBg} px-4 sm:px-8 py-5 sm:py-7 animate-fadeIn`}>
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center">
-              <div className="lg:col-span-5 relative overflow-hidden hairline-all bg-[#ECE8DF] aspect-[4/3]">
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className="w-full h-full object-cover"
-                />
-                <div className={`absolute bottom-3 left-3 text-white text-[9px] uppercase tracking-[0.18em] px-2.5 py-1 ${isProhibition ? 'bg-accent-crimson' : 'bg-charcoal-ink/85'}`}>
-                  {item.badge}
-                </div>
-              </div>
-              <div className="lg:col-span-7">
-                <span className={`text-[10px] uppercase tracking-[0.2em] font-medium block mb-1 ${numColor}`}>
-                  {item.protocolRef}
-                </span>
-                <h5 className="font-editorial text-lg sm:text-xl uppercase tracking-wider text-charcoal-ink mb-2.5 sm:mb-3">
-                  {item.detailTitle}
-                </h5>
-                <p className="text-xs text-muted-charcoal font-light leading-relaxed mb-4">
-                  {item.detailBody}
-                </p>
-                <div className="flex flex-wrap gap-2 pt-1">
-                  {item.tags.map((tag, tIdx) => (
-                    <span
-                      key={tIdx}
-                      className={`text-[9px] uppercase tracking-[0.14em] sm:tracking-[0.16em] px-2.5 py-1 font-medium ${
-                        tag.highlight
-                          ? isProhibition
-                            ? 'bg-red-100 text-accent-crimson'
-                            : 'bg-emerald-100/70 text-emerald-800'
-                          : 'bg-[#EAE5D9] text-charcoal-ink'
-                      }`}
-                    >
-                      {tag.label}
-                    </span>
-                  ))}
-                </div>
+            <div className="flex flex-col gap-3">
+              <span className={`text-[10px] uppercase tracking-[0.2em] font-medium block ${numColor}`}>
+                {item.protocolRef}
+              </span>
+              <h5 className="font-editorial text-base sm:text-lg text-charcoal-ink uppercase">
+                {item.detailTitle}
+              </h5>
+              <p className="text-xs sm:text-sm text-muted-charcoal font-light leading-relaxed max-w-3xl">
+                {item.detailBody}
+              </p>
+              <div className="flex flex-wrap gap-2 pt-2">
+                {item.tags.map((tag, idx) => (
+                  <span
+                    key={idx}
+                    className={`text-[9px] uppercase tracking-[0.14em] px-2.5 py-0.5 border ${
+                      tag.highlight
+                        ? isProhibition
+                          ? 'border-accent-crimson text-accent-crimson bg-red-50'
+                          : 'border-emerald-700 text-emerald-800 bg-emerald-50'
+                        : 'border-hairline-divider text-subtle-ash bg-white/60'
+                    }`}
+                  >
+                    {tag.label}
+                  </span>
+                ))}
               </div>
             </div>
           </div>
@@ -131,115 +119,148 @@ export const SafetyProtocolsSection: React.FC = () => {
   };
 
   return (
-    <section id="protocoles" className="py-20 sm:py-28 lg:py-32 px-4 sm:px-8 lg:px-12 bg-[#FAF9F5] hairline-t hairline-b">
-      <div className="max-w-7xl mx-auto">
-        
-        {/* Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 sm:mb-12 hairline-b pb-6 sm:pb-8">
+    <section id="safety-protocols" className="py-20 sm:py-28 lg:py-32 px-4 sm:px-8 lg:px-12 max-w-7xl mx-auto">
+      {/* Header */}
+      <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 sm:mb-12 hairline-b pb-6 sm:pb-8">
+        <div>
+          <span className="text-[10px] sm:text-[11px] uppercase tracking-[0.25em] text-subtle-ash block mb-2 font-medium">
+            WORKSHOP PROTOCOL &amp; MANDATES
+          </span>
+          <h2 className="font-editorial text-2xl sm:text-4xl md:text-5xl uppercase tracking-[0.03em] text-charcoal-ink">
+            Safety Standards &amp; Operating Protocols
+          </h2>
+        </div>
+        <div className="mt-4 sm:mt-0 text-[10px] sm:text-[11px] uppercase tracking-[0.16em] sm:tracking-[0.18em] text-subtle-ash">
+          Interactive Operational Cards · Select any item to view media
+        </div>
+      </div>
+
+      {/* Required Personal Protective Equipment (PPE) */}
+      <div className="mb-14 sm:mb-18 hairline-all bg-[#FAF9F5] p-5 sm:p-8">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 sm:pb-5 hairline-b mb-6 gap-2">
           <div>
-            <span className="text-[10px] uppercase tracking-[0.25em] text-subtle-ash block mb-2">
-              DOLE Compliance &amp; ANSI Z87.1 Safety Charter
+            <span className="text-[9px] sm:text-[10px] uppercase tracking-[0.2em] text-accent-crimson font-semibold block mb-1">
+              MANDATORY WORKSHOP REQUIREMENT
             </span>
-            <h2 className="font-editorial text-2xl sm:text-4xl md:text-5xl uppercase tracking-[0.03em] text-charcoal-ink">
-              SAFETY STANDARDS &amp; OPERATING PROTOCOLS
-            </h2>
+            <h3 className="font-editorial text-lg sm:text-2xl uppercase tracking-wider text-charcoal-ink">
+              Required Personal Protective Equipment (PPE)
+            </h3>
           </div>
-          <div className="mt-3 sm:mt-0 text-[10px] sm:text-[11px] uppercase tracking-[0.16em] sm:tracking-[0.18em] text-muted-charcoal">
-            Interactive Operational Cards · Select any item to view media
-          </div>
+          <span className="text-[10px] uppercase tracking-wider text-subtle-ash">
+            5 Essential Standards
+          </span>
         </div>
 
-        {/* Search Bar & Expand/Collapse Controls */}
-        <div className="mb-10 sm:mb-12 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 sm:gap-4">
-          <div className="relative flex-1 max-w-md">
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Filter by keyword (e.g. PPE, hose, eye, embolism)..."
-              className="w-full bg-[#FAF9F5] border border-hairline-divider px-3.5 sm:px-4 py-2 text-xs text-charcoal-ink placeholder-subtle-ash focus:outline-none focus:border-charcoal-ink transition-colors"
-            />
-            {searchQuery && (
-              <button
-                type="button"
-                onClick={() => setSearchQuery('')}
-                className="absolute right-3 top-2 text-xs text-subtle-ash hover:text-charcoal-ink"
-              >
-                ✕
-              </button>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5 sm:gap-4">
+          {requiredPpeList.map((ppe, idx) => (
+            <div
+              key={ppe.id}
+              className="p-4 border border-hairline-divider bg-white hover:border-charcoal-ink transition-colors flex flex-col justify-between"
+            >
+              <div>
+                <div className="w-8 h-8 rounded-full bg-[#F4F0E8] flex items-center justify-center text-charcoal-ink mb-3 text-xs font-bold font-editorial">
+                  0{idx + 1}
+                </div>
+                <h4 className="font-editorial text-sm uppercase tracking-wide text-charcoal-ink font-bold mb-1.5">
+                  {ppe.name}
+                </h4>
+                <p className="text-[11px] text-muted-charcoal font-light leading-relaxed">
+                  {ppe.description}
+                </p>
+              </div>
+              <div className="mt-3 pt-2 border-t border-hairline-divider/50 flex items-center gap-1.5 text-[9px] uppercase tracking-wider text-emerald-800 font-medium">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-600" />
+                <span>Mandatory</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Filter & Controls Bar */}
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 mb-8 sm:mb-12">
+        <div className="relative flex-1 max-w-md">
+          <input
+            type="text"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            placeholder="Filter by keyword (e.g. PPE, hose, pressure, valve)..."
+            className="w-full bg-[#FAF9F5] border border-hairline-divider px-3.5 sm:px-4 py-2 sm:py-2.5 text-xs text-charcoal-ink placeholder-subtle-ash focus:outline-hidden focus:border-charcoal-ink transition-colors"
+          />
+          {searchQuery && (
+            <button
+              type="button"
+              onClick={() => setSearchQuery('')}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-subtle-ash hover:text-charcoal-ink"
+            >
+              ✕
+            </button>
+          )}
+        </div>
+
+        <div className="flex items-center gap-2 self-end sm:self-auto text-[9px] sm:text-[10px] uppercase tracking-[0.16em] sm:tracking-[0.18em]">
+          <button
+            type="button"
+            onClick={expandAll}
+            className="px-3 py-1.5 border border-hairline-divider bg-[#FAF9F5] hover:border-charcoal-ink transition-colors text-muted-charcoal hover:text-charcoal-ink"
+          >
+            Expand All
+          </button>
+          <button
+            type="button"
+            onClick={collapseAll}
+            className="px-3 py-1.5 border border-hairline-divider bg-[#FAF9F5] hover:border-charcoal-ink transition-colors text-muted-charcoal hover:text-charcoal-ink"
+          >
+            Collapse All
+          </button>
+        </div>
+      </div>
+
+      {/* Dual Column Protocol Flow: DO vs DON'T */}
+      <div className="space-y-12 sm:space-y-16">
+        
+        {/* DO's */}
+        <div>
+          <div className="flex items-center justify-between mb-4 sm:mb-6 pb-2 sm:pb-3 hairline-b">
+            <div className="flex items-center gap-2.5 sm:gap-3">
+              <span className="w-2.5 h-2.5 rounded-full bg-emerald-700" />
+              <h3 className="font-editorial text-lg sm:text-2xl uppercase tracking-wider text-charcoal-ink">
+                DO's — Mandatory Practices
+              </h3>
+            </div>
+            <span className="text-[10px] uppercase tracking-[0.18em] text-subtle-ash">
+              {filteredDo.length} Active Directives
+            </span>
+          </div>
+
+          <div className="space-y-3 sm:space-y-4">
+            {filteredDo.map((item) => renderCard(item, false))}
+            {filteredDo.length === 0 && (
+              <p className="text-xs text-subtle-ash italic py-4">No matching directives found.</p>
             )}
           </div>
-          <div className="flex items-center gap-2.5 sm:gap-3 text-[10px] uppercase tracking-[0.16em] sm:tracking-[0.18em]">
-            <button
-              type="button"
-              onClick={expandAll}
-              className="px-3 py-1.5 border border-hairline-divider hover:border-charcoal-ink transition-colors bg-[#FAF9F5]"
-            >
-              Expand All
-            </button>
-            <button
-              type="button"
-              onClick={collapseAll}
-              className="px-3 py-1.5 border border-hairline-divider hover:border-charcoal-ink transition-colors bg-[#FAF9F5]"
-            >
-              Collapse All
-            </button>
-          </div>
         </div>
 
-        {/* Groups */}
-        <div className="space-y-12 sm:space-y-16">
-          
-          {/* Mandatory Practices (DO) */}
-          <div>
-            <div className="flex items-center justify-between hairline-b pb-3 sm:pb-4 mb-5 sm:mb-6">
-              <div className="flex items-center gap-2.5 sm:gap-3">
-                <span className="w-2.5 h-2.5 rounded-full bg-emerald-700 inline-block" />
-                <h3 className="font-editorial text-lg sm:text-2xl uppercase tracking-wider text-charcoal-ink">
-                  MANDATORY PRACTICES (DO)
-                </h3>
-              </div>
-              <span className="text-[9px] sm:text-[10px] uppercase tracking-[0.16em] sm:tracking-[0.2em] text-emerald-800 font-medium">
-                {filteredDo.length} Active Directives
-              </span>
+        {/* DON'Ts */}
+        <div>
+          <div className="flex items-center justify-between mb-4 sm:mb-6 pb-2 sm:pb-3 hairline-b">
+            <div className="flex items-center gap-2.5 sm:gap-3">
+              <span className="w-2.5 h-2.5 rounded-full bg-accent-crimson" />
+              <h3 className="font-editorial text-lg sm:text-2xl uppercase tracking-wider text-charcoal-ink">
+                DON'TS — Strict Prohibitions
+              </h3>
             </div>
-
-            <div className="space-y-3.5 sm:space-y-4">
-              {filteredDo.length > 0 ? (
-                filteredDo.map((item) => renderCard(item, false))
-              ) : (
-                <div className="p-6 text-center text-xs text-subtle-ash border border-hairline-divider">
-                  No matching mandatory practices found for "{searchQuery}".
-                </div>
-              )}
-            </div>
+            <span className="text-[10px] uppercase tracking-[0.18em] text-subtle-ash">
+              {filteredDont.length} Critical Prohibitions
+            </span>
           </div>
 
-          {/* Strict Prohibitions (DON'T) */}
-          <div>
-            <div className="flex items-center justify-between hairline-b pb-3 sm:pb-4 mb-5 sm:mb-6">
-              <div className="flex items-center gap-2.5 sm:gap-3">
-                <span className="w-2.5 h-2.5 rounded-full bg-accent-crimson inline-block" />
-                <h3 className="font-editorial text-lg sm:text-2xl uppercase tracking-wider text-accent-crimson">
-                  STRICT PROHIBITIONS (DON'T)
-                </h3>
-              </div>
-              <span className="text-[9px] sm:text-[10px] uppercase tracking-[0.16em] sm:tracking-[0.2em] text-accent-crimson font-medium">
-                {filteredDont.length} Zero Tolerance Violations
-              </span>
-            </div>
-
-            <div className="space-y-3.5 sm:space-y-4">
-              {filteredDont.length > 0 ? (
-                filteredDont.map((item) => renderCard(item, true))
-              ) : (
-                <div className="p-6 text-center text-xs text-subtle-ash border border-hairline-divider">
-                  No matching prohibitions found for "{searchQuery}".
-                </div>
-              )}
-            </div>
+          <div className="space-y-3 sm:space-y-4">
+            {filteredDont.map((item) => renderCard(item, true))}
+            {filteredDont.length === 0 && (
+              <p className="text-xs text-subtle-ash italic py-4">No matching prohibitions found.</p>
+            )}
           </div>
-
         </div>
 
       </div>

@@ -1,21 +1,32 @@
 import React from 'react';
 
 interface GaugeDialProps {
-  currentPressureBar: number;
+  currentPressureBar?: number;
+  pressureBar?: number;
   maxScaleBar?: number;
+  maxBar?: number;
   nominalPressureBar?: number;
+  nominalBar?: number;
   size?: number;
+  label?: string;
 }
 
 export const GaugeDial: React.FC<GaugeDialProps> = ({
-  currentPressureBar,
-  maxScaleBar = 10,
-  nominalPressureBar = 6.2,
+  currentPressureBar: propCurrent,
+  pressureBar: propPressure,
+  maxScaleBar,
+  maxBar,
+  nominalPressureBar,
+  nominalBar,
   size = 110,
 }) => {
+  const currentPressureBar = propCurrent ?? propPressure ?? 0;
+  const maxScale = maxScaleBar ?? maxBar ?? 10;
+  const nominal = nominalPressureBar ?? nominalBar ?? 6.2;
+
   // Pressure to angle mapping: 0 Bar = -135deg, 10 Bar = +135deg (total 270 degrees)
-  const clampedPressure = Math.max(0, Math.min(maxScaleBar, currentPressureBar));
-  const angle = -135 + (clampedPressure / maxScaleBar) * 270;
+  const clampedPressure = Math.max(0, Math.min(maxScale, currentPressureBar));
+  const angle = -135 + (clampedPressure / maxScale) * 270;
   const psi = Math.round(currentPressureBar * 14.5038);
 
   const isSafeZone = currentPressureBar >= 5.8 && currentPressureBar <= 7.2;
@@ -68,7 +79,7 @@ export const GaugeDial: React.FC<GaugeDialProps> = ({
 
         {/* Major Tick Marks & Numbers */}
         {[0, 2, 4, 6, 8, 10].map((val) => {
-          const tickAngle = (-135 + (val / maxScaleBar) * 270) * (Math.PI / 180);
+          const tickAngle = (-135 + (val / maxScale) * 270) * (Math.PI / 180);
           const x1 = 50 + 36 * Math.cos(tickAngle);
           const y1 = 50 + 36 * Math.sin(tickAngle);
           const x2 = 50 + 43 * Math.cos(tickAngle);
@@ -116,10 +127,10 @@ export const GaugeDial: React.FC<GaugeDialProps> = ({
         </text>
 
         {/* Target Nominal Indicator Dot */}
-        {nominalPressureBar && (
+        {nominal && (
           <circle
-            cx={50 + 36 * Math.cos((-135 + (nominalPressureBar / maxScaleBar) * 270) * (Math.PI / 180))}
-            cy={50 + 36 * Math.sin((-135 + (nominalPressureBar / maxScaleBar) * 270) * (Math.PI / 180))}
+            cx={50 + 36 * Math.cos((-135 + (nominal / maxScale) * 270) * (Math.PI / 180))}
+            cy={50 + 36 * Math.sin((-135 + (nominal / maxScale) * 270) * (Math.PI / 180))}
             r="1.2"
             fill="#047857"
           />

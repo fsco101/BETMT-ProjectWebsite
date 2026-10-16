@@ -151,7 +151,7 @@ export const EmergencyModal: React.FC<EmergencyModalProps> = ({ isOpen, onClose 
         {/* Emergency Contacts Hotlines */}
         <div className="p-3.5 sm:p-4 bg-[#F4F0E8] dark:bg-[#202024] hairline-all text-xs space-y-1.5 sm:space-y-2">
           <span className="text-[8px] sm:text-[9px] uppercase tracking-[0.18em] sm:tracking-[0.2em] text-subtle-ash dark:text-gray-400 block font-semibold">
-            TUP Taguig Emergency Dispatch Hotlines
+            Group 1 - Batch 2023-2027 Emergency Dispatch Hotlines
           </span>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-1.5 sm:gap-2 text-[10px] sm:text-[11px] text-charcoal-ink dark:text-gray-200 font-light">
             <div><strong>Campus Clinic:</strong> (02) 8823-2456 loc 108</div>
@@ -163,7 +163,7 @@ export const EmergencyModal: React.FC<EmergencyModalProps> = ({ isOpen, onClose 
         {/* Footer Actions */}
         <div className="flex items-center justify-between border-t border-hairline-divider pt-3.5 sm:pt-4 text-xs">
           <span className="text-subtle-ash dark:text-gray-400 text-[9px] sm:text-[10px] uppercase tracking-wider">
-            Ref: TUPT-SAFETY-SOP-EMG-01
+            Ref: GRP1-SAFETY-SOP-EMG-01
           </span>
           <button
             type="button"

@@ -13,7 +13,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onBackToManual }) => {
       <section className="hairline-b bg-[#FAF9F5] dark:bg-[#18181B] sticky top-[61px] sm:top-[69px] z-30 px-4 sm:px-8 lg:px-12 py-3 backdrop-blur-md">
         <div className="max-w-[1700px] mx-auto flex items-center justify-between gap-4">
           <div className="flex items-center gap-2 sm:gap-3 text-[10px] sm:text-xs uppercase tracking-[0.16em] text-subtle-ash dark:text-gray-400">
-            <span>TUP Taguig</span>
+            <span>Group 1 - Batch 2023-2027</span>
             <span>/</span>
             <span>MAAD Studies</span>
             <span>/</span>
@@ -42,7 +42,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onBackToManual }) => {
               {studyOverviewData.academicYear}
             </span>
             <span className="text-[10px] sm:text-[11px] uppercase tracking-[0.18em] text-subtle-ash dark:text-gray-400 px-2.5 py-1 border border-hairline-divider bg-white/50 dark:bg-[#1E1E22]">
-              TUP Taguig Campus
+              Group 1 - Batch 2023-2027
             </span>
           </div>
 
@@ -274,7 +274,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onBackToManual }) => {
 
                 <div className="pt-3 border-t border-hairline-divider/40 flex items-center justify-between text-[10px] text-subtle-ash dark:text-gray-400">
                   <span>{member.institution}</span>
-                  <span className="font-mono text-[9px] text-muted-charcoal dark:text-gray-400">TUPT-MAAD-2026</span>
+                  <span className="font-mono text-[9px] text-muted-charcoal dark:text-gray-400">GRP1-2023-2027</span>
                 </div>
               </div>
             ))}

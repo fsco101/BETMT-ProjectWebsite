@@ -6,7 +6,7 @@ export const facultyMembers: FacultyMember[] = [
     name: 'Prof. Roberto Santos',
     role: 'Chair, Mechanical Engineering Dept.',
     image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBV6zTsb_J32mjILs4u4vvDUenEwEXr_qYp_lJVN4xAORnvtLmP_zxzpSktZKlgZpWzKedEqlaSMMI8jYMU81MRVIojxWh1iUfJf6UOzuBPujzxRH6wkYbydtzZW5I9otI9iaTEuIJKfZLuNL6wL4uh2BuFgaibpdg2dKnS6fA_d0CHAwSALe2Cjv7YBhgRCGlmqBeIxVQZ_Hw7AMS5dz3AIO-fDW_sPfcFTPRdl0yvBQbTczBdJ-Irlg',
-    department: 'TUP Taguig Mechanical & Allied Department',
+    department: 'Group 1 - Batch 2023-2027 Mechanical & Allied Department',
     credentials: 'Ph.D. Mechanical Systems · ASME Member · ISO 8573 Auditor'
   },
   {

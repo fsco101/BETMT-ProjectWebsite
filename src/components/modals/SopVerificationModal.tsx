@@ -7,7 +7,7 @@ interface SopVerificationModalProps {
 
 export const SopVerificationModal: React.FC<SopVerificationModalProps> = ({ isOpen, onClose }) => {
   const [studentName, setStudentName] = useState('Juan Dela Cruz');
-  const [studentId, setStudentId] = useState('TUPT-2026-ME-0482');
+  const [studentId, setStudentId] = useState('GRP1-2026-ME-0482');
   const currentDate = new Date().toLocaleDateString('en-PH', {
     year: 'numeric',
     month: 'long',
@@ -34,7 +34,7 @@ export const SopVerificationModal: React.FC<SopVerificationModalProps> = ({ isOp
           {/* Header Title */}
           <div className="flex flex-col items-center">
             <span className="text-[9px] sm:text-[11px] uppercase tracking-[0.2em] sm:tracking-[0.25em] text-subtle-ash dark:text-gray-400 font-medium">
-              Technological University of the Philippines — Taguig Campus
+              Group 1 - Batch 2023-2027
             </span>
             <span className="text-[8px] sm:text-[9px] uppercase tracking-[0.16em] sm:tracking-[0.2em] text-muted-charcoal dark:text-gray-400 mt-0.5">
               Mechanical And Allied Department

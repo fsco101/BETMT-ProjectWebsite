@@ -147,7 +147,7 @@ export const SopSection: React.FC = () => {
 
                 <div className="mt-4 pt-3 border-t border-hairline-divider/40 dark:border-[#2B2A2F] flex items-center justify-between text-[10px] uppercase tracking-wider text-subtle-ash dark:text-[#8E8B85]">
                   <span>Step 0{step.stepNumber} of 15</span>
-                  <span className="text-emerald-800 dark:text-emerald-400 font-semibold">TUP-T Certified SOP</span>
+                  <span className="text-emerald-800 dark:text-emerald-400 font-semibold">Group 1 - Batch 2023-2027 Certified SOP</span>
                 </div>
               </div>
 

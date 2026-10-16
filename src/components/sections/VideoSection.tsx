@@ -146,7 +146,7 @@ export const VideoSection: React.FC = () => {
                   >
                     {playbackSpeed}x
                   </button>
-                  <span className="hidden sm:inline text-white/70">TUP-T Demo</span>
+                  <span className="hidden sm:inline text-white/70">Group 1 Demo</span>
                 </div>
               </div>
 
@@ -205,7 +205,7 @@ export const VideoSection: React.FC = () => {
           </div>
 
           <div className="mt-6 sm:mt-8 pt-4 sm:pt-6 hairline-t text-[9px] sm:text-[10px] uppercase tracking-[0.14em] sm:tracking-[0.16em] text-subtle-ash dark:text-gray-400">
-            <span>Video format: H.264 / AAC 1080p · TUP Machining Lab</span>
+            <span>Video format: H.264 / AAC 1080p · Group 1 - Batch 2023-2027 Machining Lab</span>
           </div>
         </div>
 

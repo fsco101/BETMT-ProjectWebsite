@@ -164,7 +164,7 @@ export const ImageLightboxModal: React.FC = () => {
             <span>{currentItem.caption}</span>
           ) : (
             <span className="text-gray-500 font-mono text-[10px]">
-              TUP TAGUIG MECHANICAL AND ALLIED DEPARTMENT · CENTRALIZED AIR DISTRIBUTION SYSTEM
+              GROUP 1 - BATCH 2023-2027 · CENTRALIZED AIR DISTRIBUTION SYSTEM
             </span>
           )}
         </div>

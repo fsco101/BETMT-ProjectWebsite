@@ -28,7 +28,7 @@ export const ExpertiseSection: React.FC = () => {
                 '/images/image49.jpg',
                 0,
                 'Primary Central Pneumatic Facility',
-                'TUP Taguig Mechanical and Allied Department: Compressor, air receiver tank, refrigerated dryer, and distribution line components.'
+                'Group 1 - Batch 2023-2027 Mechanical and Allied Department: Compressor, air receiver tank, refrigerated dryer, and distribution line components.'
               )
             }
             className="lg:col-span-8 relative overflow-hidden bg-[#ECE8DF] dark:bg-[#2A2930] aspect-[4/3] sm:aspect-[16/10] hairline-all cursor-zoom-in group"
@@ -36,14 +36,17 @@ export const ExpertiseSection: React.FC = () => {
           >
             <img
               src="/images/image49.jpg"
-              alt="Centralized Compressed Air Distribution System Components at TUP Taguig"
+              alt="Centralized Compressed Air Distribution System Components by Group 1 - Batch 2023-2027"
               className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
             />
             <div className="absolute top-3 left-3 bg-charcoal-ink/85 dark:bg-black/85 text-[#F7F5F0] text-[9px] sm:text-[10px] uppercase tracking-[0.2em] px-3 py-1 font-medium">
               Primary Central Facility
             </div>
             <div className="absolute bottom-3 right-3 bg-black/75 hover:bg-black text-white text-[9px] sm:text-[10px] uppercase tracking-wider px-2.5 py-1 flex items-center gap-1.5 opacity-80 group-hover:opacity-100 transition-opacity">
-              <span>🔍</span>
+              <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <circle cx="11" cy="11" r="8" />
+                <path d="m21 21-4.3-4.3" />
+              </svg>
               <span>Click to View Full Image</span>
             </div>
           </div>

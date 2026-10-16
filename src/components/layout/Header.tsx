@@ -79,7 +79,7 @@ export const Header: React.FC<HeaderProps> = ({
     <header className="w-full hairline-b sticky top-0 z-40 bg-[#F7F5F0]/95 dark:bg-[#121214]/95 backdrop-blur-md transition-colors duration-200">
       <div className="w-full max-w-[1700px] mx-auto px-4 sm:px-8 lg:px-12 py-3.5 sm:py-4 flex xl:grid xl:grid-cols-[1fr_auto_1fr] items-center justify-between gap-4">
         
-        {/* Left: TUP TAGUIG & Mechanical And Allied Department */}
+        {/* Left: Group 1 - Batch 2023-2027 & Mechanical And Allied Department */}
         <div className="flex items-center justify-start shrink-0">
           <a
             href="#hero"
@@ -93,7 +93,7 @@ export const Header: React.FC<HeaderProps> = ({
           >
             <div className="flex flex-col">
               <span className="font-editorial text-xs sm:text-sm md:text-base uppercase tracking-[0.16em] sm:tracking-[0.2em] text-charcoal-ink dark:text-[#F4F4F6] leading-tight font-medium">
-                TUP TAGUIG
+                Group 1 - Batch 2023-2027
               </span>
               <span className="text-[8px] sm:text-[10px] uppercase tracking-[0.12em] sm:tracking-[0.14em] text-subtle-ash dark:text-[#8E8B85] font-medium truncate max-w-[180px] sm:max-w-none">
                 Mechanical And Allied Department

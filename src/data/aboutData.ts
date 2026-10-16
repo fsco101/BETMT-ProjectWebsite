@@ -3,12 +3,12 @@ import { StudyOverview, TeamMember } from '../types/pneumatic';
 export const studyOverviewData: StudyOverview = {
   title: 'Design, Fabrication, and Operational Standardization of the Centralized Compressed Air Distribution System',
   eyebrow: 'Undergraduate Engineering Technology Research & Laboratory Development',
-  subtitle: 'A centralized pneumatic network engineered for energy efficiency, moisture control, and student safety compliance at TUP Taguig.',
-  institution: 'Technological University of the Philippines — Taguig Campus',
+  subtitle: 'A centralized pneumatic network engineered for energy efficiency, moisture control, and student safety compliance for Group 1 - Batch 2023-2027.',
+  institution: 'Group 1 - Batch 2023-2027',
   department: 'Mechanical and Allied Department (MAAD)',
   academicYear: 'Academic Year 2025 – 2026',
   abstract:
-    'The Centralized Compressed Air Distribution System at the Technological University of the Philippines — Taguig Campus was developed to address critical laboratory operational challenges in the Mechanical Machining, CNC, and Advanced Machining laboratories. Prior to this implementation, dispersed portable compressors and trailing floor hoses posed significant tripping hazards, inconsistent air delivery pressures, and moisture accumulation that degraded sensitive machining tools. This study presents the design, fabrication, and experimental commissioning of a centralized compressed-air network featuring a high-efficiency rotary screw compressor, refrigerated air drying, dedicated air receiver buffering, and a closed-loop overhead distribution manifold supplying six regulated workstation drops. Rigorous 15-step standard operating procedures (SOP) and DOLE/OSHA compliant 30 PSI chip-cleaning standards were established to safeguard student operators and extend laboratory equipment lifespan.',
+    'The Centralized Compressed Air Distribution System by Group 1 - Batch 2023-2027 was developed to address critical laboratory operational challenges in the Mechanical Machining, CNC, and Advanced Machining laboratories. Prior to this implementation, dispersed portable compressors and trailing floor hoses posed significant tripping hazards, inconsistent air delivery pressures, and moisture accumulation that degraded sensitive machining tools. This study presents the design, fabrication, and experimental commissioning of a centralized compressed-air network featuring a high-efficiency rotary screw compressor, refrigerated air drying, dedicated air receiver buffering, and a closed-loop overhead distribution manifold supplying six regulated workstation drops. Rigorous 15-step standard operating procedures (SOP) and DOLE/OSHA compliant 30 PSI chip-cleaning standards were established to safeguard student operators and extend laboratory equipment lifespan.',
   backgroundRationale:
     'In modern mechanical workshop environments, compressed air is often termed the "fourth utility." However, uncontrolled air delivery can result in high thermodynamic losses, pneumatic tool corrosion from moisture condensation, and grave mechanical hazards if high-pressure air (above 30 PSI) is improperly used for debris cleaning. By centralizing air generation, incorporating active refrigeration drying, and decentralizing pressure regulation at specific workshop drops, this study bridges theoretical fluid power engineering with practical laboratory health and safety.',
   significance: [
@@ -80,13 +80,13 @@ export const studyOverviewData: StudyOverview = {
     {
       name: 'Engr. Manuel De Leon',
       title: 'Research Adviser & Laboratory Supervisor',
-      department: 'Mechanical and Allied Department — TUP Taguig',
+      department: 'Mechanical and Allied Department — Group 1 - Batch 2023-2027',
       role: 'Project Guidance & Fluid Power Technical Advising'
     },
     {
       name: 'Prof. Roberto Santos',
       title: 'Department Head',
-      department: 'Mechanical and Allied Department — TUP Taguig',
+      department: 'Mechanical and Allied Department — Group 1 - Batch 2023-2027',
       role: 'Administrative Support & Laboratory Resource Coordination'
     }
   ]
@@ -98,7 +98,7 @@ export const researchTeamMembers: TeamMember[] = [
     name: 'Lead Student Researcher',
     role: 'Project Lead & Systems Architect',
     program: 'Bachelor of Engineering Technology — Mechanical',
-    institution: 'TUP Taguig Campus',
+    institution: 'Group 1 - Batch 2023-2027',
     contributions: [
       'Pneumatic circuit sizing, compressor demand calculations, and receiver tank capacity modeling.',
       'Oversaw overall project coordination, laboratory installation timeline, and safety testing.',
@@ -110,7 +110,7 @@ export const researchTeamMembers: TeamMember[] = [
     name: 'Mechanical Design Specialist',
     role: 'CAD Modeling & Piping Engineer',
     program: 'Bachelor of Engineering Technology — Mechanical',
-    institution: 'TUP Taguig Campus',
+    institution: 'Group 1 - Batch 2023-2027',
     contributions: [
       'Developed 3D CAD schematics and overhead pipe routing layouts across the three machine shop zones.',
       'Designed ceiling support brackets, pipe drop geometry, and moisture trap drainage slopes.',
@@ -122,7 +122,7 @@ export const researchTeamMembers: TeamMember[] = [
     name: 'Pneumatics & Controls Specialist',
     role: 'Instrumentation & FRL Engineer',
     program: 'Bachelor of Engineering Technology — Mechanical',
-    institution: 'TUP Taguig Campus',
+    institution: 'Group 1 - Batch 2023-2027',
     contributions: [
       'Configured pressure reducing valves (PRV) for 30 PSI cleaning and 90-120 PSI tooling specs.',
       'Selected and installed quick-connect couplers, isolation ball valves, and refrigerant dryer connections.',
@@ -134,7 +134,7 @@ export const researchTeamMembers: TeamMember[] = [
     name: 'Safety & Compliance Analyst',
     role: 'OSHA/DOLE Safety & Quality Lead',
     program: 'Bachelor of Engineering Technology — Mechanical',
-    institution: 'TUP Taguig Campus',
+    institution: 'Group 1 - Batch 2023-2027',
     contributions: [
       'Formulated DOLE-BOSH and OSHA compliant workshop safety protocols and PPE requirements.',
       'Established the 9 DOs and 9 DONTs safety framework for air blow gun operation.',
@@ -146,7 +146,7 @@ export const researchTeamMembers: TeamMember[] = [
     name: 'Technical Documentation Lead',
     role: 'SOP Author & Digital Systems Specialist',
     program: 'Bachelor of Engineering Technology — Mechanical',
-    institution: 'TUP Taguig Campus',
+    institution: 'Group 1 - Batch 2023-2027',
     contributions: [
       'Authored the 15-step illustrated Standard Operating Procedure (SOP) with step-by-step imagery.',
       'Developed and structured content for the interactive digital operational manual and web twin.',

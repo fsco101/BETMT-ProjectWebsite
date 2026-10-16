@@ -13,7 +13,7 @@ export const Footer: React.FC<FooterProps> = ({
     <footer className="hairline-t bg-[#F7F5F0] dark:bg-[#121214] py-8 sm:py-10 px-4 sm:px-8 lg:px-12 mt-auto transition-colors duration-200">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 sm:gap-6 text-[10px] sm:text-[11px] uppercase tracking-[0.16em] sm:tracking-[0.18em] text-muted-charcoal dark:text-[#A1A1AA] text-center md:text-left">
         <div className="flex items-center gap-2.5 sm:gap-3">
-          <span className="leading-relaxed">© 2026 Technological University of the Philippines — Taguig Campus</span>
+          <span className="leading-relaxed">© 2026 Group 1 - Batch 2023-2027</span>
         </div>
         <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
           <span>Mechanical And Allied Department</span>

@@ -11,25 +11,25 @@ export const CircuitSection: React.FC = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 sm:mb-16 hairline-b pb-6 sm:pb-8">
         <div>
-          <span className="text-[10px] sm:text-[11px] uppercase tracking-[0.25em] text-subtle-ash block mb-2 font-medium">
+          <span className="text-[10px] sm:text-[11px] uppercase tracking-[0.25em] text-subtle-ash dark:text-[#8E8B85] block mb-2 font-medium">
             SYSTEM COMPONENTS
           </span>
-          <h2 className="font-editorial text-2xl sm:text-4xl md:text-5xl uppercase tracking-[0.03em] text-charcoal-ink">
+          <h2 className="font-sans font-extrabold text-2xl sm:text-4xl md:text-5xl uppercase tracking-tight text-charcoal-ink dark:text-[#F4F4F6]">
             HOW THE SYSTEM WORKS
           </h2>
         </div>
-        <div className="mt-3 sm:mt-0 text-[10px] sm:text-[11px] uppercase tracking-[0.16em] sm:tracking-[0.18em] text-subtle-ash">
+        <div className="mt-3 sm:mt-0 text-[10px] sm:text-[11px] uppercase tracking-[0.16em] sm:tracking-[0.18em] text-subtle-ash dark:text-[#8E8B85]">
           Click any component to inspect detailed specifications
         </div>
       </div>
 
       {/* 7 Components Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 border-t border-l border-hairline-divider">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 border-t border-l border-hairline-divider dark:border-[#2B2A2F]">
         {circuitStages.map((stage) => (
           <div
             key={stage.id}
             onClick={() => setSelectedStage(stage)}
-            className="border-r border-b border-hairline-divider p-5 sm:p-6 lg:p-7 flex flex-col justify-between hover:bg-[#FAF9F5] transition-all group cursor-pointer"
+            className="border-r border-b border-hairline-divider dark:border-[#2B2A2F] p-5 sm:p-6 lg:p-7 flex flex-col justify-between hover:bg-[#FAF9F5] dark:hover:bg-[#1E1E22] transition-all group cursor-pointer"
             role="button"
             tabIndex={0}
             onKeyDown={(e) => {
@@ -38,13 +38,13 @@ export const CircuitSection: React.FC = () => {
           >
             <div>
               {/* Image Frame */}
-              <div className="relative aspect-[4/3] w-full overflow-hidden hairline-all bg-[#ECE8DF] mb-4 sm:mb-5">
+              <div className="relative aspect-[4/3] w-full overflow-hidden hairline-all bg-[#ECE8DF] dark:bg-[#2A2930] mb-4 sm:mb-5">
                 <img
                   src={stage.image}
                   alt={stage.name}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute top-2 left-2 bg-charcoal-ink/80 text-[#FAF9F5] text-[9px] uppercase tracking-[0.2em] px-2 py-0.5">
+                <div className="absolute top-2 left-2 bg-charcoal-ink/80 dark:bg-black/80 text-[#FAF9F5] text-[9px] uppercase tracking-[0.2em] px-2 py-0.5">
                   Stage 0{stage.stageNumber}
                 </div>
                 {stage.images && stage.images.length > 1 && (
@@ -52,29 +52,29 @@ export const CircuitSection: React.FC = () => {
                     {stage.images.length} Photos
                   </div>
                 )}
-                <div className="absolute inset-0 bg-charcoal-ink/0 group-hover:bg-charcoal-ink/10 transition-colors flex items-center justify-center">
-                  <span className="opacity-0 group-hover:opacity-100 bg-[#FAF9F5] text-charcoal-ink text-[9px] sm:text-[10px] uppercase tracking-wider px-2.5 sm:px-3 py-1 transition-opacity border border-charcoal-ink shadow-xs">
+                <div className="absolute inset-0 bg-charcoal-ink/0 group-hover:bg-charcoal-ink/10 dark:group-hover:bg-white/5 transition-colors flex items-center justify-center">
+                  <span className="opacity-0 group-hover:opacity-100 bg-[#FAF9F5] dark:bg-[#2A2930] text-charcoal-ink dark:text-white text-[9px] sm:text-[10px] uppercase tracking-wider px-2.5 sm:px-3 py-1 transition-opacity border border-charcoal-ink dark:border-white/30 shadow-xs">
                     View Specs
                   </span>
                 </div>
               </div>
 
               {/* Title & Description */}
-              <span className="font-editorial text-base sm:text-lg lg:text-xl text-charcoal-ink block mb-1">
+              <span className="font-editorial text-base sm:text-lg lg:text-xl text-charcoal-ink dark:text-[#F4F4F6] block mb-1">
                 {stage.name}
               </span>
-              <span className="text-[10px] uppercase tracking-[0.2em] text-subtle-ash block mb-2 sm:mb-3">
+              <span className="text-[10px] uppercase tracking-[0.2em] text-subtle-ash dark:text-[#8E8B85] block mb-2 sm:mb-3">
                 {stage.subtitle}
               </span>
-              <p className="text-xs text-muted-charcoal font-light leading-relaxed">
+              <p className="text-xs text-muted-charcoal dark:text-[#A1A1AA] font-light leading-relaxed">
                 {stage.description}
               </p>
             </div>
 
             {/* Metric Footer */}
-            <div className="mt-5 sm:mt-6 pt-3 sm:pt-4 hairline-t text-[10px] uppercase tracking-[0.14em] sm:tracking-[0.16em] text-subtle-ash flex justify-between items-center">
+            <div className="mt-5 sm:mt-6 pt-3 sm:pt-4 hairline-t text-[10px] uppercase tracking-[0.14em] sm:tracking-[0.16em] text-subtle-ash dark:text-[#8E8B85] flex justify-between items-center">
               <span>{stage.metricLabel}</span>
-              <span className="text-charcoal-ink font-medium">{stage.metricValue}</span>
+              <span className="text-charcoal-ink dark:text-[#F4F4F6] font-medium">{stage.metricValue}</span>
             </div>
           </div>
         ))}

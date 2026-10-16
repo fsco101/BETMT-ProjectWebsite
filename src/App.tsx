@@ -14,6 +14,29 @@ import { EmergencyModal } from './components/modals/EmergencyModal';
 
 const AppContent: React.FC = () => {
   const [emergencyModalOpen, setEmergencyModalOpen] = useState(false);
+  const [theme, setTheme] = useState<'light' | 'dark'>(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('theme');
+      if (saved === 'dark' || saved === 'light') return saved;
+      if (window.matchMedia('(prefers-color-scheme: dark)').matches) return 'dark';
+    }
+    return 'light';
+  });
+
+  useEffect(() => {
+    const root = document.documentElement;
+    if (theme === 'dark') {
+      root.classList.add('dark');
+    } else {
+      root.classList.remove('dark');
+    }
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(prev => (prev === 'light' ? 'dark' : 'light'));
+  };
+
   const [activePage, setActivePage] = useState<'manual' | 'about'>(() => {
     if (typeof window !== 'undefined' && window.location.hash === '#about') {
       return 'about';
@@ -54,12 +77,14 @@ const AppContent: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#F7F5F0] text-[#1C1B1A] flex flex-col selection:bg-[#E8E2D7] selection:text-[#1C1B1A]">
+    <div className="min-h-screen bg-[#F7F5F0] dark:bg-[#121214] text-[#1C1B1A] dark:text-[#F4F4F6] flex flex-col selection:bg-[#E8E2D7] dark:selection:bg-[#333238] selection:text-[#1C1B1A] dark:selection:text-white transition-colors duration-200">
       {/* Top Sticky Navigation Bar */}
       <Header
         onOpenEmergencyModal={() => setEmergencyModalOpen(true)}
         activePage={activePage}
         onNavigatePage={navigatePage}
+        theme={theme}
+        onToggleTheme={toggleTheme}
       />
 
       {/* Main Narrative Flow: Manual vs About */}

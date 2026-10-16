@@ -44,16 +44,16 @@ export const SafetyProtocolsSection: React.FC = () => {
   const renderCard = (item: SafetyProtocolItem, isProhibition: boolean) => {
     const isOpen = openItems[item.id];
     const borderColor = isProhibition ? 'border-l-accent-crimson' : 'border-l-emerald-700';
-    const numColor = isProhibition ? 'text-accent-crimson' : 'text-emerald-800';
+    const numColor = isProhibition ? 'text-accent-crimson dark:text-red-400' : 'text-emerald-800 dark:text-emerald-400';
     const badgeClass = isProhibition
-      ? 'bg-red-100/80 text-accent-crimson border-red-300'
-      : 'bg-emerald-50 text-emerald-800 border-emerald-200';
-    const contentBg = isProhibition ? 'bg-[#FDF7F5]' : 'bg-[#F4F0E8]/70';
+      ? 'bg-red-100/80 dark:bg-red-950/40 text-accent-crimson dark:text-red-400 border-red-300 dark:border-red-800/60'
+      : 'bg-emerald-50 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800/60';
+    const contentBg = isProhibition ? 'bg-[#FDF7F5] dark:bg-[#251819]' : 'bg-[#F4F0E8]/70 dark:bg-[#202024]';
 
     return (
       <div
         key={item.id}
-        className={`hairline-all bg-[#FAF9F5] border-l-4 ${borderColor} transition-all duration-300`}
+        className={`hairline-all bg-[#FAF9F5] dark:bg-[#1A1A1E] border-l-4 ${borderColor} transition-all duration-300`}
       >
         <button
           type="button"
@@ -61,14 +61,14 @@ export const SafetyProtocolsSection: React.FC = () => {
           className="w-full text-left p-4 sm:p-6 lg:p-7 flex flex-col md:flex-row md:items-center justify-between gap-4 sm:gap-6 cursor-pointer select-none group"
         >
           <div className="flex items-start sm:items-center gap-3.5 sm:gap-6">
-            <span className={`font-editorial text-xl sm:text-3xl ${numColor} shrink-0 w-6 sm:w-8`}>
+            <span className={`font-mono font-bold text-xl sm:text-3xl ${numColor} shrink-0 w-6 sm:w-8`}>
               {item.number}
             </span>
             <div>
-              <h4 className={`font-editorial text-base sm:text-lg lg:text-xl uppercase tracking-wider ${isProhibition ? 'text-accent-crimson group-hover:text-red-950' : 'text-charcoal-ink group-hover:text-emerald-900'} transition-colors leading-snug`}>
+              <h4 className={`font-sans font-bold text-base sm:text-lg lg:text-xl uppercase tracking-tight ${isProhibition ? 'text-accent-crimson dark:text-red-400 group-hover:text-red-950 dark:group-hover:text-red-300' : 'text-charcoal-ink dark:text-[#F4F4F6] group-hover:text-emerald-900 dark:group-hover:text-emerald-300'} transition-colors leading-snug`}>
                 {item.title}
               </h4>
-              <p className="text-xs text-muted-charcoal font-light mt-1 max-w-2xl leading-relaxed">
+              <p className="text-xs text-muted-charcoal dark:text-[#A1A1AA] font-light mt-1 max-w-2xl leading-relaxed">
                 {item.summary}
               </p>
             </div>
@@ -77,22 +77,22 @@ export const SafetyProtocolsSection: React.FC = () => {
             <span className={`text-[9px] sm:text-[10px] uppercase tracking-[0.14em] sm:tracking-[0.18em] px-2.5 sm:px-3 py-1 border font-medium whitespace-nowrap ${badgeClass}`}>
               {item.badge}
             </span>
-            <span className={`w-7 h-7 rounded-full border border-charcoal-ink/20 flex items-center justify-center text-charcoal-ink transition-transform duration-300 shrink-0 ${isOpen ? 'rotate-180' : ''}`}>
+            <span className={`w-7 h-7 rounded-full border border-charcoal-ink/20 dark:border-white/20 text-charcoal-ink dark:text-white flex items-center justify-center transition-transform duration-300 shrink-0 ${isOpen ? 'rotate-180' : ''}`}>
               <span className="material-symbols-outlined text-base">expand_more</span>
             </span>
           </div>
         </button>
 
         {isOpen && (
-          <div className={`hairline-t border-hairline-divider ${contentBg} px-4 sm:px-8 py-5 sm:py-7 animate-fadeIn`}>
+          <div className={`hairline-t border-hairline-divider dark:border-[#2B2A2F] ${contentBg} px-4 sm:px-8 py-5 sm:py-7 animate-fadeIn`}>
             <div className="flex flex-col gap-3">
               <span className={`text-[10px] uppercase tracking-[0.2em] font-medium block ${numColor}`}>
                 {item.protocolRef}
               </span>
-              <h5 className="font-editorial text-base sm:text-lg text-charcoal-ink uppercase">
+              <h5 className="font-sans font-bold text-base sm:text-lg text-charcoal-ink dark:text-[#F4F4F6] uppercase tracking-tight">
                 {item.detailTitle}
               </h5>
-              <p className="text-xs sm:text-sm text-muted-charcoal font-light leading-relaxed max-w-3xl">
+              <p className="text-xs sm:text-sm text-muted-charcoal dark:text-[#A1A1AA] font-light leading-relaxed max-w-3xl">
                 {item.detailBody}
               </p>
               <div className="flex flex-wrap gap-2 pt-2">
@@ -102,9 +102,9 @@ export const SafetyProtocolsSection: React.FC = () => {
                     className={`text-[9px] uppercase tracking-[0.14em] px-2.5 py-0.5 border ${
                       tag.highlight
                         ? isProhibition
-                          ? 'border-accent-crimson text-accent-crimson bg-red-50'
-                          : 'border-emerald-700 text-emerald-800 bg-emerald-50'
-                        : 'border-hairline-divider text-subtle-ash bg-white/60'
+                          ? 'border-accent-crimson text-accent-crimson bg-red-50 dark:bg-red-950/60 dark:text-red-300 dark:border-red-800'
+                          : 'border-emerald-700 text-emerald-800 bg-emerald-50 dark:bg-emerald-950/60 dark:text-emerald-300 dark:border-emerald-800'
+                        : 'border-hairline-divider dark:border-[#2B2A2F] text-subtle-ash dark:text-[#8E8B85] bg-white/60 dark:bg-[#121214]/60'
                     }`}
                   >
                     {tag.label}
@@ -123,30 +123,30 @@ export const SafetyProtocolsSection: React.FC = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 sm:mb-12 hairline-b pb-6 sm:pb-8">
         <div>
-          <span className="text-[10px] sm:text-[11px] uppercase tracking-[0.25em] text-subtle-ash block mb-2 font-medium">
+          <span className="text-[10px] sm:text-[11px] uppercase tracking-[0.25em] text-subtle-ash dark:text-[#8E8B85] block mb-2 font-medium">
             WORKSHOP PROTOCOL &amp; MANDATES
           </span>
-          <h2 className="font-editorial text-2xl sm:text-4xl md:text-5xl uppercase tracking-[0.03em] text-charcoal-ink">
+          <h2 className="font-sans font-extrabold text-2xl sm:text-4xl md:text-5xl uppercase tracking-tight text-charcoal-ink dark:text-[#F4F4F6]">
             Safety Standards &amp; Operating Protocols
           </h2>
         </div>
-        <div className="mt-4 sm:mt-0 text-[10px] sm:text-[11px] uppercase tracking-[0.16em] sm:tracking-[0.18em] text-subtle-ash">
+        <div className="mt-4 sm:mt-0 text-[10px] sm:text-[11px] uppercase tracking-[0.16em] sm:tracking-[0.18em] text-subtle-ash dark:text-[#8E8B85]">
           Interactive Operational Cards · Select any item to view media
         </div>
       </div>
 
       {/* Required Personal Protective Equipment (PPE) */}
-      <div className="mb-14 sm:mb-18 hairline-all bg-[#FAF9F5] p-5 sm:p-8">
+      <div className="mb-14 sm:mb-18 hairline-all bg-[#FAF9F5] dark:bg-[#1A1A1E] p-5 sm:p-8 transition-colors">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 sm:pb-5 hairline-b mb-6 gap-2">
           <div>
-            <span className="text-[9px] sm:text-[10px] uppercase tracking-[0.2em] text-accent-crimson font-semibold block mb-1">
+            <span className="text-[9px] sm:text-[10px] uppercase tracking-[0.2em] text-accent-crimson dark:text-red-400 font-semibold block mb-1">
               MANDATORY WORKSHOP REQUIREMENT
             </span>
-            <h3 className="font-editorial text-lg sm:text-2xl uppercase tracking-wider text-charcoal-ink">
+            <h3 className="font-sans font-bold text-lg sm:text-2xl uppercase tracking-tight text-charcoal-ink dark:text-[#F4F4F6]">
               Required Personal Protective Equipment (PPE)
             </h3>
           </div>
-          <span className="text-[10px] uppercase tracking-wider text-subtle-ash">
+          <span className="text-[10px] uppercase tracking-wider text-subtle-ash dark:text-[#8E8B85]">
             5 Essential Standards
           </span>
         </div>
@@ -155,21 +155,21 @@ export const SafetyProtocolsSection: React.FC = () => {
           {requiredPpeList.map((ppe, idx) => (
             <div
               key={ppe.id}
-              className="p-4 border border-hairline-divider bg-white hover:border-charcoal-ink transition-colors flex flex-col justify-between"
+              className="p-4 border border-hairline-divider dark:border-[#2B2A2F] bg-white dark:bg-[#222226] hover:border-charcoal-ink dark:hover:border-white transition-colors flex flex-col justify-between"
             >
               <div>
-                <div className="w-8 h-8 rounded-full bg-[#F4F0E8] flex items-center justify-center text-charcoal-ink mb-3 text-xs font-bold font-editorial">
+                <div className="w-8 h-8 rounded-full bg-[#F4F0E8] dark:bg-[#2C2C32] flex items-center justify-center text-charcoal-ink dark:text-[#F4F4F6] mb-3 text-xs font-bold font-mono">
                   0{idx + 1}
                 </div>
-                <h4 className="font-editorial text-sm uppercase tracking-wide text-charcoal-ink font-bold mb-1.5">
+                <h4 className="font-sans font-bold text-sm uppercase tracking-tight text-charcoal-ink dark:text-[#F4F4F6] mb-1.5">
                   {ppe.name}
                 </h4>
-                <p className="text-[11px] text-muted-charcoal font-light leading-relaxed">
+                <p className="text-[11px] text-muted-charcoal dark:text-[#A1A1AA] font-light leading-relaxed">
                   {ppe.description}
                 </p>
               </div>
-              <div className="mt-3 pt-2 border-t border-hairline-divider/50 flex items-center gap-1.5 text-[9px] uppercase tracking-wider text-emerald-800 font-medium">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-600" />
+              <div className="mt-3 pt-2 border-t border-hairline-divider/50 dark:border-[#2B2A2F] flex items-center gap-1.5 text-[9px] uppercase tracking-wider text-emerald-800 dark:text-emerald-400 font-medium">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse" />
                 <span>Mandatory</span>
               </div>
             </div>
@@ -185,13 +185,13 @@ export const SafetyProtocolsSection: React.FC = () => {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Filter by keyword (e.g. PPE, hose, pressure, valve)..."
-            className="w-full bg-[#FAF9F5] border border-hairline-divider px-3.5 sm:px-4 py-2 sm:py-2.5 text-xs text-charcoal-ink placeholder-subtle-ash focus:outline-hidden focus:border-charcoal-ink transition-colors"
+            className="w-full bg-[#FAF9F5] dark:bg-[#1A1A1E] border border-hairline-divider dark:border-[#2B2A2F] px-3.5 sm:px-4 py-2 sm:py-2.5 text-xs text-charcoal-ink dark:text-[#F4F4F6] placeholder-subtle-ash dark:placeholder-[#6E6B65] focus:outline-hidden focus:border-charcoal-ink dark:focus:border-white transition-colors"
           />
           {searchQuery && (
             <button
               type="button"
               onClick={() => setSearchQuery('')}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-subtle-ash hover:text-charcoal-ink"
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-subtle-ash hover:text-charcoal-ink dark:hover:text-white"
             >
               ✕
             </button>
@@ -202,14 +202,14 @@ export const SafetyProtocolsSection: React.FC = () => {
           <button
             type="button"
             onClick={expandAll}
-            className="px-3 py-1.5 border border-hairline-divider bg-[#FAF9F5] hover:border-charcoal-ink transition-colors text-muted-charcoal hover:text-charcoal-ink"
+            className="px-3 py-1.5 border border-hairline-divider dark:border-[#2B2A2F] bg-[#FAF9F5] dark:bg-[#1A1A1E] hover:border-charcoal-ink dark:hover:border-white transition-colors text-muted-charcoal dark:text-[#A1A1AA] hover:text-charcoal-ink dark:hover:text-white"
           >
             Expand All
           </button>
           <button
             type="button"
             onClick={collapseAll}
-            className="px-3 py-1.5 border border-hairline-divider bg-[#FAF9F5] hover:border-charcoal-ink transition-colors text-muted-charcoal hover:text-charcoal-ink"
+            className="px-3 py-1.5 border border-hairline-divider dark:border-[#2B2A2F] bg-[#FAF9F5] dark:bg-[#1A1A1E] hover:border-charcoal-ink dark:hover:border-white transition-colors text-muted-charcoal dark:text-[#A1A1AA] hover:text-charcoal-ink dark:hover:text-white"
           >
             Collapse All
           </button>
@@ -223,12 +223,12 @@ export const SafetyProtocolsSection: React.FC = () => {
         <div>
           <div className="flex items-center justify-between mb-4 sm:mb-6 pb-2 sm:pb-3 hairline-b">
             <div className="flex items-center gap-2.5 sm:gap-3">
-              <span className="w-2.5 h-2.5 rounded-full bg-emerald-700" />
-              <h3 className="font-editorial text-lg sm:text-2xl uppercase tracking-wider text-charcoal-ink">
+              <span className="w-2.5 h-2.5 rounded-full bg-emerald-700 dark:bg-emerald-500" />
+              <h3 className="font-sans font-bold text-lg sm:text-2xl uppercase tracking-tight text-charcoal-ink dark:text-[#F4F4F6]">
                 DO's — Mandatory Practices
               </h3>
             </div>
-            <span className="text-[10px] uppercase tracking-[0.18em] text-subtle-ash">
+            <span className="text-[10px] uppercase tracking-[0.18em] text-subtle-ash dark:text-[#8E8B85]">
               {filteredDo.length} Active Directives
             </span>
           </div>
@@ -236,7 +236,7 @@ export const SafetyProtocolsSection: React.FC = () => {
           <div className="space-y-3 sm:space-y-4">
             {filteredDo.map((item) => renderCard(item, false))}
             {filteredDo.length === 0 && (
-              <p className="text-xs text-subtle-ash italic py-4">No matching directives found.</p>
+              <p className="text-xs text-subtle-ash dark:text-[#8E8B85] italic py-4">No matching directives found.</p>
             )}
           </div>
         </div>
@@ -245,12 +245,12 @@ export const SafetyProtocolsSection: React.FC = () => {
         <div>
           <div className="flex items-center justify-between mb-4 sm:mb-6 pb-2 sm:pb-3 hairline-b">
             <div className="flex items-center gap-2.5 sm:gap-3">
-              <span className="w-2.5 h-2.5 rounded-full bg-accent-crimson" />
-              <h3 className="font-editorial text-lg sm:text-2xl uppercase tracking-wider text-charcoal-ink">
+              <span className="w-2.5 h-2.5 rounded-full bg-accent-crimson dark:bg-red-500" />
+              <h3 className="font-sans font-bold text-lg sm:text-2xl uppercase tracking-tight text-charcoal-ink dark:text-[#F4F4F6]">
                 DON'TS — Strict Prohibitions
               </h3>
             </div>
-            <span className="text-[10px] uppercase tracking-[0.18em] text-subtle-ash">
+            <span className="text-[10px] uppercase tracking-[0.18em] text-subtle-ash dark:text-[#8E8B85]">
               {filteredDont.length} Critical Prohibitions
             </span>
           </div>
@@ -258,7 +258,7 @@ export const SafetyProtocolsSection: React.FC = () => {
           <div className="space-y-3 sm:space-y-4">
             {filteredDont.map((item) => renderCard(item, true))}
             {filteredDont.length === 0 && (
-              <p className="text-xs text-subtle-ash italic py-4">No matching prohibitions found.</p>
+              <p className="text-xs text-subtle-ash dark:text-[#8E8B85] italic py-4">No matching prohibitions found.</p>
             )}
           </div>
         </div>

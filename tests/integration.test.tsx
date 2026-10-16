@@ -70,5 +70,13 @@ describe('Centralized Air Distribution System Integration', () => {
       expect(html).toContain(adv.role.replace(/&/g, '&amp;'));
     });
   });
+
+  it('renders standardized industrial sans title typography and dark mode theme toggle', () => {
+    const html = renderToString(<App />);
+    // Check that dark mode toggle is present in header
+    expect(html).toContain('Switch to dark mode');
+    // Check for standardized sans headings
+    expect(html).toContain('font-sans font-extrabold');
+  });
 });
 

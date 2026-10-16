@@ -59,18 +59,18 @@ export const VideoSection: React.FC = () => {
   };
 
   return (
-    <section id="video-demo" className="py-20 sm:py-28 lg:py-32 px-4 sm:px-8 lg:px-12 max-w-7xl mx-auto">
+    <section id="video-demo" className="py-20 sm:py-28 lg:py-32 px-4 sm:px-8 lg:px-12 max-w-7xl mx-auto transition-colors duration-300">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 sm:mb-16 hairline-b pb-6 sm:pb-8">
         <div>
-          <span className="text-[10px] uppercase tracking-[0.25em] text-subtle-ash block mb-2">
+          <span className="text-[10px] uppercase tracking-[0.25em] text-subtle-ash dark:text-gray-400 block mb-2">
             Instructional Video Archive
           </span>
-          <h2 className="font-editorial text-2xl sm:text-4xl md:text-5xl uppercase tracking-[0.03em] text-charcoal-ink">
+          <h2 className="font-sans font-extrabold text-2xl sm:text-4xl md:text-5xl uppercase tracking-tight text-charcoal-ink dark:text-gray-100">
             WORKSHOP VIDEO DEMONSTRATION
           </h2>
         </div>
-        <div className="mt-3 sm:mt-0 text-[10px] sm:text-[11px] uppercase tracking-[0.16em] sm:tracking-[0.18em] text-muted-charcoal">
+        <div className="mt-3 sm:mt-0 text-[10px] sm:text-[11px] uppercase tracking-[0.16em] sm:tracking-[0.18em] text-muted-charcoal dark:text-gray-400">
           Duration: 04:48 Min · Full Color HD · Rev 04
         </div>
       </div>
@@ -78,7 +78,7 @@ export const VideoSection: React.FC = () => {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start">
         
         {/* Main Video Player Card */}
-        <div className="lg:col-span-8 hairline-all bg-[#FAF9F5] p-2.5 sm:p-4">
+        <div className="lg:col-span-8 hairline-all bg-[#FAF9F5] dark:bg-[#18181B] p-2.5 sm:p-4">
           <div className="relative aspect-video overflow-hidden bg-charcoal-ink group flex items-center justify-center">
             
             {/* Visual Thumbnail */}
@@ -105,7 +105,7 @@ export const VideoSection: React.FC = () => {
               className="absolute w-12 h-12 sm:w-16 sm:h-16 rounded-full border border-white/80 bg-black/50 text-white flex items-center justify-center hover:scale-110 transition-transform backdrop-blur-xs cursor-pointer"
               aria-label={isPlaying ? 'Pause video' : 'Play video'}
             >
-              <span className="font-editorial text-base sm:text-xl ml-0.5">
+              <span className="text-base sm:text-xl ml-0.5">
                 {isPlaying ? '⏸' : '▶'}
               </span>
             </button>
@@ -128,7 +128,7 @@ export const VideoSection: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => setIsPlaying(!isPlaying)}
-                    className="hover:text-emerald-400 font-bold shrink-0"
+                    className="hover:text-emerald-400 font-bold shrink-0 cursor-pointer"
                   >
                     {isPlaying ? 'PAUSE' : 'PLAY'}
                   </button>
@@ -142,7 +142,7 @@ export const VideoSection: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => setPlaybackSpeed(playbackSpeed === 1 ? 1.5 : playbackSpeed === 1.5 ? 2 : 1)}
-                    className="hover:text-emerald-400 border border-white/30 px-1 py-0.5"
+                    className="hover:text-emerald-400 border border-white/30 px-1 py-0.5 cursor-pointer"
                   >
                     {playbackSpeed}x
                   </button>
@@ -156,25 +156,25 @@ export const VideoSection: React.FC = () => {
 
           {/* Sequence Description */}
           <div className="p-4 sm:p-6">
-            <span className="text-[9px] sm:text-[10px] uppercase tracking-[0.2em] text-subtle-ash block mb-1">
+            <span className="text-[9px] sm:text-[10px] uppercase tracking-[0.2em] text-subtle-ash dark:text-gray-400 block mb-1">
               Active Demonstration Sequence
             </span>
-            <h4 className="font-editorial text-base sm:text-lg text-charcoal-ink uppercase tracking-wide mb-1.5 sm:mb-2">
+            <h4 className="font-sans font-bold text-base sm:text-lg text-charcoal-ink dark:text-gray-100 uppercase tracking-tight mb-1.5 sm:mb-2">
               {activeChapter.title}
             </h4>
-            <p className="text-xs text-muted-charcoal font-light leading-relaxed">
+            <p className="text-xs text-muted-charcoal dark:text-gray-300 font-light leading-relaxed">
               Official practical walkthrough demonstrating visual pre-check at Station 0, gradual quarter-turn valve lever engagement, maintenance of the 100 mm stand-off chip distance, and complete zero-pressure line venting prior to disengagement.
             </p>
           </div>
         </div>
 
         {/* Video Chapter Index */}
-        <div className="lg:col-span-4 hairline-all bg-[#FAF9F5] p-5 sm:p-8">
+        <div className="lg:col-span-4 hairline-all bg-[#FAF9F5] dark:bg-[#18181B] p-5 sm:p-8">
           <div className="hairline-b pb-3 sm:pb-4 mb-4 sm:mb-6 flex justify-between items-baseline">
-            <h3 className="font-editorial text-base sm:text-lg uppercase tracking-wider text-charcoal-ink">
+            <h3 className="font-sans font-bold text-base sm:text-lg uppercase tracking-tight text-charcoal-ink dark:text-gray-100">
               Chapters
             </h3>
-            <span className="text-[9px] sm:text-[10px] uppercase tracking-[0.2em] text-subtle-ash">
+            <span className="text-[9px] sm:text-[10px] uppercase tracking-[0.2em] text-subtle-ash dark:text-gray-400">
               Click to Seek
             </span>
           </div>
@@ -188,15 +188,15 @@ export const VideoSection: React.FC = () => {
                   onClick={() => jumpToChapter(ch.seconds)}
                   className={`flex justify-between items-baseline py-2 sm:py-2.5 px-2.5 sm:px-3 transition-all cursor-pointer border ${
                     isActive
-                      ? 'border-charcoal-ink bg-[#F1EDE5] font-medium text-charcoal-ink'
-                      : 'border-transparent hover:border-hairline-divider hover:bg-[#F4F0E8] text-muted-charcoal'
+                      ? 'border-charcoal-ink dark:border-emerald-500 bg-[#F1EDE5] dark:bg-[#27272A] font-medium text-charcoal-ink dark:text-gray-100'
+                      : 'border-transparent hover:border-hairline-divider hover:bg-[#F4F0E8] dark:hover:bg-[#202024] text-muted-charcoal dark:text-gray-300'
                   }`}
                 >
                   <div className="flex items-center gap-2 truncate pr-2">
-                    {isActive && <span className="w-1.5 h-1.5 rounded-full bg-emerald-700 shrink-0" />}
+                    {isActive && <span className="w-1.5 h-1.5 rounded-full bg-emerald-700 dark:bg-emerald-400 shrink-0" />}
                     <span className="font-light truncate">{ch.title}</span>
                   </div>
-                  <span className="text-[10px] sm:text-[11px] font-editorial font-medium ml-2 text-charcoal-ink shrink-0">
+                  <span className="text-[10px] sm:text-[11px] font-mono font-medium ml-2 text-charcoal-ink dark:text-gray-200 shrink-0">
                     {ch.timeStr}
                   </span>
                 </div>
@@ -204,7 +204,7 @@ export const VideoSection: React.FC = () => {
             })}
           </div>
 
-          <div className="mt-6 sm:mt-8 pt-4 sm:pt-6 hairline-t text-[9px] sm:text-[10px] uppercase tracking-[0.14em] sm:tracking-[0.16em] text-subtle-ash">
+          <div className="mt-6 sm:mt-8 pt-4 sm:pt-6 hairline-t text-[9px] sm:text-[10px] uppercase tracking-[0.14em] sm:tracking-[0.16em] text-subtle-ash dark:text-gray-400">
             <span>Video format: H.264 / AAC 1080p · TUP Machining Lab</span>
           </div>
         </div>

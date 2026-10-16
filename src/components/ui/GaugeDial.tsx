@@ -45,8 +45,7 @@ export const GaugeDial: React.FC<GaugeDialProps> = ({
           cx="50"
           cy="50"
           r="46"
-          fill="#FAF9F5"
-          stroke="#1C1B1A"
+          className="fill-[#FAF9F5] dark:fill-[#202024] stroke-[#1C1B1A] dark:stroke-[#52525B]"
           strokeWidth="2"
         />
         <circle
@@ -54,7 +53,7 @@ export const GaugeDial: React.FC<GaugeDialProps> = ({
           cy="50"
           r="43"
           fill="none"
-          stroke="#DCD7CD"
+          className="stroke-[#DCD7CD] dark:stroke-[#3F3F46]"
           strokeWidth="0.75"
         />
 
@@ -94,7 +93,7 @@ export const GaugeDial: React.FC<GaugeDialProps> = ({
                 y1={y1}
                 x2={x2}
                 y2={y2}
-                stroke="#1C1B1A"
+                className="stroke-[#1C1B1A] dark:stroke-[#E4E4E7]"
                 strokeWidth={val % 4 === 0 ? '1.5' : '1'}
               />
               <text
@@ -104,7 +103,7 @@ export const GaugeDial: React.FC<GaugeDialProps> = ({
                 fontSize="6"
                 fontFamily="sans-serif"
                 fontWeight="500"
-                fill="#4A4744"
+                className="fill-[#4A4744] dark:fill-[#A1A1AA]"
               >
                 {val}
               </text>
@@ -121,7 +120,7 @@ export const GaugeDial: React.FC<GaugeDialProps> = ({
           fontFamily="sans-serif"
           fontWeight="600"
           letterSpacing="0.1em"
-          fill="#7E7973"
+          className="fill-[#7E7973] dark:fill-[#A1A1AA]"
         >
           BAR · PSI
         </text>
@@ -137,19 +136,19 @@ export const GaugeDial: React.FC<GaugeDialProps> = ({
         )}
 
         {/* Pivot Center Pin */}
-        <circle cx="50" cy="50" r="4" fill="#1C1B1A" />
-        <circle cx="50" cy="50" r="1.5" fill="#FAF9F5" />
+        <circle cx="50" cy="50" r="4" className="fill-[#1C1B1A] dark:fill-[#E4E4E7]" />
+        <circle cx="50" cy="50" r="1.5" className="fill-[#FAF9F5] dark:fill-[#18181B]" />
 
         {/* Rotating Needle */}
         <g style={{ transform: `rotate(${angle}deg)`, transformOrigin: '50px 50px', transition: 'transform 0.4s ease-out' }}>
           <polygon
             points="50,14 47.5,50 52.5,50"
-            fill={isOverpressure ? '#8A2528' : '#1C1B1A'}
+            className={isOverpressure ? 'fill-[#DC2626]' : 'fill-[#1C1B1A] dark:fill-[#F4F4F5]'}
           />
           {/* Counterweight */}
           <polygon
             points="48.5,50 51.5,50 50,58"
-            fill="#7E7973"
+            className="fill-[#7E7973] dark:fill-[#71717A]"
           />
         </g>
       </svg>
@@ -159,17 +158,17 @@ export const GaugeDial: React.FC<GaugeDialProps> = ({
         <span
           className={`font-semibold ${
             isOverpressure
-              ? 'text-accent-crimson'
+              ? 'text-accent-crimson dark:text-rose-400'
               : isSafeZone
-              ? 'text-emerald-800'
+              ? 'text-emerald-800 dark:text-emerald-400'
               : currentPressureBar === 0
-              ? 'text-subtle-ash'
-              : 'text-charcoal-ink'
+              ? 'text-subtle-ash dark:text-gray-400'
+              : 'text-charcoal-ink dark:text-gray-200'
           }`}
         >
           {currentPressureBar.toFixed(1)} Bar
         </span>
-        <span className="text-subtle-ash text-[9px]">({psi} PSI)</span>
+        <span className="text-subtle-ash dark:text-gray-400 text-[9px]">({psi} PSI)</span>
       </div>
     </div>
   );

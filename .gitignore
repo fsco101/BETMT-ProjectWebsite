@@ -21,9 +21,6 @@ yarn-error.log*
 Thumbs.db
 .superpowers/
 
-# Media & Large Assets
-public/images/
-Public/images/
 
 
 

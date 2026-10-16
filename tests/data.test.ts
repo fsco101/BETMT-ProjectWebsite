@@ -3,6 +3,7 @@ import { circuitStages } from '../src/data/circuitStages';
 import { dropStations } from '../src/data/dropStations';
 import { mandatoryPractices, strictProhibitions, requiredPpeList } from '../src/data/safetyProtocols';
 import { sopSteps } from '../src/data/sopSteps';
+import { studyOverviewData, researchTeamMembers } from '../src/data/aboutData';
 
 describe('Centralized Data Layer Fixtures', () => {
   it('contains exactly 7 circuit stages with valid stage numbers', () => {
@@ -49,5 +50,21 @@ describe('Centralized Data Layer Fixtures', () => {
     expect(categories.has('A. COMPRESSOR START UP')).toBe(true);
     expect(categories.has('B. OPERATING PROCEDURE')).toBe(true);
     expect(categories.has('D. SHUTTING DOWN AND STORING')).toBe(true);
+  });
+
+  it('contains comprehensive study overview and 5 research team profiles', () => {
+    expect(studyOverviewData.title).toBeTruthy();
+    expect(studyOverviewData.abstract).toContain('Centralized Compressed Air Distribution System');
+    expect(studyOverviewData.objectives).toHaveLength(4);
+    expect(studyOverviewData.methodology).toHaveLength(5);
+    expect(studyOverviewData.advisers).toHaveLength(2);
+
+    expect(researchTeamMembers).toHaveLength(5);
+    researchTeamMembers.forEach((member) => {
+      expect(member.name).toBeTruthy();
+      expect(member.role).toBeTruthy();
+      expect(member.program).toContain('Mechanical');
+      expect(member.contributions.length).toBeGreaterThan(0);
+    });
   });
 });

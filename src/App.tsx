@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { PneumaticProvider } from './context/PneumaticContext';
 import { Header } from './components/layout/Header';
 import { HeroSection } from './components/sections/HeroSection';
@@ -8,43 +8,93 @@ import { SafetyProtocolsSection } from './components/sections/SafetyProtocolsSec
 import { SopSection } from './components/sections/SopSection';
 import { DropsSection } from './components/sections/DropsSection';
 import { VideoSection } from './components/sections/VideoSection';
+import { AboutPage } from './components/pages/AboutPage';
 import { Footer } from './components/layout/Footer';
 import { EmergencyModal } from './components/modals/EmergencyModal';
 
 const AppContent: React.FC = () => {
   const [emergencyModalOpen, setEmergencyModalOpen] = useState(false);
+  const [activePage, setActivePage] = useState<'manual' | 'about'>(() => {
+    if (typeof window !== 'undefined' && window.location.hash === '#about') {
+      return 'about';
+    }
+    return 'manual';
+  });
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      if (window.location.hash === '#about') {
+        setActivePage('about');
+      } else if (
+        window.location.hash === '#manual' ||
+        window.location.hash === '' ||
+        window.location.hash.startsWith('#hero') ||
+        window.location.hash.startsWith('#system') ||
+        window.location.hash.startsWith('#safety') ||
+        window.location.hash.startsWith('#sop') ||
+        window.location.hash.startsWith('#air') ||
+        window.location.hash.startsWith('#video')
+      ) {
+        setActivePage('manual');
+      }
+    };
+
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
+  const navigatePage = (page: 'manual' | 'about') => {
+    setActivePage(page);
+    if (page === 'about') {
+      window.location.hash = 'about';
+    } else {
+      window.location.hash = '';
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   return (
     <div className="min-h-screen bg-[#F7F5F0] text-[#1C1B1A] flex flex-col selection:bg-[#E8E2D7] selection:text-[#1C1B1A]">
       {/* Top Sticky Navigation Bar */}
-      <Header onOpenEmergencyModal={() => setEmergencyModalOpen(true)} />
+      <Header
+        onOpenEmergencyModal={() => setEmergencyModalOpen(true)}
+        activePage={activePage}
+        onNavigatePage={navigatePage}
+      />
 
-      {/* Main Narrative Flow */}
-      <main className="flex-1">
-        {/* 1. Hero Section */}
-        <HeroSection />
+      {/* Main Narrative Flow: Manual vs About */}
+      {activePage === 'about' ? (
+        <main className="flex-1">
+          <AboutPage onBackToManual={() => navigatePage('manual')} />
+        </main>
+      ) : (
+        <main className="flex-1">
+          {/* 1. Hero Section */}
+          <HeroSection />
 
-        {/* 2. System Overview */}
-        <ExpertiseSection />
+          {/* 2. System Overview */}
+          <ExpertiseSection />
 
-        {/* 3. System Components & How the System Works */}
-        <CircuitSection />
+          {/* 3. System Components & How the System Works */}
+          <CircuitSection />
 
-        {/* 4. Safety Standards & Operating Protocols (DO & DON'T with PPE) */}
-        <SafetyProtocolsSection />
+          {/* 4. Safety Standards & Operating Protocols (DO & DON'T with PPE) */}
+          <SafetyProtocolsSection />
 
-        {/* 5. Standard Operating Procedure (15-Step Illustrated Protocol) */}
-        <SopSection />
+          {/* 5. Standard Operating Procedure (15-Step Illustrated Protocol) */}
+          <SopSection />
 
-        {/* 6. Air Outlets (6 Workshop Drops with Live Controls) */}
-        <DropsSection />
+          {/* 6. Air Outlets (6 Workshop Drops with Live Controls) */}
+          <DropsSection />
 
-        {/* 7. Workshop Video Demonstration */}
-        <VideoSection />
-      </main>
+          {/* 7. Workshop Video Demonstration */}
+          <VideoSection />
+        </main>
+      )}
 
       {/* Editorial Lab Footer */}
-      <Footer />
+      <Footer activePage={activePage} onNavigatePage={navigatePage} />
+
 
       {/* Full-Screen Emergency Depressurization Modal */}
       <EmergencyModal

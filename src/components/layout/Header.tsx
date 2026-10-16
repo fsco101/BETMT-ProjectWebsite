@@ -3,13 +3,19 @@ import { usePneumatics } from '../../context/PneumaticContext';
 
 interface HeaderProps {
   onOpenEmergencyModal: () => void;
+  activePage?: 'manual' | 'about';
+  onNavigatePage?: (page: 'manual' | 'about') => void;
 }
 
-export const Header: React.FC<HeaderProps> = ({ onOpenEmergencyModal }) => {
+export const Header: React.FC<HeaderProps> = ({
+  onOpenEmergencyModal,
+  activePage = 'manual',
+  onNavigatePage
+}) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { state } = usePneumatics();
 
-  const navLinks = [
+  const manualNavLinks = [
     { label: 'System Overview', href: '#system-overview' },
     { label: 'System Components & Operation', href: '#system-components' },
     { label: 'Safety Protocols', href: '#safety-protocols' },
@@ -22,13 +28,27 @@ export const Header: React.FC<HeaderProps> = ({ onOpenEmergencyModal }) => {
     setMobileMenuOpen(false);
   };
 
+  const handlePageSwitch = (page: 'manual' | 'about') => {
+    setMobileMenuOpen(false);
+    onNavigatePage?.(page);
+  };
+
   return (
     <header className="w-full hairline-b sticky top-0 z-40 bg-[#F7F5F0]/95 backdrop-blur-md transition-all">
       <div className="w-full max-w-[1700px] mx-auto px-4 sm:px-8 lg:px-12 py-3.5 sm:py-4 flex xl:grid xl:grid-cols-[1fr_auto_1fr] items-center justify-between gap-4">
         
-        {/* Left: TUP TAGUIG & Mechanical And Allied Department (LM removed) */}
+        {/* Left: TUP TAGUIG & Mechanical And Allied Department */}
         <div className="flex items-center justify-start shrink-0">
-          <a href="#hero" className="flex items-center gap-2.5 sm:gap-3.5 group">
+          <a
+            href="#hero"
+            onClick={(e) => {
+              if (activePage !== 'manual') {
+                e.preventDefault();
+                handlePageSwitch('manual');
+              }
+            }}
+            className="flex items-center gap-2.5 sm:gap-3.5 group"
+          >
             <div className="flex flex-col">
               <span className="font-editorial text-xs sm:text-sm md:text-base uppercase tracking-[0.16em] sm:tracking-[0.2em] text-charcoal-ink leading-tight font-medium">
                 TUP TAGUIG
@@ -41,17 +61,55 @@ export const Header: React.FC<HeaderProps> = ({ onOpenEmergencyModal }) => {
         </div>
 
         {/* Center: Desktop Navigation Links */}
-        <nav className="hidden xl:flex items-center justify-center space-x-5 2xl:space-x-7 text-[10px] 2xl:text-[11px] uppercase tracking-[0.14em] 2xl:tracking-[0.16em] text-muted-charcoal font-medium">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="hover:text-charcoal-ink transition-colors pb-0.5 border-b border-transparent hover:border-charcoal-ink whitespace-nowrap"
-            >
-              {link.label}
-            </a>
-          ))}
+        <nav className="hidden xl:flex items-center justify-center space-x-4 2xl:space-x-6 text-[10px] 2xl:text-[11px] uppercase tracking-[0.14em] 2xl:tracking-[0.16em] text-muted-charcoal font-medium">
+          {activePage === 'manual' ? (
+            <>
+              {manualNavLinks.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="hover:text-charcoal-ink transition-colors pb-0.5 border-b border-transparent hover:border-charcoal-ink whitespace-nowrap"
+                >
+                  {link.label}
+                </a>
+              ))}
+              <button
+                type="button"
+                onClick={() => handlePageSwitch('about')}
+                className="hover:text-charcoal-ink transition-all pb-0.5 border-b border-charcoal-ink text-charcoal-ink font-semibold whitespace-nowrap ml-2"
+              >
+                About Study & Team →
+              </button>
+            </>
+          ) : (
+            <>
+              <button
+                type="button"
+                onClick={() => handlePageSwitch('manual')}
+                className="hover:text-charcoal-ink transition-all pb-0.5 border-b border-charcoal-ink text-charcoal-ink font-semibold whitespace-nowrap"
+              >
+                ← Return to Manual
+              </button>
+              <a
+                href="#research-team"
+                className="hover:text-charcoal-ink transition-colors pb-0.5 border-b border-transparent hover:border-charcoal-ink whitespace-nowrap"
+              >
+                Research Team
+              </a>
+              <a
+                href="#top"
+                onClick={(e) => {
+                  e.preventDefault();
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+                className="hover:text-charcoal-ink transition-colors pb-0.5 border-b border-transparent hover:border-charcoal-ink whitespace-nowrap"
+              >
+                Study Abstract & Objectives
+              </a>
+            </>
+          )}
         </nav>
+
 
         {/* Right: Emergency Action & Mobile Hamburger */}
         <div className="flex items-center justify-end gap-2.5 sm:gap-3.5 shrink-0">
@@ -104,17 +162,61 @@ export const Header: React.FC<HeaderProps> = ({ onOpenEmergencyModal }) => {
       {mobileMenuOpen && (
         <div className="xl:hidden hairline-t bg-[#F7F5F0] px-6 py-6 shadow-xl animate-fadeIn">
           <nav className="flex flex-col space-y-3.5 text-xs uppercase tracking-[0.18em] text-muted-charcoal">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={handleNavClick}
-                className="hover:text-charcoal-ink py-1.5 border-b border-hairline-divider/40 flex items-center justify-between"
-              >
-                <span>{link.label}</span>
-                <span className="text-xs text-subtle-ash">→</span>
-              </a>
-            ))}
+            {activePage === 'manual' ? (
+              <>
+                {manualNavLinks.map((link) => (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    onClick={handleNavClick}
+                    className="hover:text-charcoal-ink py-1.5 border-b border-hairline-divider/40 flex items-center justify-between"
+                  >
+                    <span>{link.label}</span>
+                    <span className="text-xs text-subtle-ash">→</span>
+                  </a>
+                ))}
+                <button
+                  type="button"
+                  onClick={() => handlePageSwitch('about')}
+                  className="w-full text-left font-medium text-charcoal-ink py-2 px-3 border border-charcoal-ink bg-white/70 flex items-center justify-between mt-2"
+                >
+                  <span>About Study & Team</span>
+                  <span className="text-xs font-mono">→</span>
+                </button>
+              </>
+            ) : (
+              <>
+                <button
+                  type="button"
+                  onClick={() => handlePageSwitch('manual')}
+                  className="w-full text-left font-medium text-charcoal-ink py-2 px-3 border border-charcoal-ink bg-white/70 flex items-center justify-between mb-2"
+                >
+                  <span>← Return to Manual</span>
+                  <span className="text-xs font-mono">↵</span>
+                </button>
+                <a
+                  href="#research-team"
+                  onClick={handleNavClick}
+                  className="hover:text-charcoal-ink py-1.5 border-b border-hairline-divider/40 flex items-center justify-between"
+                >
+                  <span>Research Team</span>
+                  <span className="text-xs text-subtle-ash">→</span>
+                </a>
+                <a
+                  href="#top"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    handleNavClick();
+                  }}
+                  className="hover:text-charcoal-ink py-1.5 border-b border-hairline-divider/40 flex items-center justify-between"
+                >
+                  <span>Study Abstract & Objectives</span>
+                  <span className="text-xs text-subtle-ash">↑</span>
+                </a>
+              </>
+            )}
+
             <div className="pt-3 flex items-center justify-between text-[10px] text-subtle-ash">
               <span>Main Line: <strong className="font-semibold text-charcoal-ink">{state.mainHeaderPressure.toFixed(1)} Bar</strong></span>
               <span>30 PSI Operating Pressure</span>

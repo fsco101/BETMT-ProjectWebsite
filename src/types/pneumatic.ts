@@ -92,3 +92,47 @@ export interface PneumaticState {
   purgeProgress: number; // 0 to 100
   audioEnabled: boolean;
 }
+
+export interface TeamMember {
+  id: string;
+  name: string;
+  role: string;
+  program: string;
+  institution: string;
+  email?: string;
+  contributions: string[];
+  image?: string;
+}
+
+export interface StudyObjective {
+  id: string;
+  title: string;
+  description: string;
+}
+
+export interface StudyMethodologyStage {
+  step: string;
+  title: string;
+  description: string;
+}
+
+export interface StudyOverview {
+  title: string;
+  eyebrow: string;
+  subtitle: string;
+  department: string;
+  institution: string;
+  academicYear: string;
+  abstract: string;
+  backgroundRationale: string;
+  significance: string[];
+  objectives: StudyObjective[];
+  methodology: StudyMethodologyStage[];
+  advisers: {
+    name: string;
+    title: string;
+    department: string;
+    role: string;
+  }[];
+}
+

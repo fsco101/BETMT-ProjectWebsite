@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { sopSteps } from '../../data/sopSteps';
 import { SopStepperModal } from '../modals/SopStepperModal';
-import { SopVerificationModal } from '../modals/SopVerificationModal';
 import { SopStepDetailModal } from '../modals/SopStepDetailModal';
 import { SopStep } from '../../types/pneumatic';
 import { useStickyCardStack } from '../../hooks/useStickyCardStack';
@@ -92,13 +91,7 @@ const SopCategoryStack: React.FC<SopCategoryStackProps> = ({
 
 export const SopSection: React.FC = () => {
   const [stepperOpen, setStepperOpen] = useState(false);
-  const [certModalOpen, setCertModalOpen] = useState(false);
   const [selectedStep, setSelectedStep] = useState<SopStep | null>(null);
-
-  const handleStepperComplete = () => {
-    setStepperOpen(false);
-    setCertModalOpen(true);
-  };
 
   const categories = [
     { title: 'A. COMPRESSOR START UP', steps: sopSteps.filter(s => s.category === 'A. COMPRESSOR START UP') },
@@ -171,13 +164,6 @@ export const SopSection: React.FC = () => {
       <SopStepperModal
         isOpen={stepperOpen}
         onClose={() => setStepperOpen(false)}
-        onComplete={handleStepperComplete}
-      />
-
-      {/* Safety Compliance Certification Modal */}
-      <SopVerificationModal
-        isOpen={certModalOpen}
-        onClose={() => setCertModalOpen(false)}
       />
     </section>
   );

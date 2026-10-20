@@ -37,10 +37,10 @@ export const EmergencyModal: React.FC<EmergencyModalProps> = ({ isOpen, onClose 
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 overflow-y-auto">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 lg:p-8 overflow-y-auto">
       {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-black/80 backdrop-blur-sm transition-opacity"
+        className="fixed inset-0 bg-slate-900/70 dark:bg-black/85 backdrop-blur-md transition-opacity animate-fadeIn"
         onClick={() => {
           if (!state.isEmergencyDepressurized) onClose();
         }}
@@ -48,12 +48,16 @@ export const EmergencyModal: React.FC<EmergencyModalProps> = ({ isOpen, onClose 
       />
 
       {/* Modal Box */}
-      <div className="relative w-full max-w-2xl bg-[#FFFDF9] dark:bg-[#18181B] border sm:border-2 border-accent-crimson shadow-2xl hairline-all z-10 p-4 sm:p-8 overflow-y-auto max-h-[92vh] animate-fadeIn space-y-5 sm:space-y-6 my-auto transition-colors">
-        
-        {/* Warning Banner */}
-        <div className="flex items-center justify-between border-b border-red-200 dark:border-red-900/60 pb-3 sm:pb-4 gap-2">
+      <div
+        className="relative w-full max-w-2xl bg-white dark:bg-[#0E2135] text-slate-800 dark:text-slate-100 border-2 border-red-500 dark:border-red-600 shadow-2xl rounded-xl sm:rounded-2xl z-10 p-5 sm:p-8 overflow-y-auto max-h-[92vh] animate-scaleUp space-y-5 sm:space-y-6 my-auto transition-colors"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="emergency-modal-title"
+      >
+        {/* Warning Banner Header */}
+        <div className="flex items-center justify-between border-b border-red-100 dark:border-red-900/40 pb-3 sm:pb-4 gap-2">
           <div className="flex items-center gap-2.5 sm:gap-3">
-            <span className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-accent-crimson text-white flex items-center justify-center animate-pulse shrink-0">
+            <span className="w-8 h-8 rounded-full bg-red-600 text-white flex items-center justify-center animate-pulse shrink-0 shadow-md shadow-red-500/20">
               <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
                 <line x1="12" y1="9" x2="12" y2="13" />
@@ -61,35 +65,43 @@ export const EmergencyModal: React.FC<EmergencyModalProps> = ({ isOpen, onClose 
               </svg>
             </span>
             <div>
-              <span className="text-[9px] sm:text-[10px] uppercase tracking-[0.2em] sm:tracking-[0.25em] text-accent-crimson dark:text-rose-400 font-semibold block">
+              <span className="text-[10px] sm:text-xs uppercase tracking-widest text-red-600 dark:text-rose-400 font-bold block">
                 DOLE Standard 1910 · High Priority
               </span>
-              <h3 className="font-sans font-extrabold text-lg sm:text-2xl uppercase tracking-tight text-charcoal-ink dark:text-gray-100 leading-tight">
+              <h3
+                id="emergency-modal-title"
+                className="font-sans font-extrabold text-lg sm:text-2xl uppercase tracking-tight text-slate-900 dark:text-white leading-tight"
+              >
                 EMERGENCY DEPRESSURIZATION
               </h3>
             </div>
           </div>
+          
           <button
             type="button"
             onClick={onClose}
-            className="w-7 h-7 border border-hairline-divider flex items-center justify-center text-xs text-charcoal-ink dark:text-gray-300 hover:border-charcoal-ink dark:hover:border-gray-400 shrink-0 cursor-pointer"
+            className="w-8 h-8 rounded-full border border-slate-300 dark:border-slate-700 text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center transition-colors cursor-pointer shrink-0"
             aria-label="Close modal"
           >
-            ✕
+            <span className="material-symbols-outlined text-lg">close</span>
           </button>
         </div>
 
-        {/* Live Line Pressure Gauge & Warning */}
-        <div className="p-3.5 sm:p-4 bg-red-50/70 dark:bg-red-950/30 border border-red-200 dark:border-red-900/60 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
+        {/* Live Line Pressure Gauge & Dump / Reset Trigger */}
+        <div className="p-4 sm:p-5 rounded-xl bg-red-50/80 dark:bg-red-950/30 border border-red-200 dark:border-red-900/60 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="space-y-1 text-center sm:text-left">
-            <span className="text-[9px] sm:text-[10px] uppercase tracking-[0.18em] sm:tracking-[0.2em] text-accent-crimson dark:text-rose-400 font-medium block">
+            <span className="text-[10px] sm:text-xs uppercase tracking-wider text-red-600 dark:text-rose-400 font-semibold block">
               Main Pneumatic Loop Pressure
             </span>
-            <div className="font-sans font-extrabold text-2xl sm:text-4xl text-charcoal-ink dark:text-gray-100">
-              {state.mainHeaderPressure.toFixed(1)} <small className="text-xs sm:text-sm font-sans text-subtle-ash dark:text-gray-400">Bar ({(state.mainHeaderPressure * 14.5).toFixed(0)} PSI)</small>
+            <div className="font-sans font-extrabold text-3xl sm:text-4xl text-slate-900 dark:text-white">
+              {state.mainHeaderPressure.toFixed(1)}{' '}
+              <span className="text-sm font-sans font-normal text-slate-500 dark:text-slate-400">
+                Bar ({(state.mainHeaderPressure * 14.5).toFixed(0)} PSI)
+              </span>
             </div>
-            <span className="text-[10px] text-muted-charcoal dark:text-gray-300 block">
-              Status: <strong className={state.isEmergencyDepressurized ? 'text-accent-crimson dark:text-rose-400 uppercase' : 'text-emerald-800 dark:text-emerald-400 uppercase'}>
+            <span className="text-xs text-slate-600 dark:text-slate-300 block">
+              Status:{' '}
+              <strong className={state.isEmergencyDepressurized ? 'text-red-600 dark:text-rose-400 uppercase font-bold' : 'text-emerald-600 dark:text-emerald-400 uppercase font-bold'}>
                 {state.isEmergencyDepressurized ? 'LINE PURGED (0.0 PSI)' : 'PRESSURIZED LINE ACTIVE'}
               </strong>
             </span>
@@ -100,17 +112,19 @@ export const EmergencyModal: React.FC<EmergencyModalProps> = ({ isOpen, onClose 
               <button
                 type="button"
                 onClick={triggerEmergencyDepressurize}
-                className="w-full sm:w-auto px-4 sm:px-5 py-2.5 sm:py-3 text-[10px] sm:text-xs uppercase tracking-[0.18em] sm:tracking-[0.2em] bg-accent-crimson text-white font-semibold hover:bg-red-800 transition-colors shadow-md border border-red-900 text-center cursor-pointer"
+                className="w-full sm:w-auto px-5 py-3 rounded-lg text-xs uppercase tracking-wider bg-red-600 text-white font-bold hover:bg-red-700 transition-colors shadow-md shadow-red-600/20 text-center cursor-pointer flex items-center justify-center gap-2"
               >
-                Dump Main Pressure
+                <span className="material-symbols-outlined text-base">emergency_home</span>
+                <span>Dump Main Pressure</span>
               </button>
             ) : (
               <button
                 type="button"
                 onClick={resetSystem}
-                className="w-full sm:w-auto px-4 sm:px-5 py-2.5 sm:py-3 text-[10px] sm:text-xs uppercase tracking-[0.18em] sm:tracking-[0.2em] bg-emerald-800 hover:bg-emerald-700 text-white font-semibold transition-colors shadow-md border border-emerald-900 text-center cursor-pointer"
+                className="w-full sm:w-auto px-5 py-3 rounded-lg text-xs uppercase tracking-wider bg-emerald-600 hover:bg-emerald-700 text-white font-bold transition-colors shadow-md shadow-emerald-600/20 text-center cursor-pointer flex items-center justify-center gap-2"
               >
-                Reset &amp; Repressurize
+                <span className="material-symbols-outlined text-base">restart_alt</span>
+                <span>Reset &amp; Repressurize</span>
               </button>
             )}
           </div>
@@ -118,7 +132,7 @@ export const EmergencyModal: React.FC<EmergencyModalProps> = ({ isOpen, onClose 
 
         {/* Rapid Depressurization Protocol Checklist */}
         <div className="space-y-2.5 sm:space-y-3">
-          <span className="text-[9px] sm:text-[10px] uppercase tracking-[0.18em] sm:tracking-[0.2em] text-subtle-ash dark:text-gray-400 font-medium block">
+          <span className="text-[10px] sm:text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400 font-bold block">
             Emergency Cutoff Procedure (Step-by-Step)
           </span>
 
@@ -132,43 +146,47 @@ export const EmergencyModal: React.FC<EmergencyModalProps> = ({ isOpen, onClose 
             <label
               key={item.id}
               onClick={() => toggleCheck(item.id)}
-              className="p-3 sm:p-3.5 hairline-all bg-[#FAF9F5] dark:bg-[#202024] hover:bg-[#F4F0E8] dark:hover:bg-[#27272A] flex items-start gap-2.5 sm:gap-3 cursor-pointer transition-colors"
+              className="p-3.5 sm:p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-[#162238]/60 hover:bg-slate-100 dark:hover:bg-[#162238] flex items-start gap-3 cursor-pointer transition-colors"
             >
               <input
                 type="checkbox"
                 checked={checklist[item.id]}
                 onChange={() => {}}
-                className="mt-0.5 w-4 h-4 text-accent-crimson rounded-none border-charcoal-ink dark:border-gray-600 focus:ring-0 cursor-pointer shrink-0"
+                className="mt-0.5 w-4 h-4 text-red-600 rounded border-slate-300 dark:border-slate-700 focus:ring-red-500 cursor-pointer shrink-0"
               />
               <div className="text-xs">
-                <span className="font-medium text-charcoal-ink dark:text-gray-100 block leading-snug">{item.id}. {item.title}</span>
-                <span className="text-[10px] sm:text-[11px] text-muted-charcoal dark:text-gray-300 font-light leading-relaxed">{item.detail}</span>
+                <span className="font-bold text-slate-900 dark:text-white block leading-snug">
+                  {item.id}. {item.title}
+                </span>
+                <span className="text-[11px] text-slate-600 dark:text-slate-300 font-light leading-relaxed">
+                  {item.detail}
+                </span>
               </div>
             </label>
           ))}
         </div>
 
         {/* Emergency Contacts Hotlines */}
-        <div className="p-3.5 sm:p-4 bg-[#F4F0E8] dark:bg-[#202024] hairline-all text-xs space-y-1.5 sm:space-y-2">
-          <span className="text-[8px] sm:text-[9px] uppercase tracking-[0.18em] sm:tracking-[0.2em] text-subtle-ash dark:text-gray-400 block font-semibold">
-            Group 1 - Batch 2023-2027 Emergency Dispatch Hotlines
+        <div className="p-4 rounded-xl bg-[#F8FAFC] dark:bg-[#162238] border border-slate-200 dark:border-slate-800 text-xs space-y-2">
+          <span className="text-[10px] sm:text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400 block font-bold">
+            Group 1 · Batch 2023–2027 Emergency Dispatch Hotlines
           </span>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-1.5 sm:gap-2 text-[10px] sm:text-[11px] text-charcoal-ink dark:text-gray-200 font-light">
-            <div><strong>Campus Clinic:</strong> (02) 8823-2456 loc 108</div>
-            <div><strong>Security Command:</strong> (02) 8823-2456 loc 112</div>
-            <div><strong>Lab Supervisor:</strong> loc 204 (Engr. De Leon)</div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs text-slate-700 dark:text-slate-200">
+            <div><strong className="text-slate-900 dark:text-white font-semibold">Campus Clinic:</strong> (02) 8823-2456 loc 108</div>
+            <div><strong className="text-slate-900 dark:text-white font-semibold">Security Command:</strong> (02) 8823-2456 loc 112</div>
+            <div><strong className="text-slate-900 dark:text-white font-semibold">Lab Supervisor:</strong> loc 204 (Engr. De Leon)</div>
           </div>
         </div>
 
         {/* Footer Actions */}
-        <div className="flex items-center justify-between border-t border-hairline-divider pt-3.5 sm:pt-4 text-xs">
-          <span className="text-subtle-ash dark:text-gray-400 text-[9px] sm:text-[10px] uppercase tracking-wider">
+        <div className="flex items-center justify-between border-t border-slate-200 dark:border-slate-800 pt-4 text-xs">
+          <span className="text-slate-500 dark:text-slate-400 text-[10px] sm:text-xs uppercase tracking-wider font-mono">
             Ref: GRP1-SAFETY-SOP-EMG-01
           </span>
           <button
             type="button"
             onClick={onClose}
-            className="px-4 sm:px-5 py-1.5 sm:py-2 text-[9px] sm:text-[10px] uppercase tracking-[0.16em] sm:tracking-[0.18em] border border-charcoal-ink dark:border-gray-500 text-charcoal-ink dark:text-gray-200 hover:bg-charcoal-ink hover:text-[#FAF9F5] dark:hover:bg-white dark:hover:text-black transition-colors cursor-pointer"
+            className="px-5 py-2 rounded-lg text-xs uppercase tracking-wider font-semibold border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
           >
             Dismiss
           </button>
@@ -178,3 +196,4 @@ export const EmergencyModal: React.FC<EmergencyModalProps> = ({ isOpen, onClose 
     </div>
   );
 };
+

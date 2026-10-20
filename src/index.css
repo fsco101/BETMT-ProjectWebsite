@@ -213,3 +213,16 @@
   }
 }
 
+/* Fluid Typography for Hero Title - smooth responsive scaling for all screen sizes */
+.hero-fluid-headline {
+  font-size: clamp(1.2rem, 5.2vw, 4.25rem);
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+}
+
+@media (min-width: 1280px) {
+  .hero-fluid-headline {
+    font-size: 68px;
+  }
+}
+

@@ -57,13 +57,13 @@ export const HeroSection: React.FC = () => {
       <h1
         ref={headingRef}
         aria-label="CENTRALIZED COMPRESSED AIR DISTRIBUTION SYSTEM"
-        className="relative z-10 font-sans font-extrabold text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-[68px] leading-[1.08] tracking-[-0.04em] uppercase max-w-5xl text-[#16324F] dark:text-white break-words"
+        className="relative z-10 font-sans font-extrabold hero-fluid-headline uppercase max-w-5xl text-[#16324F] dark:text-white break-words px-2 w-full"
       >
         {lines.map((lineObj, lineIdx) => {
           return (
             <span
               key={lineIdx}
-              className={`block overflow-hidden pb-1 ${lineObj.isAccent ? 'text-amber-500 dark:text-amber-400' : ''}`}
+              className={`block overflow-hidden pb-1 sm:pb-1.5 ${lineObj.isAccent ? 'text-amber-500 dark:text-amber-400' : ''}`}
               aria-hidden="true"
             >
               {lineObj.text.split('').map((char, charIdx) => {
@@ -92,39 +92,39 @@ export const HeroSection: React.FC = () => {
       </h1>
 
       {/* Institutional Byline */}
-      <div className="relative z-10 mt-3 text-xs sm:text-sm uppercase tracking-widest text-[#F59E0B] font-semibold">
+      <div className="relative z-10 mt-3 sm:mt-4 text-[11px] sm:text-xs md:text-sm uppercase tracking-widest text-[#F59E0B] font-semibold px-2">
         Mechanical &amp; Allied Department (MAAD) · TUP Taguig Campus
       </div>
 
       {/* Subtitle */}
-      <p className="relative z-10 mt-5 text-sm sm:text-base md:text-lg text-slate-600 dark:text-slate-300 max-w-3xl font-normal leading-relaxed px-2">
+      <p className="relative z-10 mt-3 sm:mt-5 text-xs sm:text-base md:text-lg text-slate-600 dark:text-slate-300 max-w-3xl font-normal leading-relaxed px-2">
         A centralized pneumatic network delivering regulated compressed air across three machine shop laboratory areas. Explore equipment specifications, safety protocols, standard operating procedures, and 6 active workstation outlets.
       </p>
 
       {/* Quick Jump Action Pills (BrewedOps Inspired) */}
-      <div className="relative z-10 mt-8 flex flex-wrap items-center justify-center gap-3 w-full max-w-3xl px-4">
+      <div className="relative z-10 mt-6 sm:mt-8 flex flex-wrap items-center justify-center gap-2 sm:gap-3 w-full max-w-3xl px-2 sm:px-4">
         <a
           href="#system-overview"
-          className="motion-press inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-md bg-[#16324F] hover:bg-[#0E2135] text-white text-xs uppercase tracking-wider font-semibold shadow-sm transition-all"
+          className="motion-press inline-flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-md bg-[#16324F] hover:bg-[#0E2135] text-white text-[11px] sm:text-xs uppercase tracking-wider font-semibold shadow-sm transition-all"
         >
           <span>System Overview &amp; Layout</span>
           <span className="text-amber-400">→</span>
         </a>
         <a
           href="#system-components"
-          className="motion-press inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-md bg-[#F1F5F9] dark:bg-[#162238] hover:bg-[#E2E8F0] dark:hover:bg-[#1E293B] text-[#16324F] dark:text-white border border-slate-300 dark:border-slate-700 text-xs uppercase tracking-wider font-semibold transition-all"
+          className="motion-press inline-flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-md bg-[#F1F5F9] dark:bg-[#162238] hover:bg-[#E2E8F0] dark:hover:bg-[#1E293B] text-[#16324F] dark:text-white border border-slate-300 dark:border-slate-700 text-[11px] sm:text-xs uppercase tracking-wider font-semibold transition-all"
         >
           <span>How the System Works (7 Components)</span>
         </a>
         <a
           href="#safety-protocols"
-          className="motion-press inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-md bg-[#FEF3C7] dark:bg-amber-950/40 hover:bg-amber-200 dark:hover:bg-amber-900/60 text-amber-900 dark:text-amber-300 border border-amber-300 dark:border-amber-700/60 text-xs uppercase tracking-wider font-semibold transition-all"
+          className="motion-press inline-flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-md bg-[#FEF3C7] dark:bg-amber-950/40 hover:bg-amber-200 dark:hover:bg-amber-900/60 text-amber-900 dark:text-amber-300 border border-amber-300 dark:border-amber-700/60 text-[11px] sm:text-xs uppercase tracking-wider font-semibold transition-all"
         >
           <span>Safety Protocols (DO &amp; DON'T)</span>
         </a>
         <a
           href="#air-outlets"
-          className="motion-press inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-md bg-[#F1F5F9] dark:bg-[#162238] hover:bg-[#E2E8F0] dark:hover:bg-[#1E293B] text-slate-700 dark:text-slate-200 border border-slate-300 dark:border-slate-700 text-xs uppercase tracking-wider font-semibold transition-all"
+          className="motion-press inline-flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-md bg-[#F1F5F9] dark:bg-[#162238] hover:bg-[#E2E8F0] dark:hover:bg-[#1E293B] text-slate-700 dark:text-slate-200 border border-slate-300 dark:border-slate-700 text-[11px] sm:text-xs uppercase tracking-wider font-semibold transition-all"
         >
           <span>6 Air Outlets (1/2" Drops)</span>
         </a>

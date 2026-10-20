@@ -75,37 +75,37 @@ export const CircuitDetailDrawer: React.FC<CircuitDetailDrawerProps> = ({
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 lg:p-8 overflow-y-auto">
       {/* Darkened Backdrop */}
       <div
-        className="fixed inset-0 bg-charcoal-ink/80 backdrop-blur-sm transition-opacity animate-fadeIn"
+        className="fixed inset-0 bg-slate-900/60 dark:bg-black/80 backdrop-blur-md transition-opacity animate-fadeIn"
         onClick={onClose}
         aria-hidden="true"
       />
 
       {/* Centered Modal Container */}
       <div
-        className="relative w-full max-w-5xl 2xl:max-w-6xl max-h-[92vh] sm:max-h-[88vh] bg-[#FAF9F5] dark:bg-[#18181C] text-charcoal-ink dark:text-[#F4F4F6] shadow-2xl flex flex-col hairline-all z-10 my-auto overflow-hidden animate-scaleUp transition-colors"
+        className="relative w-full max-w-5xl 2xl:max-w-6xl max-h-[92vh] sm:max-h-[88vh] bg-white dark:bg-[#0E2135] text-slate-800 dark:text-slate-100 shadow-2xl flex flex-col rounded-xl sm:rounded-2xl border border-slate-200 dark:border-slate-800 z-10 my-auto overflow-hidden animate-scaleUp transition-colors"
         role="dialog"
         aria-modal="true"
         aria-labelledby="circuit-modal-title"
       >
         {/* Modal Top Header Bar */}
-        <div className="p-3.5 sm:p-5 hairline-b flex items-center justify-between bg-[#FAF9F5] dark:bg-[#18181C] z-20 shrink-0">
+        <div className="p-3.5 sm:p-4 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between bg-[#F8FAFC] dark:bg-[#162238] z-20 shrink-0">
           {/* Stage Identification */}
-          <div className="flex items-center gap-2 sm:gap-3">
-            <span className="bg-charcoal-ink dark:bg-black text-[#FAF9F5] text-[9px] sm:text-[10px] uppercase tracking-[0.2em] px-2.5 py-1 font-medium shrink-0">
+          <div className="flex items-center gap-2.5 sm:gap-3">
+            <span className="bg-[#16324F] dark:bg-sky-500 text-white dark:text-[#0A192F] text-[10px] sm:text-xs uppercase tracking-widest px-2.5 py-1 rounded-sm font-bold shrink-0">
               Stage 0{stage.stageNumber} / 08
             </span>
-            <span className="text-[9px] sm:text-[11px] uppercase tracking-[0.16em] sm:tracking-[0.2em] text-subtle-ash dark:text-[#8E8B85] truncate max-w-[170px] sm:max-w-none">
+            <span className="text-[10px] sm:text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400 font-semibold truncate max-w-[170px] sm:max-w-none">
               8-Stage Circuit Specification
             </span>
           </div>
 
           {/* Quick Stage Stepper Switcher */}
           {onSelectStage && (
-            <div className="hidden sm:flex items-center gap-1.5 text-[9px] uppercase tracking-[0.18em]">
+            <div className="hidden sm:flex items-center gap-1.5 text-[10px] uppercase tracking-wider">
               <button
                 type="button"
                 onClick={() => onSelectStage(prevStage)}
-                className="px-2.5 py-1 border border-hairline-divider dark:border-[#2B2A2F] text-charcoal-ink dark:text-[#E4E4E7] hover:border-charcoal-ink dark:hover:border-white hover:bg-charcoal-ink dark:hover:bg-white hover:text-[#FAF9F5] dark:hover:text-[#18181C] transition-colors"
+                className="px-2.5 py-1 rounded-sm border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-[#16324F] hover:text-white dark:hover:bg-white dark:hover:text-[#16324F] transition-colors cursor-pointer"
                 title={`Previous: ${prevStage.name}`}
               >
                 ← Stage 0{prevStage.stageNumber}
@@ -113,7 +113,7 @@ export const CircuitDetailDrawer: React.FC<CircuitDetailDrawerProps> = ({
               <button
                 type="button"
                 onClick={() => onSelectStage(nextStage)}
-                className="px-2.5 py-1 border border-hairline-divider dark:border-[#2B2A2F] text-charcoal-ink dark:text-[#E4E4E7] hover:border-charcoal-ink dark:hover:border-white hover:bg-charcoal-ink dark:hover:bg-white hover:text-[#FAF9F5] dark:hover:text-[#18181C] transition-colors"
+                className="px-2.5 py-1 rounded-sm border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-[#16324F] hover:text-white dark:hover:bg-white dark:hover:text-[#16324F] transition-colors cursor-pointer"
                 title={`Next: ${nextStage.name}`}
               >
                 Stage 0{nextStage.stageNumber} →
@@ -125,10 +125,10 @@ export const CircuitDetailDrawer: React.FC<CircuitDetailDrawerProps> = ({
           <button
             type="button"
             onClick={onClose}
-            className="w-8 h-8 sm:w-9 sm:h-9 border border-charcoal-ink/30 dark:border-white/30 text-charcoal-ink dark:text-white flex items-center justify-center hover:bg-charcoal-ink dark:hover:bg-white hover:text-[#FAF9F5] dark:hover:text-[#121214] transition-colors cursor-pointer text-sm shrink-0"
+            className="w-8 h-8 rounded-full border border-slate-300 dark:border-slate-700 text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center transition-colors cursor-pointer shrink-0"
             aria-label="Close modal"
           >
-            ✕
+            <span className="material-symbols-outlined text-lg">close</span>
           </button>
         </div>
 
@@ -136,11 +136,11 @@ export const CircuitDetailDrawer: React.FC<CircuitDetailDrawerProps> = ({
         <div className="grid grid-cols-1 lg:grid-cols-12 flex-1 overflow-y-auto lg:overflow-hidden min-h-0">
           
           {/* ================= LEFT COLUMN: IMAGE SLIDESHOW ================= */}
-          <div className="lg:col-span-7 xl:col-span-7 flex flex-col bg-[#F3EFE6] dark:bg-[#121214] hairline-b lg:hairline-b-0 lg:hairline-r overflow-hidden min-h-0">
+          <div className="lg:col-span-7 xl:col-span-7 flex flex-col bg-slate-100 dark:bg-slate-950/80 border-b lg:border-b-0 lg:border-r border-slate-200 dark:border-slate-800 overflow-hidden min-h-0">
             
             {/* Slide Header: Counter & Caption */}
-            <div className="px-4 py-2.5 hairline-b bg-[#FAF9F5] dark:bg-[#18181C] flex items-center justify-between text-[10px] uppercase tracking-[0.16em] text-subtle-ash dark:text-[#8E8B85] shrink-0">
-              <span className="font-medium text-charcoal-ink">
+            <div className="px-4 py-2.5 border-b border-slate-200 dark:border-slate-800 bg-[#F8FAFC] dark:bg-[#162238] flex items-center justify-between text-[10px] uppercase tracking-wider text-slate-500 dark:text-slate-400 shrink-0">
+              <span className="font-semibold text-[#16324F] dark:text-white">
                 Figure 0{currentSlideIndex + 1} of 0{slideImages.length}
               </span>
               <span className="truncate max-w-[240px] sm:max-w-[340px]">
@@ -160,7 +160,7 @@ export const CircuitDetailDrawer: React.FC<CircuitDetailDrawerProps> = ({
                   currentSlideIndex
                 )
               }
-              className="relative flex-1 min-h-[260px] sm:min-h-[360px] lg:min-h-[400px] bg-charcoal-ink overflow-hidden flex items-center justify-center group cursor-zoom-in"
+              className="relative flex-1 min-h-[260px] sm:min-h-[360px] lg:min-h-[400px] bg-slate-900 overflow-hidden flex items-center justify-center group cursor-zoom-in"
               title="Click to view full uncropped image"
             >
               <img
@@ -171,7 +171,7 @@ export const CircuitDetailDrawer: React.FC<CircuitDetailDrawerProps> = ({
               />
 
               {/* Expand to Fullscreen Badge */}
-              <div className="absolute top-3 right-3 z-10 bg-black/75 hover:bg-black text-white text-[9px] uppercase tracking-wider px-2.5 py-1 flex items-center gap-1.5 opacity-90 group-hover:opacity-100 transition-opacity">
+              <div className="absolute top-3 right-3 z-10 bg-black/75 hover:bg-black text-white text-[9px] uppercase tracking-wider px-2.5 py-1 rounded-sm flex items-center gap-1.5 opacity-90 group-hover:opacity-100 transition-opacity backdrop-blur-xs">
                 <span>🔍</span>
                 <span>Click to Expand</span>
               </div>
@@ -184,7 +184,7 @@ export const CircuitDetailDrawer: React.FC<CircuitDetailDrawerProps> = ({
                     e.stopPropagation();
                     handlePrevSlide();
                   }}
-                  className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-11 sm:h-11 border border-charcoal-ink/40 bg-[#FAF9F5]/90 hover:bg-charcoal-ink hover:text-[#FAF9F5] flex items-center justify-center text-lg sm:text-xl font-editorial transition-all shadow-md cursor-pointer z-10"
+                  className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-11 sm:h-11 rounded-full border border-white/30 bg-black/60 hover:bg-black/90 text-white flex items-center justify-center text-lg sm:text-xl transition-all shadow-md cursor-pointer z-10"
                   aria-label="Previous image"
                   title="Previous image (Left Arrow)"
                 >
@@ -200,7 +200,7 @@ export const CircuitDetailDrawer: React.FC<CircuitDetailDrawerProps> = ({
                     e.stopPropagation();
                     handleNextSlide();
                   }}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-11 sm:h-11 border border-charcoal-ink/40 bg-[#FAF9F5]/90 hover:bg-charcoal-ink hover:text-[#FAF9F5] flex items-center justify-center text-lg sm:text-xl font-editorial transition-all shadow-md cursor-pointer z-10"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-11 sm:h-11 rounded-full border border-white/30 bg-black/60 hover:bg-black/90 text-white flex items-center justify-center text-lg sm:text-xl transition-all shadow-md cursor-pointer z-10"
                   aria-label="Next image"
                   title="Next image (Right Arrow)"
                 >
@@ -208,10 +208,10 @@ export const CircuitDetailDrawer: React.FC<CircuitDetailDrawerProps> = ({
                 </button>
               )}
 
-              {/* Bottom Image Position Dots / Floating Badges */}
+              {/* Bottom Image Position Dots */}
               {slideImages.length > 1 && (
                 <div
-                  className="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-1.5 bg-charcoal-ink/70 px-2.5 py-1 backdrop-blur-xs z-10"
+                  className="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-1.5 bg-black/70 px-2.5 py-1 rounded-full backdrop-blur-xs z-10"
                   onClick={(e) => e.stopPropagation()}
                 >
                   {slideImages.map((_, idx) => (
@@ -222,9 +222,9 @@ export const CircuitDetailDrawer: React.FC<CircuitDetailDrawerProps> = ({
                         e.stopPropagation();
                         setCurrentSlideIndex(idx);
                       }}
-                      className={`h-1.5 transition-all cursor-pointer ${
+                      className={`h-1.5 rounded-full transition-all cursor-pointer ${
                         idx === currentSlideIndex
-                          ? 'w-6 bg-[#FAF9F5]'
+                          ? 'w-6 bg-white'
                           : 'w-2 bg-white/40 hover:bg-white/80'
                       }`}
                       aria-label={`Jump to slide ${idx + 1}`}
@@ -236,17 +236,17 @@ export const CircuitDetailDrawer: React.FC<CircuitDetailDrawerProps> = ({
 
             {/* Manual Thumbnail Strip Bar */}
             {slideImages.length > 1 && (
-              <div className="p-3 sm:p-3.5 hairline-t bg-[#FAF9F5] dark:bg-[#18181C] flex items-center justify-between gap-3 shrink-0 overflow-x-auto">
+              <div className="p-3 sm:p-3.5 border-t border-slate-200 dark:border-slate-800 bg-[#F8FAFC] dark:bg-[#162238] flex items-center justify-between gap-3 shrink-0 overflow-x-auto">
                 <div className="flex items-center gap-2">
                   {slideImages.map((img, idx) => (
                     <button
                       key={idx}
                       type="button"
                       onClick={() => setCurrentSlideIndex(idx)}
-                      className={`w-12 h-9 sm:w-14 sm:h-10 overflow-hidden border transition-all cursor-pointer shrink-0 ${
+                      className={`w-12 h-9 sm:w-14 sm:h-10 rounded-sm overflow-hidden border transition-all cursor-pointer shrink-0 ${
                         idx === currentSlideIndex
-                          ? 'border-charcoal-ink dark:border-white ring-2 ring-charcoal-ink/30 dark:ring-white/30 scale-105'
-                          : 'border-hairline-divider dark:border-[#2B2A2F] opacity-60 hover:opacity-100'
+                          ? 'border-[#16324F] dark:border-sky-400 ring-2 ring-[#16324F]/30 dark:ring-sky-400/40 scale-105'
+                          : 'border-slate-300 dark:border-slate-700 opacity-60 hover:opacity-100'
                       }`}
                       title={`View Slide 0${idx + 1}`}
                     >
@@ -254,7 +254,7 @@ export const CircuitDetailDrawer: React.FC<CircuitDetailDrawerProps> = ({
                     </button>
                   ))}
                 </div>
-                <div className="hidden sm:block text-[9px] uppercase tracking-[0.16em] text-subtle-ash dark:text-[#8E8B85] whitespace-nowrap">
+                <div className="hidden sm:block text-[9px] uppercase tracking-wider text-slate-500 dark:text-slate-400 whitespace-nowrap font-medium">
                   Click thumbnails or use keyboard ← →
                 </div>
               </div>
@@ -262,45 +262,45 @@ export const CircuitDetailDrawer: React.FC<CircuitDetailDrawerProps> = ({
           </div>
 
           {/* ================= RIGHT COLUMN: CONTENTS / DETAILS ================= */}
-          <div className="lg:col-span-5 xl:col-span-5 flex flex-col justify-between overflow-y-auto p-4 sm:p-6 lg:p-7 space-y-5 bg-[#FAF9F5] dark:bg-[#18181C] min-h-0">
+          <div className="lg:col-span-5 xl:col-span-5 flex flex-col justify-between overflow-y-auto p-4 sm:p-6 lg:p-7 space-y-5 bg-white dark:bg-[#0E2135] min-h-0">
             <div className="space-y-4 sm:space-y-5">
               
               {/* Title & Subtitle */}
               <div>
                 <h3
                   id="circuit-modal-title"
-                  className="font-sans font-extrabold text-xl sm:text-2xl lg:text-3xl text-charcoal-ink dark:text-[#F4F4F6] uppercase tracking-tight leading-tight"
+                  className="font-sans font-extrabold text-xl sm:text-2xl lg:text-3xl text-[#16324F] dark:text-white uppercase tracking-tight leading-tight"
                 >
                   {stage.name}
                 </h3>
-                <span className="text-[10px] sm:text-[11px] uppercase tracking-[0.2em] text-subtle-ash dark:text-[#8E8B85] block mt-1.5">
+                <span className="text-[10px] sm:text-xs uppercase tracking-wider text-amber-600 dark:text-amber-400 font-semibold block mt-1.5 font-mono">
                   {stage.subtitle}
                 </span>
-                <p className="mt-3 text-xs sm:text-sm text-muted-charcoal dark:text-[#A1A1AA] leading-relaxed font-light">
+                <p className="mt-3 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
                   {stage.description}
                 </p>
               </div>
 
               {/* Key Metric Card */}
-              <div className="hairline-all bg-[#F4F0E8] dark:bg-[#222226] p-3 sm:p-3.5 flex items-center justify-between">
-                <span className="text-[9px] sm:text-[10px] uppercase tracking-[0.18em] sm:tracking-[0.2em] text-subtle-ash dark:text-[#8E8B85]">
+              <div className="border border-slate-200 dark:border-slate-800 bg-[#F1F5F9] dark:bg-[#162238] p-3 sm:p-3.5 rounded-md flex items-center justify-between">
+                <span className="text-[10px] uppercase tracking-wider text-slate-500 dark:text-slate-400 font-semibold">
                   {stage.metricLabel}
                 </span>
-                <span className="font-sans font-bold text-lg sm:text-2xl text-charcoal-ink dark:text-[#F4F4F6]">
+                <span className="font-sans font-bold text-lg sm:text-2xl text-[#16324F] dark:text-white">
                   {stage.metricValue}
                 </span>
               </div>
 
               {/* Technical Specifications Table */}
-              <div className="hairline-all bg-[#FAF9F5] dark:bg-[#1E1E22]">
-                <div className="p-2.5 sm:p-3 hairline-b bg-[#F1EDE5] dark:bg-[#25252A] text-[9px] sm:text-[10px] uppercase tracking-[0.18em] sm:tracking-[0.2em] text-charcoal-ink dark:text-[#F4F4F6] font-medium">
+              <div className="border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0E2135] rounded-md overflow-hidden">
+                <div className="p-2.5 sm:p-3 border-b border-slate-200 dark:border-slate-800 bg-[#F8FAFC] dark:bg-[#162238] text-[10px] uppercase tracking-wider text-[#16324F] dark:text-white font-bold">
                   Calibrated Laboratory Parameters
                 </div>
-                <div className="divide-y divide-hairline-divider dark:divide-[#2B2A2F]">
+                <div className="divide-y divide-slate-100 dark:divide-slate-800">
                   {stage.detailedSpecs.map((spec, i) => (
-                    <div key={i} className="p-2.5 sm:p-3 flex items-center justify-between text-xs font-light">
-                      <span className="text-muted-charcoal dark:text-[#A1A1AA] text-[11px] sm:text-xs">{spec.label}</span>
-                      <span className="font-medium text-charcoal-ink dark:text-[#F4F4F6] text-right ml-2 text-[11px] sm:text-xs">
+                    <div key={i} className="p-2.5 sm:p-3 flex items-center justify-between text-xs font-normal">
+                      <span className="text-slate-600 dark:text-slate-400 text-[11px] sm:text-xs">{spec.label}</span>
+                      <span className="font-semibold text-[#16324F] dark:text-white text-right ml-2 text-[11px] sm:text-xs">
                         {spec.value}
                       </span>
                     </div>
@@ -311,12 +311,12 @@ export const CircuitDetailDrawer: React.FC<CircuitDetailDrawerProps> = ({
               {/* ISO Standard Compliance & Maintenance */}
               <div className="space-y-2 text-xs">
                 {stage.isoStandard && (
-                  <div className="flex items-start gap-2.5 p-2.5 sm:p-3 border border-emerald-300 dark:border-emerald-800/60 bg-emerald-50/60 dark:bg-emerald-950/30 text-emerald-950 dark:text-emerald-200">
+                  <div className="flex items-start gap-2.5 p-2.5 sm:p-3 rounded-md border border-emerald-300 dark:border-emerald-800/60 bg-emerald-50 dark:bg-emerald-950/30 text-emerald-950 dark:text-emerald-200">
                     <span className="material-symbols-outlined text-base text-emerald-800 dark:text-emerald-400 mt-0.5 shrink-0">
                       verified
                     </span>
                     <div>
-                      <strong className="block text-[9px] sm:text-[10px] uppercase tracking-wider text-emerald-800 dark:text-emerald-400 font-semibold">
+                      <strong className="block text-[10px] uppercase tracking-wider text-emerald-800 dark:text-emerald-400 font-bold">
                         Compliance Standard
                       </strong>
                       <span className="text-[11px] sm:text-xs">{stage.isoStandard}</span>
@@ -324,12 +324,12 @@ export const CircuitDetailDrawer: React.FC<CircuitDetailDrawerProps> = ({
                   </div>
                 )}
                 {stage.maintenanceInterval && (
-                  <div className="flex items-start gap-2.5 p-2.5 sm:p-3 border border-hairline-divider dark:border-[#2B2A2F] bg-[#F4F0E8] dark:bg-[#222226] text-charcoal-ink dark:text-[#F4F4F6]">
-                    <span className="material-symbols-outlined text-base text-subtle-ash dark:text-[#8E8B85] mt-0.5 shrink-0">
+                  <div className="flex items-start gap-2.5 p-2.5 sm:p-3 rounded-md border border-slate-200 dark:border-slate-800 bg-[#F1F5F9] dark:bg-[#162238] text-slate-700 dark:text-slate-300">
+                    <span className="material-symbols-outlined text-base text-amber-500 mt-0.5 shrink-0">
                       build
                     </span>
                     <div>
-                      <strong className="block text-[9px] sm:text-[10px] uppercase tracking-wider text-subtle-ash dark:text-[#8E8B85] font-semibold">
+                      <strong className="block text-[10px] uppercase tracking-wider text-slate-700 dark:text-slate-300 font-bold">
                         Maintenance Schedule
                       </strong>
                       <span className="text-[11px] sm:text-xs">{stage.maintenanceInterval}</span>
@@ -341,20 +341,20 @@ export const CircuitDetailDrawer: React.FC<CircuitDetailDrawerProps> = ({
             </div>
 
             {/* Bottom Modal Actions */}
-            <div className="pt-4 hairline-t mt-4 flex flex-col sm:flex-row items-center justify-between gap-3 shrink-0">
+            <div className="pt-4 border-t border-slate-200 dark:border-slate-800 mt-4 flex flex-col sm:flex-row items-center justify-between gap-3 shrink-0">
               {onSelectStage ? (
                 <div className="flex items-center gap-2 w-full sm:w-auto">
                   <button
                     type="button"
                     onClick={() => onSelectStage(prevStage)}
-                    className="flex-1 sm:flex-initial px-3 py-2 text-[9px] sm:text-[10px] uppercase tracking-[0.16em] border border-hairline-divider dark:border-[#2B2A2F] text-charcoal-ink dark:text-[#E4E4E7] hover:border-charcoal-ink dark:hover:border-white hover:bg-[#F4F0E8] dark:hover:bg-[#25252A] transition-colors cursor-pointer text-center"
+                    className="flex-1 sm:flex-initial px-3 py-2 text-[10px] uppercase tracking-wider rounded-sm border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-[#16324F] hover:text-white dark:hover:bg-white dark:hover:text-[#16324F] transition-colors cursor-pointer text-center font-semibold"
                   >
                     ← Prev (0{prevStage.stageNumber})
                   </button>
                   <button
                     type="button"
                     onClick={() => onSelectStage(nextStage)}
-                    className="flex-1 sm:flex-initial px-3 py-2 text-[9px] sm:text-[10px] uppercase tracking-[0.16em] border border-hairline-divider dark:border-[#2B2A2F] text-charcoal-ink dark:text-[#E4E4E7] hover:border-charcoal-ink dark:hover:border-white hover:bg-[#F4F0E8] dark:hover:bg-[#25252A] transition-colors cursor-pointer text-center"
+                    className="flex-1 sm:flex-initial px-3 py-2 text-[10px] uppercase tracking-wider rounded-sm border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-[#16324F] hover:text-white dark:hover:bg-white dark:hover:text-[#16324F] transition-colors cursor-pointer text-center font-semibold"
                   >
                     Next (0{nextStage.stageNumber}) →
                   </button>
@@ -364,7 +364,7 @@ export const CircuitDetailDrawer: React.FC<CircuitDetailDrawerProps> = ({
               <button
                 type="button"
                 onClick={onClose}
-                className="w-full sm:w-auto px-5 py-2 text-[10px] sm:text-[11px] uppercase tracking-[0.18em] border border-charcoal-ink dark:border-white/40 bg-charcoal-ink dark:bg-white text-[#FAF9F5] dark:text-[#121214] hover:bg-transparent dark:hover:bg-transparent hover:text-charcoal-ink dark:hover:text-white transition-colors cursor-pointer text-center font-medium"
+                className="w-full sm:w-auto px-5 py-2 text-xs uppercase tracking-wider rounded-sm bg-[#16324F] text-white hover:bg-[#0E2135] dark:bg-white dark:text-[#16324F] dark:hover:bg-slate-100 transition-colors cursor-pointer text-center font-bold shadow-xs"
               >
                 Close Specification
               </button>

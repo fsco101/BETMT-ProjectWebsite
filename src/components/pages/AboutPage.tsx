@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { studyOverviewData, researchTeamMembers, teamIntro } from '../../data/aboutData';
 import { TeamMember } from '../../types/pneumatic';
 import { KineticMarquee } from '../interactive/KineticMarquee';
@@ -12,6 +12,20 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onBackToManual }) => {
   const [activeModalMember, setActiveModalMember] = useState<TeamMember | null>(null);
   const [viewMode, setViewMode] = useState<'coverflow' | 'grid'>('coverflow');
   const [failedImages, setFailedImages] = useState<Record<string, boolean>>({});
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setActiveModalMember(null);
+    };
+    if (activeModalMember) {
+      document.body.style.overflow = 'hidden';
+      window.addEventListener('keydown', handleKeyDown);
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [activeModalMember]);
 
   const handleImageError = (id: string) => {
     setFailedImages((prev) => ({ ...prev, [id]: true }));
@@ -320,25 +334,30 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onBackToManual }) => {
         <div
           role="dialog"
           aria-modal="true"
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-xs animate-in fade-in duration-200"
+          className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 lg:p-8 bg-slate-900/60 dark:bg-black/80 backdrop-blur-md animate-fadeIn"
           onClick={() => setActiveModalMember(null)}
         >
           <div
-            className="relative max-w-md w-full bg-white dark:bg-[#0E2135] rounded-lg border border-slate-200 dark:border-slate-700 shadow-2xl overflow-hidden"
+            className="relative max-w-md w-full bg-white dark:bg-[#0E2135] text-slate-800 dark:text-slate-100 rounded-xl sm:rounded-2xl border border-slate-200 dark:border-slate-800 shadow-2xl overflow-hidden animate-scaleUp my-auto transition-colors"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Header bar with member name and close button */}
-            <div className="flex items-center justify-between px-4 py-3 border-b border-slate-200 dark:border-slate-800 bg-[#F8FAFC] dark:bg-[#162238]">
-              <h3 className="font-sans font-bold text-sm text-[#16324F] dark:text-white uppercase tracking-tight">
-                {activeModalMember.name}
-              </h3>
+            {/* Header bar with member name and circular close button */}
+            <div className="flex items-center justify-between px-4 sm:px-5 py-3.5 border-b border-slate-200 dark:border-slate-800 bg-[#F8FAFC] dark:bg-[#162238] gap-3">
+              <div className="min-w-0">
+                <span className="text-[10px] uppercase tracking-wider text-slate-500 dark:text-slate-400 font-semibold block">
+                  Research Team Member
+                </span>
+                <h3 className="font-sans font-bold text-sm sm:text-base text-[#16324F] dark:text-white uppercase tracking-tight truncate">
+                  {activeModalMember.name}
+                </h3>
+              </div>
               <button
                 type="button"
                 onClick={() => setActiveModalMember(null)}
-                className="p-1 rounded-sm text-slate-400 hover:text-slate-700 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors cursor-pointer"
+                className="w-8 h-8 rounded-full border border-slate-300 dark:border-slate-700 text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center transition-colors cursor-pointer shrink-0"
                 aria-label="Close photo preview"
               >
-                <span className="material-symbols-outlined text-xl">close</span>
+                <span className="material-symbols-outlined text-lg">close</span>
               </button>
             </div>
 
@@ -359,14 +378,14 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onBackToManual }) => {
             </div>
 
             {/* Bottom Bar */}
-            <div className="px-4 py-3 bg-[#F8FAFC] dark:bg-[#162238] border-t border-slate-200 dark:border-slate-800 flex items-center justify-between">
-              <span className="text-[11px] font-mono text-slate-500 dark:text-slate-400">
-                BET-MT Batch 2027 • Group 1
+            <div className="px-4 sm:px-5 py-3.5 bg-[#F8FAFC] dark:bg-[#162238] border-t border-slate-200 dark:border-slate-800 flex items-center justify-between gap-3">
+              <span className="text-xs font-mono text-slate-500 dark:text-slate-400">
+                BET-MT Batch 2027 · Group 1
               </span>
               <button
                 type="button"
                 onClick={() => setActiveModalMember(null)}
-                className="px-4 py-1.5 rounded-sm bg-[#16324F] text-white text-xs uppercase tracking-wider font-semibold hover:bg-[#0E2135] transition-colors cursor-pointer"
+                className="px-4 py-1.5 rounded-lg bg-[#16324F] dark:bg-sky-500 text-white dark:text-[#0A192F] text-xs uppercase tracking-wider font-bold hover:bg-[#0E2135] dark:hover:bg-sky-400 transition-colors cursor-pointer shadow-sm"
               >
                 Close
               </button>

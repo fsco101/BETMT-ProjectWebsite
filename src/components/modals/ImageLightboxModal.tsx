@@ -1,20 +1,48 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useLightbox } from '../../context/LightboxContext';
+import { useBodyScrollLock } from '../../hooks/useBodyScrollLock';
 
 export const ImageLightboxModal: React.FC = () => {
   const { isOpen, items, currentIndex, closeLightbox, nextImage, prevImage, setIndex } = useLightbox();
   const [isZoomed, setIsZoomed] = useState(false);
+  const touchStartX = useRef<number | null>(null);
+  const touchStartY = useRef<number | null>(null);
 
-  // Lock body scroll when modal is open and reset zoom
+  // Safe reference-counted body scroll locking
+  useBodyScrollLock(isOpen);
+
+  // Reset zoom on slide or modal state changes
   useEffect(() => {
     setIsZoomed(false);
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-    }
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
   }, [currentIndex, isOpen]);
+
+  // Mobile swipe gestures
+  const handleTouchStart = (e: React.TouchEvent) => {
+    if (isZoomed) return;
+    touchStartX.current = e.touches[0].clientX;
+    touchStartY.current = e.touches[0].clientY;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (isZoomed || touchStartX.current === null || touchStartY.current === null) return;
+    const diffX = touchStartX.current - e.changedTouches[0].clientX;
+    const diffY = touchStartY.current - e.changedTouches[0].clientY;
+
+    // Swipe down to close (> 70px downward swipe, primarily vertical)
+    if (diffY < -70 && Math.abs(diffY) > Math.abs(diffX) * 1.4) {
+      closeLightbox();
+    }
+    // Horizontal swipe for next/prev (> 45px, primarily horizontal)
+    else if (Math.abs(diffX) > 45 && Math.abs(diffX) > Math.abs(diffY)) {
+      if (diffX > 0) {
+        nextImage();
+      } else {
+        prevImage();
+      }
+    }
+    touchStartX.current = null;
+    touchStartY.current = null;
+  };
 
   if (!isOpen || items.length === 0) return null;
 
@@ -79,18 +107,20 @@ export const ImageLightboxModal: React.FC = () => {
           <button
             type="button"
             onClick={closeLightbox}
-            className="w-8 h-8 rounded-full border border-white/25 bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors cursor-pointer"
+            className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-white/30 bg-white/15 hover:bg-white/25 active:scale-95 text-white flex items-center justify-center transition-all cursor-pointer shadow-md"
             aria-label="Close image viewer"
             title="Close viewer (ESC)"
           >
-            <span className="material-symbols-outlined text-lg">close</span>
+            <span className="material-symbols-outlined text-xl">close</span>
           </button>
         </div>
       </div>
 
       {/* Main Image Stage */}
       <div
-        className="relative flex-1 flex items-center justify-center p-2 sm:p-6 overflow-hidden cursor-pointer"
+        className="relative flex-1 flex items-center justify-center p-2 sm:p-6 overflow-hidden cursor-pointer touch-pan-y"
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
         onClick={(e) => {
           // If clicked directly on the stage background (not on the image), close modal
           if (e.target === e.currentTarget) {

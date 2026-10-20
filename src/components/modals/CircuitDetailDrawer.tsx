@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { CircuitStage } from '../../types/pneumatic';
 import { circuitStages } from '../../data/circuitStages';
 import { useLightbox } from '../../context/LightboxContext';
+import { useBodyScrollLock } from '../../hooks/useBodyScrollLock';
 
 interface CircuitDetailDrawerProps {
   stage: CircuitStage | null;
@@ -16,6 +17,9 @@ export const CircuitDetailDrawer: React.FC<CircuitDetailDrawerProps> = ({
 }) => {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
   const { openLightbox } = useLightbox();
+
+  // Safe reference-counted body scroll locking
+  useBodyScrollLock(!!stage);
 
   // Reset slide index when stage changes
   useEffect(() => {
@@ -38,11 +42,9 @@ export const CircuitDetailDrawer: React.FC<CircuitDetailDrawerProps> = ({
       }
     };
 
-    document.body.style.overflow = 'hidden';
     window.addEventListener('keydown', handleKeyDown);
 
     return () => {
-      document.body.style.overflow = 'unset';
       window.removeEventListener('keydown', handleKeyDown);
     };
   }, [stage, onClose]);

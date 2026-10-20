@@ -33,9 +33,9 @@ describe('Centralized Data Layer Fixtures', () => {
     });
   });
 
-  it('contains 9 mandatory DO practices and 9 strict DON\'T prohibitions plus PPE items', () => {
+  it('contains mandatory DO practices and strict DON\'T prohibitions plus PPE items', () => {
     expect(mandatoryPractices).toHaveLength(9);
-    expect(strictProhibitions).toHaveLength(9);
+    expect(strictProhibitions).toHaveLength(10);
     expect(requiredPpeList).toHaveLength(5);
     expect(mandatoryPractices.every(p => !p.isProhibition)).toBe(true);
     expect(strictProhibitions.every(p => p.isProhibition)).toBe(true);
@@ -52,14 +52,14 @@ describe('Centralized Data Layer Fixtures', () => {
     expect(categories.has('D. SHUTTING DOWN AND STORING')).toBe(true);
   });
 
-  it('contains comprehensive study overview and 5 research team profiles', () => {
+  it('contains comprehensive study overview and 10 research team profiles', () => {
     expect(studyOverviewData.title).toBeTruthy();
     expect(studyOverviewData.abstract).toContain('Centralized Compressed Air Distribution System');
     expect(studyOverviewData.objectives).toHaveLength(4);
     expect(studyOverviewData.methodology).toHaveLength(5);
     expect(studyOverviewData.advisers).toHaveLength(2);
 
-    expect(researchTeamMembers).toHaveLength(5);
+    expect(researchTeamMembers).toHaveLength(10);
     researchTeamMembers.forEach((member) => {
       expect(member.name).toBeTruthy();
       expect(member.role).toBeTruthy();

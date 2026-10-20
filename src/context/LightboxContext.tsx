@@ -81,12 +81,9 @@ export const LightboxProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     [items.length]
   );
 
-  // Keyboard navigation & body scroll locking
+  // Keyboard navigation
   useEffect(() => {
     if (!isOpen) return;
-
-    const originalOverflow = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
 
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
@@ -100,7 +97,6 @@ export const LightboxProvider: React.FC<{ children: React.ReactNode }> = ({ chil
 
     window.addEventListener('keydown', handleKeyDown);
     return () => {
-      document.body.style.overflow = originalOverflow;
       window.removeEventListener('keydown', handleKeyDown);
     };
   }, [isOpen, closeLightbox, nextImage, prevImage]);

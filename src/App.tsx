@@ -11,6 +11,7 @@ import { DropsSection } from './components/sections/DropsSection';
 import { AboutPage } from './components/pages/AboutPage';
 import { Footer } from './components/layout/Footer';
 import { ImageLightboxModal } from './components/modals/ImageLightboxModal';
+import { resetBodyScrollLock } from './hooks/useBodyScrollLock';
 
 const AppContent: React.FC = () => {
   const [theme, setTheme] = useState<'light' | 'dark'>(() => {
@@ -45,6 +46,7 @@ const AppContent: React.FC = () => {
 
   useEffect(() => {
     const handleHashChange = () => {
+      resetBodyScrollLock();
       if (window.location.hash === '#about') {
         setActivePage('about');
       } else if (
@@ -65,6 +67,7 @@ const AppContent: React.FC = () => {
   }, []);
 
   const navigatePage = (page: 'manual' | 'about') => {
+    resetBodyScrollLock();
     setActivePage(page);
     if (page === 'about') {
       window.location.hash = 'about';

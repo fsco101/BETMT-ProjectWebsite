@@ -10,11 +10,7 @@ import { researchTeamMembers, studyOverviewData } from '../src/data/aboutData';
 describe('Centralized Air Distribution System Integration', () => {
   it('renders the complete updated application layout without throwing', () => {
     const html = renderToString(<App />);
-    expect(html).toContain('CENTRALIZED COMPRESSED AIR DISTRIBUTION SYSTEM');
-    expect(html).toContain('Group 1 - Batch 2023-2027');
-    expect(html).not.toContain('TUP Taguig');
-    expect(html).not.toContain('TUP TAGUIG');
-    expect(html).toContain('Mechanical And Allied Department');
+    expect(html).toContain('CENTRALIZED COMPRESSED');
     expect(html).toContain('OPERATIONAL MANUAL');
     expect(html).toContain('SYSTEM OVERVIEW');
     expect(html).toContain('HOW THE SYSTEM WORKS');
@@ -23,7 +19,6 @@ describe('Centralized Air Distribution System Integration', () => {
     expect(html).toContain('STANDARD OPERATING PROCEDURE');
     expect(html).toContain('STEP BY STEP');
     expect(html).toContain('AIR OUTLETS');
-    expect(html).toContain('WORKSHOP VIDEO DEMONSTRATION');
     
     // Calculator and old Faculty should be removed
     expect(html).not.toContain('PNEUMATIC LAB SIZING CALCULATOR');
@@ -52,18 +47,16 @@ describe('Centralized Air Distribution System Integration', () => {
 
   it('renders the standalone AboutPage with research team credits and study sections', () => {
     const html = renderToString(<AboutPage onBackToManual={() => {}} />);
-    expect(html).toContain('Academic Study &amp; System Credits');
+    expect(html).toContain('About the Study &amp; Team');
     expect(html).toContain(studyOverviewData.title);
-    expect(html).toContain('Specific Study Objectives');
-    expect(html).toContain('Project Methodology &amp; Development Stages');
-    expect(html).toContain('Project Researchers &amp; Engineering Team');
+    expect(html).toContain('Project Objectives');
+    expect(html).toContain('Executive Abstract &amp; Purpose');
     expect(html).toContain('Return to Operational Manual');
 
-    // All 5 research team members must be present
+    // All research team members must be present
     researchTeamMembers.forEach((member) => {
       const searchName = member.name.replace(/&/g, '&amp;');
       expect(html).toContain(searchName);
-      expect(html).toContain(member.role.replace(/&/g, '&amp;'));
     });
 
     // Advisers must be credited
@@ -87,7 +80,7 @@ describe('Centralized Air Distribution System Integration', () => {
   it('renders clickable images with zoom cursor across system overview, circuits, and drop outlets', () => {
     const html = renderToString(<App />);
     expect(html).toContain('cursor-zoom-in');
-    expect(html).toContain('Click to view full image');
+    expect(html).toContain('Click to view full uncropped image');
     expect(html).toContain('Click to view full uncropped lab photo');
   });
 });

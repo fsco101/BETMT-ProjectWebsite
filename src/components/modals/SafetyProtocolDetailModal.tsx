@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { SafetyProtocolItem } from '../../types/pneumatic';
 import { useLightbox } from '../../context/LightboxContext';
+import { useBodyScrollLock } from '../../hooks/useBodyScrollLock';
 
 interface SafetyProtocolDetailModalProps {
   item: SafetyProtocolItem | null;
@@ -21,6 +22,9 @@ export const SafetyProtocolDetailModal: React.FC<SafetyProtocolDetailModalProps>
 }) => {
   const { openLightbox } = useLightbox();
 
+  // Safe reference-counted body scroll locking
+  useBodyScrollLock(!!item);
+
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
@@ -29,11 +33,9 @@ export const SafetyProtocolDetailModal: React.FC<SafetyProtocolDetailModalProps>
     };
 
     if (item) {
-      document.body.style.overflow = 'hidden';
       window.addEventListener('keydown', handleKeyDown);
     }
     return () => {
-      document.body.style.overflow = 'unset';
       window.removeEventListener('keydown', handleKeyDown);
     };
   }, [item, onClose, onPrev, onNext]);

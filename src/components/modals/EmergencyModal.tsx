@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { usePneumatics } from '../../context/PneumaticContext';
+import { useBodyScrollLock } from '../../hooks/useBodyScrollLock';
 
 interface EmergencyModalProps {
   isOpen: boolean;
@@ -16,6 +17,9 @@ export const EmergencyModal: React.FC<EmergencyModalProps> = ({ isOpen, onClose 
     5: false,
   });
 
+  // Safe reference-counted body scroll locking
+  useBodyScrollLock(isOpen);
+
   const toggleCheck = (idx: number) => {
     setChecklist(prev => ({ ...prev, [idx]: !prev[idx] }));
   };
@@ -25,11 +29,9 @@ export const EmergencyModal: React.FC<EmergencyModalProps> = ({ isOpen, onClose 
       if (e.key === 'Escape' && !state.isEmergencyDepressurized) onClose();
     };
     if (isOpen) {
-      document.body.style.overflow = 'hidden';
       window.addEventListener('keydown', handleKeyDown);
     }
     return () => {
-      document.body.style.overflow = 'unset';
       window.removeEventListener('keydown', handleKeyDown);
     };
   }, [isOpen, onClose, state.isEmergencyDepressurized]);

@@ -3,6 +3,7 @@ import { sopSteps } from '../../data/sopSteps';
 import { usePneumatics } from '../../context/PneumaticContext';
 import { useLightbox } from '../../context/LightboxContext';
 import { playValveClickSound } from '../../utils/audio';
+import { useBodyScrollLock } from '../../hooks/useBodyScrollLock';
 
 interface SopStepperModalProps {
   isOpen: boolean;
@@ -16,6 +17,9 @@ export const SopStepperModal: React.FC<SopStepperModalProps> = ({ isOpen, onClos
   const [isCompleted, setIsCompleted] = useState(false);
   const { state } = usePneumatics();
   const { openLightbox } = useLightbox();
+
+  // Safe reference-counted body scroll locking
+  useBodyScrollLock(isOpen);
 
   // Reset state whenever modal opens
   useEffect(() => {
@@ -43,11 +47,9 @@ export const SopStepperModal: React.FC<SopStepperModalProps> = ({ isOpen, onClos
     };
 
     if (isOpen) {
-      document.body.style.overflow = 'hidden';
       window.addEventListener('keydown', handleKeyDown);
     }
     return () => {
-      document.body.style.overflow = 'unset';
       window.removeEventListener('keydown', handleKeyDown);
     };
   }, [isOpen, onClose, onComplete, currentStepIndex, verifiedSteps, isCompleted]);

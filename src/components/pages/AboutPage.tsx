@@ -3,6 +3,7 @@ import { studyOverviewData, researchTeamMembers, teamIntro } from '../../data/ab
 import { TeamMember } from '../../types/pneumatic';
 import { KineticMarquee } from '../interactive/KineticMarquee';
 import { TeamCoverflowGallery } from '../interactive/TeamCoverflowGallery';
+import { useBodyScrollLock } from '../../hooks/useBodyScrollLock';
 
 interface AboutPageProps {
   onBackToManual: () => void;
@@ -13,16 +14,17 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onBackToManual }) => {
   const [viewMode, setViewMode] = useState<'coverflow' | 'grid'>('coverflow');
   const [failedImages, setFailedImages] = useState<Record<string, boolean>>({});
 
+  // Safe reference-counted body scroll locking
+  useBodyScrollLock(!!activeModalMember);
+
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') setActiveModalMember(null);
     };
     if (activeModalMember) {
-      document.body.style.overflow = 'hidden';
       window.addEventListener('keydown', handleKeyDown);
     }
     return () => {
-      document.body.style.overflow = 'unset';
       window.removeEventListener('keydown', handleKeyDown);
     };
   }, [activeModalMember]);
@@ -303,6 +305,40 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onBackToManual }) => {
 
         </div>
       </section>
+
+      {/* 5.5. Research Advisers & Faculty Coordination */}
+      {studyOverviewData.advisers && studyOverviewData.advisers.length > 0 && (
+        <section className="px-4 sm:px-8 lg:px-12 py-10 sm:py-12 hairline-b">
+          <div className="max-w-6xl mx-auto space-y-6">
+            <div>
+              <span className="text-xs uppercase tracking-wider text-amber-600 dark:text-amber-400 font-bold block mb-1">
+                Faculty Advisers &amp; Oversight
+              </span>
+              <h2 className="font-sans font-extrabold text-xl sm:text-2xl text-[#16324F] dark:text-white uppercase tracking-tight">
+                Project Mentors &amp; Coordination
+              </h2>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              {studyOverviewData.advisers.map((adv, idx) => (
+                <div
+                  key={idx}
+                  className="p-5 rounded-md border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0E2135] shadow-2xs space-y-2"
+                >
+                  <span className="text-[10px] uppercase font-mono px-2 py-0.5 rounded-xs bg-[#F1F5F9] dark:bg-[#162238] border border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-400 font-semibold inline-block">
+                    {adv.title}
+                  </span>
+                  <h3 className="font-sans font-bold text-base text-[#16324F] dark:text-white uppercase tracking-tight">
+                    {adv.name}
+                  </h3>
+                  <p className="text-xs text-slate-600 dark:text-slate-300 font-normal leading-relaxed">
+                    {adv.role}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* 6. Return to Manual Action */}
       <section className="px-4 sm:px-8 lg:px-12 py-12">

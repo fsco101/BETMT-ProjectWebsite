@@ -12,7 +12,7 @@ export const ExpertiseSection: React.FC = () => {
       subtitle: 'Central Plant: Compressor, Filter, Refrigerant Dryer & Receiver Tank',
       src: '/images/image49.jpg',
       aspect: 'aspect-[4/3] sm:aspect-[16/10]',
-      caption: 'Figure 1 — Centralized Compressed Air Distribution System primary installation at TUP Taguig Campus (Group 1 - Batch 2027).'
+      caption: 'Figure 1 — Centralized Compressed Air Distribution System primary installation at TUP Taguig Campus (Group 1 - Batch 2023).'
     },
     {
       id: 'fig-2',

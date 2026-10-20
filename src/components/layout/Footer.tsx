@@ -22,7 +22,7 @@ export const Footer: React.FC<FooterProps> = ({
             </span>
           </div>
           <p className="text-slate-300 text-[11px]">
-            BET-MT BATCH 2027 · Mechanical &amp; Allied Department (MAAD)
+            BET-MT BATCH 2023 · Mechanical &amp; Allied Department (MAAD)
           </p>
           <p className="text-slate-400 text-[10px]">
             Technological University of the Philippines - Taguig Campus

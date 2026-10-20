@@ -97,7 +97,7 @@ export const Header: React.FC<HeaderProps> = ({
                 </span>
               </div>
               <span className="text-[9px] sm:text-[10px] uppercase tracking-wider text-slate-500 dark:text-slate-400 font-medium truncate max-w-[220px] sm:max-w-none">
-                BET-MT BATCH 2027 · MAAD TUP-TAGUIG
+                BET-MT BATCH 2023 · MAAD TUP-TAGUIG
               </span>
             </div>
           </a>

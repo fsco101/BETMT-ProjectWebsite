@@ -7,7 +7,7 @@ interface KineticMarqueeProps {
 export const KineticMarquee: React.FC<KineticMarqueeProps> = () => {
   const items = [
     'INTRODUCING THE TEAM',
-    'BET-MT BATCH 2027',
+    'BET-MT BATCH 2023',
     'MECHANICAL & ALLIED DEPARTMENT',
     'GROUP 1 RESEARCHERS',
     'TUP TAGUIG CAMPUS',

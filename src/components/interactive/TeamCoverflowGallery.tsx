@@ -159,7 +159,7 @@ export const TeamCoverflowGallery: React.FC<TeamCoverflowGalleryProps> = ({
             {activeMember.name}
           </h3>
           <p className="text-xs uppercase tracking-wider text-amber-600 dark:text-amber-400 font-semibold font-mono mt-1">
-            Student Researcher #{String(activeIndex + 1).padStart(2, '0')} of {members.length} · BET-MT Batch 2027
+            Student Researcher #{String(activeIndex + 1).padStart(2, '0')} of {members.length} · BET-MT Batch 2023
           </p>
         </div>
 

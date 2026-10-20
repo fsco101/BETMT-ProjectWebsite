@@ -175,7 +175,7 @@ export const SafetyProtocolsSection: React.FC = () => {
                 ppeBannerImage,
                 0,
                 'Required Personal Protective Equipment (PPE) — Laboratory Safety Standard',
-                'Batch 2027 student researchers demonstrating complete workshop PPE: ANSI eye goggles, steel-toe boots, close-fitting clothing, zero accessories, and tied hair.'
+                'Batch 2023 student researchers demonstrating complete workshop PPE: ANSI eye goggles, steel-toe boots, close-fitting clothing, zero accessories, and tied hair.'
               )
             }
             className="lg:col-span-6 relative aspect-[16/9] rounded-md overflow-hidden bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 cursor-zoom-in group shadow-xs"

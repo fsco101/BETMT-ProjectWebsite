@@ -38,7 +38,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onBackToManual }) => {
       <section className="hairline-b bg-[#F1F5F9] dark:bg-[#162238] sticky top-[57px] sm:top-[61px] z-30 px-4 sm:px-8 lg:px-12 py-3 backdrop-blur-md">
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
           <div className="flex items-center gap-2 sm:gap-3 text-xs uppercase tracking-wider text-slate-600 dark:text-slate-300 font-medium">
-            <span>BET-MT BATCH 2027</span>
+            <span>BET-MT BATCH 2023</span>
             <span>/</span>
             <span>MAAD</span>
             <span>/</span>
@@ -63,7 +63,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onBackToManual }) => {
               Undergraduate Engineering Study
             </span>
             <span className="text-xs uppercase tracking-wider text-slate-600 dark:text-slate-300 px-3 py-1 rounded-sm bg-[#F1F5F9] dark:bg-[#162238] border border-slate-300 dark:border-slate-700">
-              Batch 2023–2027
+              Batch 2023
             </span>
             <span className="text-xs uppercase tracking-wider text-slate-600 dark:text-slate-300 px-3 py-1 rounded-sm bg-[#F1F5F9] dark:bg-[#162238] border border-slate-300 dark:border-slate-700">
               Group 1
@@ -380,7 +380,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onBackToManual }) => {
             {/* Bottom Bar */}
             <div className="px-4 sm:px-5 py-3.5 bg-[#F8FAFC] dark:bg-[#162238] border-t border-slate-200 dark:border-slate-800 flex items-center justify-between gap-3">
               <span className="text-xs font-mono text-slate-500 dark:text-slate-400">
-                BET-MT Batch 2027 · Group 1
+                BET-MT Batch 2023 · Group 1
               </span>
               <button
                 type="button"

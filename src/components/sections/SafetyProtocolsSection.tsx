@@ -16,8 +16,8 @@ export const SafetyProtocolsSection: React.FC = () => {
     expandAll,
     collapseAll
   } = useAutoCollapseOnScroll({
-    minCollapseThreshold: 300,
-    restoreRatio: 0.8,
+    collapseThreshold: 150,
+    restoreThreshold: 50,
   });
 
   const formatAutoPlayLoopUrl = (url: string) => {

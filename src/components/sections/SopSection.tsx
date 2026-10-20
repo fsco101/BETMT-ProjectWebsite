@@ -189,8 +189,8 @@ export const SopSection: React.FC = () => {
   const { openLightbox } = useLightbox();
   // Auto-collapse on scroll away, auto-re-expand when scrolling back
   const { isCardOpen: isStepOpen, toggleCard: toggleStep } = useAutoCollapseOnScroll({
-    minCollapseThreshold: 300,
-    restoreRatio: 0.8,
+    collapseThreshold: 150,
+    restoreThreshold: 50,
   });
 
   const handleStepperComplete = () => {

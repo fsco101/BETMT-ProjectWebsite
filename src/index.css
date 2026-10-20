@@ -64,6 +64,12 @@
   transform: scale(0.97);
 }
 
+/* Prevent browser scroll-anchoring shifts during accordion expand/collapse */
+[data-sticky-card],
+.sticky-stack-container {
+  overflow-anchor: none;
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 6px;

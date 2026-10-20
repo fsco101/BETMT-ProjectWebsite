@@ -3,33 +3,12 @@ import { mandatoryPractices, strictProhibitions, requiredPpeList, ppeBannerImage
 import { SafetyProtocolItem } from '../../types/pneumatic';
 import { useLightbox } from '../../context/LightboxContext';
 import { useStickyCardStack } from '../../hooks/useStickyCardStack';
-import { useAutoCollapseOnScroll } from '../../hooks/useAutoCollapseOnScroll';
+import { SafetyProtocolDetailModal } from '../modals/SafetyProtocolDetailModal';
 
 export const SafetyProtocolsSection: React.FC = () => {
   const { openLightbox } = useLightbox();
   const [searchQuery, setSearchQuery] = useState('');
-
-  // Auto-collapse on scroll away, auto-re-expand when scrolling back
-  const {
-    isCardOpen,
-    toggleCard,
-    expandAll,
-    collapseAll
-  } = useAutoCollapseOnScroll({
-    collapseThreshold: 150,
-    restoreThreshold: 50,
-  });
-
-  const formatAutoPlayLoopUrl = (url: string) => {
-    if (!url) return '';
-    const match = url.match(/(?:embed\/|v=)([a-zA-Z0-9_-]{11})/);
-    const videoId = match ? match[1] : '';
-    const base = url.split('?')[0];
-    if (videoId) {
-      return `${base}?autoplay=1&mute=1&loop=1&playlist=${videoId}&playsinline=1`;
-    }
-    return url;
-  };
+  const [selectedProtocol, setSelectedProtocol] = useState<SafetyProtocolItem | null>(null);
 
   const filterItem = (item: SafetyProtocolItem) => {
     if (!searchQuery.trim()) return true;
@@ -47,18 +26,32 @@ export const SafetyProtocolsSection: React.FC = () => {
   const filteredDo = useMemo(() => mandatoryPractices.filter(filterItem), [searchQuery]);
   const filteredDont = useMemo(() => strictProhibitions.filter(filterItem), [searchQuery]);
 
-  // 4. Sticky Card Stack Hook for DO's and DON'Ts (Interactive.md Item 4)
+  // Sticky Card Stack Hook for DO's and DON'Ts
   const doStack = useStickyCardStack(filteredDo.length, { baseTop: 80, stepOffset: 12, scaleFactor: 0.03 });
   const dontStack = useStickyCardStack(filteredDont.length, { baseTop: 80, stepOffset: 12, scaleFactor: 0.03 });
 
+  // Current active list for modal stepping
+  const currentList = selectedProtocol?.isProhibition ? filteredDont : filteredDo;
+  const currentIndex = selectedProtocol ? currentList.findIndex(i => i.id === selectedProtocol.id) : -1;
+
+  const handlePrevProtocol = () => {
+    if (currentIndex > 0) {
+      setSelectedProtocol(currentList[currentIndex - 1]);
+    }
+  };
+
+  const handleNextProtocol = () => {
+    if (currentIndex < currentList.length - 1) {
+      setSelectedProtocol(currentList[currentIndex + 1]);
+    }
+  };
+
   const renderCard = (item: SafetyProtocolItem, isProhibition: boolean, idx: number) => {
-    const isOpen = isCardOpen(item.id);
     const borderColor = isProhibition ? 'border-l-[#B42318]' : 'border-l-emerald-600';
     const numColor = isProhibition ? 'text-[#B42318] dark:text-red-400' : 'text-emerald-700 dark:text-emerald-400';
     const badgeClass = isProhibition
       ? 'bg-red-50 dark:bg-red-950/40 text-[#B42318] dark:text-red-300 border-red-200 dark:border-red-800/60'
       : 'bg-emerald-50 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800/60';
-    const contentBg = isProhibition ? 'bg-red-50/40 dark:bg-red-950/20' : 'bg-slate-50 dark:bg-[#162238]';
 
     return (
       <div
@@ -69,13 +62,13 @@ export const SafetyProtocolsSection: React.FC = () => {
           position: 'sticky',
           top: `calc(84px + ${idx} * 10px)`,
           zIndex: 10 + idx,
-          transformOrigin: '50% 0'
+          transformOrigin: '50% 0',
         }}
         className={`rounded-md border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0E2135] border-l-4 ${borderColor} transition-transform duration-200 shadow-md mb-4 overflow-hidden will-change-transform`}
       >
         <button
           type="button"
-          onClick={() => toggleCard(item.id)}
+          onClick={() => setSelectedProtocol(item)}
           className="w-full text-left p-4 sm:p-5 flex flex-col md:flex-row md:items-center justify-between gap-4 cursor-pointer select-none group"
         >
           <div className="flex items-start sm:items-center gap-3.5 sm:gap-5 flex-1 min-w-0">
@@ -93,7 +86,11 @@ export const SafetyProtocolsSection: React.FC = () => {
                 className="w-14 h-14 sm:w-16 sm:h-16 rounded-sm overflow-hidden bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 shrink-0 relative group/thumb cursor-zoom-in"
                 title="Click to zoom image"
               >
-                <img src={item.image} alt="" className="w-full h-full object-cover group-hover/thumb:scale-105 transition-transform" />
+                <img
+                  src={item.image}
+                  alt=""
+                  className="w-full h-full object-cover group-hover/thumb:scale-105 transition-transform"
+                />
                 <div className="absolute inset-0 bg-black/20 opacity-0 group-hover/thumb:opacity-100 transition-opacity flex items-center justify-center text-white text-[9px]">
                   🔍
                 </div>
@@ -109,7 +106,11 @@ export const SafetyProtocolsSection: React.FC = () => {
             )}
 
             <div className="flex-1 min-w-0">
-              <h4 className={`font-sans font-bold text-sm sm:text-base uppercase tracking-tight ${isProhibition ? 'text-[#B42318] dark:text-red-400' : 'text-[#16324F] dark:text-white'} transition-colors leading-snug`}>
+              <h4
+                className={`font-sans font-bold text-sm sm:text-base uppercase tracking-tight ${
+                  isProhibition ? 'text-[#B42318] dark:text-red-400' : 'text-[#16324F] dark:text-white'
+                } transition-colors leading-snug group-hover:text-amber-600 dark:group-hover:text-sky-400`}
+              >
                 {item.title}
               </h4>
               <p className="text-xs text-slate-600 dark:text-slate-300 font-normal mt-1 leading-relaxed">
@@ -119,88 +120,16 @@ export const SafetyProtocolsSection: React.FC = () => {
           </div>
 
           <div className="flex items-center justify-between sm:justify-end gap-3 self-stretch sm:self-end md:self-center shrink-0 pt-2 sm:pt-0 border-t sm:border-t-0 border-slate-100 dark:border-slate-800">
-            <span className={`text-[9px] sm:text-[10px] uppercase tracking-wider px-2.5 py-1 border rounded-xs font-semibold whitespace-nowrap ${badgeClass}`}>
+            <span
+              className={`text-[9px] sm:text-[10px] uppercase tracking-wider px-2.5 py-1 border rounded-xs font-semibold whitespace-nowrap ${badgeClass}`}
+            >
               {item.badge}
             </span>
-            <span className={`w-7 h-7 rounded-full border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 flex items-center justify-center transition-transform duration-200 shrink-0 ${isOpen ? 'rotate-180 bg-slate-100 dark:bg-slate-800' : ''}`}>
-              <span className="material-symbols-outlined text-base">expand_more</span>
+            <span className="w-7 h-7 rounded-full border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 flex items-center justify-center group-hover:bg-slate-100 dark:group-hover:bg-slate-800 group-hover:text-[#16324F] dark:group-hover:text-sky-400 transition-colors shrink-0">
+              <span className="material-symbols-outlined text-base">open_in_new</span>
             </span>
           </div>
         </button>
-
-        {/* Expanded Drawer */}
-        {isOpen && (
-          <div className={`border-t border-slate-200 dark:border-slate-800 ${contentBg} p-4 sm:p-6 animate-fadeIn`}>
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
-              
-              {/* Media Column (Image or Video) */}
-              {(item.image || item.videoUrl) && (
-                <div className="lg:col-span-5 space-y-2">
-                  {item.image && (
-                    <div
-                      onClick={() => openLightbox(item.image!, 0, `${item.number}. ${item.title}`, item.detailBody)}
-                      className="relative rounded-md overflow-hidden bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 aspect-[4/3] cursor-zoom-in group/media shadow-xs"
-                      title="Click to view full uncropped photo"
-                    >
-                      <img
-                        src={item.image}
-                        alt={item.title}
-                        className="w-full h-full object-contain p-1 transition-transform duration-500 group-hover/media:scale-102"
-                      />
-                      <div className="absolute bottom-2 left-2 bg-[#16324F]/90 text-white text-[9px] uppercase tracking-wider px-2 py-0.5 rounded-xs font-medium">
-                        Reference Photo · Click to zoom
-                      </div>
-                    </div>
-                  )}
-
-                  {/* Responsive YouTube Video Player Embed */}
-                  {item.videoUrl && (
-                    <div className="rounded-md overflow-hidden border border-slate-300 dark:border-slate-700 aspect-video shadow-xs bg-black">
-                      <iframe
-                        src={formatAutoPlayLoopUrl(item.videoUrl)}
-                        title={item.title}
-                        className="w-full h-full border-0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowFullScreen
-                      />
-                    </div>
-                  )}
-                </div>
-              )}
-
-              {/* Text Specifications Column */}
-              <div className={`${item.image || item.videoUrl ? 'lg:col-span-7' : 'lg:col-span-12'} space-y-3`}>
-                <span className={`text-[10px] uppercase tracking-wider font-bold block ${numColor}`}>
-                  {item.protocolRef}
-                </span>
-                <h5 className="font-sans font-bold text-sm sm:text-base text-[#16324F] dark:text-white uppercase tracking-tight">
-                  {item.detailTitle}
-                </h5>
-                <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 font-normal leading-relaxed">
-                  {item.detailBody}
-                </p>
-
-                <div className="flex flex-wrap gap-2 pt-2">
-                  {item.tags.map((tag, idx) => (
-                    <span
-                      key={idx}
-                      className={`text-[9px] uppercase tracking-wider px-2.5 py-0.5 border rounded-xs font-medium ${
-                        tag.highlight
-                          ? isProhibition
-                            ? 'border-red-300 text-[#B42318] bg-red-100 dark:bg-red-950/60 dark:text-red-300 dark:border-red-800'
-                            : 'border-emerald-300 text-emerald-800 bg-emerald-100 dark:bg-emerald-950/60 dark:text-emerald-300 dark:border-emerald-800'
-                          : 'border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-400 bg-white dark:bg-[#0E2135]'
-                      }`}
-                    >
-                      {tag.label}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-            </div>
-          </div>
-        )}
       </div>
     );
   };
@@ -224,7 +153,6 @@ export const SafetyProtocolsSection: React.FC = () => {
 
       {/* Required Personal Protective Equipment (PPE) - Proportional Banner Layout */}
       <div className="mb-12 sm:mb-16 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0E2135] p-5 sm:p-8 shadow-xs transition-colors">
-        
         <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-200 dark:border-slate-800 mb-6 gap-2">
           <div>
             <span className="text-[10px] uppercase tracking-wider text-[#B42318] dark:text-red-400 font-bold block mb-1">
@@ -306,7 +234,7 @@ export const SafetyProtocolsSection: React.FC = () => {
         </div>
       </div>
 
-      {/* Filter & Expand Controls Bar */}
+      {/* Filter Bar */}
       <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 mb-8">
         <div className="relative flex-1 max-w-md">
           <input
@@ -327,27 +255,13 @@ export const SafetyProtocolsSection: React.FC = () => {
           )}
         </div>
 
-        <div className="flex items-center gap-2 self-end sm:self-auto text-[10px] uppercase tracking-wider font-semibold">
-          <button
-            type="button"
-            onClick={expandAll}
-            className="px-3 py-1.5 rounded-sm border border-slate-300 dark:border-slate-700 bg-white dark:bg-[#0E2135] hover:bg-[#F1F5F9] dark:hover:bg-[#162238] text-slate-700 dark:text-slate-300 cursor-pointer transition-colors"
-          >
-            Expand All
-          </button>
-          <button
-            type="button"
-            onClick={collapseAll}
-            className="px-3 py-1.5 rounded-sm border border-slate-300 dark:border-slate-700 bg-white dark:bg-[#0E2135] hover:bg-[#F1F5F9] dark:hover:bg-[#162238] text-slate-700 dark:text-slate-300 cursor-pointer transition-colors"
-          >
-            Collapse All
-          </button>
+        <div className="text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400 font-mono">
+          {filteredDo.length + filteredDont.length} Safety Directives · Click any card for detailed modal view
         </div>
       </div>
 
-      {/* Dual Protocol Flow: DO's vs DON'Ts */}
+      {/* Dual Protocol Flow: DO's vs DON'Ts with Sticky Card Stacks */}
       <div className="space-y-12 sm:space-y-14">
-        
         {/* DO's */}
         <div>
           <div className="flex items-center justify-between mb-4 pb-2 border-b-2 border-emerald-600">
@@ -357,12 +271,11 @@ export const SafetyProtocolsSection: React.FC = () => {
                 DO's — Mandatory Practices
               </h3>
             </div>
-            <span className="text-[10px] uppercase tracking-wider text-slate-500 dark:text-slate-400 font-semibold">
+            <span className="text-[10px] uppercase tracking-wider text-slate-500 dark:text-slate-400 font-semibold font-mono">
               {filteredDo.length} Active Directives
             </span>
           </div>
 
-          {/* Sticky Stack Container for DO's (Interactive.md Item 4) */}
           <div ref={doStack.containerRef} className="relative">
             {filteredDo.map((item, idx) => renderCard(item, false, idx))}
             {filteredDo.length > 0 && <div className="h-[40vh]" aria-hidden="true" />}
@@ -381,12 +294,11 @@ export const SafetyProtocolsSection: React.FC = () => {
                 DON'TS — Strict Prohibitions
               </h3>
             </div>
-            <span className="text-[10px] uppercase tracking-wider text-slate-500 dark:text-slate-400 font-semibold">
+            <span className="text-[10px] uppercase tracking-wider text-slate-500 dark:text-slate-400 font-semibold font-mono">
               {filteredDont.length} Critical Prohibitions
             </span>
           </div>
 
-          {/* Sticky Stack Container for DON'Ts (Interactive.md Item 4) */}
           <div ref={dontStack.containerRef} className="relative">
             {filteredDont.map((item, idx) => renderCard(item, true, idx))}
             {filteredDont.length > 0 && <div className="h-[40vh]" aria-hidden="true" />}
@@ -395,8 +307,19 @@ export const SafetyProtocolsSection: React.FC = () => {
             )}
           </div>
         </div>
-
       </div>
+
+      {/* Safety Protocol Detail Modal */}
+      <SafetyProtocolDetailModal
+        item={selectedProtocol}
+        onClose={() => setSelectedProtocol(null)}
+        onPrev={handlePrevProtocol}
+        onNext={handleNextProtocol}
+        currentIndex={currentIndex}
+        totalCount={currentList.length}
+      />
     </section>
   );
 };
+
+

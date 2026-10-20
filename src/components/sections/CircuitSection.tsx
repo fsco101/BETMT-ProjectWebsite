@@ -9,97 +9,108 @@ export const CircuitSection: React.FC = () => {
   const { openLightbox } = useLightbox();
 
   return (
-    <section id="system-components" className="py-20 sm:py-28 lg:py-32 px-4 sm:px-8 lg:px-12 max-w-7xl mx-auto">
+    <section id="system-components" className="py-14 sm:py-20 lg:py-24 px-4 sm:px-8 lg:px-12 max-w-7xl mx-auto">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 sm:mb-16 hairline-b pb-6 sm:pb-8">
+      <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 sm:mb-12 hairline-b pb-6 sm:pb-8">
         <div>
-          <span className="text-[10px] sm:text-[11px] uppercase tracking-[0.25em] text-subtle-ash dark:text-[#8E8B85] block mb-2 font-medium">
-            SYSTEM COMPONENTS
+          <span className="text-xs uppercase tracking-wider text-amber-600 dark:text-amber-400 block mb-2 font-semibold">
+            SYSTEM COMPONENTS &amp; GENERATION
           </span>
-          <h2 className="font-sans font-extrabold text-2xl sm:text-4xl md:text-5xl uppercase tracking-tight text-charcoal-ink dark:text-[#F4F4F6]">
+          <h2 className="font-sans font-extrabold text-2xl sm:text-4xl md:text-5xl uppercase tracking-tight text-[#16324F] dark:text-white">
             HOW THE SYSTEM WORKS
           </h2>
         </div>
-        <div className="mt-3 sm:mt-0 text-[10px] sm:text-[11px] uppercase tracking-[0.16em] sm:tracking-[0.18em] text-subtle-ash dark:text-[#8E8B85]">
-          Click any component to inspect detailed specifications
+        <div className="mt-3 sm:mt-0 text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400 font-medium">
+          7 Essential Pneumatic Stages · Click to inspect technical parameters
         </div>
       </div>
 
-      {/* 7 Components Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 border-t border-l border-hairline-divider dark:border-[#2B2A2F]">
-        {circuitStages.map((stage) => (
-          <div
-            key={stage.id}
-            onClick={() => setSelectedStage(stage)}
-            className="border-r border-b border-hairline-divider dark:border-[#2B2A2F] p-5 sm:p-6 lg:p-7 flex flex-col justify-between hover:bg-[#FAF9F5] dark:hover:bg-[#1E1E22] transition-all group cursor-pointer"
-            role="button"
-            tabIndex={0}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter' || e.key === ' ') setSelectedStage(stage);
-            }}
-          >
-            <div>
-              {/* Image Frame */}
-              <div
-                onClick={(e) => {
-                  e.stopPropagation();
-                  const slideImgs = stage.images && stage.images.length > 0 ? stage.images : [stage.image];
-                  const slideCaps = stage.imageCaptions || [];
-                  openLightbox(
-                    slideImgs.map((src, i) => ({
-                      src,
-                      title: `${stage.name} — Photo 0${i + 1}`,
-                      caption: slideCaps[i] || stage.description,
-                    })),
-                    0
-                  );
-                }}
-                className="relative aspect-[4/3] w-full overflow-hidden hairline-all bg-[#ECE8DF] dark:bg-[#2A2930] mb-4 sm:mb-5 group/img cursor-zoom-in"
-                title="Click to view full uncropped photos"
-              >
-                <img
-                  src={stage.image}
-                  alt={stage.name}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover/img:scale-105"
-                />
-                <div className="absolute top-2 left-2 bg-charcoal-ink/80 dark:bg-black/80 text-[#FAF9F5] text-[9px] uppercase tracking-[0.2em] px-2 py-0.5">
-                  Stage 0{stage.stageNumber}
-                </div>
-                {stage.images && stage.images.length > 1 && (
-                  <div className="absolute top-2 right-2 bg-black/60 text-[#FAF9F5] text-[8px] uppercase tracking-wider px-1.5 py-0.5">
-                    {stage.images.length} Photos
+      {/* 7 Components Grid - Proportional Cards with BrewedOps Micro-Interactions */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 sm:gap-6">
+        {circuitStages.map((stage) => {
+          const slideImgs = stage.images && stage.images.length > 0 ? stage.images : [stage.image];
+          const slideCaps = stage.imageCaptions || [];
+
+          return (
+            <div
+              key={stage.id}
+              onClick={() => setSelectedStage(stage)}
+              className="motion-card rounded-md border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0E2135] p-5 flex flex-col justify-between group cursor-pointer shadow-xs hover:border-[#16324F] dark:hover:border-sky-400"
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') setSelectedStage(stage);
+              }}
+            >
+              <div>
+                {/* Image Frame - Aspect-Ratio Controlled Proportional View */}
+                <div
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    openLightbox(
+                      slideImgs.map((src, i) => ({
+                        src,
+                        title: `${stage.name} — Photo 0${i + 1}`,
+                        caption: slideCaps[i] || stage.description,
+                      })),
+                      0
+                    );
+                  }}
+                  className="relative aspect-[4/3] w-full overflow-hidden rounded-sm bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-700/60 mb-4 group/img cursor-zoom-in flex items-center justify-center"
+                  title="Click to view full uncropped photos"
+                >
+                  <img
+                    src={stage.image}
+                    alt={stage.name}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover/img:scale-105"
+                  />
+                  
+                  {/* Stage Number Badge */}
+                  <div className="absolute top-2 left-2 bg-[#16324F]/90 dark:bg-black/90 text-white text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-xs font-semibold backdrop-blur-xs">
+                    Stage 0{stage.stageNumber}
                   </div>
-                )}
-                <div className="absolute inset-0 bg-charcoal-ink/0 group-hover/img:bg-black/30 transition-colors flex items-center justify-center">
-                  <span className="opacity-0 group-hover/img:opacity-100 bg-black/80 text-white text-[9px] uppercase tracking-wider px-2.5 py-1 transition-opacity border border-white/20 shadow-xs flex items-center gap-1">
-                    <span>🔍</span>
-                    <span>View Full Photo</span>
-                  </span>
+
+                  {/* Multi-photo indicator */}
+                  {slideImgs.length > 1 && (
+                    <div className="absolute top-2 right-2 bg-amber-500 text-slate-950 text-[9px] uppercase tracking-wider px-1.5 py-0.5 rounded-xs font-bold shadow-2xs">
+                      {slideImgs.length} Photos
+                    </div>
+                  )}
+
+                  {/* Hover Overlay */}
+                  <div className="absolute inset-0 bg-[#16324F]/30 opacity-0 group-hover/img:opacity-100 transition-opacity flex items-center justify-center">
+                    <span className="bg-black/80 text-white text-[10px] uppercase tracking-wider px-2.5 py-1 rounded-xs flex items-center gap-1.5 shadow-sm">
+                      <span className="material-symbols-outlined text-sm">zoom_in</span>
+                      <span>Zoom Photo</span>
+                    </span>
+                  </div>
                 </div>
+
+                {/* Title & Subtitle */}
+                <h3 className="font-sans font-bold text-base sm:text-lg text-[#16324F] dark:text-white block mb-1 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                  {stage.name}
+                </h3>
+                <span className="text-[10px] uppercase tracking-wider text-amber-600 dark:text-amber-400 block font-semibold mb-2">
+                  {stage.subtitle}
+                </span>
+
+                {/* Description */}
+                <p className="text-xs text-slate-600 dark:text-slate-300 font-normal leading-relaxed line-clamp-3">
+                  {stage.description}
+                </p>
               </div>
 
-              {/* Title & Description */}
-              <span className="font-editorial text-base sm:text-lg lg:text-xl text-charcoal-ink dark:text-[#F4F4F6] block mb-1">
-                {stage.name}
-              </span>
-              <span className="text-[10px] uppercase tracking-[0.2em] text-subtle-ash dark:text-[#8E8B85] block mb-2 sm:mb-3">
-                {stage.subtitle}
-              </span>
-              <p className="text-xs text-muted-charcoal dark:text-[#A1A1AA] font-light leading-relaxed">
-                {stage.description}
-              </p>
+              {/* Metric Footer */}
+              <div className="mt-5 pt-3.5 border-t border-slate-100 dark:border-slate-800 text-[10px] uppercase tracking-wider flex justify-between items-center text-slate-500 dark:text-slate-400 font-mono">
+                <span className="truncate pr-2">{stage.metricLabel}:</span>
+                <span className="text-[#16324F] dark:text-sky-300 font-bold shrink-0">{stage.metricValue}</span>
+              </div>
             </div>
-
-            {/* Metric Footer */}
-            <div className="mt-5 sm:mt-6 pt-3 sm:pt-4 hairline-t text-[10px] uppercase tracking-[0.14em] sm:tracking-[0.16em] text-subtle-ash dark:text-[#8E8B85] flex justify-between items-center">
-              <span>{stage.metricLabel}</span>
-              <span className="text-charcoal-ink dark:text-[#F4F4F6] font-medium">{stage.metricValue}</span>
-            </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
 
-      {/* Centered Technical Specification Modal */}
+      {/* Detailed Technical Modal */}
       <CircuitDetailDrawer
         stage={selectedStage}
         onClose={() => setSelectedStage(null)}

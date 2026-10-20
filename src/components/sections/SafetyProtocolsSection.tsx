@@ -1,13 +1,28 @@
 import React, { useState, useMemo } from 'react';
-import { mandatoryPractices, strictProhibitions, requiredPpeList } from '../../data/safetyProtocols';
+import { mandatoryPractices, strictProhibitions, requiredPpeList, ppeBannerImage } from '../../data/safetyProtocols';
 import { SafetyProtocolItem } from '../../types/pneumatic';
+import { useLightbox } from '../../context/LightboxContext';
 
 export const SafetyProtocolsSection: React.FC = () => {
+  const { openLightbox } = useLightbox();
   const [openItems, setOpenItems] = useState<Record<string, boolean>>({
     'do-1': true,
+    'do-3': true,
     'dont-1': true,
+    'dont-10': true,
   });
   const [searchQuery, setSearchQuery] = useState('');
+
+  const formatAutoPlayLoopUrl = (url: string) => {
+    if (!url) return '';
+    const match = url.match(/(?:embed\/|v=)([a-zA-Z0-9_-]{11})/);
+    const videoId = match ? match[1] : '';
+    const base = url.split('?')[0];
+    if (videoId) {
+      return `${base}?autoplay=1&mute=1&loop=1&playlist=${videoId}&playsinline=1`;
+    }
+    return url;
+  };
 
   const toggleItem = (id: string) => {
     setOpenItems(prev => ({ ...prev, [id]: !prev[id] }));
@@ -43,74 +58,143 @@ export const SafetyProtocolsSection: React.FC = () => {
 
   const renderCard = (item: SafetyProtocolItem, isProhibition: boolean) => {
     const isOpen = openItems[item.id];
-    const borderColor = isProhibition ? 'border-l-accent-crimson' : 'border-l-emerald-700';
-    const numColor = isProhibition ? 'text-accent-crimson dark:text-red-400' : 'text-emerald-800 dark:text-emerald-400';
+    const borderColor = isProhibition ? 'border-l-[#B42318]' : 'border-l-emerald-600';
+    const numColor = isProhibition ? 'text-[#B42318] dark:text-red-400' : 'text-emerald-700 dark:text-emerald-400';
     const badgeClass = isProhibition
-      ? 'bg-red-100/80 dark:bg-red-950/40 text-accent-crimson dark:text-red-400 border-red-300 dark:border-red-800/60'
+      ? 'bg-red-50 dark:bg-red-950/40 text-[#B42318] dark:text-red-300 border-red-200 dark:border-red-800/60'
       : 'bg-emerald-50 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800/60';
-    const contentBg = isProhibition ? 'bg-[#FDF7F5] dark:bg-[#251819]' : 'bg-[#F4F0E8]/70 dark:bg-[#202024]';
+    const contentBg = isProhibition ? 'bg-red-50/40 dark:bg-red-950/20' : 'bg-slate-50 dark:bg-[#162238]';
 
     return (
       <div
         key={item.id}
-        className={`hairline-all bg-[#FAF9F5] dark:bg-[#1A1A1E] border-l-4 ${borderColor} transition-all duration-300`}
+        className={`motion-card rounded-md border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0E2135] border-l-4 ${borderColor} transition-all duration-200 shadow-2xs overflow-hidden`}
       >
         <button
           type="button"
           onClick={() => toggleItem(item.id)}
-          className="w-full text-left p-4 sm:p-6 lg:p-7 flex flex-col md:flex-row md:items-center justify-between gap-4 sm:gap-6 cursor-pointer select-none group"
+          className="w-full text-left p-4 sm:p-5 flex flex-col md:flex-row md:items-center justify-between gap-4 cursor-pointer select-none group"
         >
-          <div className="flex items-start sm:items-center gap-3.5 sm:gap-6">
-            <span className={`font-mono font-bold text-xl sm:text-3xl ${numColor} shrink-0 w-6 sm:w-8`}>
+          <div className="flex items-start sm:items-center gap-3.5 sm:gap-5 flex-1 min-w-0">
+            <span className={`font-mono font-bold text-xl sm:text-2xl ${numColor} shrink-0 w-8`}>
               {item.number}
             </span>
-            <div>
-              <h4 className={`font-sans font-bold text-base sm:text-lg lg:text-xl uppercase tracking-tight ${isProhibition ? 'text-accent-crimson dark:text-red-400 group-hover:text-red-950 dark:group-hover:text-red-300' : 'text-charcoal-ink dark:text-[#F4F4F6] group-hover:text-emerald-900 dark:group-hover:text-emerald-300'} transition-colors leading-snug`}>
+
+            {/* Thumbnail Preview if photo available */}
+            {item.image && (
+              <div
+                onClick={(e) => {
+                  e.stopPropagation();
+                  openLightbox(item.image!, 0, `${item.number}. ${item.title}`, item.summary);
+                }}
+                className="w-14 h-14 sm:w-16 sm:h-16 rounded-sm overflow-hidden bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 shrink-0 relative group/thumb cursor-zoom-in"
+                title="Click to zoom image"
+              >
+                <img src={item.image} alt="" className="w-full h-full object-cover group-hover/thumb:scale-105 transition-transform" />
+                <div className="absolute inset-0 bg-black/20 opacity-0 group-hover/thumb:opacity-100 transition-opacity flex items-center justify-center text-white text-[9px]">
+                  🔍
+                </div>
+              </div>
+            )}
+
+            {/* Video Indicator Icon if video available */}
+            {item.videoUrl && (
+              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-sm bg-red-600 text-white flex flex-col items-center justify-center shrink-0 shadow-2xs">
+                <span className="material-symbols-outlined text-2xl">play_circle</span>
+                <span className="text-[8px] uppercase tracking-wider font-bold">Video</span>
+              </div>
+            )}
+
+            <div className="flex-1 min-w-0">
+              <h4 className={`font-sans font-bold text-sm sm:text-base uppercase tracking-tight ${isProhibition ? 'text-[#B42318] dark:text-red-400' : 'text-[#16324F] dark:text-white'} transition-colors leading-snug`}>
                 {item.title}
               </h4>
-              <p className="text-xs text-muted-charcoal dark:text-[#A1A1AA] font-light mt-1 max-w-2xl leading-relaxed">
+              <p className="text-xs text-slate-600 dark:text-slate-300 font-normal mt-1 leading-relaxed">
                 {item.summary}
               </p>
             </div>
           </div>
-          <div className="flex items-center justify-between sm:justify-end gap-3 self-stretch sm:self-end md:self-center pt-2 sm:pt-0 border-t sm:border-t-0 hairline-t sm:border-none">
-            <span className={`text-[9px] sm:text-[10px] uppercase tracking-[0.14em] sm:tracking-[0.18em] px-2.5 sm:px-3 py-1 border font-medium whitespace-nowrap ${badgeClass}`}>
+
+          <div className="flex items-center justify-between sm:justify-end gap-3 self-stretch sm:self-end md:self-center shrink-0 pt-2 sm:pt-0 border-t sm:border-t-0 border-slate-100 dark:border-slate-800">
+            <span className={`text-[9px] sm:text-[10px] uppercase tracking-wider px-2.5 py-1 border rounded-xs font-semibold whitespace-nowrap ${badgeClass}`}>
               {item.badge}
             </span>
-            <span className={`w-7 h-7 rounded-full border border-charcoal-ink/20 dark:border-white/20 text-charcoal-ink dark:text-white flex items-center justify-center transition-transform duration-300 shrink-0 ${isOpen ? 'rotate-180' : ''}`}>
+            <span className={`w-7 h-7 rounded-full border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 flex items-center justify-center transition-transform duration-200 shrink-0 ${isOpen ? 'rotate-180 bg-slate-100 dark:bg-slate-800' : ''}`}>
               <span className="material-symbols-outlined text-base">expand_more</span>
             </span>
           </div>
         </button>
 
+        {/* Expanded Drawer */}
         {isOpen && (
-          <div className={`hairline-t border-hairline-divider dark:border-[#2B2A2F] ${contentBg} px-4 sm:px-8 py-5 sm:py-7 animate-fadeIn`}>
-            <div className="flex flex-col gap-3">
-              <span className={`text-[10px] uppercase tracking-[0.2em] font-medium block ${numColor}`}>
-                {item.protocolRef}
-              </span>
-              <h5 className="font-sans font-bold text-base sm:text-lg text-charcoal-ink dark:text-[#F4F4F6] uppercase tracking-tight">
-                {item.detailTitle}
-              </h5>
-              <p className="text-xs sm:text-sm text-muted-charcoal dark:text-[#A1A1AA] font-light leading-relaxed max-w-3xl">
-                {item.detailBody}
-              </p>
-              <div className="flex flex-wrap gap-2 pt-2">
-                {item.tags.map((tag, idx) => (
-                  <span
-                    key={idx}
-                    className={`text-[9px] uppercase tracking-[0.14em] px-2.5 py-0.5 border ${
-                      tag.highlight
-                        ? isProhibition
-                          ? 'border-accent-crimson text-accent-crimson bg-red-50 dark:bg-red-950/60 dark:text-red-300 dark:border-red-800'
-                          : 'border-emerald-700 text-emerald-800 bg-emerald-50 dark:bg-emerald-950/60 dark:text-emerald-300 dark:border-emerald-800'
-                        : 'border-hairline-divider dark:border-[#2B2A2F] text-subtle-ash dark:text-[#8E8B85] bg-white/60 dark:bg-[#121214]/60'
-                    }`}
-                  >
-                    {tag.label}
-                  </span>
-                ))}
+          <div className={`border-t border-slate-200 dark:border-slate-800 ${contentBg} p-4 sm:p-6 animate-fadeIn`}>
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
+              
+              {/* Media Column (Image or Video) */}
+              {(item.image || item.videoUrl) && (
+                <div className="lg:col-span-5 space-y-2">
+                  {item.image && (
+                    <div
+                      onClick={() => openLightbox(item.image!, 0, `${item.number}. ${item.title}`, item.detailBody)}
+                      className="relative rounded-md overflow-hidden bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 aspect-[4/3] cursor-zoom-in group/media shadow-xs"
+                      title="Click to view full uncropped photo"
+                    >
+                      <img
+                        src={item.image}
+                        alt={item.title}
+                        className="w-full h-full object-contain p-1 transition-transform duration-500 group-hover/media:scale-102"
+                      />
+                      <div className="absolute bottom-2 left-2 bg-[#16324F]/90 text-white text-[9px] uppercase tracking-wider px-2 py-0.5 rounded-xs font-medium">
+                        Reference Photo · Click to zoom
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Responsive YouTube Video Player Embed */}
+                  {item.videoUrl && (
+                    <div className="rounded-md overflow-hidden border border-slate-300 dark:border-slate-700 aspect-video shadow-xs bg-black">
+                      <iframe
+                        src={formatAutoPlayLoopUrl(item.videoUrl)}
+                        title={item.title}
+                        className="w-full h-full border-0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowFullScreen
+                      />
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {/* Text Specifications Column */}
+              <div className={`${item.image || item.videoUrl ? 'lg:col-span-7' : 'lg:col-span-12'} space-y-3`}>
+                <span className={`text-[10px] uppercase tracking-wider font-bold block ${numColor}`}>
+                  {item.protocolRef}
+                </span>
+                <h5 className="font-sans font-bold text-sm sm:text-base text-[#16324F] dark:text-white uppercase tracking-tight">
+                  {item.detailTitle}
+                </h5>
+                <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 font-normal leading-relaxed">
+                  {item.detailBody}
+                </p>
+
+                <div className="flex flex-wrap gap-2 pt-2">
+                  {item.tags.map((tag, idx) => (
+                    <span
+                      key={idx}
+                      className={`text-[9px] uppercase tracking-wider px-2.5 py-0.5 border rounded-xs font-medium ${
+                        tag.highlight
+                          ? isProhibition
+                            ? 'border-red-300 text-[#B42318] bg-red-100 dark:bg-red-950/60 dark:text-red-300 dark:border-red-800'
+                            : 'border-emerald-300 text-emerald-800 bg-emerald-100 dark:bg-emerald-950/60 dark:text-emerald-300 dark:border-emerald-800'
+                          : 'border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-400 bg-white dark:bg-[#0E2135]'
+                      }`}
+                    >
+                      {tag.label}
+                    </span>
+                  ))}
+                </div>
               </div>
+
             </div>
           </div>
         )}
@@ -119,57 +203,99 @@ export const SafetyProtocolsSection: React.FC = () => {
   };
 
   return (
-    <section id="safety-protocols" className="py-20 sm:py-28 lg:py-32 px-4 sm:px-8 lg:px-12 max-w-7xl mx-auto">
-      {/* Header */}
+    <section id="safety-protocols" className="py-14 sm:py-20 lg:py-24 px-4 sm:px-8 lg:px-12 max-w-7xl mx-auto">
+      {/* Section Header */}
       <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 sm:mb-12 hairline-b pb-6 sm:pb-8">
         <div>
-          <span className="text-[10px] sm:text-[11px] uppercase tracking-[0.25em] text-subtle-ash dark:text-[#8E8B85] block mb-2 font-medium">
+          <span className="text-xs uppercase tracking-wider text-amber-600 dark:text-amber-400 block mb-2 font-semibold">
             WORKSHOP PROTOCOL &amp; MANDATES
           </span>
-          <h2 className="font-sans font-extrabold text-2xl sm:text-4xl md:text-5xl uppercase tracking-tight text-charcoal-ink dark:text-[#F4F4F6]">
-            Safety Standards &amp; Operating Protocols
+          <h2 className="font-sans font-extrabold text-2xl sm:text-4xl md:text-5xl uppercase tracking-tight text-[#16324F] dark:text-white">
+            Safety Standards &amp; Protocols
           </h2>
         </div>
-        <div className="mt-4 sm:mt-0 text-[10px] sm:text-[11px] uppercase tracking-[0.16em] sm:tracking-[0.18em] text-subtle-ash dark:text-[#8E8B85]">
-          Interactive Operational Cards · Select any item to view media
+        <div className="mt-4 sm:mt-0 text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400 font-medium">
+          Illustrated Directives &amp; Video Demonstrations
         </div>
       </div>
 
-      {/* Required Personal Protective Equipment (PPE) */}
-      <div className="mb-14 sm:mb-18 hairline-all bg-[#FAF9F5] dark:bg-[#1A1A1E] p-5 sm:p-8 transition-colors">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 sm:pb-5 hairline-b mb-6 gap-2">
+      {/* Required Personal Protective Equipment (PPE) - Proportional Banner Layout */}
+      <div className="mb-12 sm:mb-16 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0E2135] p-5 sm:p-8 shadow-xs transition-colors">
+        
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-200 dark:border-slate-800 mb-6 gap-2">
           <div>
-            <span className="text-[9px] sm:text-[10px] uppercase tracking-[0.2em] text-accent-crimson dark:text-red-400 font-semibold block mb-1">
+            <span className="text-[10px] uppercase tracking-wider text-[#B42318] dark:text-red-400 font-bold block mb-1">
               MANDATORY WORKSHOP REQUIREMENT
             </span>
-            <h3 className="font-sans font-bold text-lg sm:text-2xl uppercase tracking-tight text-charcoal-ink dark:text-[#F4F4F6]">
+            <h3 className="font-sans font-bold text-lg sm:text-2xl uppercase tracking-tight text-[#16324F] dark:text-white">
               Required Personal Protective Equipment (PPE)
             </h3>
           </div>
-          <span className="text-[10px] uppercase tracking-wider text-subtle-ash dark:text-[#8E8B85]">
-            5 Essential Standards
+          <span className="text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400 font-semibold">
+            5 Essential Safety Gear Items
           </span>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5 sm:gap-4">
+        {/* Hero Banner with Actual Laboratory Photo from Document (image26.jpg) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center mb-6">
+          <div
+            onClick={() =>
+              openLightbox(
+                ppeBannerImage,
+                0,
+                'Required Personal Protective Equipment (PPE) — Laboratory Safety Standard',
+                'Batch 2027 student researchers demonstrating complete workshop PPE: ANSI eye goggles, steel-toe boots, close-fitting clothing, zero accessories, and tied hair.'
+              )
+            }
+            className="lg:col-span-6 relative aspect-[16/9] rounded-md overflow-hidden bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 cursor-zoom-in group shadow-xs"
+            title="Click to view full uncropped PPE photo"
+          >
+            <img
+              src={ppeBannerImage}
+              alt="Mandatory PPE Workshop Attire"
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+            <div className="absolute top-2 left-2 bg-[#16324F]/90 text-white text-[10px] uppercase tracking-wider px-2.5 py-0.5 rounded-xs font-semibold backdrop-blur-xs">
+              Official PPE Demonstration
+            </div>
+            <div className="absolute bottom-2 right-2 bg-black/80 text-white text-[10px] px-2 py-0.5 rounded-xs flex items-center gap-1 opacity-90 group-hover:opacity-100">
+              <span>🔍 Click to Zoom</span>
+            </div>
+          </div>
+
+          <div className="lg:col-span-6 space-y-3">
+            <h4 className="font-sans font-bold text-base text-[#16324F] dark:text-white uppercase">
+              Eye &amp; Body Protection Standard
+            </h4>
+            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+              When cleaning machines with compressed air at 30 PSI, high-velocity metal chips and coolant particles ricochet unpredictably. All students, technicians, and observers must strictly wear approved PPE before entering the pneumatic working perimeter.
+            </p>
+            <div className="p-3 bg-amber-50 dark:bg-amber-950/40 border border-amber-300 dark:border-amber-700/60 rounded-sm text-xs text-amber-900 dark:text-amber-300 font-medium">
+              ⚠️ Strict Rule: Zero tolerance for operating pneumatic spray blow guns without eye protection.
+            </div>
+          </div>
+        </div>
+
+        {/* 5 PPE Items Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5">
           {requiredPpeList.map((ppe, idx) => (
             <div
               key={ppe.id}
-              className="p-4 border border-hairline-divider dark:border-[#2B2A2F] bg-white dark:bg-[#222226] hover:border-charcoal-ink dark:hover:border-white transition-colors flex flex-col justify-between"
+              className="p-4 rounded-md border border-slate-200 dark:border-slate-800 bg-[#F1F5F9] dark:bg-[#162238] hover:border-[#16324F] dark:hover:border-white transition-colors flex flex-col justify-between"
             >
               <div>
-                <div className="w-8 h-8 rounded-full bg-[#F4F0E8] dark:bg-[#2C2C32] flex items-center justify-center text-charcoal-ink dark:text-[#F4F4F6] mb-3 text-xs font-bold font-mono">
+                <div className="w-7 h-7 rounded-full bg-[#16324F] text-white flex items-center justify-center mb-2.5 text-xs font-bold font-mono">
                   0{idx + 1}
                 </div>
-                <h4 className="font-sans font-bold text-sm uppercase tracking-tight text-charcoal-ink dark:text-[#F4F4F6] mb-1.5">
+                <h4 className="font-sans font-bold text-xs uppercase tracking-tight text-[#16324F] dark:text-white mb-1">
                   {ppe.name}
                 </h4>
-                <p className="text-[11px] text-muted-charcoal dark:text-[#A1A1AA] font-light leading-relaxed">
+                <p className="text-[11px] text-slate-600 dark:text-slate-300 font-normal leading-relaxed">
                   {ppe.description}
                 </p>
               </div>
-              <div className="mt-3 pt-2 border-t border-hairline-divider/50 dark:border-[#2B2A2F] flex items-center gap-1.5 text-[9px] uppercase tracking-wider text-emerald-800 dark:text-emerald-400 font-medium">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse" />
+              <div className="mt-3 pt-2 border-t border-slate-200 dark:border-slate-700 flex items-center gap-1 text-[9px] uppercase tracking-wider text-emerald-700 dark:text-emerald-400 font-semibold">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
                 <span>Mandatory</span>
               </div>
             </div>
@@ -177,88 +303,88 @@ export const SafetyProtocolsSection: React.FC = () => {
         </div>
       </div>
 
-      {/* Filter & Controls Bar */}
-      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 mb-8 sm:mb-12">
+      {/* Filter & Expand Controls Bar */}
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 mb-8">
         <div className="relative flex-1 max-w-md">
           <input
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Filter by keyword (e.g. PPE, hose, pressure, valve)..."
-            className="w-full bg-[#FAF9F5] dark:bg-[#1A1A1E] border border-hairline-divider dark:border-[#2B2A2F] px-3.5 sm:px-4 py-2 sm:py-2.5 text-xs text-charcoal-ink dark:text-[#F4F4F6] placeholder-subtle-ash dark:placeholder-[#6E6B65] focus:outline-hidden focus:border-charcoal-ink dark:focus:border-white transition-colors"
+            placeholder="Search safety directives (e.g. hose, PPE, pressure, snap)..."
+            className="w-full rounded-md bg-white dark:bg-[#0E2135] border border-slate-300 dark:border-slate-700 px-3.5 py-2 text-xs text-slate-800 dark:text-white placeholder-slate-400 focus:outline-hidden focus:border-[#16324F] dark:focus:border-sky-400 transition-colors"
           />
           {searchQuery && (
             <button
               type="button"
               onClick={() => setSearchQuery('')}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-subtle-ash hover:text-charcoal-ink dark:hover:text-white"
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400 hover:text-slate-800 dark:hover:text-white cursor-pointer"
             >
               ✕
             </button>
           )}
         </div>
 
-        <div className="flex items-center gap-2 self-end sm:self-auto text-[9px] sm:text-[10px] uppercase tracking-[0.16em] sm:tracking-[0.18em]">
+        <div className="flex items-center gap-2 self-end sm:self-auto text-[10px] uppercase tracking-wider font-semibold">
           <button
             type="button"
             onClick={expandAll}
-            className="px-3 py-1.5 border border-hairline-divider dark:border-[#2B2A2F] bg-[#FAF9F5] dark:bg-[#1A1A1E] hover:border-charcoal-ink dark:hover:border-white transition-colors text-muted-charcoal dark:text-[#A1A1AA] hover:text-charcoal-ink dark:hover:text-white"
+            className="px-3 py-1.5 rounded-sm border border-slate-300 dark:border-slate-700 bg-white dark:bg-[#0E2135] hover:bg-[#F1F5F9] dark:hover:bg-[#162238] text-slate-700 dark:text-slate-300 cursor-pointer transition-colors"
           >
             Expand All
           </button>
           <button
             type="button"
             onClick={collapseAll}
-            className="px-3 py-1.5 border border-hairline-divider dark:border-[#2B2A2F] bg-[#FAF9F5] dark:bg-[#1A1A1E] hover:border-charcoal-ink dark:hover:border-white transition-colors text-muted-charcoal dark:text-[#A1A1AA] hover:text-charcoal-ink dark:hover:text-white"
+            className="px-3 py-1.5 rounded-sm border border-slate-300 dark:border-slate-700 bg-white dark:bg-[#0E2135] hover:bg-[#F1F5F9] dark:hover:bg-[#162238] text-slate-700 dark:text-slate-300 cursor-pointer transition-colors"
           >
             Collapse All
           </button>
         </div>
       </div>
 
-      {/* Dual Column Protocol Flow: DO vs DON'T */}
-      <div className="space-y-12 sm:space-y-16">
+      {/* Dual Protocol Flow: DO's vs DON'Ts */}
+      <div className="space-y-12 sm:space-y-14">
         
         {/* DO's */}
         <div>
-          <div className="flex items-center justify-between mb-4 sm:mb-6 pb-2 sm:pb-3 hairline-b">
-            <div className="flex items-center gap-2.5 sm:gap-3">
-              <span className="w-2.5 h-2.5 rounded-full bg-emerald-700 dark:bg-emerald-500" />
-              <h3 className="font-sans font-bold text-lg sm:text-2xl uppercase tracking-tight text-charcoal-ink dark:text-[#F4F4F6]">
+          <div className="flex items-center justify-between mb-4 pb-2 border-b-2 border-emerald-600">
+            <div className="flex items-center gap-2.5">
+              <span className="w-3 h-3 rounded-full bg-emerald-600" />
+              <h3 className="font-sans font-bold text-lg sm:text-2xl uppercase tracking-tight text-[#16324F] dark:text-white">
                 DO's — Mandatory Practices
               </h3>
             </div>
-            <span className="text-[10px] uppercase tracking-[0.18em] text-subtle-ash dark:text-[#8E8B85]">
+            <span className="text-[10px] uppercase tracking-wider text-slate-500 dark:text-slate-400 font-semibold">
               {filteredDo.length} Active Directives
             </span>
           </div>
 
-          <div className="space-y-3 sm:space-y-4">
+          <div className="space-y-3">
             {filteredDo.map((item) => renderCard(item, false))}
             {filteredDo.length === 0 && (
-              <p className="text-xs text-subtle-ash dark:text-[#8E8B85] italic py-4">No matching directives found.</p>
+              <p className="text-xs text-slate-500 italic py-4">No matching directives found.</p>
             )}
           </div>
         </div>
 
         {/* DON'Ts */}
         <div>
-          <div className="flex items-center justify-between mb-4 sm:mb-6 pb-2 sm:pb-3 hairline-b">
-            <div className="flex items-center gap-2.5 sm:gap-3">
-              <span className="w-2.5 h-2.5 rounded-full bg-accent-crimson dark:bg-red-500" />
-              <h3 className="font-sans font-bold text-lg sm:text-2xl uppercase tracking-tight text-charcoal-ink dark:text-[#F4F4F6]">
+          <div className="flex items-center justify-between mb-4 pb-2 border-b-2 border-[#B42318]">
+            <div className="flex items-center gap-2.5">
+              <span className="w-3 h-3 rounded-full bg-[#B42318]" />
+              <h3 className="font-sans font-bold text-lg sm:text-2xl uppercase tracking-tight text-[#B42318] dark:text-red-400">
                 DON'TS — Strict Prohibitions
               </h3>
             </div>
-            <span className="text-[10px] uppercase tracking-[0.18em] text-subtle-ash dark:text-[#8E8B85]">
+            <span className="text-[10px] uppercase tracking-wider text-slate-500 dark:text-slate-400 font-semibold">
               {filteredDont.length} Critical Prohibitions
             </span>
           </div>
 
-          <div className="space-y-3 sm:space-y-4">
+          <div className="space-y-3">
             {filteredDont.map((item) => renderCard(item, true))}
             {filteredDont.length === 0 && (
-              <p className="text-xs text-subtle-ash dark:text-[#8E8B85] italic py-4">No matching prohibitions found.</p>
+              <p className="text-xs text-slate-500 italic py-4">No matching prohibitions found.</p>
             )}
           </div>
         </div>

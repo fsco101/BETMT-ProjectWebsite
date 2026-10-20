@@ -40,12 +40,15 @@ export const requiredPpeList: RequiredPpeItem[] = [
   }
 ];
 
+export const ppeBannerImage = '/images/updated/image26.jpg';
+
 export const mandatoryPractices: SafetyProtocolItem[] = [
   {
     id: 'do-1',
     number: '01',
     title: 'Wear the required PPE',
     summary: 'Always wear safety goggles and other required protective equipment to protect yourself from flying metal chips and debris during cleaning.',
+    image: '/images/updated/image30.jpg',
     badge: 'Mandatory PPE',
     protocolRef: 'Directive 01',
     detailTitle: 'Eye & Body Protection Against Swarf',
@@ -61,6 +64,7 @@ export const mandatoryPractices: SafetyProtocolItem[] = [
     number: '02',
     title: 'Inspect the hose & fittings before use',
     summary: 'Inspect the pipes, hoses, and connections to make sure they are properly secured and free from visible damage or air leaks.',
+    image: '/images/updated/image27.jpg',
     badge: 'Inspection',
     protocolRef: 'Directive 02',
     detailTitle: 'Integrity Check Before Pressurization',
@@ -76,13 +80,14 @@ export const mandatoryPractices: SafetyProtocolItem[] = [
     number: '03',
     title: 'Connect the tool securely',
     summary: 'Make sure the air blow gun is properly connected to the hose before use to prevent accidental disconnection and air leaks.',
+    videoUrl: 'https://www.youtube.com/embed/nXRVKzDv8ac?autoplay=1&mute=1&loop=1&playlist=nXRVKzDv8ac&playsinline=1',
     badge: 'Secure Lock',
     protocolRef: 'Directive 03',
     detailTitle: 'Quick-Disconnect Sleeve Verification',
     detailBody: 'Pull back the coupler sleeve, firmly insert the male tool plug until it seats with an audible click, and return the sleeve to locked position.',
     tags: [
       { label: 'Coupling: Positive Snap' },
-      { label: 'Sleeve Engaged' }
+      { label: 'Video Demo Available', highlight: true }
     ],
     isProhibition: false
   },
@@ -91,6 +96,7 @@ export const mandatoryPractices: SafetyProtocolItem[] = [
     number: '04',
     title: 'Use the compressed air only for approved tasks',
     summary: 'Use the compressed air system only for its intended purpose, such as removing metal chips from machine surfaces, and follow the laboratory\'s safety procedures.',
+    image: '/images/updated/image32.jpg',
     badge: 'Approved Use',
     protocolRef: 'Directive 04',
     detailTitle: 'Operational Scope Adherence',
@@ -106,6 +112,7 @@ export const mandatoryPractices: SafetyProtocolItem[] = [
     number: '05',
     title: 'Direct airflow away from people',
     summary: 'Always point the air blow gun toward the intended cleaning area and away from yourself and other people to prevent injuries from compressed air and flying debris.',
+    image: '/images/updated/image33.jpg',
     badge: 'Directional Safety',
     protocolRef: 'Directive 05',
     detailTitle: 'Trajectory Control',
@@ -121,6 +128,7 @@ export const mandatoryPractices: SafetyProtocolItem[] = [
     number: '06',
     title: 'Follow the approved pressure setting',
     summary: 'Check that the pressure reducing valve (PRV) is set to 30 PSI before using the air blow gun to maintain the required operating pressure.',
+    image: '/images/updated/image24.jpg',
     badge: '30 PSI Regulated',
     protocolRef: 'Directive 06',
     detailTitle: 'PRV Calibrated Working Pressure',
@@ -136,6 +144,7 @@ export const mandatoryPractices: SafetyProtocolItem[] = [
     number: '07',
     title: 'Keep hoses organized',
     summary: 'Return the hose to the retractable hose reel after use to prevent tangling, tripping hazards, and unnecessary damage.',
+    image: '/images/updated/image31.jpg',
     badge: '5S Organization',
     protocolRef: 'Directive 07',
     detailTitle: 'Retraction & Pathway Clearance',
@@ -151,6 +160,7 @@ export const mandatoryPractices: SafetyProtocolItem[] = [
     number: '08',
     title: 'Close the ball valve and release residual air after use',
     summary: 'Close the ball valve to stop the air supply, then release any remaining air before disconnecting the tool or performing maintenance.',
+    image: '/images/updated/image25.jpg',
     badge: 'Depressurization',
     protocolRef: 'Directive 08',
     detailTitle: 'Zero-Pressure Protocol',
@@ -166,6 +176,7 @@ export const mandatoryPractices: SafetyProtocolItem[] = [
     number: '09',
     title: 'Report leaks, damage, or abnormal operations immediately',
     summary: 'Inform the laboratory instructor or responsible personnel if you notice air leaks, damaged components, unusual noises, or other problems. Stop using the system if it is unsafe until the issue has been checked.',
+    image: '/images/updated/image3.jpg',
     badge: 'Incident Reporting',
     protocolRef: 'Directive 09',
     detailTitle: 'Fault Escalation Protocol',
@@ -184,6 +195,7 @@ export const strictProhibitions: SafetyProtocolItem[] = [
     number: '01',
     title: 'Don’t Use the System Without PPE',
     summary: 'Operating without proper protective equipment may expose you to injuries from flying metal chips and debris.',
+    image: '/images/updated/image23.jpg',
     badge: 'Critical Prohibition',
     protocolRef: 'Prohibition 01',
     detailTitle: 'Unprotected Operator Hazard',
@@ -199,6 +211,7 @@ export const strictProhibitions: SafetyProtocolItem[] = [
     number: '02',
     title: 'Do not point compressed air toward yourself or another person',
     summary: 'Never direct the air blow gun toward yourself or other people. The high-speed airflow can cause injuries, while flying metal chips and debris may hit the eyes or skin.',
+    image: '/images/updated/image28.jpg',
     badge: 'Lethal Hazard',
     protocolRef: 'Prohibition 02',
     detailTitle: 'Embolism & Acoustic Trauma Risk',
@@ -214,10 +227,11 @@ export const strictProhibitions: SafetyProtocolItem[] = [
     number: '03',
     title: 'Do not extend the limit of the retractable hose',
     summary: 'Avoid pulling the hose beyond its maximum extension. Doing so may damage the hose, affect the retractable mechanism, or cause the hose reel to malfunction.',
+    image: '/images/updated/image12.jpg',
     badge: 'Equipment Protection',
     protocolRef: 'Prohibition 03',
     detailTitle: 'Internal Spring & Fitting Strain',
-    detailBody: 'Over-extending past the yellow/red indicator stripe strips internal tension springs and risks cracking the swivel manifold connection.',
+    detailBody: 'Over-extending past the indicator limit strips internal tension springs and risks cracking the swivel manifold connection.',
     tags: [
       { label: 'Max Extension Limit' },
       { label: 'Spring Integrity' }
@@ -229,6 +243,7 @@ export const strictProhibitions: SafetyProtocolItem[] = [
     number: '04',
     title: 'Do not step & leave the hose across walkways',
     summary: 'Avoid leaving the hose across pathways or areas where people walk. It can create a tripping hazard and may also cause damage to the hose if someone steps on it.',
+    image: '/images/updated/image34.png',
     badge: 'Trip Hazard',
     protocolRef: 'Prohibition 04',
     detailTitle: 'Walkway Obstruction & Hose Crushing',
@@ -244,6 +259,7 @@ export const strictProhibitions: SafetyProtocolItem[] = [
     number: '05',
     title: 'Do not exceed the designated operating pressure',
     summary: 'Never increase the pressure beyond the approved setting. Keep the pressure reducing valve (PRV) set to 30 PSI to maintain the required operating pressure and reduce potential safety risks.',
+    image: '/images/updated/image9.jpg',
     badge: 'Pressure Violation',
     protocolRef: 'Prohibition 05',
     detailTitle: 'Overpressure Hazard',
@@ -259,6 +275,7 @@ export const strictProhibitions: SafetyProtocolItem[] = [
     number: '06',
     title: 'Do not use the system for other purposes than intended',
     summary: 'Use the centralized compressed air system only for its intended applications, such as removing metal chips from machine surfaces and operating compatible pneumatic tools.',
+    image: '/images/updated/image29.jpg',
     badge: 'Improper Application',
     protocolRef: 'Prohibition 06',
     detailTitle: 'Unauthorized Usage',
@@ -274,6 +291,7 @@ export const strictProhibitions: SafetyProtocolItem[] = [
     number: '07',
     title: 'Do not operate or adjust compressor without authorization',
     summary: 'Only operate the air compressor if you are authorized or have permission from the laboratory instructor or responsible personnel. Do not make adjustments without approval, as improper operation may damage the equipment or create unsafe conditions.',
+    image: '/images/updated/image22.jpg',
     badge: 'Authorization Required',
     protocolRef: 'Prohibition 07',
     detailTitle: 'Central Plant Lockout',
@@ -289,6 +307,7 @@ export const strictProhibitions: SafetyProtocolItem[] = [
     number: '08',
     title: 'Do not leave the hose & air tool unorganized',
     summary: 'Never leave the hose stretched out or the air blow gun in an improper location after use. Return the hose to the retractable reel and store the tool properly to prevent tangling, tripping hazards, and equipment damage.',
+    image: '/images/updated/image5.jpg',
     badge: 'Storage Violation',
     protocolRef: 'Prohibition 08',
     detailTitle: 'Workshop Disorder Hazard',
@@ -311,6 +330,22 @@ export const strictProhibitions: SafetyProtocolItem[] = [
     tags: [
       { label: 'Shut Valve First' },
       { label: 'Vent to 0 PSI First', highlight: true }
+    ],
+    isProhibition: true
+  },
+  {
+    id: 'dont-10',
+    number: '10',
+    title: 'Don\'t let the hose snap back',
+    summary: 'Never let the hose retract freely or snap back into the reel. Always guide the hose with your hand until it is fully rewound to prevent violent recoil, whipping injuries, and reel damage.',
+    videoUrl: 'https://www.youtube.com/embed/y1tIzT56dME?autoplay=1&mute=1&loop=1&playlist=y1tIzT56dME&playsinline=1',
+    badge: 'Snapback Hazard',
+    protocolRef: 'Prohibition 10',
+    detailTitle: 'Uncontrolled Spring Retraction',
+    detailBody: 'Allowing the hose to snap back freely can cause severe impact injuries to nearby personnel and breaks the internal recoil spring and hose stopper.',
+    tags: [
+      { label: 'Guide Hand-Over-Hand' },
+      { label: 'Watch Safety Video', highlight: true }
     ],
     isProhibition: true
   }

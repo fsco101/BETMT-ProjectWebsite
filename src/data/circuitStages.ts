@@ -7,8 +7,8 @@ export const circuitStages: CircuitStage[] = [
     name: '01. SULLAIR SCREW AIR COMPRESSOR',
     subtitle: 'Primary Air Generation',
     description: 'The air compressor draws in air from the surroundings and compresses it to provide the air supply needed by the system. It serves as the main source of compressed air.',
-    image: '/images/image9.png',
-    images: ['/images/image9.png', '/images/image16.png'],
+    image: '/images/updated/image20.jpg',
+    images: ['/images/updated/image20.jpg', '/images/updated/image19.png'],
     imageCaptions: [
       'Figure 1 — Sullair WS1100 Industrial Screw Air Compressor',
       'Figure 2 — Sullair Compressor Specification Nameplate (WS1109 AC)'
@@ -30,8 +30,8 @@ export const circuitStages: CircuitStage[] = [
     name: '02. Air Filter',
     subtitle: 'Solid Particle Filtration',
     description: 'The air filter removes dirt, dust, and other solid particles from the compressed air to help protect the downstream components.',
-    image: '/images/image12.png',
-    images: ['/images/image12.png'],
+    image: '/images/updated/image15.jpg',
+    images: ['/images/updated/image15.jpg'],
     imageCaptions: [
       'Figure 1 — In-Line Sullair Air Filtration & Moisture Trap System'
     ],
@@ -51,11 +51,10 @@ export const circuitStages: CircuitStage[] = [
     name: '03. Refrigerant Dryer',
     subtitle: 'Moisture Condensation & Separation',
     description: 'The refrigerant air dryer removes moisture from the compressed air by cooling it and collecting the water that forms. This helps prevent moisture buildup inside the pipes and protects the system components.',
-    image: '/images/image39.png',
-    images: ['/images/image39.png', '/images/image37.png'],
+    image: '/images/updated/image4.jpg',
+    images: ['/images/updated/image4.jpg'],
     imageCaptions: [
-      'Figure 1 — Sullair SRC Industrial Refrigerant Air Dryer',
-      'Figure 2 — Refrigerant Dryer Nameplate & Operating Parameters'
+      'Figure 1 — Sullair SRC Industrial Refrigerant Air Dryer'
     ],
     metricLabel: 'Power Input',
     metricValue: '0.92 kW / 6.2 A',
@@ -78,8 +77,8 @@ export const circuitStages: CircuitStage[] = [
     name: '04. Air Receiver Tank',
     subtitle: 'Pressure Buffer & Air Storage',
     description: 'The air receiver tank stores compressed air and helps maintain a stable air supply when the system is in use. It also helps manage changes in air demand.',
-    image: '/images/image46.png',
-    images: ['/images/image46.png', '/images/image17.png'],
+    image: '/images/updated/image10.jpg',
+    images: ['/images/updated/image10.jpg', '/images/updated/image1.png'],
     imageCaptions: [
       'Figure 1 — 300L Vertical Pressure Air Receiver Tank',
       'Figure 2 — Vessel Identification & Certification Plate'
@@ -101,10 +100,10 @@ export const circuitStages: CircuitStage[] = [
     name: '05. Pressure Reducing Valve (PRV)',
     subtitle: 'Overhead Pressure Regulation',
     description: 'The pressure reducing valve (PRV) lowers and controls the air pressure before it enters the retractable hose reel and air blow gun. In our system, the PRV is set to 30 PSI to provide the needed air pressure for removing metal chips from machine surfaces.',
-    image: '/images/image28.png',
-    images: ['/images/image28.png'],
+    image: '/images/updated/image18.png',
+    images: ['/images/updated/image18.png'],
     imageCaptions: [
-      'Figure 1 — Overhead Pressure Reducing Valve (PRV) & Dual Bypass Line'
+      'Figure 1 — Overhead Pressure Reducing Valve (PRV) & Dual Bypass Line Regulated to 30 PSI'
     ],
     metricLabel: 'Set Pressure',
     metricValue: '30 PSI',
@@ -122,8 +121,8 @@ export const circuitStages: CircuitStage[] = [
     name: '06. Retractable Hose Reel',
     subtitle: 'Pneumatic Hose Management',
     description: 'The retractable hose reel holds the air hose and allows users to pull it out when needed. After use, the hose can be pulled back into the reel, keeping the work area neat and organized.',
-    image: '/images/image24.png',
-    images: ['/images/image24.png'],
+    image: '/images/updated/image11.jpg',
+    images: ['/images/updated/image11.jpg'],
     imageCaptions: [
       'Figure 1 — Blue Spring-Loaded Auto Retractable Hose Reel'
     ],

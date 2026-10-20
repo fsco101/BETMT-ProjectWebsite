@@ -41,6 +41,8 @@ export interface SafetyProtocolItem {
   title: string;
   summary: string;
   image?: string;
+  images?: string[];
+  videoUrl?: string;
   badge: string;
   protocolRef: string;
   detailTitle: string;

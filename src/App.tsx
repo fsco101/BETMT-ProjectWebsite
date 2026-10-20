@@ -8,14 +8,11 @@ import { CircuitSection } from './components/sections/CircuitSection';
 import { SafetyProtocolsSection } from './components/sections/SafetyProtocolsSection';
 import { SopSection } from './components/sections/SopSection';
 import { DropsSection } from './components/sections/DropsSection';
-import { VideoSection } from './components/sections/VideoSection';
 import { AboutPage } from './components/pages/AboutPage';
 import { Footer } from './components/layout/Footer';
-import { EmergencyModal } from './components/modals/EmergencyModal';
 import { ImageLightboxModal } from './components/modals/ImageLightboxModal';
 
 const AppContent: React.FC = () => {
-  const [emergencyModalOpen, setEmergencyModalOpen] = useState(false);
   const [theme, setTheme] = useState<'light' | 'dark'>(() => {
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem('theme');
@@ -57,8 +54,7 @@ const AppContent: React.FC = () => {
         window.location.hash.startsWith('#system') ||
         window.location.hash.startsWith('#safety') ||
         window.location.hash.startsWith('#sop') ||
-        window.location.hash.startsWith('#air') ||
-        window.location.hash.startsWith('#video')
+        window.location.hash.startsWith('#air')
       ) {
         setActivePage('manual');
       }
@@ -79,10 +75,9 @@ const AppContent: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#F7F5F0] dark:bg-[#121214] text-[#1C1B1A] dark:text-[#F4F4F6] flex flex-col selection:bg-[#E8E2D7] dark:selection:bg-[#333238] selection:text-[#1C1B1A] dark:selection:text-white transition-colors duration-200">
+    <div className="min-h-screen bg-white dark:bg-[#0B132B] text-slate-800 dark:text-slate-100 flex flex-col selection:bg-[#16324F] selection:text-white dark:selection:bg-sky-400 dark:selection:text-slate-950 transition-colors duration-200">
       {/* Top Sticky Navigation Bar */}
       <Header
-        onOpenEmergencyModal={() => setEmergencyModalOpen(true)}
         activePage={activePage}
         onNavigatePage={navigatePage}
         theme={theme}
@@ -99,35 +94,25 @@ const AppContent: React.FC = () => {
           {/* 1. Hero Section */}
           <HeroSection />
 
-          {/* 2. System Overview */}
+          {/* 2. System Overview (with Figures 1, 2, 3 and 1" to 1/2" piping layout) */}
           <ExpertiseSection />
 
-          {/* 3. System Components & How the System Works */}
+          {/* 3. System Components & How the System Works (7 Components) */}
           <CircuitSection />
 
-          {/* 4. Safety Standards & Operating Protocols (DO & DON'T with PPE) */}
+          {/* 4. Safety Standards & Operating Protocols (DO & DON'T with PPE & Videos) */}
           <SafetyProtocolsSection />
 
-          {/* 5. Standard Operating Procedure (15-Step Illustrated Protocol) */}
+          {/* 5. Standard Operating Procedure (15-Step Protocol with Figures) */}
           <SopSection />
 
-          {/* 6. Air Outlets (6 Workshop Drops with Live Controls) */}
+          {/* 6. Air Outlets (6 Workshop Drops with 1/2" Branch Specifications) */}
           <DropsSection />
-
-          {/* 7. Workshop Video Demonstration */}
-          <VideoSection />
         </main>
       )}
 
-      {/* Editorial Lab Footer */}
+      {/* Industrial Engineering Footer */}
       <Footer activePage={activePage} onNavigatePage={navigatePage} />
-
-
-      {/* Full-Screen Emergency Depressurization Modal */}
-      <EmergencyModal
-        isOpen={emergencyModalOpen}
-        onClose={() => setEmergencyModalOpen(false)}
-      />
 
       {/* Global Image Lightbox Modal */}
       <ImageLightboxModal />

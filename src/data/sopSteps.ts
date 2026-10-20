@@ -11,8 +11,8 @@ export const sopSteps: SopStep[] = [
     image: '/images/image40.png',
     images: ['/images/image40.png', '/images/image35.png'],
     imageCaptions: [
-      '01 Figure 1 — Release Emergency Stop by Twisting & Press Green Start Button',
-      '01 Figure 2 — Sullair Compressor Control Console in Operational Ready State'
+      '01 Figure 1 — Release Emergency Stop by Twisting',
+      '01 Figure 2 — Green Start Button Pressed (System Ready)'
     ],
     badgePrimary: 'Twist E-Stop',
     badgeSecondary: 'Green Start Button',
@@ -79,10 +79,10 @@ export const sopSteps: SopStep[] = [
     image: '/images/image50.png',
     images: ['/images/image50.png', '/images/image29.png', '/images/image30.png', '/images/image41.png'],
     imageCaptions: [
-      '05 Figure 01 — Retract Quick-Connect Collar Sleeve',
-      '05 Figure 02 — Push Air Blow Gun Fitting Firmly into Coupler',
-      '05 Figure 03 — Release Sleeve Back to Secure Forward Position',
-      '05 Figure 04 — Perform Pull-Check to Confirm Audible Positive Snap Lock'
+      '05 Figure 1 — Prepare the Pneumatic Tool & Make sure the air supply valve is closed before connecting the tool',
+      '05 Figure 2 — Pull back the quick connect',
+      '05 Figure 3 — Insert the tool',
+      '05 Figure 4 — Push the quick connect & put back the black sleeve'
     ],
     badgePrimary: 'Retract Sleeve',
     badgeSecondary: 'Audible Snap Lock',
@@ -211,9 +211,10 @@ export const sopSteps: SopStep[] = [
     title: 'Close the Air Receiver Tank Ball Valve',
     description: 'Locate the ball valve on the air receiver tank and slowly turn it to the closed position. This stops the flow of compressed air from entering the distribution system and helps prevent air from continuing to flow through the connected pipes and outlets.',
     image: '/images/image53.png',
-    images: ['/images/image53.png'],
+    images: ['/images/image53.png', '/images/updated/image16.png'],
     imageCaptions: [
-      '13 Figure 01 — Rotate Air Receiver Tank Ball Valve to Closed Position'
+      '13 Figure 01 — Rotate Air Receiver Tank Ball Valve to Closed Position',
+      '13 Figure 02 — Close the Air Receiver Tank Ball Valve (Handle Perpendicular)'
     ],
     badgePrimary: 'Tank Valve Closed',
     badgeSecondary: 'Piping Isolated',

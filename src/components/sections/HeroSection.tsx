@@ -2,43 +2,51 @@ import React from 'react';
 
 export const HeroSection: React.FC = () => {
   return (
-    <section id="hero" className="relative pt-16 pb-12 sm:pt-28 sm:pb-24 lg:pt-36 lg:pb-32 px-4 sm:px-8 lg:px-12 max-w-7xl mx-auto flex flex-col items-center text-center overflow-hidden">
+    <section id="hero" className="relative pt-12 pb-14 sm:pt-20 sm:pb-20 lg:pt-24 lg:pb-24 px-4 sm:px-8 lg:px-12 max-w-7xl mx-auto flex flex-col items-center text-center overflow-hidden">
       
-      {/* Eyebrow - OPERATIONAL MANUAL */}
-      <div className="mb-4 sm:mb-8">
-        <span className="text-[10px] sm:text-[12px] uppercase tracking-[0.25em] sm:tracking-[0.3em] text-subtle-ash dark:text-[#8E8B85] font-medium block max-w-md sm:max-w-none mx-auto border-b border-hairline-divider dark:border-[#2B2A2F] pb-1">
-          OPERATIONAL MANUAL
-        </span>
-      </div>
 
-      {/* Main Title - Clean, bold, modern, industrial typeface */}
-      <h1 className="font-sans font-extrabold text-3xl xs:text-4xl sm:text-6xl md:text-7xl lg:text-[76px] xl:text-[82px] leading-[1.08] tracking-[-0.02em] uppercase max-w-5xl text-charcoal-ink dark:text-[#F4F4F6] break-words">
+      {/* Main Title - Clean, bold, industrial typeface */}
+      <h1 className="font-sans font-extrabold text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-[68px] leading-[1.08] tracking-tight uppercase max-w-5xl text-[#16324F] dark:text-white break-words">
         CENTRALIZED COMPRESSED AIR DISTRIBUTION SYSTEM
       </h1>
 
-      {/* Subtitle */}
-      <p className="mt-6 sm:mt-8 text-xs sm:text-sm md:text-base text-muted-charcoal dark:text-[#A1A1AA] max-w-2xl font-normal leading-relaxed tracking-normal px-2">
-        Explore the system overview, safety guidelines, operational procedures, and video demonstrations of our centralized compressed air system.
-      </p>
-
-      {/* Video Call-to-Action */}
-      <div className="mt-8 sm:mt-12 flex items-center justify-center w-full px-4">
-        <a
-          href="#video-demo"
-          className="inline-flex items-center justify-center gap-2.5 sm:gap-3 px-5 sm:px-7 py-3 sm:py-3.5 rounded-full border border-charcoal-ink dark:border-white/30 text-charcoal-ink dark:text-white hover:bg-charcoal-ink hover:text-[#F7F5F0] dark:hover:bg-white dark:hover:text-[#121214] transition-all duration-300 text-[10px] sm:text-[11px] uppercase tracking-[0.16em] sm:tracking-[0.2em] font-medium shadow-xs"
-        >
-          <span className="w-2.5 h-2.5 rounded-full bg-emerald-600 inline-block animate-pulse shrink-0" />
-          <span className="truncate">CONSULT COMPLETE SAFETY VIDEO (04:48 MIN)</span>
-        </a>
+      {/* Institutional Byline */}
+      <div className="mt-3 text-xs sm:text-sm uppercase tracking-widest text-[#F59E0B] font-semibold">
+        Mechanical &amp; Allied Department (MAAD) · TUP Taguig Campus
       </div>
 
-      {/* Architectural Hairline Crosshair */}
-      <div className="w-full max-w-4xl mt-12 sm:mt-20 px-4">
-        <div className="w-full h-px bg-hairline-divider dark:bg-[#2B2A2F]" />
-        <div className="py-6 sm:py-10 flex justify-center">
-          <div className="w-px h-8 sm:h-12 bg-hairline-divider dark:bg-[#2B2A2F]" />
-        </div>
-        <div className="w-full h-px bg-hairline-divider dark:bg-[#2B2A2F]" />
+      {/* Subtitle */}
+      <p className="mt-5 text-sm sm:text-base md:text-lg text-slate-600 dark:text-slate-300 max-w-3xl font-normal leading-relaxed px-2">
+        A centralized pneumatic network delivering regulated compressed air across three machine shop laboratory areas. Explore equipment specifications, safety protocols, standard operating procedures, and 6 active workstation outlets.
+      </p>
+
+      {/* Quick Jump Action Pills (BrewedOps Inspired) */}
+      <div className="mt-8 flex flex-wrap items-center justify-center gap-3 w-full max-w-3xl px-4">
+        <a
+          href="#system-overview"
+          className="motion-press inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-md bg-[#16324F] hover:bg-[#0E2135] text-white text-xs uppercase tracking-wider font-semibold shadow-sm transition-all"
+        >
+          <span>System Overview &amp; Layout</span>
+          <span className="text-amber-400">→</span>
+        </a>
+        <a
+          href="#system-components"
+          className="motion-press inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-md bg-[#F1F5F9] dark:bg-[#162238] hover:bg-[#E2E8F0] dark:hover:bg-[#1E293B] text-[#16324F] dark:text-white border border-slate-300 dark:border-slate-700 text-xs uppercase tracking-wider font-semibold transition-all"
+        >
+          <span>How the System Works (7 Components)</span>
+        </a>
+        <a
+          href="#safety-protocols"
+          className="motion-press inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-md bg-[#FEF3C7] dark:bg-amber-950/40 hover:bg-amber-200 dark:hover:bg-amber-900/60 text-amber-900 dark:text-amber-300 border border-amber-300 dark:border-amber-700/60 text-xs uppercase tracking-wider font-semibold transition-all"
+        >
+          <span>Safety Protocols (DO &amp; DON'T)</span>
+        </a>
+        <a
+          href="#air-outlets"
+          className="motion-press inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-md bg-[#F1F5F9] dark:bg-[#162238] hover:bg-[#E2E8F0] dark:hover:bg-[#1E293B] text-slate-700 dark:text-slate-200 border border-slate-300 dark:border-slate-700 text-xs uppercase tracking-wider font-semibold transition-all"
+        >
+          <span>6 Air Outlets (1/2" Drops)</span>
+        </a>
       </div>
     </section>
   );

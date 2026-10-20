@@ -2,16 +2,23 @@ import React, { useState, useMemo } from 'react';
 import { mandatoryPractices, strictProhibitions, requiredPpeList, ppeBannerImage } from '../../data/safetyProtocols';
 import { SafetyProtocolItem } from '../../types/pneumatic';
 import { useLightbox } from '../../context/LightboxContext';
+import { useStickyCardStack } from '../../hooks/useStickyCardStack';
+import { useAutoCollapseOnScroll } from '../../hooks/useAutoCollapseOnScroll';
 
 export const SafetyProtocolsSection: React.FC = () => {
   const { openLightbox } = useLightbox();
-  const [openItems, setOpenItems] = useState<Record<string, boolean>>({
-    'do-1': true,
-    'do-3': true,
-    'dont-1': true,
-    'dont-10': true,
-  });
   const [searchQuery, setSearchQuery] = useState('');
+
+  // Auto-collapse on scroll away, auto-re-expand when scrolling back
+  const {
+    isCardOpen,
+    toggleCard,
+    expandAll,
+    collapseAll
+  } = useAutoCollapseOnScroll({
+    minCollapseThreshold: 300,
+    restoreRatio: 0.8,
+  });
 
   const formatAutoPlayLoopUrl = (url: string) => {
     if (!url) return '';
@@ -22,22 +29,6 @@ export const SafetyProtocolsSection: React.FC = () => {
       return `${base}?autoplay=1&mute=1&loop=1&playlist=${videoId}&playsinline=1`;
     }
     return url;
-  };
-
-  const toggleItem = (id: string) => {
-    setOpenItems(prev => ({ ...prev, [id]: !prev[id] }));
-  };
-
-  const expandAll = () => {
-    const allOpen: Record<string, boolean> = {};
-    [...mandatoryPractices, ...strictProhibitions].forEach(item => {
-      allOpen[item.id] = true;
-    });
-    setOpenItems(allOpen);
-  };
-
-  const collapseAll = () => {
-    setOpenItems({});
   };
 
   const filterItem = (item: SafetyProtocolItem) => {
@@ -56,8 +47,12 @@ export const SafetyProtocolsSection: React.FC = () => {
   const filteredDo = useMemo(() => mandatoryPractices.filter(filterItem), [searchQuery]);
   const filteredDont = useMemo(() => strictProhibitions.filter(filterItem), [searchQuery]);
 
-  const renderCard = (item: SafetyProtocolItem, isProhibition: boolean) => {
-    const isOpen = openItems[item.id];
+  // 4. Sticky Card Stack Hook for DO's and DON'Ts (Interactive.md Item 4)
+  const doStack = useStickyCardStack(filteredDo.length, { baseTop: 80, stepOffset: 12, scaleFactor: 0.03 });
+  const dontStack = useStickyCardStack(filteredDont.length, { baseTop: 80, stepOffset: 12, scaleFactor: 0.03 });
+
+  const renderCard = (item: SafetyProtocolItem, isProhibition: boolean, idx: number) => {
+    const isOpen = isCardOpen(item.id);
     const borderColor = isProhibition ? 'border-l-[#B42318]' : 'border-l-emerald-600';
     const numColor = isProhibition ? 'text-[#B42318] dark:text-red-400' : 'text-emerald-700 dark:text-emerald-400';
     const badgeClass = isProhibition
@@ -68,11 +63,19 @@ export const SafetyProtocolsSection: React.FC = () => {
     return (
       <div
         key={item.id}
-        className={`motion-card rounded-md border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0E2135] border-l-4 ${borderColor} transition-all duration-200 shadow-2xs overflow-hidden`}
+        data-sticky-card
+        data-card-id={item.id}
+        style={{
+          position: 'sticky',
+          top: `calc(84px + ${idx} * 10px)`,
+          zIndex: 10 + idx,
+          transformOrigin: '50% 0'
+        }}
+        className={`rounded-md border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0E2135] border-l-4 ${borderColor} transition-transform duration-200 shadow-md mb-4 overflow-hidden will-change-transform`}
       >
         <button
           type="button"
-          onClick={() => toggleItem(item.id)}
+          onClick={() => toggleCard(item.id)}
           className="w-full text-left p-4 sm:p-5 flex flex-col md:flex-row md:items-center justify-between gap-4 cursor-pointer select-none group"
         >
           <div className="flex items-start sm:items-center gap-3.5 sm:gap-5 flex-1 min-w-0">
@@ -359,8 +362,10 @@ export const SafetyProtocolsSection: React.FC = () => {
             </span>
           </div>
 
-          <div className="space-y-3">
-            {filteredDo.map((item) => renderCard(item, false))}
+          {/* Sticky Stack Container for DO's (Interactive.md Item 4) */}
+          <div ref={doStack.containerRef} className="relative">
+            {filteredDo.map((item, idx) => renderCard(item, false, idx))}
+            {filteredDo.length > 0 && <div className="h-[40vh]" aria-hidden="true" />}
             {filteredDo.length === 0 && (
               <p className="text-xs text-slate-500 italic py-4">No matching directives found.</p>
             )}
@@ -381,8 +386,10 @@ export const SafetyProtocolsSection: React.FC = () => {
             </span>
           </div>
 
-          <div className="space-y-3">
-            {filteredDont.map((item) => renderCard(item, true))}
+          {/* Sticky Stack Container for DON'Ts (Interactive.md Item 4) */}
+          <div ref={dontStack.containerRef} className="relative">
+            {filteredDont.map((item, idx) => renderCard(item, true, idx))}
+            {filteredDont.length > 0 && <div className="h-[40vh]" aria-hidden="true" />}
             {filteredDont.length === 0 && (
               <p className="text-xs text-slate-500 italic py-4">No matching prohibitions found.</p>
             )}

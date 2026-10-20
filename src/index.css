@@ -90,3 +90,120 @@
   background: #334155;
 }
 
+/* =========================================================
+   BREWEDOPS MOTION LIBRARY INTERACTIVE SPECIFICATIONS
+   ========================================================= */
+
+:root {
+  --ml-spring: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@supports (transition-timing-function: linear(0, 1)) {
+  :root {
+    --ml-spring: linear(0, 0.0941 5.6%, 0.2736 11.1%, 0.4548 16.7%, 0.6076 22.2%, 0.7255 27.8%, 0.8119 33.3%, 0.8732 38.9%, 0.9156 44.4%, 0.9444 50%, 0.9636 55.6%, 0.9764 61.1%, 0.9848 66.7%, 0.9902 72.2%, 0.9938 77.8%, 0.996 83.3%, 0.9975 88.9%, 0.9984 94.4%, 1 100%);
+  }
+}
+
+/* 6. Breathing Radial Glow Keyframes */
+@keyframes breathing-glow {
+  0%, 100% {
+    transform: scale(0.94);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.07);
+    opacity: 1;
+  }
+}
+
+.animate-breathing-glow-1 {
+  animation: breathing-glow 7s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.animate-breathing-glow-2 {
+  animation: breathing-glow 7s ease-in-out -3.5s infinite;
+  will-change: transform, opacity;
+}
+
+/* 1. Split Headline Entrance */
+@keyframes char-reveal {
+  0% {
+    transform: translateY(118%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.char-rise {
+  display: inline-block;
+  transform: translateY(118%);
+  animation: char-reveal 700ms cubic-bezier(0.32, 0.72, 0, 1) forwards;
+  animation-delay: calc(var(--i, 0) * 40ms);
+  will-change: transform;
+}
+
+/* 2. Kinetic Marquee */
+@keyframes marquee-slide-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes marquee-slide-right {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+.animate-marquee-left {
+  animation: marquee-slide-left 16s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee-right {
+  animation: marquee-slide-right 16s linear infinite;
+  will-change: transform;
+}
+
+.marquee-pause:hover .animate-marquee-left,
+.marquee-pause:hover .animate-marquee-right {
+  animation-play-state: paused;
+}
+
+.text-stroke-accent {
+  -webkit-text-stroke: 1.5px #16324F;
+  color: #FFFFFF;
+  paint-order: stroke fill;
+}
+
+.dark .text-stroke-accent {
+  -webkit-text-stroke: 1.5px #38BDF8;
+  color: #0B132B;
+  paint-order: stroke fill;
+}
+
+.marquee-mask {
+  mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+}
+
+/* Reduced Motion Override */
+@media (prefers-reduced-motion: reduce) {
+  .char-rise,
+  [data-char-span] {
+    transform: none !important;
+    animation: none !important;
+  }
+  .animate-breathing-glow-1,
+  .animate-breathing-glow-2 {
+    animation: none !important;
+    transform: scale(1) !important;
+    opacity: 0.85 !important;
+  }
+  .animate-marquee-left,
+  .animate-marquee-right {
+    animation: none !important;
+    transform: none !important;
+  }
+}
+

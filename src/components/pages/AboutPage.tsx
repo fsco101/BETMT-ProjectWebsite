@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { studyOverviewData, researchTeamMembers, teamIntro } from '../../data/aboutData';
 import { TeamMember } from '../../types/pneumatic';
+import { KineticMarquee } from '../interactive/KineticMarquee';
+import { TeamCoverflowGallery } from '../interactive/TeamCoverflowGallery';
 
 interface AboutPageProps {
   onBackToManual: () => void;
@@ -8,6 +10,7 @@ interface AboutPageProps {
 
 export const AboutPage: React.FC<AboutPageProps> = ({ onBackToManual }) => {
   const [activeModalMember, setActiveModalMember] = useState<TeamMember | null>(null);
+  const [viewMode, setViewMode] = useState<'coverflow' | 'grid'>('coverflow');
   const [failedImages, setFailedImages] = useState<Record<string, boolean>>({});
 
   const handleImageError = (id: string) => {
@@ -168,80 +171,121 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onBackToManual }) => {
         </div>
       </section>
 
-      {/* 5. Meet the Team Section (Portraits & Names Only) */}
+      {/* 4.5. Introducing the Team Kinetic Marquee Ticker (Interactive.md Item 2) */}
+      <KineticMarquee />
+
+      {/* 5. Meet the Team Section with 3D Coverflow Gallery (Interactive.md Item 5) */}
       <section className="px-4 sm:px-8 lg:px-12 py-12 sm:py-16 hairline-b bg-[#F8FAFC] dark:bg-[#0E2135]/40 scroll-mt-28" id="research-team">
         <div className="max-w-7xl mx-auto space-y-8">
           
-          <div className="space-y-2 pb-6 border-b border-slate-200 dark:border-slate-800">
-            <div className="flex items-center gap-2">
-              <span className="text-xs uppercase tracking-wider text-amber-600 dark:text-amber-400 font-bold">
-                Student Research Group
-              </span>
-              <span className="text-[10px] uppercase font-mono px-2 py-0.5 rounded-xs bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-700 font-semibold">
-                10 Members
-              </span>
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-6 border-b border-slate-200 dark:border-slate-800">
+            <div className="space-y-2">
+              <div className="flex items-center gap-2">
+                <span className="text-xs uppercase tracking-wider text-amber-600 dark:text-amber-400 font-bold">
+                  Student Research Group
+                </span>
+                <span className="text-[10px] uppercase font-mono px-2 py-0.5 rounded-xs bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-700 font-semibold">
+                  10 Members
+                </span>
+              </div>
+              <h2 className="font-sans font-extrabold text-2xl sm:text-4xl text-[#16324F] dark:text-white uppercase tracking-tight">
+                {teamIntro.heading}
+              </h2>
+              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 max-w-3xl font-normal leading-relaxed">
+                {teamIntro.description}
+              </p>
             </div>
-            <h2 className="font-sans font-extrabold text-2xl sm:text-4xl text-[#16324F] dark:text-white uppercase tracking-tight">
-              {teamIntro.heading}
-            </h2>
-            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 max-w-3xl font-normal leading-relaxed">
-              {teamIntro.description}
-            </p>
+
+            {/* View Mode Toggle: 3D Coverflow vs Grid */}
+            <div className="shrink-0 flex items-center gap-1.5 p-1 rounded-md bg-slate-200/80 dark:bg-slate-800 border border-slate-300 dark:border-slate-700">
+              <button
+                type="button"
+                onClick={() => setViewMode('coverflow')}
+                className={`px-3 py-1.5 rounded-sm text-xs uppercase tracking-wider font-semibold transition-all cursor-pointer flex items-center gap-1.5 ${
+                  viewMode === 'coverflow'
+                    ? 'bg-[#16324F] text-white shadow-xs dark:bg-white dark:text-[#16324F]'
+                    : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
+                }`}
+              >
+                <span className="material-symbols-outlined text-sm">view_carousel</span>
+                <span>3D Coverflow</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => setViewMode('grid')}
+                className={`px-3 py-1.5 rounded-sm text-xs uppercase tracking-wider font-semibold transition-all cursor-pointer flex items-center gap-1.5 ${
+                  viewMode === 'grid'
+                    ? 'bg-[#16324F] text-white shadow-xs dark:bg-white dark:text-[#16324F]'
+                    : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
+                }`}
+              >
+                <span className="material-symbols-outlined text-sm">grid_view</span>
+                <span>Grid View</span>
+              </button>
+            </div>
           </div>
 
-          {/* 10 Team Members Responsive Card Grid with Strict Proportional Aspect Ratios */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6">
-            {researchTeamMembers.map((member, idx) => {
-              const hasImg = member.image && !failedImages[member.id];
-              return (
-                <div
-                  key={member.id}
-                  onClick={() => setActiveModalMember(member)}
-                  className="group relative flex flex-col rounded-md border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0E2135] overflow-hidden shadow-2xs hover:shadow-md hover:border-[#16324F] dark:hover:border-sky-400 transition-all duration-200 cursor-pointer"
-                >
-                  {/* Photo Container with strict 4:5 Portrait Ratio */}
-                  <div className="relative w-full aspect-[4/5] bg-slate-100 dark:bg-[#162238] overflow-hidden border-b border-slate-200 dark:border-slate-800">
-                    {hasImg ? (
-                      <img
-                        src={member.image}
-                        alt={`Portrait of ${member.name}`}
-                        onError={() => handleImageError(member.id)}
-                        className="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105"
-                        loading="lazy"
-                      />
-                    ) : (
-                      <div className="w-full h-full flex flex-col items-center justify-center bg-linear-to-b from-slate-200 to-slate-300 dark:from-slate-800 dark:to-slate-900 text-[#16324F] dark:text-white">
-                        <span className="material-symbols-outlined text-4xl mb-1 text-slate-400">person</span>
-                        <span className="font-mono font-bold text-lg">
-                          {member.name.split(' ').map((n) => n[0]).slice(0, 2).join('')}
+          {/* 3D Coverflow Gallery Showcase (Interactive.md Item 5) */}
+          {viewMode === 'coverflow' ? (
+            <TeamCoverflowGallery
+              members={researchTeamMembers}
+              onSelectMember={(member) => setActiveModalMember(member)}
+            />
+          ) : (
+            /* 10 Team Members Responsive Card Grid with Strict Proportional Aspect Ratios */
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6">
+              {researchTeamMembers.map((member, idx) => {
+                const hasImg = member.image && !failedImages[member.id];
+                return (
+                  <div
+                    key={member.id}
+                    onClick={() => setActiveModalMember(member)}
+                    className="group relative flex flex-col rounded-md border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0E2135] overflow-hidden shadow-2xs hover:shadow-md hover:border-[#16324F] dark:hover:border-sky-400 transition-all duration-200 cursor-pointer"
+                  >
+                    {/* Photo Container with strict 4:5 Portrait Ratio */}
+                    <div className="relative w-full aspect-[4/5] bg-slate-100 dark:bg-[#162238] overflow-hidden border-b border-slate-200 dark:border-slate-800">
+                      {hasImg ? (
+                        <img
+                          src={member.image}
+                          alt={`Portrait of ${member.name}`}
+                          onError={() => handleImageError(member.id)}
+                          className="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105"
+                          loading="lazy"
+                        />
+                      ) : (
+                        <div className="w-full h-full flex flex-col items-center justify-center bg-linear-to-b from-slate-200 to-slate-300 dark:from-slate-800 dark:to-slate-900 text-[#16324F] dark:text-white">
+                          <span className="material-symbols-outlined text-4xl mb-1 text-slate-400">person</span>
+                          <span className="font-mono font-bold text-lg">
+                            {member.name.split(' ').map((n) => n[0]).slice(0, 2).join('')}
+                          </span>
+                        </div>
+                      )}
+
+                      {/* Member Index Badge */}
+                      <div className="absolute top-2 left-2 px-2 py-0.5 rounded-xs bg-[#16324F]/85 backdrop-blur-xs text-white text-[10px] font-mono font-bold tracking-wider">
+                        #{String(idx + 1).padStart(2, '0')}
+                      </div>
+
+                      {/* Hover Overlay */}
+                      <div className="absolute inset-0 bg-[#16324F]/30 backdrop-blur-[1px] opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center text-white">
+                        <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-sm bg-white/95 text-[#16324F] text-[10px] font-bold uppercase tracking-wider shadow-sm">
+                          <span className="material-symbols-outlined text-sm">zoom_in</span>
+                          <span>View Photo</span>
                         </span>
                       </div>
-                    )}
-
-                    {/* Member Index Badge */}
-                    <div className="absolute top-2 left-2 px-2 py-0.5 rounded-xs bg-[#16324F]/85 backdrop-blur-xs text-white text-[10px] font-mono font-bold tracking-wider">
-                      #{String(idx + 1).padStart(2, '0')}
                     </div>
 
-                    {/* Hover Overlay */}
-                    <div className="absolute inset-0 bg-[#16324F]/30 backdrop-blur-[1px] opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center text-white">
-                      <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-sm bg-white/95 text-[#16324F] text-[10px] font-bold uppercase tracking-wider shadow-sm">
-                        <span className="material-symbols-outlined text-sm">zoom_in</span>
-                        <span>View Photo</span>
-                      </span>
+                    {/* Just the Name - No description under their name */}
+                    <div className="p-3 sm:p-4 text-center flex items-center justify-center min-h-[58px]">
+                      <h3 className="font-sans font-bold text-xs sm:text-sm text-[#16324F] dark:text-white uppercase leading-snug tracking-tight group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                        {member.name}
+                      </h3>
                     </div>
                   </div>
-
-                  {/* Just the Name - No description under their name */}
-                  <div className="p-3 sm:p-4 text-center flex items-center justify-center min-h-[58px]">
-                    <h3 className="font-sans font-bold text-xs sm:text-sm text-[#16324F] dark:text-white uppercase leading-snug tracking-tight group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
-                      {member.name}
-                    </h3>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+                );
+              })}
+            </div>
+          )}
 
         </div>
       </section>

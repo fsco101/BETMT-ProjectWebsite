@@ -1,27 +1,108 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 export const HeroSection: React.FC = () => {
+  const headingRef = useRef<HTMLHeadingElement>(null);
+  const [isRevealed, setIsRevealed] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsRevealed(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.4 }
+    );
+
+    if (headingRef.current) {
+      observer.observe(headingRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  const lines = [
+    { text: 'CENTRALIZED COMPRESSED', isAccent: false },
+    { text: 'AIR DISTRIBUTION', isAccent: false },
+    { text: 'SYSTEM', isAccent: true }
+  ];
+
+  let globalCharIndex = 0;
+
   return (
     <section id="hero" className="relative pt-12 pb-14 sm:pt-20 sm:pb-20 lg:pt-24 lg:pb-24 px-4 sm:px-8 lg:px-12 max-w-7xl mx-auto flex flex-col items-center text-center overflow-hidden">
       
+      {/* 6. Background Breathing Radial Glow (Interactive.md Item 6) */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10 flex items-center justify-center">
+        {/* Outer Glow Circle: ~130% wide, 12% alpha accent, -3.5s delay */}
+        <div
+          aria-hidden="true"
+          className="absolute w-[130%] max-w-[1100px] aspect-square rounded-full animate-breathing-glow-2 opacity-70 dark:opacity-20"
+          style={{
+            background: 'radial-gradient(closest-side, rgba(14, 165, 233, 0.14), transparent)'
+          }}
+        />
+        {/* Inner Glow Circle: ~86% wide, 42% -> 14% alpha accent, normal cycle */}
+        <div
+          aria-hidden="true"
+          className="absolute w-[86%] max-w-[750px] aspect-square rounded-full animate-breathing-glow-1 opacity-75 dark:opacity-25"
+          style={{
+            background: 'radial-gradient(closest-side, rgba(79, 163, 255, 0.38), rgba(79, 163, 255, 0.14) 55%, transparent)'
+          }}
+        />
+      </div>
 
-      {/* Main Title - Clean, bold, industrial typeface */}
-      <h1 className="font-sans font-extrabold text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-[68px] leading-[1.08] tracking-tight uppercase max-w-5xl text-[#16324F] dark:text-white break-words">
-        CENTRALIZED COMPRESSED AIR DISTRIBUTION SYSTEM
+      {/* 1. Main Title with Character Split Entrance Reveal (Interactive.md Item 1) */}
+      <h1
+        ref={headingRef}
+        aria-label="CENTRALIZED COMPRESSED AIR DISTRIBUTION SYSTEM"
+        className="relative z-10 font-sans font-extrabold text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-[68px] leading-[1.08] tracking-[-0.04em] uppercase max-w-5xl text-[#16324F] dark:text-white break-words"
+      >
+        {lines.map((lineObj, lineIdx) => {
+          return (
+            <span
+              key={lineIdx}
+              className={`block overflow-hidden pb-1 ${lineObj.isAccent ? 'text-amber-500 dark:text-amber-400' : ''}`}
+              aria-hidden="true"
+            >
+              {lineObj.text.split('').map((char, charIdx) => {
+                const charNumber = globalCharIndex++;
+                if (char === ' ') {
+                  return (
+                    <span key={charIdx} className="inline-block">
+                      &nbsp;
+                    </span>
+                  );
+                }
+                return (
+                  <span
+                    key={charIdx}
+                    data-char-span
+                    className={`inline-block ${isRevealed ? 'char-rise' : 'translate-y-[118%]'}`}
+                    style={{ '--i': charNumber } as React.CSSProperties}
+                  >
+                    {char}
+                  </span>
+                );
+              })}
+            </span>
+          );
+        })}
       </h1>
 
       {/* Institutional Byline */}
-      <div className="mt-3 text-xs sm:text-sm uppercase tracking-widest text-[#F59E0B] font-semibold">
+      <div className="relative z-10 mt-3 text-xs sm:text-sm uppercase tracking-widest text-[#F59E0B] font-semibold">
         Mechanical &amp; Allied Department (MAAD) · TUP Taguig Campus
       </div>
 
       {/* Subtitle */}
-      <p className="mt-5 text-sm sm:text-base md:text-lg text-slate-600 dark:text-slate-300 max-w-3xl font-normal leading-relaxed px-2">
+      <p className="relative z-10 mt-5 text-sm sm:text-base md:text-lg text-slate-600 dark:text-slate-300 max-w-3xl font-normal leading-relaxed px-2">
         A centralized pneumatic network delivering regulated compressed air across three machine shop laboratory areas. Explore equipment specifications, safety protocols, standard operating procedures, and 6 active workstation outlets.
       </p>
 
       {/* Quick Jump Action Pills (BrewedOps Inspired) */}
-      <div className="mt-8 flex flex-wrap items-center justify-center gap-3 w-full max-w-3xl px-4">
+      <div className="relative z-10 mt-8 flex flex-wrap items-center justify-center gap-3 w-full max-w-3xl px-4">
         <a
           href="#system-overview"
           className="motion-press inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-md bg-[#16324F] hover:bg-[#0E2135] text-white text-xs uppercase tracking-wider font-semibold shadow-sm transition-all"

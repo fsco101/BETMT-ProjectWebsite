@@ -193,9 +193,6 @@ export const CircuitSection: React.FC = () => {
 
               {isHorizontalMode && (
                 <div className="hidden lg:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-[10px] uppercase tracking-wider font-semibold text-slate-600 dark:text-slate-300">
-                  <span className="material-symbols-outlined text-sm text-amber-500 dark:text-sky-400 animate-bounce">
-                    swap_horiz
-                  </span>
                   <span>Scroll down to advance pipeline</span>
                 </div>
               )}

@@ -62,7 +62,7 @@ export const SopVerificationModal: React.FC<SopVerificationModalProps> = ({ isOp
           {/* Header Title */}
           <div className="flex flex-col items-center">
             <span className="text-[10px] sm:text-xs uppercase tracking-widest text-[#16324F] dark:text-sky-400 font-bold">
-              Group 1 · Batch 2023
+              Group 1 · Batch 2023–2027
             </span>
             <span className="text-[9px] sm:text-[10px] uppercase tracking-wider text-slate-500 dark:text-slate-400 mt-0.5">
               Mechanical and Allied Department · BET-MT

@@ -11,7 +11,7 @@ describe('Centralized Air Distribution System Integration', () => {
   it('renders the complete updated application layout without throwing', () => {
     const html = renderToString(<App />);
     expect(html).toContain('CENTRALIZED COMPRESSED AIR DISTRIBUTION SYSTEM');
-    expect(html).toContain('Group 1 - Batch 2023');
+    expect(html).toContain('Group 1 - Batch 2023-2027');
     expect(html).not.toContain('TUP Taguig');
     expect(html).not.toContain('TUP TAGUIG');
     expect(html).toContain('Mechanical And Allied Department');

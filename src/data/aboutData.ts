@@ -6,7 +6,7 @@ export const studyOverviewData: StudyOverview = {
   subtitle: 'An organized and accessible compressed air system engineered for machine shop cleaning efficiency, safety, and convenience at TUP - Taguig Campus.',
   institution: 'Technological University of the Philippines - Taguig Campus',
   department: 'Mechanical & Allied Department (MAAD)',
-  academicYear: 'Batch 2023',
+  academicYear: 'Batch 2023–2027',
   abstract:
     'Our study focuses on the Design and Development of a Centralized Compressed Air Distribution System for Machine Shop Laboratories at the Technological University of the Philippines - Taguig Campus. The project aims to provide an organized and accessible compressed air system that helps students and instructors clean metal chips, dust, and debris from machine shop equipment and work areas using a spray blow gun. By providing accessible hose outlets in different workshop areas, the system aims to improve cleaning efficiency, convenience, and safety while supporting proper housekeeping practices in the laboratory.',
   backgroundRationale:
@@ -76,13 +76,13 @@ export const studyOverviewData: StudyOverview = {
     {
       name: 'Engr. Manuel De Leon',
       title: 'Research Adviser & Laboratory Supervisor',
-      department: 'Mechanical and Allied Department — Group 1 - Batch 2023',
+      department: 'Mechanical and Allied Department — Group 1 - Batch 2023-2027',
       role: 'Project Guidance & Fluid Power Technical Advising'
     },
     {
       name: 'Prof. Roberto Santos',
       title: 'Department Head',
-      department: 'Mechanical and Allied Department — Group 1 - Batch 2023',
+      department: 'Mechanical and Allied Department — Group 1 - Batch 2023-2027',
       role: 'Administrative Support & Laboratory Resource Coordination'
     }
   ]

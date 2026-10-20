@@ -169,7 +169,7 @@ export const EmergencyModal: React.FC<EmergencyModalProps> = ({ isOpen, onClose 
         {/* Emergency Contacts Hotlines */}
         <div className="p-4 rounded-xl bg-[#F8FAFC] dark:bg-[#162238] border border-slate-200 dark:border-slate-800 text-xs space-y-2">
           <span className="text-[10px] sm:text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400 block font-bold">
-            Group 1 · Batch 2023 Emergency Dispatch Hotlines
+            Group 1 · Batch 2023–2027 Emergency Dispatch Hotlines
           </span>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs text-slate-700 dark:text-slate-200">
             <div><strong className="text-slate-900 dark:text-white font-semibold">Campus Clinic:</strong> (02) 8823-2456 loc 108</div>

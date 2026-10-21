@@ -21,8 +21,9 @@ yarn-error.log*
 Thumbs.db
 .superpowers/
 
-
-
+Centralized_Air_Distribution_System_User_Manual_v2.pdf
+Centralized_Air_Distribution_System_User_Manual.pdf
+Centralized_Air_Distribution_System_User_Manual_v2*
 
 # Documents & Source Files
 *.docx
@@ -32,3 +33,6 @@ WEBSITE Content.docx
 
 WEBSITE CONTENT UPDATE.docx
 WEBSITE CONTENT UPDATE*
+
+public/Centralized_Air_Distribution_System_User_Manual.pdf
+public/Centralized_Air_Distribution_System_User_Manual*
